@@ -1,0 +1,180 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+
+// ============================================
+// Button Component - универсальный компонент кнопок
+// ============================================
+
+// Base button styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family, $font-family);
+  font-size: 16px;
+  line-height: normal;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: $transition-base;
+  white-space: nowrap;
+  box-sizing: border-box;
+  text-align: center;
+  outline: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // Sizes
+  &--default {
+    height: 40px;
+    padding: 10px 30px;
+    font-weight: 500; // Medium
+  }
+
+  &--large {
+    height: 54px;
+    padding: 10px 20px;
+    font-weight: 600; // SemiBold
+  }
+
+  &--social {
+    height: 48px;
+    padding: 10px 20px;
+    width: 110px;
+    font-weight: 500; // Medium
+  }
+
+  // Variants
+  &--primary {
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid transparent;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: var(--white);
+    }
+
+    &:active:not(:disabled) {
+      border-color: none;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid transparent;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--black);
+    }
+
+    &:active:not(:disabled) {
+      border-color: none;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(0, 0, 0, 0.05);
+      border-color: var(--black);
+      color: var(--black);
+    }
+
+    &:active:not(:disabled) {
+      border-color: none;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &--outline-white {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    &:active:not(:disabled) {
+      border-color: none;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &--social {
+    background-color: var(--white);
+    border: 1px solid #f3f3f3;
+    color: var(--black);
+    padding: 10px 20px;
+
+    &:hover:not(:disabled) {
+      border-color: var(--black);
+      background-color: #fafafa;
+    }
+
+    &:active:not(:disabled) {
+      border-color: none;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    i {
+      font-size: 24px;
+      color: var(--black);
+    }
+  }
+
+  // Special width variants for specific use cases
+  &--w-110 {
+    width: 110px;
+  }
+
+  &--w-135 {
+    width: 135px;
+  }
+
+  &--w-100 {
+    width: 100%;
+  }
+
+  // Responsive adjustments
+  @include lg-down {
+    &--default {
+      padding: 10px 20px;
+      width: auto;
+      min-width: 100px;
+    }
+  }
+
+  @include xs-down {
+    &--social {
+      flex: 1;
+      min-width: calc(33.333% - 7px);
+    }
+  }
+}

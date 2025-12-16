@@ -1,0 +1,580 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+@import '../mixins/utilities';
+
+// Header - Baku Energy Week - Exact from Figma
+.header {
+  position: absolute;
+  top: 25px;
+  // left: 50%;
+  // transform: translateX(-50%);
+  width: 100%;
+  z-index: $z-index-fixed;
+  transition: all 0.3s ease;
+
+  @include lg-down {
+    top: 16px;
+    left: 0;
+    transform: none;
+    // max-width: 408px;
+    // width: calc(100% - 32px);
+    padding: 0;
+  }
+  
+
+  // Fixed header state (after scroll)
+  &--fixed {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    animation: slideDown 0.3s ease-out;
+    z-index: $z-index-fixed;
+
+    @include lg-down {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      width: auto;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 10px 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-wrapper {
+      width: 100%;
+    }
+
+    .header__content {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 16px 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+      @include lg-down {
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+
+    // // Container inside fixed header gets white background and rounded corners on desktop
+    // .container {
+    //   background: $white;
+    //   border-radius: 20px; // Exact from Figma
+    //   padding: 16px 40px;
+    //   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      
+    //   @include lg-down {
+    //     background: transparent;
+    //     border-radius: 0;
+    //     padding: 0;
+    //     box-shadow: none;
+    //   }
+    // }
+
+    .header__content {
+      // max-width: 1060px;
+      // margin: 0 auto;
+
+      @include lg-down {
+        max-width: 100%;
+      }
+    }
+
+    .header__logo {
+      // height: 72px;
+      // width: 109px;
+
+      @include lg-down {
+        max-height: 72px;
+        max-width: 109px;
+        width: 100%;
+      }
+    }
+
+    .header__title {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      @include lg-down {
+        display: flex;
+      }
+    }
+
+    .header__title-text {
+      font-family: $font-family;
+      font-size: $font-size-body;
+      font-weight: $font-weight-bold;
+      line-height: $line-height-tight;
+      color: $warning; // #050F17
+      white-space: nowrap;
+
+      @include lg-down {
+        font-size: $font-size-body; // 20px on mobile too - Exact from Figma node-id=63:3054
+        white-space: normal;
+      }
+    }
+
+    .header__subtitle-text {
+      font-family: $font-family;
+      font-size: $font-size-body1; // 18px - Body 1 | Medium - Exact from Figma
+      font-weight: $font-weight-medium;
+      line-height: $line-height-tight;
+      color: $warning; // #050F17
+      white-space: nowrap;
+
+      @include lg-down {
+        font-size: $font-size-body1; // 18px on mobile too - Exact from Figma node-id=63:3055
+        white-space: normal;
+      }
+    }
+
+    .header__social-icons {
+      display: flex;
+      @include lg-down {
+        display: flex !important;
+      }
+    }
+
+    .header__divider {
+      display: block;
+
+      @include lg-down {
+        display: block;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    @include lg-down {
+      gap: 20px;
+      flex-direction: column;
+    }
+  }
+
+  &__desktop {
+    // Desktop layout only - hidden by default, shown on lg and up
+    // display: none;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 24px;
+    flex-wrap: wrap;
+    
+    @include lg-up {
+      display: inline-flex;
+      flex-wrap: nowrap;
+    }
+  }
+
+  // &__mobile {
+  //   // Mobile layout only - shown by default, hidden on lg and up
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   width: 100%;
+  //   gap: 20px; // Exact from Figma node-id=63:3050
+    
+  //   @include lg-up {
+  //     display: none;
+  //   }
+  // }
+
+  &__logo {
+    // height: 100px;
+    // width: 152px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      mix-blend-mode: darken;
+    }
+
+    @include lg-down {
+      // height: 100px;
+      // width: 152px;
+    }
+  }
+
+  &__title {
+    display: none; // Hidden by default, shown in fixed state
+  }
+
+  &__divider {
+    display: none; // Hidden by default, shown in fixed state
+    width: 0;
+    height: 10px;
+    border-left: 1px solid $gray;
+    flex-shrink: 0;
+  }
+
+  &__social-icons {
+    display: none; // Hidden by default, shown in fixed state
+    gap: 30px;
+    align-items: center;
+
+    @include lg-down {
+      display: none; // Hidden by default on mobile too
+    }
+  }
+
+  &__social-icon {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: $warning; // #050F17
+    transition: $transition-base;
+
+    i {
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__languages {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+
+    @include lg-down {
+      gap: 8px;
+    }
+  }
+
+  &__language {
+    font-family: $font-family;
+    font-size: $font-size-body3; // 14px - Body 3 | Semibold
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-normal;
+    color: var(--gray); // #999999
+    text-decoration: none;
+    text-align: right;
+    white-space: nowrap;
+    transition: $transition-base;
+    cursor: pointer;
+
+    &--active {
+      color: $warning; // #050F17 from Figma
+    }
+
+    &:hover {
+      color: var(--text);
+    }
+
+    &:focus {
+      outline: none;
+      color: var(--text);
+    }
+  }
+}
+
+// Animation for fixed header
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Legacy navbar styles (kept for compatibility)
+.navbar {
+  background: var(--card-background);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 15px 0;
+  // position: relative;
+  // top: 101px; // Topbar height (updated)
+  z-index: $z-index-fixed;
+  @include transition(all);
+
+  &.fixed-top {
+    @include transition(all);
+  }
+
+  // @include xl-down {
+  //   top: 102px;
+  //   // background: var(--card-background);
+  // }
+
+  // @include lg-down {
+  //   top: 82px;
+  //   // background: var(--card-background);
+  // }
+
+  // @include md-down {
+  //   top: 82px;
+  //   // background: var(--card-background);
+  // }
+
+  // @include sm-down {
+  //   top: 72px;
+  //   // background: var(--card-background);
+  // }
+
+  .navbar-nav {
+    gap: 50px;
+  }
+
+  .navbar-collapse {
+    @include xl-down {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--white);
+      border-radius: $border-radius;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .nav-link {
+    padding: 0px 16px;
+    color: var(--black);
+    font-weight: 500;
+    font-size: $font-size-base;
+    transition: $transition-base;
+    position: relative;
+    border-radius: $border-radius;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: $transition-base;
+    }
+
+    &:hover {
+      color: var(--primary);
+      // background: rgba($primary, 0.05);
+
+      &::after {
+        width: calc(100% - 15px);
+      }
+    }
+
+    &.active {
+      color: var(--primary);
+      // background: rgba($primary, 0.1);
+
+      &::after {
+        width: calc(100% - 15px);
+      }
+    }
+
+    @include xl-down {
+      padding: 12px 16px;
+      border-radius: 0;
+      border-bottom: 1px solid rgba($gray, 0.2);
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: 4px 8px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // .navbar-toggler-icon {
+  //   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  // }
+
+  &__search {
+    // flex-shrink: 0;
+    max-width: 500px; // Width 500px as in design
+    width: 100%;
+
+    @include xl-down {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  &__search-form {
+    width: 100%;
+    max-width: 500px;
+
+    @include xl-down {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  &__search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px; // Height 40px as in design
+    padding: 10px 20px; // Padding as in design
+    border: 1px solid var(--white);
+    border-radius: 8px; // Rounded 8px as in design
+    background: var(--white);
+    box-sizing: border-box;
+    gap: 10px; // Gap between icon and text
+  }
+
+  // Search icon
+  &__search-icon {
+    flex-shrink: 0;
+    color: var(--gray);
+    font-size: 16px; // 16px as in design
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Search text (visible text, not placeholder)
+  &__search-text {
+    font-family: var(--font-family, $font-family);
+    font-size: 16px; // 16px as in design
+    font-weight: 500; // Medium (500)
+    color: var(--gray);
+    line-height: normal;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__search-input {
+    // position: absolute;
+    // left: 0;
+    // top: 0;
+    width: 100%;
+    // height: 100%;
+    padding: 10px 20px 10px 0px; // Right padding for clear button
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--gray);
+    font-family: var(--font-family, $font-family);
+    font-size: 16px;
+    font-weight: 500;
+    transition: $transition-base;
+
+    &:focus {
+      outline: none;
+      // opacity: 1;
+
+      // + .topbar__search-text {
+      //   opacity: 0;
+      // }
+    }
+
+    &::placeholder {
+      color: var(--gray);
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    // Hide native clear buttons in all browsers
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+      appearance: none;
+      display: none;
+    }
+
+    &::-ms-clear,
+    &::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    // Firefox clear button
+    &::-moz-search-clear {
+      display: none;
+    }
+  }
+
+  // Custom clear button
+  &__search-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: none; // Hidden by default, shown via JS
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--gray);
+    opacity: 1;
+    transition: $transition-base;
+    flex-shrink: 0;
+    z-index: 10;
+
+    i {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    &:hover {
+      opacity: 1;
+      color: var(--gray);
+    }
+
+    &:focus {
+      outline: none;
+      // opacity: 1;
+    }
+
+    // Modern browsers with :has() support
+    @supports selector(:has(*)) {
+      .navbar__search-wrapper:has(.navbar__search-input:not(:placeholder-shown)) & {
+        display: flex;
+      }
+    }
+  }
+
+}

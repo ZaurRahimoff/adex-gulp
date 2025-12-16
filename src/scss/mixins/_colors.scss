@@ -1,0 +1,21 @@
+// Color and Typography mixins
+
+// Mixin for generating CSS variables from SCSS variables
+// Requires $colors-map from variables/colors
+@mixin generate-color-variables() {
+  :root {
+    @each $name, $value in $colors-map {
+      --#{$name}: #{$value};
+    }
+  }
+}
+
+// Mixin for generating CSS variables from SCSS typography variables
+// Requires $typography-map from variables/typography
+@mixin generate-typography-variables() {
+  :root {
+    @each $name, $value in $typography-map {
+      --#{$name}: #{$value};
+    }
+  }
+}

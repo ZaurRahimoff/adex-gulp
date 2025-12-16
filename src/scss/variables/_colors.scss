@@ -1,0 +1,41 @@
+// Цвета проекта
+
+// Основные цвета
+$primary: #008DD1;
+$secondary: #43A58B;
+$info: #B0CB14;
+
+// Цвета текста
+$text: #0C0B0B;
+$text-90: rgba(12, 11, 11, 0.9);
+
+// Дополнительные цвета
+$success: #0A1B28;
+$warning: #050F17;
+$card: #FAFAFA;
+$white: #FFFFFF;
+$black: #0C0B0B;
+
+// Для обратной совместимости
+$background: $white;
+$card-background: $card;
+$error: #dc3545;
+$gray: #999999;
+
+// Map для генерации CSS переменных
+$colors-map: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'info': $info,
+  'text': $text,
+  'text-90': $text-90,
+  'success': $success,
+  'warning': $warning,
+  'card': $card,
+  'white': $white,
+  'black': $black,
+  'background': $background,
+  'card-background': $card-background,
+  'error': $error,
+  'gray': $gray
+);

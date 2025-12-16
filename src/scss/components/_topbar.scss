@@ -1,0 +1,212 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+
+.topbar {
+  background: $white;
+  padding: 18px 0;
+  position: relative;
+  z-index: $z-index-sticky;
+
+  @include lg-down {
+    padding: 12px 0;
+  }
+
+  &__content {
+    gap: 99px;
+
+    @include lg-down {
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+
+    img {
+      display: block;
+      height: 72px;
+      width: auto;
+
+      @include lg-down {
+        height: 56px;
+      }
+
+      @include md-down {
+        height: 48px;
+      }
+    }
+  }
+
+  &__center {
+    max-width: 486px;
+    flex: 1;
+
+    @include lg-down {
+      order: 3;
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-size: $font-size-body3;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    color: #212529;
+    margin: 0;
+
+    @include md-down {
+      font-size: $font-size-body4;
+    }
+  }
+
+  &__right {
+    gap: 36px;
+    flex-shrink: 0;
+
+    @include lg-down {
+      gap: 24px;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    @include md-down {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+  }
+
+  &__info {
+    gap: 16px;
+
+    @include md-down {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  }
+
+  &__info-item {
+    gap: 6px;
+    border-radius: 8px;
+    white-space: nowrap;
+
+    i {
+      font-size: 15px;
+      color: #212529;
+
+      @include md-down {
+        font-size: 13px;
+      }
+    }
+
+    span {
+      font-family: $font-family;
+      font-size: $font-size-body3;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      color: #212529;
+
+      @include md-down {
+        font-size: $font-size-body4;
+      }
+    }
+  }
+
+  &__divider {
+    width: 0;
+    height: 20px;
+    border-left: 1px solid rgba(#212529, 0.2);
+    transform: rotate(90deg);
+    flex-shrink: 0;
+
+    @include md-down {
+      display: none;
+    }
+  }
+
+  &__actions {
+    gap: 36px;
+
+    @include lg-down {
+      gap: 24px;
+    }
+
+    @include md-down {
+      width: 100%;
+      justify-content: space-around;
+    }
+  }
+
+  &__language {
+    gap: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: $transition-base;
+    padding: 4px 8px;
+
+    &:hover {
+      background: rgba(#212529, 0.05);
+    }
+
+    span {
+      font-family: $font-family;
+      font-size: $font-size-body3;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      color: #212529;
+
+      @include md-down {
+        font-size: $font-size-body4;
+      }
+    }
+
+    i {
+      font-size: 13px;
+      color: #212529;
+    }
+  }
+
+  &__flag {
+    display: block;
+    width: 22px;
+    height: 16px;
+  }
+
+  &__user {
+    gap: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: $transition-base;
+    padding: 4px 12px;
+
+    &:hover {
+      background: rgba(#212529, 0.05);
+    }
+
+    i {
+      font-size: 15px;
+      color: #212529;
+      text-transform: uppercase;
+    }
+
+    span {
+      font-family: $font-family;
+      font-size: $font-size-body3;
+      font-weight: $font-weight-bold;
+      line-height: 1;
+      color: #212529;
+      white-space: nowrap;
+
+      @include md-down {
+        font-size: $font-size-body4;
+      }
+    }
+  }
+}
+

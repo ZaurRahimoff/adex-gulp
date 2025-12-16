@@ -1,0 +1,74 @@
+// Типографика проекта 
+
+// Шрифт проекта
+$font-base: Poppins, sans-serif;
+$font-fallback: Arial, sans-serif;
+$font-family: $font-base, $font-fallback;
+
+// Размеры шрифтов (базовые)
+$font-size-xs: 0.75rem;   // 12px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-base: 1rem;    // 16px
+$font-size-lg: 1.125rem;  // 18px
+$font-size-xl: 1.25rem;   // 20px
+$font-size-2xl: 1.5rem;   // 24px
+$font-size-3xl: 1.875rem; // 30px
+$font-size-4xl: 2.25rem;  // 36px
+
+// Веса шрифтов
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Заголовки
+$font-size-h1: 6.25rem;   // 100px - H1 | Bold
+$font-size-h2: 3.75rem;   // 60px - H2 | Bold
+$font-size-h3: 3.125rem;  // 50px - H3 | Semibold
+$font-size-h4: 2.5rem;    // 40px - H4 | Bold
+$font-size-h5: 1.875rem;  // 30px - H5 | Bold
+$font-size-h6: 1.75rem;   // 28px - H6 | Bold
+
+// Title sizes
+$font-size-title: 1.5rem;     // 24px - Title
+$font-size-title1: 1.375rem;  // 22px - Title 1 | Semibold
+
+// Body text sizes
+$font-size-body: 1.25rem;    // 20px - Body
+$font-size-body1: 1.125rem;  // 18px - Body 1 | Regular
+$font-size-body2: 1rem;      // 16px - Body 2 | Medium
+$font-size-body3: 0.875rem;  // 14px - Body 3 | Semibold
+$font-size-body4: 0.75rem;   // 12px - Body 4
+
+// Межстрочный интервал
+$line-height-tight: 1;
+$line-height-normal: 1;      // 1.4 в Figma Display Small
+$line-height-relaxed: 1.4;
+
+// Map для генерации CSS переменных
+$typography-map: (
+  'font-family': $font-family,
+  'font-base': $font-base,
+  'font-fallback': $font-fallback,
+  'font-weight-regular': $font-weight-regular,
+  'font-weight-medium': $font-weight-medium,
+  'font-weight-semibold': $font-weight-semibold,
+  'font-weight-bold': $font-weight-bold,
+  'font-size-body4': $font-size-body4,
+  'font-size-body3': $font-size-body3,
+  'font-size-body2': $font-size-body2,
+  'font-size-body1': $font-size-body1,
+  'font-size-body': $font-size-body,
+  'font-size-title1': $font-size-title1,
+  'font-size-title': $font-size-title,
+  'font-size-h6': $font-size-h6,
+  'font-size-h5': $font-size-h5,
+  'font-size-h4': $font-size-h4,
+  'font-size-h3': $font-size-h3,
+  'font-size-h2': $font-size-h2,
+  'font-size-h1': $font-size-h1,
+  'line-height-tight': $line-height-tight,
+  'line-height-normal': $line-height-normal,
+  'line-height-relaxed': $line-height-relaxed
+);

@@ -1,0 +1,30 @@
+// Main stylesheet file
+// Automatically imports all components and modules
+
+// Variables
+@import 'variables/colors';
+@import 'variables/typography';
+@import 'variables/variables';
+
+// Mixins
+@import 'mixins/font-face';
+@import 'mixins/media';
+@import 'mixins/colors';
+
+// Generate CSS variables from SCSS variables
+@include generate-color-variables();
+@include generate-typography-variables();
+
+// Base styles
+@import 'base/reset';
+@import 'base/_base';
+
+// Components
+@import 'components/topbar';
+@import 'components/navbar';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/button';
+
+// Pages
+@import 'pages/home';

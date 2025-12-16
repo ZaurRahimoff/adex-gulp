@@ -1,0 +1,30 @@
+extends ../layouts/default
+
+block variables
+  - var pageTitle = 'Baku Energy Week - Главная страница'
+  - var pageDescription = 'Baku Energy Week - 3 - 5 June 2026, Azerbaijan, Baku'
+  - var pageKeywords = 'Baku Energy Week, энергетика, Баку, выставка'
+  - var pageCanonical = 'https://bakuenergyweek.com'
+  - var pageOgImage = 'https://bakuenergyweek.com/og-image.jpg'
+  - var pageAuthor = 'Baku Energy Week'
+
+block content
+  // Hero Section
+  section.hero
+    .hero__background(style="background-image: url('assets/img/bg-image.svg');")
+    
+    .container
+      .row
+        .col-12
+          .hero__content
+            .hero__text-content
+              h1.hero__title Baku Energy Week
+              .hero__subtitle
+                p.hero__date 3 - 5 June 2026
+                p.hero__location Azerbaijan, Baku
+
+            // Info Section
+            section.info-section
+              .info-section__card
+                h3.info-section__title Tedbir
+                p.info-section__text Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic

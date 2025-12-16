@@ -1,0 +1,44 @@
+//- Button Mixin - универсальный компонент кнопок
+//- Usage:
+//-   +button("Text", "primary")
+//-   +button("Text", "secondary", "submit")
+//-   +button("Text", "outline", "button", "/link")
+//-   +button("Text", "outline-white", "button", null, "large")
+//-   +button(null, "social", "button", null, "social", "google")
+//-
+//- Parameters:
+//-   text - текст кнопки (обязательный, кроме social)
+//-   variant - вариант: "primary", "secondary", "outline", "outline-white", "social" (default: "primary")
+//-   type - тип: "button", "submit", "reset" (default: "button")
+//-   href - ссылка (если указана, создается <a>, иначе <button>)
+//-   size - размер: "default", "large", "social" (default: "default")
+//-   socialType - тип соцсети для social: "google", "apple", "facebook" (только для variant="social")
+//-   extraClasses - дополнительные классы
+
+mixin button(text, variant = "primary", type = "button", href = null, size = "default", socialType = null, extraClasses = "")
+  - var buttonClasses = `btn btn--${variant} btn--${size}`
+  - if (extraClasses) buttonClasses += ` ${extraClasses}`
+  
+  if href
+    a(class=buttonClasses href=href role="button")
+      if variant === "social" && socialType
+        if socialType === "google"
+          img(src="/assets/img/google.svg" alt="Google" onerror="this.style.display='none'")
+        else if socialType === "apple"
+          img(src="/assets/img/apple.svg" alt="Apple" onerror="this.style.display='none'")
+        else if socialType === "facebook"
+          img(src="/assets/img/facebook.svg" alt="Apple" onerror="this.style.display='none'")
+      else
+        = text
+  else
+    button(class=buttonClasses type=type)
+      if variant === "social" && socialType
+        if socialType === "google"
+          img(src="/assets/img/google.svg" alt="Google" onerror="this.style.display='none'")
+        else if socialType === "apple"
+          img(src="/assets/img/apple.svg" alt="Apple" onerror="this.style.display='none'")
+        else if socialType === "facebook"
+          img(src="/assets/img/facebook.svg" alt="Apple" onerror="this.style.display='none'")
+      else
+        = text
+
