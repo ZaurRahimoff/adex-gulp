@@ -1,18 +1,24 @@
 // Цвета проекта
 
-// Основные цвета
-$primary: #008DD1;
+// Основные цвета (из UI kit)
+$primary: #2B3B73;
 $secondary: #43A58B;
 $info: #B0CB14;
 
-// Цвета текста
+// Цвета текста (из UI kit)
 $text: #0C0B0B;
 $text-90: rgba(12, 11, 11, 0.9);
+$gray-1: #212529;
+$gray-2: #495057;
+$gray-3: #9DA2AB;
 
-// Дополнительные цвета
+// Дополнительные цвета (из UI kit)
 $success: #0A1B28;
 $warning: #050F17;
 $card: #FAFAFA;
+$card-1: #E9ECEF;
+$card-2: #F8F9FA;
+$line: #EEEEEE;
 $white: #FFFFFF;
 $black: #0C0B0B;
 
@@ -29,9 +35,15 @@ $colors-map: (
   'info': $info,
   'text': $text,
   'text-90': $text-90,
+  'gray-1': $gray-1,
+  'gray-2': $gray-2,
+  'gray-3': $gray-3,
   'success': $success,
   'warning': $warning,
   'card': $card,
+  'card-1': $card-1,
+  'card-2': $card-2,
+  'line': $line,
   'white': $white,
   'black': $black,
   'background': $background,

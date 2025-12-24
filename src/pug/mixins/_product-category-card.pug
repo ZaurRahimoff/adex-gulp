@@ -1,0 +1,9 @@
+//- Миксин для карточки категории продукта
+//- Использование: +product-category-card('Category Name', 'image.jpg')
+mixin product-category-card(name, image)
+  .swiper-slide
+    .product-category-card
+      .product-category-card__image-wrapper
+        img.product-category-card__image(src=image alt=name loading="lazy")
+      h3.product-category-card__name= name
+

@@ -16,6 +16,7 @@
 @include generate-typography-variables();
 
 // Base styles
+@import 'base/fonts';
 @import 'base/reset';
 @import 'base/_base';
 

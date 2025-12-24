@@ -1,30 +1,344 @@
 extends ../layouts/default
 
 block variables
-  - var pageTitle = 'Baku Energy Week - Главная страница'
-  - var pageDescription = 'Baku Energy Week - 3 - 5 June 2026, Azerbaijan, Baku'
-  - var pageKeywords = 'Baku Energy Week, энергетика, Баку, выставка'
-  - var pageCanonical = 'https://bakuenergyweek.com'
-  - var pageOgImage = 'https://bakuenergyweek.com/og-image.jpg'
-  - var pageAuthor = 'Baku Energy Week'
+  - var pageTitle = 'ADEX - Главная страница'
+  - var pageDescription = 'ADEX - 3 - 5 June 2026, Azerbaijan, Baku'
+  - var pageKeywords = 'ADEX, энергетика, Баку, выставка'
+  - var pageCanonical = 'https://adex.az'
+  - var pageOgImage = 'https://adex.az/og-image.jpg'
+  - var pageAuthor = 'ADEX'
 
 block content
-  // Hero Section
+  // Hero Section (Video 1)
   section.hero
-    .hero__background(style="background-image: url('assets/img/bg-image.svg');")
-    
+    .hero__video-wrapper
+      img.hero__video-image(src="assets/img/webp/hero-bg.webp" alt="" aria-hidden="true")
+      iframe.hero__video(width="1396" height="785" src="https://www.youtube.com/embed/wfsTGsXGKvE" title="ADEX 2024 Азербайджан ( военная выставка )" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen)
+      .hero__overlay
+    a.hero__play-btn(href="#")
+      i.fas.fa-play
+    .hero__content
+      .container
+        .row
+          .col-12
+            h1.hero__title 30th Anniversary Azerbaijan International Construction Exhibition
+            .hero__actions.d-flex.gap-3.flex-wrap
+              a.btn.btn-primary.hero__btn(href="#") Бронирование стенда
+              a.btn.btn-primary.hero__btn(href="#") Станте спонсором
+              a.btn.btn-primary.hero__btn(href="#") Обратная связь
+              a.btn.btn-primary.hero__btn(href="#") Купите билет
+
+  // Banner Section (Statistics)
+  section.banner-section
+    .banner-section__background
+      img.banner-section__bg-image(src="assets/img/webp/stats-bg.webp" alt="" aria-hidden="true")
+    .banner-section__overlay
+    .container
+      .banner-section__content
+        .banner-section__item
+          .banner-section__icon-wrapper
+            i.fas.fa-arrow-up
+          .banner-section__text
+            p.banner-section__number 21000+
+            p.banner-section__label Visitors
+        .banner-section__item
+          .banner-section__divider
+          .banner-section__icon-wrapper
+            i.fas.fa-arrow-up
+          .banner-section__text
+            p.banner-section__number 200+
+            p.banner-section__label Exhibitors
+        .banner-section__item
+          .banner-section__divider
+          .banner-section__icon-wrapper
+            i.fas.fa-arrow-up
+          .banner-section__text
+            p.banner-section__number 130+
+            p.banner-section__label Speakers
+        .banner-section__item
+          .banner-section__divider
+          .banner-section__icon-wrapper
+            i.fas.fa-arrow-up
+          .banner-section__text
+            p.banner-section__number 35+
+            p.banner-section__label Countries
+
+  // Sponsors Section
+  include ../mixins/_slider
+  include ../mixins/_sponsor-card
+  section.sponsors-section
     .container
       .row
         .col-12
-          .hero__content
-            .hero__text-content
-              h1.hero__title Baku Energy Week
-              .hero__subtitle
-                p.hero__date 3 - 5 June 2026
-                p.hero__location Azerbaijan, Baku
+          .d-flex.justify-content-between.align-items-center.mb-4
+            h2.sponsors-section__title Sponsors
+            .d-flex.gap-3.sponsors-section__nav
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-section__nav-btn.sponsors-section__nav-btn--prev(type="button" aria-label="Previous")
+                i.fas.fa-arrow-left
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-section__nav-btn.sponsors-section__nav-btn--next(type="button" aria-label="Next")
+                i.fas.fa-arrow-right
+          .swiper.sponsors-swiper
+            .swiper-wrapper
+              +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
+              +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organisers Association (ASTA)', 'assets/img/webp/sponsor2.webp')
+              +sponsor-card('Silver sponsor', 'Export and Investment Promotion Agency of Azerbaijan - AZPROMO', 'assets/img/webp/sponsor3.webp')
+              +sponsor-card('Silver sponsor', 'National Confederation of Entrepreneurs Organisations of the Republic of Azerbaijan (ASK)', 'assets/img/webp/sponsor4.webp')
+              +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
+              +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
 
-            // Info Section
-            section.info-section
-              .info-section__card
-                h3.info-section__title Tedbir
-                p.info-section__text Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+  // Support Section
+  section.support-section
+    .container
+      .row
+        .col-12
+          .d-flex.justify-content-between.align-items-center.mb-4
+            h2.support-section__title Support
+            .d-flex.gap-3.support-section__nav
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.support-section__nav-btn.support-section__nav-btn--prev(type="button" aria-label="Previous")
+                i.fas.fa-arrow-left
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.support-section__nav-btn.support-section__nav-btn--next(type="button" aria-label="Next")
+                i.fas.fa-arrow-right
+          .swiper.support-swiper
+            .swiper-wrapper
+              +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
+              +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organisers Association (ASTA)', 'assets/img/webp/sponsor2.webp')
+              +sponsor-card('Silver sponsor', 'Export and Investment Promotion Agency of Azerbaijan - AZPROMO', 'assets/img/webp/sponsor3.webp')
+              +sponsor-card('Silver sponsor', 'National Confederation of Entrepreneurs Organisations of the Republic of Azerbaijan (ASK)', 'assets/img/webp/sponsor4.webp')
+              +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
+              +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
+
+  // Event Program Section
+  include ../mixins/_event-program-item
+  section.event-program-section
+    .container
+      .row
+        .col-12
+          .d-flex.justify-content-between.align-items-center.flex-wrap.flex-md-nowrap.gap-3.mb-4
+            h2.event-program-section__title Event program
+            .d-flex.gap-3.event-program-section__tabs
+              button.btn.event-program-section__tab.event-program-section__tab--active(type="button" data-day="1") 1 Day
+              button.btn.event-program-section__tab(type="button" data-day="2") 2 Day
+              button.btn.event-program-section__tab(type="button" data-day="3") 3 Day
+          .row
+            .col-12.col-lg-7
+              .event-program-section__list.h-100
+                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+            .col-12.col-lg-5.d-none.d-md-block
+              .event-program-section__image-wrapper.h-100
+                img.event-program-section__image(src="assets/img/webp/event-programme.webp" alt="Event program" loading="lazy")
+          .d-flex.flex-wrap.flex-md-nowrap.gap-3.mt-4
+            a.btn.btn-primary.event-program-section__view-btn.d-block.d-md-none(href="#")
+              | View all
+              i.fas.fa-arrow-right.ms-2
+            a.btn.btn-primary.event-program-section__download-btn(href="#")
+              | Download event programme
+              i.fas.fa-arrow-right.ms-2
+
+  // Product Categories Section
+  include ../mixins/_product-category-card
+  section.product-categories-section
+    .container
+      .row
+        .col-12
+          .d-flex.justify-content-between.align-items-center.mb-4
+            h2.product-categories-section__title Product categories
+            .d-flex.gap-3.product-categories-section__nav
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.product-categories-section__nav-btn.product-categories-section__nav-btn--prev(type="button" aria-label="Previous")
+                i.fas.fa-arrow-left
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.product-categories-section__nav-btn.product-categories-section__nav-btn--next(type="button" aria-label="Next")
+                i.fas.fa-arrow-right
+          .swiper.product-categories-swiper
+            .swiper-wrapper
+              +product-category-card('Building materials and products', 'assets/img/webp/categorie1.webp')
+              +product-category-card('Ceramic and stone', 'assets/img/webp/categorie2.webp')
+              +product-category-card('Construction and production equipment', 'assets/img/webp/categorie3.webp')
+              +product-category-card('Fitness equipment', 'assets/img/webp/categorie4.webp')
+              +product-category-card('Floooring', 'assets/img/webp/categorie5.webp')
+              +product-category-card('Construction and production equipment', 'assets/img/webp/categorie6.webp')
+
+  // Video 2 Section
+  section.video-section
+    .container
+      .row
+        .col-12
+          .video-section__wrapper
+            img.hero__video-image(src="assets/img/webp/video-bg.webp" alt="" aria-hidden="true")
+            iframe.hero__video(width="1396" height="785" src="https://www.youtube.com/embed/wfsTGsXGKvE" title="ADEX 2024 Азербайджан ( военная выставка )" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen)
+            .video-section__play-btn(aria-label="Play video")
+              i.fas.fa-play
+
+  // Photo Section
+  section.photo-section
+    .container
+      .row
+        .col-12
+          .d-flex.justify-content-between.align-items-center.mb-4
+            h2.photo-section__title Photo
+            .d-flex.gap-3.photo-section__nav
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.photo-section__nav-btn.photo-section__nav-btn--prev(type="button" aria-label="Previous")
+                i.fas.fa-arrow-left
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.photo-section__nav-btn.photo-section__nav-btn--next(type="button" aria-label="Next")
+                i.fas.fa-arrow-right
+          .swiper.photo-swiper
+            .swiper-wrapper
+              .swiper-slide
+                .photo-section__main-image-wrapper
+                  img.photo-section__main-image(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy")
+              .swiper-slide
+                .photo-section__image-wrapper
+                  img.photo-section__image(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy")
+                  .photo-section__overlay
+              .swiper-slide
+                .photo-section__image-wrapper
+                  img.photo-section__image(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy")
+                  .photo-section__overlay
+              .swiper-slide
+                .photo-section__image-wrapper
+                  img.photo-section__image(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy")
+                  .photo-section__overlay
+
+  // Testimonials Section
+  include ../mixins/_testimonial-card
+  section.testimonials-section
+    .testimonials-section__background
+      img.testimonials-section__bg-image(src="assets/img/testimonials-bg.jpg" alt="" aria-hidden="true")
+    .testimonials-section__overlay
+    .container
+      .row
+        .col-12
+          .d-flex.justify-content-between.align-items-center.mb-4
+            h2.testimonials-section__title Testimonials
+            .d-flex.gap-3.testimonials-section__nav
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.testimonials-section__nav-btn.testimonials-section__nav-btn--prev(type="button" aria-label="Previous")
+                i.fas.fa-arrow-left
+              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.testimonials-section__nav-btn.testimonials-section__nav-btn--next(type="button" aria-label="Next")
+                i.fas.fa-arrow-right
+          .swiper.testimonials-swiper
+            .swiper-wrapper
+              +testimonial-card('Cameron Williamson', 'Big Kahuna Burger Ltd.', 'assets/img/testimonials/avatar-1.jpg', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.')
+              +testimonial-card('Guy Hawkins', 'Abstergo Ltd.', 'assets/img/testimonials/avatar-2.jpg', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.')
+              +testimonial-card('Robert Fox', 'Binford Ltd.', 'assets/img/testimonials/avatar-3.jpg', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.')
+
+  // Venue & Working Hours Section
+  section.venue-section
+    .container
+      .row
+        .col-12
+          h2.venue-section__title.mb-4 Venue & Working Hours
+          .row
+            .col-lg-8
+              .venue-section__image-wrapper
+                img.venue-section__image(src="assets/img/venue.jpg" alt="Venue" loading="lazy")
+            .col-lg-4
+              .venue-section__working-hours
+                h3.venue-section__working-hours-title Working Hours
+                .venue-section__schedule-item
+                  i.fas.fa-clock
+                  .venue-section__schedule-content
+                    p.venue-section__schedule-time 14 October | 11:00 - 18:00
+                    p.venue-section__schedule-day Tuesday
+                .venue-section__schedule-item
+                  i.fas.fa-clock
+                  .venue-section__schedule-content
+                    p.venue-section__schedule-time 15 October | 10:00 - 18:00
+                    p.venue-section__schedule-day Wednesday
+                .venue-section__schedule-item
+                  i.fas.fa-clock
+                  .venue-section__schedule-content
+                    p.venue-section__schedule-time 16 October | 10:00 - 18:00
+                    p.venue-section__schedule-day Thursday
+              .venue-section__venue-info
+                h3.venue-section__venue-title Venue
+                .venue-section__venue-content
+                  i.fas.fa-location-dot
+                  .venue-section__venue-text
+                    p.venue-section__venue-name Baku Expo Center
+                    p.venue-section__venue-address Address: 515, H. Aliyev ave., AZ1050, Baku, Azerbaijan
+
+  // News Section
+  section.news-section
+    .container
+      .row
+        .col-12
+          .d-flex.justify-content-between.align-items-center.mb-4
+            h2.news-section__title News
+            a.news-section__view-all(href="#")
+              | View all
+              i.fas.fa-arrow-right.ms-2
+          .row
+            .col-lg-6
+              article.news-section__featured
+                .news-section__featured-image-wrapper
+                  img.news-section__featured-image(src="assets/img/news/featured.jpg" alt="News featured" loading="lazy")
+                .news-section__featured-content
+                  .news-section__meta
+                    i.fas.fa-calendar
+                    time.news-section__date(datetime="2025-01-24") 24.01.2025
+                  h3.news-section__featured-title Preparation for the 30th Anniversary Baku Energy Week is in full swing
+                  p.news-section__featured-excerpt Preparations for the 30th Anniversary Baku Energy Week are actively underway. Baku Energy Week, a significant event in the region's energy sector, encompasses three prestigious events...
+                  a.news-section__read-more(href="#")
+                    | Read more
+                    i.fas.fa-arrow-right.ms-2
+            .col-lg-6
+              .news-section__list
+                article.news-section__item
+                  .row
+                    .col-4
+                      .news-section__item-image-wrapper
+                        img.news-section__item-image(src="assets/img/news/news-1.jpg" alt="News 1" loading="lazy")
+                    .col-8
+                      .news-section__item-content
+                        .news-section__meta
+                          i.fas.fa-calendar
+                          time.news-section__date(datetime="2025-01-24") 24.01.2025
+                        h3.news-section__item-title AI is being imposed into the big picture of the energy industry
+                        a.news-section__read-more(href="#")
+                          | Read more
+                          i.fas.fa-arrow-right.ms-2
+                .news-section__divider
+                article.news-section__item
+                  .row
+                    .col-4
+                      .news-section__item-image-wrapper
+                        img.news-section__item-image(src="assets/img/news/news-2.jpg" alt="News 2" loading="lazy")
+                    .col-8
+                      .news-section__item-content
+                        .news-section__meta
+                          i.fas.fa-calendar
+                          time.news-section__date(datetime="2025-01-24") 24.01.2025
+                        h3.news-section__item-title Networking meetings within the exhibition are productive
+                        a.news-section__read-more(href="#")
+                          | Read more
+                          i.fas.fa-arrow-right.ms-2
+                .news-section__divider
+                article.news-section__item
+                  .row
+                    .col-4
+                      .news-section__item-image-wrapper
+                        img.news-section__item-image(src="assets/img/news/news-3.jpg" alt="News 3" loading="lazy")
+                    .col-8
+                      .news-section__item-content
+                        .news-section__meta
+                          i.fas.fa-calendar
+                          time.news-section__date(datetime="2025-01-24") 24.01.2025
+                        h3.news-section__item-title Networking meetings within the exhibition are productive
+                        a.news-section__read-more(href="#")
+                          | Read more
+                          i.fas.fa-arrow-right.ms-2
+
+  // Official Hotel Section
+  section.official-hotel-section
+    .container
+      .row
+        .col-12
+          h2.official-hotel-section__title.text-center.mb-4 Official hotel
+          .d-flex.justify-content-center
+            .official-hotel-section__card
+              .official-hotel-section__logo-wrapper
+                img.official-hotel-section__logo(src="assets/img/hotel-logo.jpg" alt="Official hotel" loading="lazy")
+              a.official-hotel-section__link(href="https://www.marriott.com" target="_blank" rel="noopener noreferrer")
+                i.fas.fa-external-link-alt
+                | www.marriott.com

@@ -1,0 +1,9 @@
+//- Миксин для элемента программы событий
+//- Использование: +event-program-item('11:00 - 12:00', 'Event description')
+mixin event-program-item(time, description)
+  .event-program-item
+    i.fas.fa-clock.event-program-item__icon
+    .event-program-item__content
+      h3.event-program-item__time= time
+      p.event-program-item__description= description
+

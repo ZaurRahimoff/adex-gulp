@@ -1,0 +1,15 @@
+//- Миксин для карточки отзыва
+//- Использование: +testimonial-card('John Doe', 'Company', 'avatar.jpg', 'Text...')
+mixin testimonial-card(name, company, avatar, text)
+  .swiper-slide
+    .testimonial-card
+      .testimonial-card__header
+        .testimonial-card__avatar-wrapper
+          img.testimonial-card__avatar(src=avatar alt=name loading="lazy")
+        .testimonial-card__info
+          h3.testimonial-card__name= name
+          p.testimonial-card__company= company
+        i.fas.fa-quote-right.testimonial-card__quote
+      .testimonial-card__divider
+      p.testimonial-card__text= text
+

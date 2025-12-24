@@ -1,7 +1,11 @@
 // Типографика проекта 
 
 // Шрифт проекта
-$font-base: Poppins, sans-serif;
+// Основной шрифт - Antenna (Regular, Medium, Bold, Black)
+// Дополнительные семейства: AntennaComp, AntennaExtraCond
+$font-base: 'Antenna';
+$font-comp: 'AntennaComp';
+$font-extra-cond: 'AntennaExtraCond';
 $font-fallback: Arial, sans-serif;
 $font-family: $font-base, $font-fallback;
 
@@ -22,24 +26,24 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-// Заголовки
-$font-size-h1: 6.25rem;   // 100px - H1 | Bold
-$font-size-h2: 3.75rem;   // 60px - H2 | Bold
-$font-size-h3: 3.125rem;  // 50px - H3 | Semibold
-$font-size-h4: 2.5rem;    // 40px - H4 | Bold
-$font-size-h5: 1.875rem;  // 30px - H5 | Bold
-$font-size-h6: 1.75rem;   // 28px - H6 | Bold
+// Заголовки (из UI kit)
+$font-size-h1: 3rem;       // 48px - H1 | Bold
+$font-size-h2: 2.625rem;   // 42px - H2 | Bold
+$font-size-h3: 2.25rem;    // 36px - H3 | Bold
+$font-size-h4: 1.5rem;     // 24px - H4 | Bold
+$font-size-h5: 1.375rem;   // 22px - H5 | Bold
+$font-size-h6: 1.25rem;    // 20px - H6 | Bold
 
 // Title sizes
 $font-size-title: 1.5rem;     // 24px - Title
 $font-size-title1: 1.375rem;  // 22px - Title 1 | Semibold
 
-// Body text sizes
-$font-size-body: 1.25rem;    // 20px - Body
-$font-size-body1: 1.125rem;  // 18px - Body 1 | Regular
-$font-size-body2: 1rem;      // 16px - Body 2 | Medium
-$font-size-body3: 0.875rem;  // 14px - Body 3 | Semibold
-$font-size-body4: 0.75rem;   // 12px - Body 4
+// Body text sizes (из UI kit)
+$font-size-body: 1.125rem;  // 18px - Body | Bold/Medium
+$font-size-body1: 1rem;      // 16px - Body 1 | Regular/Medium/Bold
+$font-size-body2: 0.875rem;  // 14px - Body 2 | Regular/Bold
+$font-size-body3: 0.75rem;   // 12px - Body 3 | Regular
+$font-size-body4: 0.625rem;  // 10px - Body 4 | Regular
 
 // Межстрочный интервал
 $line-height-tight: 1;
@@ -55,19 +59,19 @@ $typography-map: (
   'font-weight-medium': $font-weight-medium,
   'font-weight-semibold': $font-weight-semibold,
   'font-weight-bold': $font-weight-bold,
-  'font-size-body4': $font-size-body4,
-  'font-size-body3': $font-size-body3,
-  'font-size-body2': $font-size-body2,
-  'font-size-body1': $font-size-body1,
-  'font-size-body': $font-size-body,
-  'font-size-title1': $font-size-title1,
-  'font-size-title': $font-size-title,
-  'font-size-h6': $font-size-h6,
-  'font-size-h5': $font-size-h5,
-  'font-size-h4': $font-size-h4,
-  'font-size-h3': $font-size-h3,
-  'font-size-h2': $font-size-h2,
   'font-size-h1': $font-size-h1,
+  'font-size-h2': $font-size-h2,
+  'font-size-h3': $font-size-h3,
+  'font-size-h4': $font-size-h4,
+  'font-size-h5': $font-size-h5,
+  'font-size-h6': $font-size-h6,
+  'font-size-title': $font-size-title,
+  'font-size-title1': $font-size-title1,
+  'font-size-body': $font-size-body,
+  'font-size-body1': $font-size-body1,
+  'font-size-body2': $font-size-body2,
+  'font-size-body3': $font-size-body3,
+  'font-size-body4': $font-size-body4,
   'line-height-tight': $line-height-tight,
   'line-height-normal': $line-height-normal,
   'line-height-relaxed': $line-height-relaxed
