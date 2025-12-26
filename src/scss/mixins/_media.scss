@@ -7,7 +7,7 @@
 
 // От xs и выше (375px+)
 @mixin xs-up {
-  @media (min-width: $breakpoint-xs) {
+  @media (min-width: $breakpoint-mobile) {
     @content;
   }
 }
@@ -53,7 +53,7 @@
 
 // До xs (до 375px)
 @mixin xs-down {
-  @media (max-width: ($breakpoint-xs - 1px)) {
+  @media (max-width: ($breakpoint-mobile - 1px)) {
     @content;
   }
 }

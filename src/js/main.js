@@ -203,5 +203,16 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Footer scroll to top button
+  const scrollToTopBtn = document.querySelector('.footer__scroll-top');
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 });
 

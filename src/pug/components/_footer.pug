@@ -1,41 +1,79 @@
 // Footer
 footer.footer
-  //- .footer__main
-  //-   .container
-  //-     .footer__content
-  //-       // Organisers Section
-  //-       .footer__section.footer__section--organisers
-  //-         .footer__title-wrapper
-  //-           h3.footer__title Organisers
-  //-           .footer__divider
-  //-         // Logo list
-  //-         .footer__organisers
-  //-           .footer__organiser
-  //-             img(src="assets/img/iteca-logo.webp" alt="Iteca Caspian" loading="lazy" width="130" height="70")
-  //-           .footer__organiser
-  //-             img(src="assets/img/ica-logo.webp" alt="ICA Events" loading="lazy" width="102" height="70")
-  //-           .footer__organiser
-  //-             img(src="assets/img/ceo-logo.webp" alt="Caspian Event Organisers" loading="lazy" width="70" height="70")
-  //-           .footer__organiser
-  //-             img(src="assets/img/cem-logo.webp" alt="Caspian Event Management" loading="lazy" width="63" height="70")
-        
-  //-       // Social Network Section
-  //-       .footer__section.footer__section--social
-  //-         .footer__title-wrapper
-  //-           h3.footer__title Social network
-  //-           .footer__divider
-  //-         .footer__social
-  //-           a.footer__social-link(href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn")
-  //-             i.fab.fa-linkedin
-  //-           a.footer__social-link(href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram")
-  //-             i.fab.fa-instagram
-  //-           a.footer__social-link(href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook")
-  //-             i.fab.fa-facebook-square
-  
-  //- // Copyright Section
-  //- .footer__copyright
-  //-   .container
-  //-     .position-relative
-  //-       p.footer__copyright-text Copyright © Iteca Caspian LLC All Rights Reserved.
-  //-       button.footer__scroll-top(type="button" aria-label="Scroll to top")
-  //-         i.fal.fa-arrow-up
+  .container
+    // Top section: Logo, Social Media, Scroll to Top
+    .footer__top.d-flex.justify-content-between.align-items-center
+      .footer__logo-wrapper
+        img.footer__logo(src="assets/img/logo-footer.svg" alt="ADEX Logo" loading="lazy")
+      .footer__social-wrapper.d-flex.align-items-center.gap-4
+        .footer__social
+          a.footer__social-link(href="#" aria-label="Instagram")
+            i.fab.fa-instagram
+          a.footer__social-link(href="#" aria-label="LinkedIn")
+            i.fab.fa-linkedin
+          a.footer__social-link(href="#" aria-label="WhatsApp")
+            i.fab.fa-whatsapp
+          a.footer__social-link(href="#" aria-label="YouTube")
+            i.fab.fa-youtube
+          a.footer__social-link(href="#" aria-label="Telegram")
+            i.fab.fa-telegram
+          a.footer__social-link(href="#" aria-label="Twitter")
+            i.fab.fa-twitter
+          a.footer__social-link(href="#" aria-label="Facebook")
+            i.fab.fa-facebook
+        button.footer__scroll-top(type="button" aria-label="Scroll to top")
+          i.fas.fa-arrow-up
+
+    // Divider
+    .footer__divider
+
+    // Main content: Contact Info, Organisers, Get in Touch
+    .footer__main.row
+      .col-lg-4.col-md-6.mb-4.mb-lg-0
+        .footer__section
+          h3.footer__section-title Iteca Caspian LLC
+          .footer__contacts
+            .footer__contact-item
+              i.fas.fa-phone
+              a.footer__contact-link(href="tel:+994124041000") +994 12 404 1000
+            .footer__contact-item
+              i.fas.fa-phone
+              a.footer__contact-link(href="tel:+994552241000") +994 55 224 1000
+            .footer__contact-item
+              i.fas.fa-location-dot
+              span.footer__contact-text Azerbaijan, Baku, Narimanov dist., 61, Zaur Nudiraliyev st.
+
+      .col-lg-5.col-md-6.mb-4.mb-lg-0
+        .footer__section.mx-auto
+          h3.footer__section-title Organisers:
+          .footer__organisers
+            .footer__organiser
+              img.footer__organiser-logo(src="https://iteca.az/projects/iteca/assets/logolight.webp?v=96.2.10" alt="Organiser 1" loading="lazy")
+            .footer__organiser
+              img.footer__organiser-logo(src="https://ceo.az/projects/ceo/assets/logolight.webp?v=96.2.10" alt="Organiser 2" loading="lazy")
+
+      .col-lg-3.col-md-6.mb-4.mb-lg-0
+        .footer__section.ms-auto
+          h3.footer__section-title Get in touch:
+          .footer__links
+            .footer__link-item
+              i.fab.fa-whatsapp
+              a.footer__link(href="#") Whatsapp
+            .footer__link-item
+              i.fas.fa-envelope
+              a.footer__link(href="mailto:office@iteca.az") office@iteca.az
+            .footer__link-item
+              i.fas.fa-globe
+              span.footer__link-text www.iteca.az
+
+    // Divider
+    .footer__divider
+
+    // Bottom section: Copyright and Developed by
+    .footer__bottom.d-flex.justify-content-between.align-items-center.flex-wrap
+      p.footer__copyright
+        | Copyright © 2025 Iteca Caspian LLC | All Rights Reserved | Terms & Conditions
+      .footer__developed
+        span.footer__developed-text Developed by:
+        .footer__developed-logo
+          img(src="assets/img/developed-logo.svg" alt="Developed by" loading="lazy")

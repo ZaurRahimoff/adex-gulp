@@ -7,29 +7,15 @@
   background: var(--primary);
   padding: 13px 0;
   position: relative;
-  z-index: 1;
+  // z-index: 1;
 
   @include lg-down {
     padding: 10px 0;
   }
 
-  &__container {
-    padding-left: 80px;
-    padding-right: 80px;
-
-    @include lg-down {
-      padding-left: 48px;
-      padding-right: 48px;
-    }
-
-    @include md-down {
-      padding-left: 24px;
-      padding-right: 24px;
-    }
-  }
-
   &__content {
     height: 42px;
+    width: 100%;
   }
 
   &__menu {
@@ -105,7 +91,11 @@
     left: 0;
     margin-top: 8px;
     background: var(--white);
-    border-radius: 8px;
+    // border-radius: 8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     min-width: 180px;
     opacity: 0;

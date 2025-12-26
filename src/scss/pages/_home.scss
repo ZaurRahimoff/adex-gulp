@@ -121,12 +121,12 @@
     align-items: center;
     justify-content: center;
     transition: $transition-base;
+    width: 100%;
 
     @include lg-down {
       padding: 20px 48px;
       font-size: $font-size-body2;
       width: 100%;
-      max-width: 194px;
     }
 
     &:hover {
@@ -149,7 +149,7 @@
 
   @include lg-down {
     min-height: 300px;
-    padding: 44px 16px;
+    padding: 44px 0 0;
   }
 
   &__background {
@@ -175,16 +175,17 @@
   &__content {
     position: relative;
     z-index: 3;
+    width: 100%;
+    // max-width: 1280px;
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1280px;
-    gap: 24px;
 
-    @include lg-down {
-      flex-direction: column;
-      gap: 50px;
+    @include lg-up {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 
@@ -192,28 +193,71 @@
     display: flex;
     align-items: center;
     gap: 24px;
+    padding: 0 12px;
+    margin-bottom: 50px;
+    position: relative;
 
+    @include xs-down {
+      width: 100%;
+    }
+    
     @include lg-down {
-      flex-direction: column;
-      gap: 30px;
+      flex-direction: row;
+      gap: 24px;
+      margin-bottom: 50px;
+      padding: 0;
+    }
+
+    @include lg-up {
+      margin-bottom: 0;
+      padding: 0 30px;
+      
+      &:first-child {
+        padding-left: 0;
+      }
+      
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    // &:last-child {
+    //   margin-bottom: 0;
+    // }
+
+    &:first-child {   
+
+      @include xs-up {
+        .banner-section__divider {
+          display: none;
+        }
+      }
+      @include lg-down {
+        .banner-section__divider {
+          display: block;
+        }
+      }
+      
     }
   }
 
   &__icon-wrapper {
-    width: 64px;
-    height: 64px;
-    background: $white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary);
-    font-size: 36px;
+    i {
+      width: 64px;
+      height: 64px;
+      background: $white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 36px;
 
-    @include lg-down {
-      width: 48px;
-      height: 48px;
-      font-size: 24px;
+      @include lg-down {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+      }
     }
   }
 
@@ -224,10 +268,10 @@
   }
 
   &__number {
-    font-size: $font-size-h2;
-    font-weight: $font-weight-bold;
-    margin: 0;
-    line-height: 1;
+    font-size: 2.625rem;
+    font-weight: 700;
+    margin: 0 0 9px;
+    line-height: normal;
 
     @include lg-down {
       font-size: 1.625rem; // 26px
@@ -246,13 +290,21 @@
   }
 
   &__divider {
-    width: 60px;
-    height: 1px;
+    width: 1px;
+    height: 60px;
     background: $white;
-    transform: rotate(90deg);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
 
     @include lg-down {
-      display: none;
+      width: 60px;
+      height: 1px;
+      top: auto;
+      bottom: 0;
+      transform: translateY(30px);
     }
   }
 }
@@ -496,6 +548,10 @@
   &__tabs {
     display: flex;
     gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+    touch-action: pan-x;
+    position: relative;
   }
 
   &__tab {
@@ -746,15 +802,19 @@
 // Testimonials Section
 // ============================================
 .testimonials-section {
-  position: relative;
-  padding: 80px 0;
-  min-height: 591px;
-  display: flex;
-  align-items: center;
 
-  @include lg-down {
-    padding: 40px 0;
-    min-height: 372px;
+
+  &__content {
+    position: relative;
+    padding: 80px 0;
+    min-height: 591px;
+    display: flex;
+    align-items: center;
+  
+    @include lg-down {
+      padding: 40px 0;
+      min-height: 372px;
+    }
   }
 
   &__background {
@@ -773,7 +833,7 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(200.554deg, rgba(43, 59, 115, 0) 23.87%, rgba(43, 59, 115, 0.8) 76.87%);
-    z-index: 2;
+    z-index: 1;
   }
 
   &__title {
@@ -1306,10 +1366,17 @@
     align-items: center;
     gap: 10px;
     color: var(--primary);
-    font-size: $font-size-body2;
-    font-weight: $font-weight-medium;
-    text-decoration: underline;
     transition: $transition-base;
+
+    i {
+      font-size: 20px;
+    }
+
+    span {
+      font-size: $font-size-body2;
+      font-weight: $font-weight-medium;
+      text-decoration: underline;
+    }
 
     &:hover {
       color: darken($primary, 10%);

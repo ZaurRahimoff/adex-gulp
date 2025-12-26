@@ -87,7 +87,7 @@
     <header class="header">
       <!-- Header-->
       <div class="topbar">
-        <div class="container-fluid topbar__container">
+        <div class="container">
           <div class="topbar__content d-flex align-items-center justify-content-between">
             <button class="topbar__toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMobileMenu" aria-controls="navbarMobileMenu" aria-label="Toggle navigation"><i class="fa-solid fa-bars topbar__toggle-icon"></i></button>
             <div class="topbar__logo"><img src="https://adex.az/projects/adex/assets/logolight.webp?v=96.2.10" alt="ADEX" width="98" height="72"></div>
@@ -116,7 +116,7 @@
         </div>
       </div>
       <div class="navbar d-none d-lg-block">
-        <div class="container-fluid navbar__container">
+        <div class="container">
           <div class="navbar__content d-flex align-items-center justify-content-between">
             <div class="navbar__menu d-flex align-items-center">
               <div class="navbar__item d-flex align-items-center position-relative"><a class="navbar__link d-flex align-items-center" href="#"><span>Выставка</span><i class="fa-solid fa-caret-down navbar__icon"></i></a>
@@ -217,8 +217,13 @@
             <div class="row">
               <div class="col-12">
                 <h1 class="hero__title">30th Anniversary Azerbaijan International Construction Exhibition</h1>
-                <div class="hero__actions d-flex gap-3 flex-wrap"><a class="btn btn-primary hero__btn" href="#">Бронирование стенда</a><a class="btn btn-primary hero__btn" href="#">Станте спонсором</a><a class="btn btn-primary hero__btn" href="#">Обратная связь</a><a class="btn btn-primary hero__btn" href="#">Купите билет</a></div>
               </div>
+            </div>
+            <div class="row g-4">
+              <div class="col-6 col-md-3 col-lg-3"><a class="btn btn-primary hero__btn" href="#">Бронирование стенда</a></div>
+              <div class="col-6 col-md-3 col-lg-3"><a class="btn btn-primary hero__btn" href="#">Станте спонсором</a></div>
+              <div class="col-6 col-md-3 col-lg-3"><a class="btn btn-primary hero__btn" href="#">Обратная связь</a></div>
+              <div class="col-6 col-md-3 col-lg-3"><a class="btn btn-primary hero__btn" href="#">Купите билет</a></div>
             </div>
           </div>
         </div>
@@ -230,6 +235,7 @@
         <div class="container">
           <div class="banner-section__content">
             <div class="banner-section__item">
+              <div class="banner-section__divider"></div>
               <div class="banner-section__icon-wrapper"><i class="fas fa-arrow-up"></i></div>
               <div class="banner-section__text">
                 <p class="banner-section__number">21000+</p>
@@ -392,7 +398,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <div class="d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap gap-3 mb-4">
+              <div class="d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap gap-3 w-100 mb-4">
                 <h2 class="event-program-section__title">Event program</h2>
                 <div class="d-flex gap-3 event-program-section__tabs">
                   <button class="btn event-program-section__tab event-program-section__tab--active" type="button" data-day="1">1 Day</button>
@@ -484,7 +490,7 @@
                         </div>
                         <div class="swiper-slide">
                           <div class="product-category-card">
-                            <div class="product-category-card__image-wrapper"><img class="product-category-card__image" src="assets/img/webp/categorie6.webp" alt="Construction and production equipment" loading="lazy"></div>
+                            <div class="product-category-card__image-wrapper"><img class="product-category-card__image" src="https://www.advancednavigation.com/wp-content/uploads/2024/09/uav.webp" alt="Construction and production equipment" loading="lazy"></div>
                             <h3 class="product-category-card__name">Construction and production equipment</h3>
                           </div>
                         </div>
@@ -547,8 +553,6 @@
       </section>
       <!-- Testimonials Section-->
       <section class="testimonials-section">
-        <div class="testimonials-section__background"><img class="testimonials-section__bg-image" src="assets/img/testimonials-bg.jpg" alt="" aria-hidden="true"></div>
-        <div class="testimonials-section__overlay"></div>
         <div class="container">
           <div class="row">
             <div class="col-12">
@@ -559,49 +563,53 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center testimonials-section__nav-btn testimonials-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper testimonials-swiper">
-                <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <div class="testimonial-card">
-                            <div class="testimonial-card__header">
-                              <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="assets/img/testimonials/avatar-1.jpg" alt="Cameron Williamson" loading="lazy"></div>
-                              <div class="testimonial-card__info">
-                                <h3 class="testimonial-card__name">Cameron Williamson</h3>
-                                <p class="testimonial-card__company">Big Kahuna Burger Ltd.</p>
-                              </div><i class="fas fa-quote-right testimonial-card__quote"></i>
-                            </div>
-                            <div class="testimonial-card__divider"></div>
-                            <p class="testimonial-card__text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-                          </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonials-section__content">
+          <div class="testimonials-section__background"><img class="testimonials-section__bg-image" src="assets/img/webp/testimonials-bg.webp" alt="" aria-hidden="true"></div>
+          <div class="testimonials-section__overlay"></div>
+          <div class="swiper testimonials-swiper">
+            <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="testimonial-card">
+                        <div class="testimonial-card__header">
+                          <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww" alt="Cameron Williamson" loading="lazy"></div>
+                          <div class="testimonial-card__info">
+                            <h3 class="testimonial-card__name">Cameron Williamson</h3>
+                            <p class="testimonial-card__company">Big Kahuna Burger Ltd.</p>
+                          </div><i class="fas fa-quote-right testimonial-card__quote"></i>
                         </div>
-                        <div class="swiper-slide">
-                          <div class="testimonial-card">
-                            <div class="testimonial-card__header">
-                              <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="assets/img/testimonials/avatar-2.jpg" alt="Guy Hawkins" loading="lazy"></div>
-                              <div class="testimonial-card__info">
-                                <h3 class="testimonial-card__name">Guy Hawkins</h3>
-                                <p class="testimonial-card__company">Abstergo Ltd.</p>
-                              </div><i class="fas fa-quote-right testimonial-card__quote"></i>
-                            </div>
-                            <div class="testimonial-card__divider"></div>
-                            <p class="testimonial-card__text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                          </div>
+                        <div class="testimonial-card__divider"></div>
+                        <p class="testimonial-card__text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="testimonial-card">
+                        <div class="testimonial-card__header">
+                          <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&amp;w=740&amp;q=80" alt="Guy Hawkins" loading="lazy"></div>
+                          <div class="testimonial-card__info">
+                            <h3 class="testimonial-card__name">Guy Hawkins</h3>
+                            <p class="testimonial-card__company">Abstergo Ltd.</p>
+                          </div><i class="fas fa-quote-right testimonial-card__quote"></i>
                         </div>
-                        <div class="swiper-slide">
-                          <div class="testimonial-card">
-                            <div class="testimonial-card__header">
-                              <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="assets/img/testimonials/avatar-3.jpg" alt="Robert Fox" loading="lazy"></div>
-                              <div class="testimonial-card__info">
-                                <h3 class="testimonial-card__name">Robert Fox</h3>
-                                <p class="testimonial-card__company">Binford Ltd.</p>
-                              </div><i class="fas fa-quote-right testimonial-card__quote"></i>
-                            </div>
-                            <div class="testimonial-card__divider"></div>
-                            <p class="testimonial-card__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                          </div>
+                        <div class="testimonial-card__divider"></div>
+                        <p class="testimonial-card__text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="testimonial-card">
+                        <div class="testimonial-card__header">
+                          <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://plus.unsplash.com/premium_photo-1661726660137-61b182d93809?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Robert Fox" loading="lazy"></div>
+                          <div class="testimonial-card__info">
+                            <h3 class="testimonial-card__name">Robert Fox</h3>
+                            <p class="testimonial-card__company">Binford Ltd.</p>
+                          </div><i class="fas fa-quote-right testimonial-card__quote"></i>
                         </div>
-                </div>
-              </div>
+                        <div class="testimonial-card__divider"></div>
+                        <p class="testimonial-card__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                      </div>
+                    </div>
             </div>
           </div>
         </div>
@@ -614,7 +622,9 @@
               <h2 class="venue-section__title mb-4">Venue & Working Hours</h2>
               <div class="row">
                 <div class="col-lg-8">
-                  <div class="venue-section__image-wrapper"><img class="venue-section__image" src="assets/img/venue.jpg" alt="Venue" loading="lazy"></div>
+                  <div class="venue-section__map-wrapper">
+                    <iframe class="venue-section__map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="venue-section__working-hours">
@@ -664,7 +674,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <article class="news-section__featured">
-                    <div class="news-section__featured-image-wrapper"><img class="news-section__featured-image" src="assets/img/news/featured.jpg" alt="News featured" loading="lazy"></div>
+                    <div class="news-section__featured-image-wrapper"><img class="news-section__featured-image" src="assets/img/webp/news1.webp" alt="News featured" loading="lazy"></div>
                     <div class="news-section__featured-content">
                       <div class="news-section__meta"><i class="fas fa-calendar"></i>
                         <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
@@ -679,7 +689,7 @@
                     <article class="news-section__item">
                       <div class="row">
                         <div class="col-4">
-                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/news/news-1.jpg" alt="News 1" loading="lazy"></div>
+                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/webp/news2.webp" alt="News 1" loading="lazy"></div>
                         </div>
                         <div class="col-8">
                           <div class="news-section__item-content">
@@ -695,7 +705,7 @@
                     <article class="news-section__item">
                       <div class="row">
                         <div class="col-4">
-                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/news/news-2.jpg" alt="News 2" loading="lazy"></div>
+                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/webp/news3.webp" alt="News 2" loading="lazy"></div>
                         </div>
                         <div class="col-8">
                           <div class="news-section__item-content">
@@ -711,7 +721,7 @@
                     <article class="news-section__item">
                       <div class="row">
                         <div class="col-4">
-                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/news/news-3.jpg" alt="News 3" loading="lazy"></div>
+                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="News 3" loading="lazy"></div>
                         </div>
                         <div class="col-8">
                           <div class="news-section__item-content">
@@ -736,11 +746,9 @@
           <div class="row">
             <div class="col-12">
               <h2 class="official-hotel-section__title text-center mb-4">Official hotel</h2>
-              <div class="d-flex justify-content-center">
-                <div class="official-hotel-section__card">
-                  <div class="official-hotel-section__logo-wrapper"><img class="official-hotel-section__logo" src="assets/img/hotel-logo.jpg" alt="Official hotel" loading="lazy"></div><a class="official-hotel-section__link" href="https://www.marriott.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>www.marriott.com</a>
-                </div>
-              </div>
+              <div class="d-flex justify-content-center"><a class="card official-hotel-section__card text-decoration-none" href="https://www.marriott.com" target="_blank" rel="noopener noreferrer">
+                  <div class="official-hotel-section__logo-wrapper"><img class="official-hotel-section__logo" src="assets/img/webp/hotel1.webp" alt="Official hotel" loading="lazy"></div>
+                  <div class="official-hotel-section__link"><i class="fal fa-globe"></i><span>www.marriott.com</span></div></a></div>
             </div>
           </div>
         </div>
@@ -748,7 +756,61 @@
     </main>
     <!-- Footer-->
     <!-- Footer-->
-    <footer class="footer"></footer>
+    <footer class="footer">
+      <div class="container">
+        <!-- Top section: Logo, Social Media, Scroll to Top-->
+        <div class="footer__top d-flex justify-content-between align-items-center">
+          <div class="footer__logo-wrapper"><img class="footer__logo" src="assets/img/logo-footer.svg" alt="ADEX Logo" loading="lazy"></div>
+          <div class="footer__social-wrapper d-flex align-items-center gap-4">
+            <div class="footer__social"><a class="footer__social-link" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a class="footer__social-link" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="footer__social-link" href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a class="footer__social-link" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a class="footer__social-link" href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a><a class="footer__social-link" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a class="footer__social-link" href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a></div>
+            <button class="footer__scroll-top" type="button" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+          </div>
+        </div>
+        <!-- Divider-->
+        <div class="footer__divider"></div>
+        <!-- Main content: Contact Info, Organisers, Get in Touch-->
+        <div class="footer__main row">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <div class="footer__section">
+              <h3 class="footer__section-title">Iteca Caspian LLC</h3>
+              <div class="footer__contacts">
+                <div class="footer__contact-item"><i class="fas fa-phone"></i><a class="footer__contact-link" href="tel:+994124041000">+994 12 404 1000</a></div>
+                <div class="footer__contact-item"><i class="fas fa-phone"></i><a class="footer__contact-link" href="tel:+994552241000">+994 55 224 1000</a></div>
+                <div class="footer__contact-item"><i class="fas fa-location-dot"></i><span class="footer__contact-text">Azerbaijan, Baku, Narimanov dist., 61, Zaur Nudiraliyev st.</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+            <div class="footer__section mx-auto">
+              <h3 class="footer__section-title">Organisers:</h3>
+              <div class="footer__organisers">
+                <div class="footer__organiser"><img class="footer__organiser-logo" src="https://iteca.az/projects/iteca/assets/logolight.webp?v=96.2.10" alt="Organiser 1" loading="lazy"></div>
+                <div class="footer__organiser"><img class="footer__organiser-logo" src="https://ceo.az/projects/ceo/assets/logolight.webp?v=96.2.10" alt="Organiser 2" loading="lazy"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <div class="footer__section ms-auto">
+              <h3 class="footer__section-title">Get in touch:</h3>
+              <div class="footer__links">
+                <div class="footer__link-item"><i class="fab fa-whatsapp"></i><a class="footer__link" href="#">Whatsapp</a></div>
+                <div class="footer__link-item"><i class="fas fa-envelope"></i><a class="footer__link" href="mailto:office@iteca.az">office@iteca.az</a></div>
+                <div class="footer__link-item"><i class="fas fa-globe"></i><span class="footer__link-text">www.iteca.az</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Divider-->
+        <div class="footer__divider"></div>
+        <!-- Bottom section: Copyright and Developed by-->
+        <div class="footer__bottom d-flex justify-content-between align-items-center flex-wrap">
+          <p class="footer__copyright">Copyright © 2025 Iteca Caspian LLC | All Rights Reserved | Terms & Conditions</p>
+          <div class="footer__developed"><span class="footer__developed-text">Developed by:</span>
+            <div class="footer__developed-logo"><img src="assets/img/developed-logo.svg" alt="Developed by" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- Bootstrap 5 JS Local-->
     <script src="assets/plugins/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- Swiper JS-->

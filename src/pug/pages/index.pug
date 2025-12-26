@@ -22,11 +22,15 @@ block content
         .row
           .col-12
             h1.hero__title 30th Anniversary Azerbaijan International Construction Exhibition
-            .hero__actions.d-flex.gap-3.flex-wrap
-              a.btn.btn-primary.hero__btn(href="#") Бронирование стенда
-              a.btn.btn-primary.hero__btn(href="#") Станте спонсором
-              a.btn.btn-primary.hero__btn(href="#") Обратная связь
-              a.btn.btn-primary.hero__btn(href="#") Купите билет
+        .row.g-4
+          .col-6.col-md-3.col-lg-3
+            a.btn.btn-primary.hero__btn(href="#") Бронирование стенда
+          .col-6.col-md-3.col-lg-3
+            a.btn.btn-primary.hero__btn(href="#") Станте спонсором
+          .col-6.col-md-3.col-lg-3
+            a.btn.btn-primary.hero__btn(href="#") Обратная связь
+          .col-6.col-md-3.col-lg-3
+            a.btn.btn-primary.hero__btn(href="#") Купите билет
 
   // Banner Section (Statistics)
   section.banner-section
@@ -36,6 +40,7 @@ block content
     .container
       .banner-section__content
         .banner-section__item
+          .banner-section__divider
           .banner-section__icon-wrapper
             i.fas.fa-arrow-up
           .banner-section__text
@@ -113,7 +118,7 @@ block content
     .container
       .row
         .col-12
-          .d-flex.justify-content-between.align-items-center.flex-wrap.flex-md-nowrap.gap-3.mb-4
+          .d-flex.justify-content-between.align-items-center.flex-wrap.flex-md-nowrap.gap-3.w-100.mb-4
             h2.event-program-section__title Event program
             .d-flex.gap-3.event-program-section__tabs
               button.btn.event-program-section__tab.event-program-section__tab--active(type="button" data-day="1") 1 Day
@@ -157,7 +162,7 @@ block content
               +product-category-card('Construction and production equipment', 'assets/img/webp/categorie3.webp')
               +product-category-card('Fitness equipment', 'assets/img/webp/categorie4.webp')
               +product-category-card('Floooring', 'assets/img/webp/categorie5.webp')
-              +product-category-card('Construction and production equipment', 'assets/img/webp/categorie6.webp')
+              +product-category-card('Construction and production equipment', 'https://www.advancednavigation.com/wp-content/uploads/2024/09/uav.webp')
 
   // Video 2 Section
   section.video-section
@@ -203,9 +208,6 @@ block content
   // Testimonials Section
   include ../mixins/_testimonial-card
   section.testimonials-section
-    .testimonials-section__background
-      img.testimonials-section__bg-image(src="assets/img/testimonials-bg.jpg" alt="" aria-hidden="true")
-    .testimonials-section__overlay
     .container
       .row
         .col-12
@@ -216,11 +218,15 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.testimonials-section__nav-btn.testimonials-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.testimonials-swiper
-            .swiper-wrapper
-              +testimonial-card('Cameron Williamson', 'Big Kahuna Burger Ltd.', 'assets/img/testimonials/avatar-1.jpg', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.')
-              +testimonial-card('Guy Hawkins', 'Abstergo Ltd.', 'assets/img/testimonials/avatar-2.jpg', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.')
-              +testimonial-card('Robert Fox', 'Binford Ltd.', 'assets/img/testimonials/avatar-3.jpg', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.')
+    .testimonials-section__content
+      .testimonials-section__background
+        img.testimonials-section__bg-image(src="assets/img/webp/testimonials-bg.webp" alt="" aria-hidden="true")
+      .testimonials-section__overlay
+      .swiper.testimonials-swiper
+        .swiper-wrapper
+          +testimonial-card('Cameron Williamson', 'Big Kahuna Burger Ltd.', 'https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.')
+          +testimonial-card('Guy Hawkins', 'Abstergo Ltd.', 'https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&w=740&q=80', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.')
+          +testimonial-card('Robert Fox', 'Binford Ltd.', 'https://plus.unsplash.com/premium_photo-1661726660137-61b182d93809?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.')
 
   // Venue & Working Hours Section
   section.venue-section
@@ -230,8 +236,8 @@ block content
           h2.venue-section__title.mb-4 Venue & Working Hours
           .row
             .col-lg-8
-              .venue-section__image-wrapper
-                img.venue-section__image(src="assets/img/venue.jpg" alt="Venue" loading="lazy")
+              .venue-section__map-wrapper
+                iframe.venue-section__map(src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
             .col-lg-4
               .venue-section__working-hours
                 h3.venue-section__working-hours-title Working Hours
@@ -272,7 +278,7 @@ block content
             .col-lg-6
               article.news-section__featured
                 .news-section__featured-image-wrapper
-                  img.news-section__featured-image(src="assets/img/news/featured.jpg" alt="News featured" loading="lazy")
+                  img.news-section__featured-image(src="assets/img/webp/news1.webp" alt="News featured" loading="lazy")
                 .news-section__featured-content
                   .news-section__meta
                     i.fas.fa-calendar
@@ -288,7 +294,7 @@ block content
                   .row
                     .col-4
                       .news-section__item-image-wrapper
-                        img.news-section__item-image(src="assets/img/news/news-1.jpg" alt="News 1" loading="lazy")
+                        img.news-section__item-image(src="assets/img/webp/news2.webp" alt="News 1" loading="lazy")
                     .col-8
                       .news-section__item-content
                         .news-section__meta
@@ -303,7 +309,7 @@ block content
                   .row
                     .col-4
                       .news-section__item-image-wrapper
-                        img.news-section__item-image(src="assets/img/news/news-2.jpg" alt="News 2" loading="lazy")
+                        img.news-section__item-image(src="assets/img/webp/news3.webp" alt="News 2" loading="lazy")
                     .col-8
                       .news-section__item-content
                         .news-section__meta
@@ -318,7 +324,7 @@ block content
                   .row
                     .col-4
                       .news-section__item-image-wrapper
-                        img.news-section__item-image(src="assets/img/news/news-3.jpg" alt="News 3" loading="lazy")
+                        img.news-section__item-image(src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="News 3" loading="lazy")
                     .col-8
                       .news-section__item-content
                         .news-section__meta
@@ -336,9 +342,9 @@ block content
         .col-12
           h2.official-hotel-section__title.text-center.mb-4 Official hotel
           .d-flex.justify-content-center
-            .official-hotel-section__card
+            a.card.official-hotel-section__card.text-decoration-none(href="https://www.marriott.com" target="_blank" rel="noopener noreferrer")
               .official-hotel-section__logo-wrapper
-                img.official-hotel-section__logo(src="assets/img/hotel-logo.jpg" alt="Official hotel" loading="lazy")
-              a.official-hotel-section__link(href="https://www.marriott.com" target="_blank" rel="noopener noreferrer")
-                i.fas.fa-external-link-alt
-                | www.marriott.com
+                img.official-hotel-section__logo(src="assets/img/webp/hotel1.webp" alt="Official hotel" loading="lazy")
+              .official-hotel-section__link
+                i.fal.fa-globe
+                span www.marriott.com
