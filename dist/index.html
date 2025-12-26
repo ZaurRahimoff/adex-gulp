@@ -63,10 +63,6 @@
     </script>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <!-- Google Fonts - Poppins-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <!-- Additional Google Fonts (if configured)-->
     <!-- Bootstrap 5 Local-->
     <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
@@ -91,41 +87,118 @@
     <header class="header">
       <!-- Header-->
       <div class="topbar">
-        <div class="container-fluid px-5">
-          <div class="topbar__content d-flex align-items-center">
-            <div class="topbar__logo"><img src="assets/img/logo.svg" alt="ADEX" height="72"></div>
-            <div class="topbar__center ms-auto">
+        <div class="container-fluid topbar__container">
+          <div class="topbar__content d-flex align-items-center justify-content-between">
+            <button class="topbar__toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMobileMenu" aria-controls="navbarMobileMenu" aria-label="Toggle navigation"><i class="fa-solid fa-bars topbar__toggle-icon"></i></button>
+            <div class="topbar__logo"><img src="https://adex.az/projects/adex/assets/logolight.webp?v=96.2.10" alt="ADEX" width="98" height="72"></div>
+            <div class="topbar__center d-none d-lg-block">
               <p class="topbar__title">30th Anniversary Azerbaijan International Construction Exhibition</p>
             </div>
-            <div class="topbar__right d-flex align-items-center ms-auto">
-              <div class="topbar__info d-flex align-items-center">
+            <div class="topbar__right d-flex align-items-center">
+              <div class="topbar__info d-none d-lg-flex align-items-center">
                 <div class="topbar__info-item d-flex align-items-center"><i class="fa-regular fa-calendar-plus"></i><span>3-5 June, 2025</span></div>
                 <div class="topbar__divider"></div>
                 <div class="topbar__info-item d-flex align-items-center"><i class="fa-regular fa-location-dot"></i><span>Baku Expo Center</span></div>
               </div>
               <div class="topbar__actions d-flex align-items-center">
-                <div class="topbar__language d-flex align-items-center"><img class="topbar__flag" src="assets/img/flag-az.svg" alt="AZ" width="22" height="16"><span>AZ</span><i class="fa-solid fa-caret-down"></i></div>
-                <div class="topbar__user d-flex align-items-center"><i class="fa-solid fa-user"></i><span>Personal Area</span></div>
+                <div class="topbar__language dropdown">
+                  <button class="topbar__language-btn d-flex align-items-center dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="fi fi-az topbar__flag"></span><span>AZ</span><i class="fa-solid fa-caret-down topbar__language-icon"></i></button>
+                  <ul class="topbar__language-dropdown dropdown-menu dropdown-menu-end">
+                    <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="az"><span class="fi fi-az topbar__flag"></span><span>AZ</span></a></li>
+                    <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="en"><span class="fi fi-gb topbar__flag"></span><span>EN</span></a></li>
+                    <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="ru"><span class="fi fi-ru topbar__flag"></span><span>RU</span></a></li>
+                  </ul>
+                </div>
+                <div class="topbar__user d-none d-lg-flex align-items-center"><i class="fa-solid fa-user"></i><span>Personal Area</span></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="navbar">
-        <div class="container-fluid px-5">
+      <div class="navbar d-none d-lg-block">
+        <div class="container-fluid navbar__container">
           <div class="navbar__content d-flex align-items-center justify-content-between">
             <div class="navbar__menu d-flex align-items-center">
-              <div class="navbar__item d-flex align-items-center"><span>Выставка</span><i class="fa-solid fa-caret-down"></i></div>
-              <div class="navbar__item d-flex align-items-center"><span>Участникам</span><i class="fa-solid fa-caret-down"></i></div>
-              <div class="navbar__item d-flex align-items-center"><span>Посетителям</span><i class="fa-solid fa-caret-down"></i></div>
-              <div class="navbar__item d-flex align-items-center"><span>Медиа-центр</span><i class="fa-solid fa-caret-down"></i></div>
-              <div class="navbar__item d-flex align-items-center"><span>Сервисы</span><i class="fa-solid fa-caret-down"></i></div>
-              <div class="navbar__item d-flex align-items-center"><span>Организатор</span><i class="fa-solid fa-caret-down"></i></div>
-              <div class="navbar__item navbar__item--no-dropdown"><span>Обратная связь</span></div>
+              <div class="navbar__item d-flex align-items-center position-relative"><a class="navbar__link d-flex align-items-center" href="#"><span>Выставка</span><i class="fa-solid fa-caret-down navbar__icon"></i></a>
+                <div class="navbar__dropdown"><a class="navbar__dropdown-item" href="#">Детские</a><a class="navbar__dropdown-item" href="#">Научные</a><a class="navbar__dropdown-item" href="#">Исторические</a><a class="navbar__dropdown-item" href="#">Коммерческие</a><a class="navbar__dropdown-item" href="#">Художественные</a><a class="navbar__dropdown-item" href="#">Образовательные</a></div>
+              </div>
+              <div class="navbar__item d-flex align-items-center position-relative"><a class="navbar__link d-flex align-items-center" href="#"><span>Участникам</span><i class="fa-solid fa-caret-down navbar__icon"></i></a>
+                <div class="navbar__dropdown"><a class="navbar__dropdown-item" href="#">Пункт 1</a><a class="navbar__dropdown-item" href="#">Пункт 2</a><a class="navbar__dropdown-item" href="#">Пункт 3</a></div>
+              </div>
+              <div class="navbar__item d-flex align-items-center position-relative"><a class="navbar__link d-flex align-items-center" href="#"><span>Посетителям</span><i class="fa-solid fa-caret-down navbar__icon"></i></a>
+                <div class="navbar__dropdown"><a class="navbar__dropdown-item" href="#">Пункт 1</a><a class="navbar__dropdown-item" href="#">Пункт 2</a></div>
+              </div>
+              <div class="navbar__item d-flex align-items-center position-relative"><a class="navbar__link d-flex align-items-center" href="#"><span>Медиа-центр</span><i class="fa-solid fa-caret-down navbar__icon"></i></a>
+                <div class="navbar__dropdown"><a class="navbar__dropdown-item" href="#">Новости</a><a class="navbar__dropdown-item" href="#">Пресс-релизы</a><a class="navbar__dropdown-item" href="#">Фото</a></div>
+              </div>
+              <div class="navbar__item d-flex align-items-center position-relative"><a class="navbar__link d-flex align-items-center" href="#"><span>Сервисы</span><i class="fa-solid fa-caret-down navbar__icon"></i></a>
+                <div class="navbar__dropdown"><a class="navbar__dropdown-item" href="#">Услуга 1</a><a class="navbar__dropdown-item" href="#">Услуга 2</a></div>
+              </div>
+              <div class="navbar__item d-flex align-items-center position-relative"><a class="navbar__link d-flex align-items-center" href="#"><span>Организатор</span><i class="fa-solid fa-caret-down navbar__icon"></i></a>
+                <div class="navbar__dropdown"><a class="navbar__dropdown-item" href="#">О нас</a><a class="navbar__dropdown-item" href="#">Контакты</a></div>
+              </div>
+              <div class="navbar__item navbar__item--no-dropdown"><a class="navbar__link" href="#"><span>Обратная связь</span></a></div>
             </div>
-            <div class="navbar__buttons d-flex align-items-center">
+            <div class="navbar__buttons d-none d-lg-flex align-items-center">
               <div class="navbar__button navbar__button--outline"><span>Бронирование стенда</span></div>
               <div class="navbar__button navbar__button--solid"><span>Станте спонсором</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Мобильное меню (Offcanvas)-->
+      <div class="offcanvas offcanvas-start navbar__mobile-menu" id="navbarMobileMenu" tabindex="-1" aria-labelledby="navbarMobileMenuLabel">
+        <div class="offcanvas-header navbar__mobile-header">
+          <button class="navbar__mobile-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-times navbar__close-icon"></i></button>
+          <div class="offcanvas-title" id="navbarMobileMenuLabel"><img src="assets/img/logo.svg" alt="ADEX" width="98" height="72"></div>
+        </div>
+        <div class="offcanvas-body navbar__mobile-body">
+          <div class="navbar__mobile-languages">
+            <div class="navbar__mobile-language-item navbar__mobile-language-item--active"><span class="fi fi-az navbar__mobile-language-flag"></span><span>AZ</span></div>
+            <div class="navbar__mobile-language-item"><span class="fi fi-gb navbar__mobile-language-flag"></span><span>EN</span></div>
+            <div class="navbar__mobile-language-item"><span class="fi fi-ru navbar__mobile-language-flag"></span><span>RU</span></div>
+          </div>
+          <div class="navbar__mobile-menu-list">
+            <div class="navbar__mobile-item"><a class="navbar__mobile-link" href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown1" aria-expanded="false"><span>Выставка</span><i class="fa-solid fa-caret-down navbar__mobile-icon"></i></a>
+              <div class="collapse" id="mobileDropdown1">
+                <div class="navbar__mobile-dropdown"><a class="navbar__mobile-dropdown-item" href="#">Детские</a><a class="navbar__mobile-dropdown-item" href="#">Научные</a><a class="navbar__mobile-dropdown-item" href="#">Исторические</a><a class="navbar__mobile-dropdown-item" href="#">Коммерческие</a><a class="navbar__mobile-dropdown-item" href="#">Художественные</a><a class="navbar__mobile-dropdown-item" href="#">Образовательные</a></div>
+              </div>
+            </div>
+            <div class="navbar__mobile-item"><a class="navbar__mobile-link" href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown2" aria-expanded="false"><span>Участникам</span><i class="fa-solid fa-caret-down navbar__mobile-icon"></i></a>
+              <div class="collapse" id="mobileDropdown2">
+                <div class="navbar__mobile-dropdown"><a class="navbar__mobile-dropdown-item" href="#">Пункт 1</a><a class="navbar__mobile-dropdown-item" href="#">Пункт 2</a><a class="navbar__mobile-dropdown-item" href="#">Пункт 3</a></div>
+              </div>
+            </div>
+            <div class="navbar__mobile-item"><a class="navbar__mobile-link" href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown3" aria-expanded="false"><span>Посетителям</span><i class="fa-solid fa-caret-down navbar__mobile-icon"></i></a>
+              <div class="collapse" id="mobileDropdown3">
+                <div class="navbar__mobile-dropdown"><a class="navbar__mobile-dropdown-item" href="#">Пункт 1</a><a class="navbar__mobile-dropdown-item" href="#">Пункт 2</a></div>
+              </div>
+            </div>
+            <div class="navbar__mobile-item"><a class="navbar__mobile-link" href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown4" aria-expanded="false"><span>Медиа-центр</span><i class="fa-solid fa-caret-down navbar__mobile-icon"></i></a>
+              <div class="collapse" id="mobileDropdown4">
+                <div class="navbar__mobile-dropdown"><a class="navbar__mobile-dropdown-item" href="#">Новости</a><a class="navbar__mobile-dropdown-item" href="#">Пресс-релизы</a><a class="navbar__mobile-dropdown-item" href="#">Фото</a></div>
+              </div>
+            </div>
+            <div class="navbar__mobile-item"><a class="navbar__mobile-link" href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown5" aria-expanded="false"><span>Сервисы</span><i class="fa-solid fa-caret-down navbar__mobile-icon"></i></a>
+              <div class="collapse" id="mobileDropdown5">
+                <div class="navbar__mobile-dropdown"><a class="navbar__mobile-dropdown-item" href="#">Услуга 1</a><a class="navbar__mobile-dropdown-item" href="#">Услуга 2</a></div>
+              </div>
+            </div>
+            <div class="navbar__mobile-item"><a class="navbar__mobile-link" href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown6" aria-expanded="false"><span>Организатор</span><i class="fa-solid fa-caret-down navbar__mobile-icon"></i></a>
+              <div class="collapse" id="mobileDropdown6">
+                <div class="navbar__mobile-dropdown"><a class="navbar__mobile-dropdown-item" href="#">О нас</a><a class="navbar__mobile-dropdown-item" href="#">Контакты</a></div>
+              </div>
+            </div>
+            <div class="navbar__mobile-item"><a class="navbar__mobile-link" href="#"><span>Обратная связь</span></a></div>
+          </div>
+          <div class="navbar__mobile-buttons">
+            <div class="navbar__mobile-buttons-row">
+              <div class="navbar__mobile-button navbar__mobile-button--outline"><span>Бронирование стенда</span></div>
+              <div class="navbar__mobile-button navbar__mobile-button--solid"><span>Станте спонсором</span></div>
+            </div>
+            <div class="navbar__mobile-buttons-row">
+              <div class="navbar__mobile-button navbar__mobile-button--solid"><span>Обратная связь</span></div>
+              <div class="navbar__mobile-button navbar__mobile-button--solid"><span>Купите билет</span></div>
             </div>
           </div>
         </div>

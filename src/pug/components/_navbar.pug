@@ -1,37 +1,164 @@
-.navbar
-	.container-fluid.px-5
+.navbar.d-none.d-lg-block
+	.container-fluid.navbar__container
 		.navbar__content.d-flex.align-items-center.justify-content-between
 			.navbar__menu.d-flex.align-items-center
-				.navbar__item.d-flex.align-items-center
-					span Выставка
-					i.fa-solid.fa-caret-down
+				.navbar__item.d-flex.align-items-center.position-relative
+					a.navbar__link.d-flex.align-items-center(href="#")
+						span Выставка
+						i.fa-solid.fa-caret-down.navbar__icon
+					.navbar__dropdown
+						a.navbar__dropdown-item(href="#") Детские
+						a.navbar__dropdown-item(href="#") Научные
+						a.navbar__dropdown-item(href="#") Исторические
+						a.navbar__dropdown-item(href="#") Коммерческие
+						a.navbar__dropdown-item(href="#") Художественные
+						a.navbar__dropdown-item(href="#") Образовательные
 
-				.navbar__item.d-flex.align-items-center
-					span Участникам
-					i.fa-solid.fa-caret-down
+				.navbar__item.d-flex.align-items-center.position-relative
+					a.navbar__link.d-flex.align-items-center(href="#")
+						span Участникам
+						i.fa-solid.fa-caret-down.navbar__icon
+					.navbar__dropdown
+						a.navbar__dropdown-item(href="#") Пункт 1
+						a.navbar__dropdown-item(href="#") Пункт 2
+						a.navbar__dropdown-item(href="#") Пункт 3
 
-				.navbar__item.d-flex.align-items-center
-					span Посетителям
-					i.fa-solid.fa-caret-down
+				.navbar__item.d-flex.align-items-center.position-relative
+					a.navbar__link.d-flex.align-items-center(href="#")
+						span Посетителям
+						i.fa-solid.fa-caret-down.navbar__icon
+					.navbar__dropdown
+						a.navbar__dropdown-item(href="#") Пункт 1
+						a.navbar__dropdown-item(href="#") Пункт 2
 
-				.navbar__item.d-flex.align-items-center
-					span Медиа-центр
-					i.fa-solid.fa-caret-down
+				.navbar__item.d-flex.align-items-center.position-relative
+					a.navbar__link.d-flex.align-items-center(href="#")
+						span Медиа-центр
+						i.fa-solid.fa-caret-down.navbar__icon
+					.navbar__dropdown
+						a.navbar__dropdown-item(href="#") Новости
+						a.navbar__dropdown-item(href="#") Пресс-релизы
+						a.navbar__dropdown-item(href="#") Фото
 
-				.navbar__item.d-flex.align-items-center
-					span Сервисы
-					i.fa-solid.fa-caret-down
+				.navbar__item.d-flex.align-items-center.position-relative
+					a.navbar__link.d-flex.align-items-center(href="#")
+						span Сервисы
+						i.fa-solid.fa-caret-down.navbar__icon
+					.navbar__dropdown
+						a.navbar__dropdown-item(href="#") Услуга 1
+						a.navbar__dropdown-item(href="#") Услуга 2
 
-				.navbar__item.d-flex.align-items-center
-					span Организатор
-					i.fa-solid.fa-caret-down
+				.navbar__item.d-flex.align-items-center.position-relative
+					a.navbar__link.d-flex.align-items-center(href="#")
+						span Организатор
+						i.fa-solid.fa-caret-down.navbar__icon
+					.navbar__dropdown
+						a.navbar__dropdown-item(href="#") О нас
+						a.navbar__dropdown-item(href="#") Контакты
 
 				.navbar__item.navbar__item--no-dropdown
-					span Обратная связь
+					a.navbar__link(href="#")
+						span Обратная связь
 
-			.navbar__buttons.d-flex.align-items-center
+			.navbar__buttons.d-none.d-lg-flex.align-items-center
 				.navbar__button.navbar__button--outline
 					span Бронирование стенда
 
 				.navbar__button.navbar__button--solid
 					span Станте спонсором
+
+// Мобильное меню (Offcanvas)
+.offcanvas.offcanvas-start.navbar__mobile-menu#navbarMobileMenu(tabindex="-1" aria-labelledby="navbarMobileMenuLabel")
+	.offcanvas-header.navbar__mobile-header
+		button.navbar__mobile-close(type="button" data-bs-dismiss="offcanvas" aria-label="Close")
+			i.fa-solid.fa-times.navbar__close-icon
+		.offcanvas-title#navbarMobileMenuLabel
+			img(src="assets/img/logo.svg" alt="ADEX" width="98" height="72")
+	.offcanvas-body.navbar__mobile-body
+		.navbar__mobile-languages
+			.navbar__mobile-language-item.navbar__mobile-language-item--active
+				span.fi.fi-az.navbar__mobile-language-flag
+				span AZ
+			.navbar__mobile-language-item
+				span.fi.fi-gb.navbar__mobile-language-flag
+				span EN
+			.navbar__mobile-language-item
+				span.fi.fi-ru.navbar__mobile-language-flag
+				span RU
+		
+		.navbar__mobile-menu-list
+			.navbar__mobile-item
+				a.navbar__mobile-link(href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown1" aria-expanded="false")
+					span Выставка
+					i.fa-solid.fa-caret-down.navbar__mobile-icon
+				.collapse#mobileDropdown1
+					.navbar__mobile-dropdown
+						a.navbar__mobile-dropdown-item(href="#") Детские
+						a.navbar__mobile-dropdown-item(href="#") Научные
+						a.navbar__mobile-dropdown-item(href="#") Исторические
+						a.navbar__mobile-dropdown-item(href="#") Коммерческие
+						a.navbar__mobile-dropdown-item(href="#") Художественные
+						a.navbar__mobile-dropdown-item(href="#") Образовательные
+
+			.navbar__mobile-item
+				a.navbar__mobile-link(href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown2" aria-expanded="false")
+					span Участникам
+					i.fa-solid.fa-caret-down.navbar__mobile-icon
+				.collapse#mobileDropdown2
+					.navbar__mobile-dropdown
+						a.navbar__mobile-dropdown-item(href="#") Пункт 1
+						a.navbar__mobile-dropdown-item(href="#") Пункт 2
+						a.navbar__mobile-dropdown-item(href="#") Пункт 3
+
+			.navbar__mobile-item
+				a.navbar__mobile-link(href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown3" aria-expanded="false")
+					span Посетителям
+					i.fa-solid.fa-caret-down.navbar__mobile-icon
+				.collapse#mobileDropdown3
+					.navbar__mobile-dropdown
+						a.navbar__mobile-dropdown-item(href="#") Пункт 1
+						a.navbar__mobile-dropdown-item(href="#") Пункт 2
+
+			.navbar__mobile-item
+				a.navbar__mobile-link(href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown4" aria-expanded="false")
+					span Медиа-центр
+					i.fa-solid.fa-caret-down.navbar__mobile-icon
+				.collapse#mobileDropdown4
+					.navbar__mobile-dropdown
+						a.navbar__mobile-dropdown-item(href="#") Новости
+						a.navbar__mobile-dropdown-item(href="#") Пресс-релизы
+						a.navbar__mobile-dropdown-item(href="#") Фото
+
+			.navbar__mobile-item
+				a.navbar__mobile-link(href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown5" aria-expanded="false")
+					span Сервисы
+					i.fa-solid.fa-caret-down.navbar__mobile-icon
+				.collapse#mobileDropdown5
+					.navbar__mobile-dropdown
+						a.navbar__mobile-dropdown-item(href="#") Услуга 1
+						a.navbar__mobile-dropdown-item(href="#") Услуга 2
+
+			.navbar__mobile-item
+				a.navbar__mobile-link(href="#" data-bs-toggle="collapse" data-bs-target="#mobileDropdown6" aria-expanded="false")
+					span Организатор
+					i.fa-solid.fa-caret-down.navbar__mobile-icon
+				.collapse#mobileDropdown6
+					.navbar__mobile-dropdown
+						a.navbar__mobile-dropdown-item(href="#") О нас
+						a.navbar__mobile-dropdown-item(href="#") Контакты
+
+			.navbar__mobile-item
+				a.navbar__mobile-link(href="#")
+					span Обратная связь
+
+		.navbar__mobile-buttons
+			.navbar__mobile-buttons-row
+				.navbar__mobile-button.navbar__mobile-button--outline
+					span Бронирование стенда
+				.navbar__mobile-button.navbar__mobile-button--solid
+					span Станте спонсором
+			.navbar__mobile-buttons-row
+				.navbar__mobile-button.navbar__mobile-button--solid
+					span Обратная связь
+				.navbar__mobile-button.navbar__mobile-button--solid
+					span Купите билет
