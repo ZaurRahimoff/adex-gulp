@@ -14,6 +14,7 @@
 // Generate CSS variables from SCSS variables
 @include generate-color-variables();
 @include generate-typography-variables();
+@include generate-variables();
 
 // Base styles
 @import 'base/fonts';
@@ -26,6 +27,12 @@
 @import 'components/header';
 @import 'components/footer';
 @import 'components/button';
+@import 'components/breadcrumb';
+@import 'components/form';
+@import 'components/social-sidebar';
+@import 'components/content';
 
 // Pages
 @import 'pages/home';
+@import 'pages/about';
+@import 'pages/events-programme';

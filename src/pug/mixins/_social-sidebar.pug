@@ -1,0 +1,29 @@
+//- Social Sidebar Mixin - универсальный компонент социальных ссылок
+//- Usage:
+//-   +social-sidebar()
+//-   +social-sidebar('custom-class')
+//-
+//- Parameters:
+//-   wrapperClass - дополнительный класс для обертки (опционально)
+//-
+//- Social links configuration (можно расширить для настройки)
+//- По умолчанию включает: Instagram, LinkedIn, WhatsApp, YouTube, Telegram, Twitter, Facebook
+
+mixin social-sidebar(wrapperClass = '')
+  - var sidebarClass = wrapperClass ? `social-sidebar ${wrapperClass}` : 'social-sidebar'
+  .social-sidebar(class=wrapperClass)
+    a.social-sidebar__link(href="#" aria-label="Instagram")
+      i.fab.fa-instagram
+    a.social-sidebar__link(href="#" aria-label="LinkedIn")
+      i.fab.fa-linkedin
+    a.social-sidebar__link(href="#" aria-label="WhatsApp")
+      i.fab.fa-whatsapp
+    a.social-sidebar__link(href="#" aria-label="YouTube")
+      i.fab.fa-youtube
+    a.social-sidebar__link(href="#" aria-label="Telegram")
+      i.fab.fa-telegram
+    a.social-sidebar__link(href="#" aria-label="Twitter")
+      i.fab.fa-twitter
+    a.social-sidebar__link(href="#" aria-label="Facebook")
+      i.fab.fa-facebook
+

@@ -4,20 +4,23 @@
 //-   +button("Text", "secondary", "submit")
 //-   +button("Text", "outline", "button", "/link")
 //-   +button("Text", "outline-white", "button", null, "large")
+//-   +button("Text", "action", "button", "/link") // Action button для страниц (большие кнопки с градиентом)
 //-   +button(null, "social", "button", null, "social", "google")
 //-
 //- Parameters:
 //-   text - текст кнопки (обязательный, кроме social)
-//-   variant - вариант: "primary", "secondary", "outline", "outline-white", "social" (default: "primary")
+//-   variant - вариант: "primary", "secondary", "outline", "outline-white", "action", "social" (default: "primary")
 //-   type - тип: "button", "submit", "reset" (default: "button")
 //-   href - ссылка (если указана, создается <a>, иначе <button>)
-//-   size - размер: "default", "large", "social" (default: "default")
+//-   size - размер: "default", "large", "social", "action" (default: "default")
 //-   socialType - тип соцсети для social: "google", "apple", "facebook" (только для variant="social")
 //-   extraClasses - дополнительные классы
 
 mixin button(text, variant = "primary", type = "button", href = null, size = "default", socialType = null, extraClasses = "")
-  - var buttonClasses = `btn btn--${variant} btn--${size}`
-  - if (extraClasses) buttonClasses += ` ${extraClasses}`
+  - var buttonClasses = `btn btn--${variant}`
+  - if (variant === "action") buttonClasses = buttonClasses + ` btn--action`
+  - if (variant !== "action" && size !== "default") buttonClasses = buttonClasses + ` btn--${size}`
+  - if (extraClasses) buttonClasses = buttonClasses + ` ${extraClasses}`
   
   if href
     a(class=buttonClasses href=href role="button")

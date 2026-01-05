@@ -1,0 +1,309 @@
+extends ../layouts/default
+
+block variables
+  - var pageTitle = 'ADEX - Программа мероприятий'
+  - var pageDescription = 'ADEX - Программа мероприятий, расписание событий выставки'
+  - var pageKeywords = 'ADEX, программа мероприятий, расписание, события, выставка'
+  - var pageCanonical = 'https://adex.az/events-programme'
+  - var pageOgImage = 'https://adex.az/og-image.jpg'
+  - var pageAuthor = 'ADEX'
+
+block content
+  // Breadcrumb Section
+  include ../mixins/_breadcrumb
+  +breadcrumb([
+    {text: 'Главная', href: 'index.html'},
+    {text: 'Программа мероприятий', href: null}
+  ])
+
+  // Main Content
+  section.events-programme-page.page__spacing
+    .container
+      // Page Title and Year Selector
+      .row.align-items-center.mb-4
+        .col-12.col-md-auto
+          h1.page-title.mb-0 Events Programme
+        .col-12.col-md-auto.ms-md-auto
+          .events-programme-page__year-selector
+            button.btn.events-programme-page__year-btn(type="button")
+              span 2024
+              i.fas.fa-caret-down.ms-2
+
+      // Tabs
+      .row.mb-4
+        .col-12
+          .d-flex.flex-wrap.gap-3.events-programme-page__tabs
+            button.btn.events-programme-page__tab(type="button" data-type="press-conference")
+              | Press Conference
+            button.btn.events-programme-page__tab.events-programme-page__tab--active(type="button" data-type="day" data-day="1")
+              | 1 Day
+            button.btn.events-programme-page__tab(type="button" data-type="day" data-day="2")
+              | 2 Day
+            button.btn.events-programme-page__tab(type="button" data-type="day" data-day="3")
+              | 3 Day
+
+      // Hero Image
+      .row.mb-4
+        .col-12
+          .events-programme-page__hero-image
+            img(src="assets/img/webp/events-programme-hero.webp" alt="Events Programme" loading="lazy")
+
+      // Day Header Block
+      .row.mb-4
+        .col-12
+          .events-programme-page__day-header
+            .row.align-items-center
+              .col-12.col-md-auto
+                .events-programme-page__day-info
+                  h2.events-programme-page__day-title 1 Day
+                  .events-programme-page__day-date
+                    i.fas.fa-calendar-alt
+                    span 24 September, Thursday
+              .col-12.col-md-auto.ms-md-auto
+                include ../mixins/_button
+                a.btn.btn--secondary.events-programme-page__download-btn(href="#")
+                  i.fas.fa-download.me-2
+                  | Download the programme
+
+      // Events List
+      .row.mb-4
+        .col-12
+          .events-programme-page__events-list
+            // Event Item 1
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 10:00 - 11:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Exhibition Official Opening Ceremony (Baku Expo Center, 1st hall)
+                p.events-programme-page__event-note
+                  | *only for participants, media and organisers
+
+            // Event Item 2
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 11:00 - 12:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Exhibition tour with the participation of official guests
+
+            // Event Item 3
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 14:00 - 18:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Exhibition working hours
+
+            // Event Item 4
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 14:00 - 18:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Model from the military history museum of Azerbaijan: "The Path to Victory in Moments"
+                  br
+                  | (Baku Expo Center, 4th hall)
+
+            // Event Item 5
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 14:00 - 18:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | "National Military Industry Complex of the Future" startup project presentation
+                  br
+                  | (Baku Expo Center, foyer)
+
+            // Event Item 6
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 14:00 - 18:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | VR Zone
+                  br
+                  | (Baku Expo Center, 4th hall)
+
+            // Event Item 7
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 14:00 - 18:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Bilateral meetings between representatives of relevant Azerbaijani institutions and exhibitors
+                  br
+                  | *only for exhibitors and representatives of relevant Azerbaijani institutions
+
+            // Event Item 8
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 14:00 - 18:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Bilateral meetings between representatives of international delegations and exhibitors
+                  br
+                  | *only for exhibitors and representatives of international delegations
+
+            // Event Item 9 - Panel Discussion
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 15:00 - 16:00
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Panel discussion:
+                  br
+                  | The experience of the Republic of Azerbaijan in the reconstruction of liberated territories: the role of military industry, problems, and solutions
+                  br
+                  | (Baku Expo Center, 1st hall, presentation area)
+
+      // Moderator Section
+      .row.mb-4
+        .col-12
+          .events-programme-page__section-label Moderator
+          .events-programme-page__participant-card
+            .events-programme-page__participant-avatar
+              img(src="assets/img/webp/speaker1.webp" alt="Vugar Mustafayev" loading="lazy")
+            .events-programme-page__participant-info
+              h3.events-programme-page__participant-name Vugar Mustafayev
+              p.events-programme-page__participant-role Ministry of Defence Industry of the Republic of Azerbaijan Minister
+
+      // Speakers Section
+      .row.mb-4
+        .col-12
+          .events-programme-page__section-label Speakers
+          .events-programme-page__participants-list
+            // Speaker 1
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker2.webp" alt="Emil Hasanov" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Emil Hasanov
+                p.events-programme-page__participant-role Public Council under the Azerbaijan Mine Action Agency Deputy Chairman
+
+            // Speaker 2
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker3.webp" alt="Eflatun Mamedov" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Eflatun Mamedov
+                p.events-programme-page__participant-role Ministry of Defense of the Republic of Azerbaijan Head of the Mine Action Department of the Main Directorate of Engineering Troops
+                ul.events-programme-page__participant-bio
+                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+
+      // More Events
+      .row.mb-4
+        .col-12
+          .events-programme-page__events-list
+            // Event Item 10
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 16:10 - 17:10
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Panel discussion:
+                  br
+                  | Automation and robotics in the defence sector: prospects and challenges
+                  br
+                  | (Baku Expo Center, 1st hall, presentation area)
+
+      // More Speakers
+      .row.mb-4
+        .col-12
+          .events-programme-page__section-label Moderator
+          .events-programme-page__participant-card
+            .events-programme-page__participant-avatar
+              img(src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy")
+            .events-programme-page__participant-info
+              h3.events-programme-page__participant-name Vilayat Valiyev
+              p.events-programme-page__participant-role Azerbaijan Technical University Rector
+
+      .row.mb-4
+        .col-12
+          .events-programme-page__section-label Speakers
+          .events-programme-page__participants-list
+            // Speaker 3
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Ramil Azizov
+                p.events-programme-page__participant-role Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department
+
+            // Speaker 4
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Khagani Abdullayev
+                p.events-programme-page__participant-role Azerbaijan National Aviation Academy Vice Rector for New Technologies
+
+            // Speaker 5
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Yasin Kaygusuz
+                p.events-programme-page__participant-role Turkish Aerospace Industries Product Manager for International Programs
+
+            // Speaker 6
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Manafaddin Namazov
+                p.events-programme-page__participant-role Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity
+
+            // Speaker 7
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Asad Rustamov
+                p.events-programme-page__participant-role National Defense University Deputy Rector of Military Management Institute
+
+            // Speaker 8
+            .events-programme-page__participant-card
+              .events-programme-page__participant-avatar
+                img(src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy")
+              .events-programme-page__participant-info
+                h3.events-programme-page__participant-name Gunel Aliyeva
+                p.events-programme-page__participant-role Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department
+
+      // Last Event
+      .row.mb-4
+        .col-12
+          .events-programme-page__events-list
+            // Event Item 11
+            .events-programme-page__event-item
+              .events-programme-page__event-time
+                i.fas.fa-clock
+                span 19:20 - 21:30
+              .events-programme-page__event-content
+                p.events-programme-page__event-title
+                  | Evening reception (Gulustan Palace)
+                  br
+                  | *buses will depart from Baku Expo Center to Gulustan Palace at 18:15 and from Gulustan Palace to Four Seasons Hotel Baku - Hilton Baku - Azadliq Square - The Ritz-Carlton, Baku at 21:45
+                  br
+                  | *only for exhibitors, invited guests and organisers
+
+      // Show All Button
+      .row
+        .col-12.text-center
+          include ../mixins/_button
+          +button("Show all", "primary", "button", "#", "default", null, "events-programme-page__show-all-btn")
+

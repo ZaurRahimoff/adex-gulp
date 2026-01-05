@@ -7,7 +7,7 @@
   background: var(--white);
   padding: 18px 0;
   position: relative;
-  z-index: $z-index-sticky;
+  z-index: var(--z-index-sticky);
 
   @include lg-down {
     padding: 12px 0;
@@ -51,7 +51,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: $transition-base;
+    transition: var(--transition-base);
     border-radius: 4px;
     flex-shrink: 0;
 
@@ -74,7 +74,7 @@
   &__toggle-icon {
     font-size: 30px;
     color: var(--primary);
-    transition: transform $transition-base, opacity $transition-base;
+    transition: transform var(--transition-base), opacity var(--transition-base);
     transform: rotate(0deg);
     opacity: 1;
     display: block;
@@ -194,8 +194,8 @@
   &__divider {
     width: 0;
     height: 20px;
-    border-left: 1px solid rgba(33, 37, 41, 0.2);
-    transform: rotate(90deg);
+    border-left: 1px solid var(--gray-1);
+    transform: rotate(0deg);
     flex-shrink: 0;
 
     @include md-down {
@@ -232,7 +232,7 @@
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
-    transition: $transition-base;
+    transition: var(--transition-base);
     padding: 4px 8px;
     text-decoration: none;
     color: inherit;
@@ -269,7 +269,7 @@
   &__language-icon {
     font-size: 13px;
     color: var(--gray-1);
-    transition: transform $transition-base;
+    transition: transform var(--transition-base);
     transform: rotate(0deg);
   }
 
@@ -299,7 +299,7 @@
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     padding: 4px 0;
     min-width: 100px;
-    animation: dropdownFadeIn $transition-base ease-out;
+    animation: dropdownFadeIn var(--transition-base) ease-out;
 
     @include md-down {
       margin-top: 4px;
@@ -309,7 +309,7 @@
   &__language-item {
     gap: 8px;
     padding: 8px 12px;
-    transition: $transition-base;
+    transition: var(--transition-base);
     text-decoration: none;
     color: var(--gray-1);
 
@@ -338,7 +338,7 @@
     gap: 12px;
     border-radius: 8px;
     cursor: pointer;
-    transition: $transition-base;
+    transition: var(--transition-base);
     padding: 4px 12px;
 
     &:hover {

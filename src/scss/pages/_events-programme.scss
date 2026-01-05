@@ -1,0 +1,376 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+
+// ============================================
+// Events Programme Page
+// ============================================
+
+.events-programme-page {
+  padding: 40px 0 80px;
+
+  @include lg-down {
+    padding: 30px 0 60px;
+  }
+
+  // Year Selector
+  &__year-selector {
+    display: flex;
+    align-items: center;
+  }
+
+  &__year-btn {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-h6);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: var(--transition-base);
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    i {
+      font-size: 13px;
+    }
+  }
+
+  // Tabs
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__tab {
+    padding: 8px 33px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--primary);
+    background-color: transparent;
+    color: var(--primary);
+    font-family: var(--font-family);
+    font-size: var(--font-size-h6);
+    font-weight: var(--font-weight-medium);
+    transition: var(--transition-base);
+    white-space: nowrap;
+
+    &:hover {
+      background-color: rgba(43, 59, 115, 0.05);
+    }
+
+    &--active {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+      font-weight: var(--font-weight-bold);
+
+      &:hover {
+        background-color: rgba(43, 59, 115, 0.9);
+      }
+    }
+
+    // Press Conference tab has white background when active
+    &[data-type="press-conference"] {
+      &.events-programme-page__tab--active {
+        background-color: var(--white);
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+    }
+  }
+
+  // Hero Image
+  &__hero-image {
+    width: 100%;
+    height: 480px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+
+    @include lg-down {
+      height: 300px;
+      margin-bottom: 30px;
+    }
+
+    @include md-down {
+      height: 250px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Day Header
+  &__day-header {
+    background-color: var(--primary);
+    border-radius: 12px;
+    padding: 30px 40px;
+    margin-bottom: 40px;
+
+    @include lg-down {
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__day-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__day-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
+    margin: 0;
+    line-height: var(--line-height-tight);
+
+    @include md-down {
+      font-size: var(--font-size-h4);
+    }
+  }
+
+  &__day-date {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    color: var(--white);
+
+    i {
+      font-size: 13px;
+      width: 25px;
+      height: 25px;
+      background-color: var(--white);
+      color: var(--primary);
+      border-radius: 12.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+  }
+
+  &__download-btn {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    i {
+      font-size: 20px;
+    }
+  }
+
+  // Events List
+  &__events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+
+    @include lg-down {
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__event-item {
+    background-color: var(--card-1);
+    border-radius: 12px;
+    padding: 20px 40px;
+    display: flex;
+    gap: 100px;
+    align-items: center;
+
+    @include lg-down {
+      padding: 20px 24px;
+      gap: 40px;
+    }
+
+    @include md-down {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+
+  &__event-time {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-2);
+    min-width: 150px;
+    flex-shrink: 0;
+
+    @include md-down {
+      min-width: auto;
+    }
+
+    i {
+      color: var(--primary);
+      font-size: 18px;
+      width: 18px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__event-content {
+    flex: 1;
+  }
+
+  &__event-title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-1);
+    margin: 0;
+    line-height: var(--line-height-normal);
+  }
+
+  &__event-note {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    color: var(--gray-2);
+    margin: 0;
+    margin-top: 4px;
+  }
+
+  // Section Label (Moderator/Speakers)
+  &__section-label {
+    background-color: rgba(43, 59, 115, 0.15);
+    border-radius: 12px;
+    padding: 19px;
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: var(--font-size-h6);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
+
+  // Participants List
+  &__participants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  // Participant Card
+  &__participant-card {
+    background-color: var(--card-2);
+    border-radius: 12px;
+    padding: 20px 40px;
+    display: flex;
+    gap: 130px;
+    align-items: center;
+
+    @include lg-down {
+      padding: 20px 24px;
+      gap: 40px;
+    }
+
+    @include md-down {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+
+  &__participant-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    @include md-down {
+      width: 100px;
+      height: 100px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__participant-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__participant-name {
+    font-family: var(--font-family);
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-1);
+    margin: 0;
+  }
+
+  &__participant-role {
+    font-family: var(--font-family);
+    font-size: var(--font-size-h6);
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-2);
+    margin: 0;
+  }
+
+  &__participant-bio {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    color: var(--gray-2);
+    margin: 0;
+    padding-left: 27px;
+    list-style: disc;
+
+    li {
+      margin-bottom: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Show All Button
+  &__show-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &::after {
+      content: '\f0d7';
+      font-family: 'Font Awesome 6 Pro';
+      font-weight: 900;
+      font-size: 13px;
+      transform: rotate(180deg);
+    }
+  }
+}
+

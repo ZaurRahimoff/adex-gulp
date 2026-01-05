@@ -1,0 +1,89 @@
+extends ../layouts/default
+
+block variables
+  - var pageTitle = 'ADEX - О выставке'
+  - var pageDescription = 'ADEX - О выставке, информация о международной военной выставке'
+  - var pageKeywords = 'ADEX, выставка, военная выставка, Баку, Азербайджан'
+  - var pageCanonical = 'https://adex.az/about'
+  - var pageOgImage = 'https://adex.az/og-image.jpg'
+  - var pageAuthor = 'ADEX'
+
+block content
+  // Breadcrumb Section
+  include ../mixins/_breadcrumb
+  +breadcrumb([
+    {text: 'Главная', href: 'index.html'},
+    {text: 'О выставке', href: null}
+  ])
+
+  // Main Content
+  section.about-page__content.page__spacing
+    .container
+      .row.gx-lg-5
+        // Page Title
+        .col-12.order-2.order-lg-1
+          h1.page-title.lh-base About the exhibition
+        // Left Column - Main Content
+        .col-12.col-lg-8.order-3.order-lg-2
+          // About Block
+          .about-page__about-block.page-content
+            | The international military exhibition, ADEX, is the region's largest event in the field of defence industry providing the participants with a unique opportunity to meet with military leadership of Azerbaijan, as well as the international military and defence community. ADEX is a platform for selling your products through direct buyers, ordering companies and end users. Along with products for the navy, aviation and army, the exhibition is an ideal ground for presentation of Homeland Security products. ADEX facilitates the exchange of experience among participants, visitors and experts in the sector, and a chance to upgrade products in accordance with requirements of the region's defence industry market.
+          
+            img(src="assets/img/webp/about1.webp" alt="ADEX Exhibition" loading="lazy")
+          
+            h6 EXHIBITION STATISTICS FROM ADEX 2024:
+            
+            ul
+              li
+                | Number of participants : 
+                strong 270
+              li
+                | National groups : 
+                strong 14
+              li
+                | Number of visitors : 
+                strong 9304
+              li
+                | Number of international military delegations : 
+                strong 53
+              li
+                | Exhibition area : 
+                strong 20,023 sq.m
+
+          // Contact Block
+          .about-page__contact-block
+            h2.about-page__contact-title.lh-base Contact
+            .row.align-items-center.flex-column.flex-lg-row.g-3
+              .col-auto.d-none.d-lg-block
+                .about-page__contact-avatar
+                  img(src="https://adex.az/speaker/357/326186/avatar/326186.png?v=1767630380" alt="Contact" loading="lazy")
+              .col
+                .about-page__contact-info
+                  .about-page__contact-item
+                    i.fal.fa-phone
+                    a(href="tel:+994124041000") +994 12 404 10 00
+                  .about-page__contact-item
+                    i.fal.fa-phone
+                    a(href="tel:+994552241000") +994 55 224 1000
+              .col
+                .about-page__contact-info
+                  .about-page__contact-item.about-page__contact-item--address
+                    i.fal.fa-location-dot
+                    a(href="https://maps.app.goo.gl/E9zUY1jZgXaVt2JZ7" target="_blank") Azerbaijan, Baku Narimanov dist, Zaur Nudiraliyev st., 61, AZ1075
+                  .about-page__contact-item
+                    i.fal.fa-envelope
+                    a(href="mailto:office@ceo.az") office@ceo.az
+
+        // Right Column - Action Buttons
+        .col-12.col-lg-4.order-1.order-lg-3
+          include ../mixins/_button
+          .actions__block
+            .row.flex-row.flex-lg-column.flex-nowrap.flex-md-wrap.g-3.g-md-5
+              .col-auto.col-md-12
+                +button("Бронирование стенда", "action", "button", "#")
+              .col-auto.col-md-12
+                +button("Станте спонсором", "action", "button", "#")
+              .col-auto.col-md-12
+                +button("Обратная связь", "action", "button", "#")
+              .col-auto.col-md-12
+                +button("Купите билет", "action", "button", "#")

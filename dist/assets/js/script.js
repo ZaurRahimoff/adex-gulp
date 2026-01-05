@@ -107,16 +107,16 @@ exports.initScrollToTop = initScrollToTop;
  * Модуль для кнопки прокрутки наверх
  */
 function initScrollToTop() {
-  const scrollToTopBtn = document.querySelector('.footer__scroll-top');
-  if (scrollToTopBtn) {
-    scrollToTopBtn.addEventListener('click', function (e) {
+  const scrollToTopBtns = document.querySelectorAll('.footer__scroll-top');
+  scrollToTopBtns.forEach(btn => {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
-  }
+  });
 }
 
 },{}],5:[function(require,module,exports){

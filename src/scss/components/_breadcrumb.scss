@@ -1,0 +1,49 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+
+// ============================================
+// Breadcrumb Component - универсальный компонент хлебных крошек
+// ============================================
+
+.breadcrumb-section {
+  background-color: var(--card-1);
+  padding: 14px 0;
+  width: 100%;
+
+  .breadcrumb {
+    margin-bottom: 0;
+    background: transparent;
+    padding: 0;
+
+    &-item {
+      font-family: var(--font-family);
+      font-size: var(--font-size-body2);
+      line-height: var(--line-height-normal);
+      color: var(--gray-3);
+
+      a {
+        color: var(--gray-3);
+        text-decoration: none;
+        transition: var(--transition-base);
+
+        &:hover {
+          color: var(--gray-2);
+        }
+      }
+
+      &.active {
+        color: var(--gray-2);
+        font-weight: var(--font-weight-bold);
+      }
+
+      & + &::before {
+        content: "/";
+        padding: 0 8px;
+        color: var(--gray-3);
+      }
+    }
+  }
+}
+

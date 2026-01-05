@@ -61,11 +61,9 @@
 						span Обратная связь
 
 			.navbar__buttons.d-none.d-lg-flex.align-items-center
-				.navbar__button.navbar__button--outline
-					span Бронирование стенда
-
-				.navbar__button.navbar__button--solid
-					span Станте спонсором
+				include ../mixins/_button
+				+button("Бронирование стенда", "primary", "button", "#", "default", null, "navbar__button")
+				+button("Станте спонсором", "secondary", "button", "#", "default", null, "navbar__button")
 
 // Мобильное меню (Offcanvas)
 .offcanvas.offcanvas-start.navbar__mobile-menu#navbarMobileMenu(tabindex="-1" aria-labelledby="navbarMobileMenuLabel")
@@ -153,12 +151,9 @@
 
 		.navbar__mobile-buttons
 			.navbar__mobile-buttons-row
-				.navbar__mobile-button.navbar__mobile-button--outline
-					span Бронирование стенда
-				.navbar__mobile-button.navbar__mobile-button--solid
-					span Станте спонсором
+				include ../mixins/_button
+				+button("Бронирование стенда", "primary", "button", "#", "default", null, "navbar__mobile-button")
+				+button("Станте спонсором", "secondary", "button", "#", "default", null, "navbar__mobile-button")
 			.navbar__mobile-buttons-row
-				.navbar__mobile-button.navbar__mobile-button--solid
-					span Обратная связь
-				.navbar__mobile-button.navbar__mobile-button--solid
-					span Купите билет
+				+button("Обратная связь", "secondary", "button", "#", "default", null, "navbar__mobile-button")
+				+button("Купите билет", "secondary", "button", "#", "default", null, "navbar__mobile-button")

@@ -1,0 +1,31 @@
+//- Breadcrumb Mixin - универсальный компонент хлебных крошек
+//- Usage:
+//-   +breadcrumb([
+//-     {text: 'Главная', href: 'index.html'},
+//-     {text: 'О выставке', href: null}
+//-   ])
+//-   +breadcrumb([
+//-     {text: 'Главная', href: 'index.html'},
+//-     {text: 'Категория', href: 'category.html'},
+//-     {text: 'Страница', href: null}
+//-   ], 'custom-class')
+//-
+//- Parameters:
+//-   items - массив объектов с полями text (обязательно) и href (опционально, null для активного элемента)
+//-   wrapperClass - дополнительный класс для обертки section (опционально)
+
+mixin breadcrumb(items, wrapperClass = '')
+  - var sectionClass = wrapperClass ? `breadcrumb-section ${wrapperClass}` : 'breadcrumb-section'
+  section(class=sectionClass)
+    .container
+      .row
+        .col-12
+          nav(aria-label="breadcrumb")
+            ol.breadcrumb.mb-0
+              each item, index in items
+                if item.href
+                  li.breadcrumb-item
+                    a(href=item.href)= item.text
+                else
+                  li.breadcrumb-item.active(aria-current="page")= item.text
+

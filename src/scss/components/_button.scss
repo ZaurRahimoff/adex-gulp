@@ -12,14 +12,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-family, $font-family);
+  font-family: var(--font-family);
   font-size: 16px;
   line-height: normal;
   text-decoration: none;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: $transition-base;
+  transition: var(--transition-base);
   white-space: nowrap;
   box-sizing: border-box;
   text-align: center;
@@ -57,34 +57,34 @@
 
   // Variants
   &--primary {
-    background-color: var(--black);
+    // Primary = outline кнопки из navbar (прозрачный фон, белая рамка)
+    border: 1px solid var(--white);
+    background: transparent;
     color: var(--white);
-    border: 1px solid transparent;
 
     &:hover:not(:disabled) {
-      background-color: rgba(0, 0, 0, 0.9);
+      background: rgba(255, 255, 255, 0.1);
       color: var(--white);
     }
 
     &:active:not(:disabled) {
-      border-color: none;
-      background-color: rgba(0, 0, 0, 0.8);
+      background: rgba(255, 255, 255, 0.15);
     }
   }
 
   &--secondary {
-    background-color: var(--white);
-    color: var(--black);
-    border: 1px solid transparent;
+    // Secondary = solid кнопки из navbar (белый фон, primary текст)
+    background: var(--white);
+    border: 1px solid var(--white);
+    color: var(--primary);
 
     &:hover:not(:disabled) {
-      background-color: rgba(255, 255, 255, 0.95);
-      color: var(--black);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary);
     }
 
     &:active:not(:disabled) {
-      border-color: none;
-      background-color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.85);
     }
   }
 
@@ -119,6 +119,41 @@
     &:active:not(:disabled) {
       border-color: none;
       background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &--action {
+    // Action = hero__btn стили (градиентные большие кнопки)
+    padding: 24px 48px;
+    border-radius: 52px;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    background: linear-gradient(173.064deg, var(--primary) 2.43%, #517fd9 104.91%);
+    box-shadow: 0px 16px 15.1px 0px rgba(43, 59, 115, 0.2);
+    border: none;
+    color: var(--white);
+    width: 100%;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0px 13px 18px 0px rgba(43, 59, 115, 0.4);
+      color: var(--white);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    @include lg-down {
+      padding: 20px 48px;
+      font-size: var(--font-size-body2);
+      width: 100%;
+    }
+
+    @include md-down {
+      padding: 18px 30px;
+      font-size: var(--font-size-body1);
+      border-radius: 40px;
     }
   }
 

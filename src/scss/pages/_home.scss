@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $white;
+    color: var(--white);
     font-size: 36px;
 
     @include lg-down {
@@ -83,15 +83,15 @@
   }
 
   &__title {
-    font-family: $font-family;
-    font-size: $font-size-h3;
-    font-weight: $font-weight-bold;
+    font-family: var(--font-family);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin-bottom: 40px;
     max-width: 778px;
 
     @include lg-down {
-      font-size: $font-size-h5;
+      font-size: var(--font-size-h5);
       margin-bottom: 30px;
     }
   }
@@ -104,34 +104,6 @@
     @include lg-down {
       flex-direction: column;
       gap: 20px;
-    }
-  }
-
-  &__btn {
-    padding: 24px 48px;
-    border-radius: 52px;
-    font-size: $font-size-body;
-    font-weight: $font-weight-bold;
-    background: linear-gradient(173.064deg, $primary 2.43%, #517fd9 104.91%);
-    box-shadow: 0px 16px 15.1px 0px rgba(43, 59, 115, 0.2);
-    border: none;
-    color: $white;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: $transition-base;
-    width: 100%;
-
-    @include lg-down {
-      padding: 20px 48px;
-      font-size: $font-size-body2;
-      width: 100%;
-    }
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0px 13px 18px 0px rgba(43, 59, 115, 0.4);
     }
   }
 }
@@ -168,7 +140,7 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(43, 59, 115, 0) 34.72%, $primary 100%);
+    background: linear-gradient(180deg, rgba(43, 59, 115, 0) 34.72%, var(--primary) 100%);
     z-index: 2;
   }
 
@@ -243,7 +215,7 @@
     i {
       width: 64px;
       height: 64px;
-      background: $white;
+      background: var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -262,7 +234,7 @@
   &__text {
     display: flex;
     flex-direction: column;
-    color: $white;
+    color: var(--white);
   }
 
   &__number {
@@ -277,20 +249,20 @@
   }
 
   &__label {
-    font-size: $font-size-h4;
-    font-weight: $font-weight-regular;
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-regular);
     margin: 0;
     line-height: 1;
 
     @include lg-down {
-      font-size: $font-size-body1;
+      font-size: var(--font-size-body1);
     }
   }
 
   &__divider {
     width: 1px;
     height: 60px;
-    background: $white;
+    background: var(--white);
     position: absolute;
     left: 0;
     top: 50%;
@@ -319,12 +291,12 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
     }
   }
 
@@ -340,11 +312,11 @@
     color: var(--primary);
     font-size: 20px;
     border-radius: 30px;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &:hover {
       background: var(--primary);
-      color: $white;
+      color: var(--white);
     }
   }
 }
@@ -382,8 +354,8 @@
   }
 
   &__type {
-    font-size: $font-size-body1;
-    font-weight: $font-weight-bold;
+    font-size: var(--font-size-body1);
+    font-weight: var(--font-weight-bold);
     color: var(--gray-1);
     margin: 0;
     text-align: center;
@@ -419,12 +391,12 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
     }
   }
 
@@ -440,11 +412,11 @@
     color: var(--primary);
     font-size: 20px;
     border-radius: 30px;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &:hover {
       background: var(--primary);
-      color: $white;
+      color: var(--white);
     }
   }
 }
@@ -461,12 +433,12 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
     }
   }
 
@@ -482,11 +454,11 @@
     color: var(--primary);
     font-size: 20px;
     border-radius: 30px;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &:hover {
       background: var(--primary);
-      color: $white;
+      color: var(--white);
     }
   }
 }
@@ -516,7 +488,7 @@
 
   &__name {
     font-size: $font-size-body2;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--gray-1);
     margin: 0;
   }
@@ -534,12 +506,12 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
     }
   }
 
@@ -561,7 +533,7 @@
     color: var(--primary);
     border: 1px solid var(--primary);
     background: transparent;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     @include lg-down {
       padding: 8px 33px;
@@ -571,14 +543,14 @@
 
     &--active {
       background: var(--primary);
-      color: $white;
+      color: var(--white);
       border-color: var(--primary);
-      font-weight: $font-weight-bold;
+      font-weight: var(--font-weight-bold);
     }
 
     &:hover {
       background: var(--primary);
-      color: $white;
+      color: var(--white);
     }
   }
 
@@ -605,14 +577,14 @@
     height: 40px;
     border-radius: 4px;
     background: var(--primary);
-    color: $white;
+    color: var(--white);
     border: none;
     font-size: $font-size-body2;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     @include lg-down {
       padding: 12px 24px;
@@ -622,7 +594,7 @@
     }
 
     &:hover {
-      background: darken($primary, 5%);
+      background: rgba(43, 59, 115, 0.95);
     }
   }
 }
@@ -650,13 +622,13 @@
 
   &__time {
     font-size: $font-size-body;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--gray-2);
     margin: 0;
   }
 
   &__description {
-    font-size: $font-size-body1;
+    font-size: var(--font-size-body1);
     font-weight: $font-weight-regular;
     color: var(--gray-3);
     margin: 0;
@@ -704,7 +676,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $white;
+    color: var(--white);
     font-size: 36px;
 
     @include lg-down {
@@ -727,12 +699,12 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
     }
   }
 
@@ -748,11 +720,11 @@
     color: var(--primary);
     font-size: 20px;
     border-radius: 30px;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &:hover {
       background: var(--primary);
-      color: $white;
+      color: var(--white);
     }
   }
 
@@ -887,14 +859,14 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0;
     position: relative;
     z-index: 3;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
     }
   }
 
@@ -912,11 +884,11 @@
     color: var(--primary);
     font-size: 20px;
     border-radius: 30px;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &:hover {
       background: var(--primary);
-      color: $white;
+      color: var(--white);
     }
   }
 
@@ -998,13 +970,13 @@
 
   &__name {
     font-size: $font-size-h6;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--gray-2);
     margin: 0;
   }
 
   &__company {
-    font-size: $font-size-body1;
+    font-size: var(--font-size-body1);
     font-weight: $font-weight-medium;
     color: var(--gray-2);
     margin: 0;
@@ -1065,12 +1037,12 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0 0 40px;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
       margin-bottom: 20px;
     }
   }
@@ -1110,9 +1082,9 @@
   }
 
   &__working-hours-title {
-    font-size: $font-size-h5;
-    font-weight: $font-weight-bold;
-    color: $white;
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
     margin: 0 0 15px;
   }
 
@@ -1128,7 +1100,7 @@
 
     i {
       font-size: 20px;
-      color: $white;
+      color: var(--white);
       flex-shrink: 0;
     }
   }
@@ -1140,9 +1112,9 @@
   }
 
   &__schedule-time {
-    font-size: $font-size-body1;
-    font-weight: $font-weight-bold;
-    color: $white;
+    font-size: var(--font-size-body1);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
     margin: 0;
 
     @include lg-down {
@@ -1153,7 +1125,7 @@
   &__schedule-day {
     font-size: $font-size-body3;
     font-weight: $font-weight-regular;
-    color: $white;
+    color: var(--white);
     margin: 0;
   }
 
@@ -1173,8 +1145,8 @@
   }
 
   &__venue-title {
-    font-size: $font-size-h5;
-    font-weight: $font-weight-bold;
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0 0 15px;
 
@@ -1211,8 +1183,8 @@
   }
 
   &__venue-name {
-    font-size: $font-size-body1;
-    font-weight: $font-weight-bold;
+    font-size: var(--font-size-body1);
+    font-weight: var(--font-weight-bold);
     color: var(--gray-2);
     margin: 0;
 
@@ -1246,12 +1218,12 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
     }
   }
 
@@ -1261,12 +1233,12 @@
     gap: 16px;
     color: var(--primary);
     font-size: $font-size-body2;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &:hover {
-      color: darken($primary, 10%);
+      color: rgba(43, 59, 115, 0.9);
     }
   }
 
@@ -1310,7 +1282,7 @@
 
   &__featured-title {
     font-size: $font-size-body;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--gray-1);
     margin: 0;
   }
@@ -1328,17 +1300,17 @@
     align-items: center;
     gap: 8px;
     color: var(--primary);
-    font-size: $font-size-body1;
-    font-weight: $font-weight-bold;
+    font-size: var(--font-size-body1);
+    font-weight: var(--font-weight-bold);
     text-decoration: none;
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     @include lg-down {
       font-size: $font-size-body2;
     }
 
     &:hover {
-      color: darken($primary, 10%);
+      color: rgba(43, 59, 115, 0.9);
     }
   }
 
@@ -1380,7 +1352,7 @@
 
   &__item-title {
     font-size: $font-size-body;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--gray-1);
     margin: 0;
   }
@@ -1404,18 +1376,18 @@
 
   &__title {
     font-size: $font-size-h1;
-    font-weight: $font-weight-bold;
+    font-weight: var(--font-weight-bold);
     color: var(--primary);
     margin: 0 0 40px;
 
     @include lg-down {
-      font-size: $font-size-h3;
+      font-size: var(--font-size-h3);
       margin-bottom: 20px;
     }
   }
 
   &__card {
-    background: $white;
+    background: var(--white);
     border-radius: 8px;
     padding: 19px 118px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
@@ -1447,7 +1419,7 @@
     align-items: center;
     gap: 10px;
     color: var(--primary);
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     i {
       font-size: 20px;
@@ -1460,7 +1432,7 @@
     }
 
     &:hover {
-      color: darken($primary, 10%);
+      color: rgba(43, 59, 115, 0.9);
     }
   }
 }
