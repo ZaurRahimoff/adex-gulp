@@ -112,7 +112,7 @@
     border-radius: 52px;
     font-size: $font-size-body;
     font-weight: $font-weight-bold;
-    background: linear-gradient(173.064deg, $primary 2.43%, #517FD9 104.91%);
+    background: linear-gradient(173.064deg, $primary 2.43%, #517fd9 104.91%);
     box-shadow: 0px 16px 15.1px 0px rgba(43, 59, 115, 0.2);
     border: none;
     color: $white;
@@ -200,7 +200,7 @@
     @include xs-down {
       width: 100%;
     }
-    
+
     @include lg-down {
       flex-direction: row;
       gap: 24px;
@@ -211,11 +211,11 @@
     @include lg-up {
       margin-bottom: 0;
       padding: 0 30px;
-      
+
       &:first-child {
         padding-left: 0;
       }
-      
+
       &:last-child {
         padding-right: 0;
       }
@@ -225,8 +225,7 @@
     //   margin-bottom: 0;
     // }
 
-    &:first-child {   
-
+    &:first-child {
       @include xs-up {
         .banner-section__divider {
           display: none;
@@ -237,7 +236,6 @@
           display: block;
         }
       }
-      
     }
   }
 
@@ -758,43 +756,95 @@
     }
   }
 
-  &__main-image-wrapper {
-    height: 500px;
-    border-radius: 20px;
-    overflow: hidden;
-
-    @include lg-down {
-      height: 280px;
-    }
-  }
-
-  &__main-image {
+  // Стили для слайдера фото (по макету Figma)
+  .photo-swiper {
+    overflow: visible;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+    .swiper-wrapper {
+      align-items: center;
+      display: flex;
+    }
+
+    .swiper-slide {
+      width: 197px !important;
+      height: 500px;
+      transition: width 0.3s ease-out;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      will-change: width;
+
+      @include lg-down {
+        width: 130px !important;
+        height: 280px;
+      }
+
+      // Активный слайд - 630px (по макету)
+      &.swiper-slide-active {
+        width: 630px !important;
+
+        @include lg-down {
+          width: 100% !important;
+          max-width: 100%;
+        }
+
+        // Убираем overlay с активного слайда
+        .photo-section__image-wrapper {
+          &::after {
+            display: none;
+          }
+        }
+      }
+
+      // Предыдущий и следующий слайды (для плавности)
+      &.swiper-slide-prev,
+      &.swiper-slide-next {
+        transition: width 0.3s ease-out;
+      }
+
+      // Overlay на неактивных слайдах (rgba(0,0,0,0.4) по макету)
+      &:not(.swiper-slide-active) {
+        .photo-section__image-wrapper {
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            z-index: 1;
+            pointer-events: none;
+          }
+        }
+      }
+    }
   }
 
   &__image-wrapper {
     position: relative;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
     overflow: hidden;
-
-    @include lg-down {
-      height: 130px;
-    }
+    display: block;
   }
 
   &__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
-  &__overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+  // Устаревшие классы (оставляем для обратной совместимости)
+  &__main-image-wrapper {
+    @extend .photo-section__image-wrapper;
+  }
+
+  &__main-image {
+    @extend .photo-section__image;
   }
 }
 
@@ -802,15 +852,14 @@
 // Testimonials Section
 // ============================================
 .testimonials-section {
-
-
   &__content {
     position: relative;
     padding: 80px 0;
     min-height: 591px;
     display: flex;
     align-items: center;
-  
+    overflow: visible;
+
     @include lg-down {
       padding: 40px 0;
       min-height: 372px;
@@ -870,29 +919,55 @@
       color: $white;
     }
   }
+
+  // Стили для swiper слайдера testimonials
+  .testimonials-swiper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    overflow: visible;
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-shrink: 0;
+    }
+  }
 }
 
-// Testimonial Card Component
+// Testimonial Card Component (по макету Figma)
 .testimonial-card {
   background: $white;
   border-radius: 12px;
   padding: 48px;
   box-shadow: 0px 16px 15.1px 0px rgba(43, 59, 115, 0.2);
-  height: 433px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  flex-shrink: 0;
 
   @include lg-down {
     padding: 30px 32px;
-    height: 308px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 308px;
   }
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     gap: 16px;
+    flex-shrink: 0;
   }
 
   &__avatar-wrapper {
@@ -918,6 +993,7 @@
     flex-direction: column;
     gap: 10px;
     flex: 1;
+    min-width: 0;
   }
 
   &__name {
@@ -936,7 +1012,7 @@
 
   &__quote {
     font-size: 64px;
-    background: linear-gradient(154.5deg, $primary 2.43%, #517FD9 104.91%);
+    background: linear-gradient(154.5deg, $primary 2.43%, #517fd9 104.91%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -969,6 +1045,11 @@
       font-size: $font-size-body2;
       -webkit-line-clamp: 4;
     }
+  }
+
+  &__divider {
+    flex-shrink: 0;
+    width: 100%;
   }
 }
 

@@ -82,7 +82,7 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-section__nav-btn.sponsors-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.sponsors-swiper
+          .swiper.sponsors-swiper(data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-section__nav-btn--prev" data-nav-next=".sponsors-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
             .swiper-wrapper
               +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
               +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organisers Association (ASTA)', 'assets/img/webp/sponsor2.webp')
@@ -103,7 +103,7 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.support-section__nav-btn.support-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.support-swiper
+          .swiper.support-swiper(data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".support-section__nav-btn--prev" data-nav-next=".support-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
             .swiper-wrapper
               +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
               +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organisers Association (ASTA)', 'assets/img/webp/sponsor2.webp')
@@ -155,7 +155,7 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.product-categories-section__nav-btn.product-categories-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.product-categories-swiper
+          .swiper.product-categories-swiper(data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".product-categories-section__nav-btn--prev" data-nav-next=".product-categories-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
             .swiper-wrapper
               +product-category-card('Building materials and products', 'assets/img/webp/categorie1.webp')
               +product-category-card('Ceramic and stone', 'assets/img/webp/categorie2.webp')
@@ -166,7 +166,7 @@ block content
 
   // Video 2 Section
   section.video-section
-    .container
+    .container 
       .row
         .col-12
           .video-section__wrapper
@@ -187,23 +187,32 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.photo-section__nav-btn.photo-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.photo-swiper
+          .swiper.photo-swiper.overflow-hidden(data-swiper data-slides-per-view="auto" data-space-between="20" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next")
             .swiper-wrapper
               .swiper-slide
-                .photo-section__main-image-wrapper
-                  img.photo-section__main-image(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy")
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;")
               .swiper-slide
-                .photo-section__image-wrapper
-                  img.photo-section__image(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy")
-                  .photo-section__overlay
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;")
               .swiper-slide
-                .photo-section__image-wrapper
-                  img.photo-section__image(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy")
-                  .photo-section__overlay
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;")
               .swiper-slide
-                .photo-section__image-wrapper
-                  img.photo-section__image(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy")
-                  .photo-section__overlay
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;")
+              .swiper-slide
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;")
+              .swiper-slide
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;")
+              .swiper-slide
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;")
+              .swiper-slide
+                .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;")
 
   // Testimonials Section
   include ../mixins/_testimonial-card
@@ -222,7 +231,7 @@ block content
       .testimonials-section__background
         img.testimonials-section__bg-image(src="assets/img/webp/testimonials-bg.webp" alt="" aria-hidden="true")
       .testimonials-section__overlay
-      .swiper.testimonials-swiper
+      .swiper.testimonials-swiper(data-swiper data-slides-per-view="3" data-space-between="20" data-loop="true" data-nav-prev=".testimonials-section__nav-btn--prev" data-nav-next=".testimonials-section__nav-btn--next" data-breakpoints='{"768":{"slidesPerView":2},"992":{"slidesPerView":3}}')
         .swiper-wrapper
           +testimonial-card('Cameron Williamson', 'Big Kahuna Burger Ltd.', 'https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.')
           +testimonial-card('Guy Hawkins', 'Abstergo Ltd.', 'https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&w=740&q=80', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.')

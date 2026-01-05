@@ -281,7 +281,7 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center sponsors-section__nav-btn sponsors-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper sponsors-swiper">
+              <div class="swiper sponsors-swiper" data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-section__nav-btn--prev" data-nav-next=".sponsors-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide">
                           <div class="sponsor-card">
@@ -343,7 +343,7 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center support-section__nav-btn support-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper support-swiper">
+              <div class="swiper support-swiper" data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".support-section__nav-btn--prev" data-nav-next=".support-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide">
                           <div class="sponsor-card">
@@ -456,7 +456,7 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center product-categories-section__nav-btn product-categories-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper product-categories-swiper">
+              <div class="swiper product-categories-swiper" data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".product-categories-section__nav-btn--prev" data-nav-next=".product-categories-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide">
                           <div class="product-category-card">
@@ -502,7 +502,7 @@
       </section>
       <!-- Video 2 Section-->
       <section class="video-section">
-        <div class="container">
+        <div class="container"> 
           <div class="row">
             <div class="col-12">
               <div class="video-section__wrapper"><img class="hero__video-image" src="assets/img/webp/video-bg.webp" alt="" aria-hidden="true">
@@ -525,25 +525,31 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center photo-section__nav-btn photo-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper photo-swiper">
+              <div class="swiper photo-swiper overflow-hidden" data-swiper data-slides-per-view="auto" data-space-between="20" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <div class="photo-section__main-image-wrapper"><img class="photo-section__main-image" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper"><img class="photo-section__image" src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy">
-                      <div class="photo-section__overlay"></div>
-                    </div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper"><img class="photo-section__image" src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy">
-                      <div class="photo-section__overlay"></div>
-                    </div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper"><img class="photo-section__image" src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy">
-                      <div class="photo-section__overlay"></div>
-                    </div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;"></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;"></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;"></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;"></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;"></div>
                   </div>
                 </div>
               </div>
@@ -569,7 +575,7 @@
         <div class="testimonials-section__content">
           <div class="testimonials-section__background"><img class="testimonials-section__bg-image" src="assets/img/webp/testimonials-bg.webp" alt="" aria-hidden="true"></div>
           <div class="testimonials-section__overlay"></div>
-          <div class="swiper testimonials-swiper">
+          <div class="swiper testimonials-swiper" data-swiper data-slides-per-view="3" data-space-between="20" data-loop="true" data-nav-prev=".testimonials-section__nav-btn--prev" data-nav-next=".testimonials-section__nav-btn--next" data-breakpoints="{&quot;768&quot;:{&quot;slidesPerView&quot;:2},&quot;992&quot;:{&quot;slidesPerView&quot;:3}}">
             <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <div class="testimonial-card">
