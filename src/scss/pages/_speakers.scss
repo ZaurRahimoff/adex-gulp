@@ -10,20 +10,6 @@
 .speakers-page {
   padding: 30px 0 60px;
 
-  // Page Title
-  &__title {
-    font-family: var(--font-family);
-    font-size: 48px; // H1 | Bold
-    font-weight: 700; // Bold
-    color: var(--primary); // #2B3B73
-    line-height: normal;
-    margin: 0;
-
-    @include md-down {
-      font-size: 32px;
-    }
-  }
-
   // Speakers List
   &__list {
     // margin-top: 30px;

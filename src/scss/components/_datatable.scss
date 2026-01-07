@@ -1,0 +1,306 @@
+// Универсальный компонент DataTables
+.datatable {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    background-color: var(--card-1);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+
+    @media (max-width: 1240px) {
+      padding: 16px;
+      gap: 8px;
+    }
+  }
+
+  &__header {
+    background-color: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 40px;
+    width: 100%;
+  }
+
+  &__title {
+    font-family: var(--font-base), var(--font-fallback);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-h4);
+    line-height: var(--line-height-tight);
+    color: var(--white);
+    margin: 0;
+  }
+
+  &__table {
+    display: none;
+  }
+
+  // Grid тип - карточки
+  &--grid {
+    &__card {
+      background-color: var(--card-2);
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+      font-family: var(--font-base), var(--font-fallback);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-tight);
+      color: var(--gray-1);
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      min-height: 60px;
+
+      @media (max-width: 1240px) {
+        width: 100%;
+        padding: 16px;
+      }
+    }
+  }
+
+  // Table тип - обычная таблица
+  &--table {
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 0;
+      margin-bottom: 20px;
+    }
+
+    &__cell {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 20px 40px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+      font-family: var(--font-base), var(--font-fallback);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-body1);
+      line-height: var(--line-height-tight);
+      color: var(--gray-1);
+      border: none;
+      width: 100%;
+
+      // Первая колонка (Company) - занимает больше места
+      &:first-child {
+        margin-right: 0;
+      }
+
+      // Вторая колонка (Country)
+      &:nth-child(2) {
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+        min-width: 200px;
+      }
+
+      // Третья колонка (Stand)
+      &:last-child {
+        margin-left: 0;
+        justify-content: flex-end;
+        min-width: 120px;
+      }
+    }
+  }
+
+  // Пагинация
+  &__pagination-wrapper {
+    width: 100%;
+    margin-top: auto;
+    order: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    
+    .dataTables_paginate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      position: relative;
+
+      .pagination {
+        display: flex;
+        gap: 2px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      // Номера страниц
+      .paginate_button {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: 'SF Pro Display', var(--font-fallback);
+        font-weight: var(--font-weight-medium);
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--primary);
+        background: transparent;
+        border: none;
+        padding: 12px;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+
+        // Неактивные номера страниц - прозрачный фон
+        &:not(.current):not(.previous):not(.next):not(.disabled) {
+          background: transparent;
+        }
+
+        &:hover:not(.disabled):not(.current) {
+          background-color: rgba(43, 59, 115, 0.1);
+          text-decoration: none;
+        }
+
+        // Активная страница
+        &.current {
+          background-color: var(--primary);
+          color: var(--white);
+          border-radius: 4px;
+        }
+
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          pointer-events: none;
+        }
+      }
+
+      // Кнопка "After" (Previous)
+      .paginate_button.previous {
+        background-color: var(--white);
+        border-radius: 8px;
+        padding: 8px 14px;
+        height: 40px;
+        min-width: auto;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: var(--font-base), var(--font-fallback);
+        font-weight: var(--font-weight-regular);
+        font-size: 14px;
+        line-height: normal;
+        color: var(--primary);
+        box-shadow: none;
+        position: absolute;
+        left: 0;
+        white-space: nowrap;
+
+        i {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        &:hover:not(.disabled) {
+          background-color: rgba(43, 59, 115, 0.1);
+        }
+
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          &:hover {
+            background-color: var(--white);
+          }
+        }
+      }
+
+      // Кнопка "Before" (Next)
+      .paginate_button.next {
+        background-color: var(--white);
+        border-radius: 8px;
+        padding: 8px 14px;
+        height: 40px;
+        min-width: auto;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: var(--font-base), var(--font-fallback);
+        font-weight: var(--font-weight-regular);
+        font-size: 14px;
+        line-height: normal;
+        color: var(--primary);
+        box-shadow: none;
+        position: absolute;
+        right: 0;
+        white-space: nowrap;
+
+        i {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        &:hover:not(.disabled) {
+          background-color: rgba(43, 59, 115, 0.1);
+        }
+
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          &:hover {
+            background-color: var(--white);
+          }
+        }
+      }
+    }
+  }
+
+  // DataTables стили
+  .dataTables_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .dataTables_length,
+    .dataTables_filter {
+      display: none;
+    }
+
+    .dataTables_info {
+      display: none;
+    }
+  }
+}
+

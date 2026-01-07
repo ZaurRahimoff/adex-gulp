@@ -2390,18 +2390,18 @@ main.main {
   font-weight: var(--font-weight-bold);
   color: var(--primary);
   line-height: var(--line-height-tight);
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 @media (max-width: 991px) {
   .page-title {
     font-size: var(--font-size-h2);
-    margin-bottom: 30px;
+    margin-bottom: 0;
   }
 }
 @media (max-width: 767px) {
   .page-title {
     font-size: var(--font-size-h3);
-    margin-bottom: 24px;
+    margin-bottom: 0;
   }
 }
 .page__spacing {
@@ -2505,6 +2505,267 @@ main.main {
   .page-content img {
     max-height: 250px;
   }
+}
+
+.datatable__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+  background-color: var(--card-1);
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+}
+@media (max-width: 1240px) {
+  .datatable__wrapper {
+    padding: 16px;
+    gap: 8px;
+  }
+}
+.datatable__header {
+  background-color: var(--primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 40px;
+  width: 100%;
+}
+.datatable__title {
+  font-family: var(--font-base), var(--font-fallback);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-tight);
+  color: var(--white);
+  margin: 0;
+}
+.datatable__table {
+  display: none;
+}
+.datatable--grid__card, .company__card {
+  background-color: var(--card-2);
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  font-family: var(--font-base), var(--font-fallback);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-tight);
+  color: var(--gray-1);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 60px;
+}
+@media (max-width: 1240px) {
+  .datatable--grid__card, .company__card {
+    width: 100%;
+    padding: 16px;
+  }
+}
+.datatable--table__row, .exhibitors__row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0;
+  margin-bottom: 20px;
+}
+.datatable--table__cell, .exhibitors__cell {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 20px 40px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  font-family: var(--font-base), var(--font-fallback);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body1);
+  line-height: var(--line-height-tight);
+  color: var(--gray-1);
+  border: none;
+  width: 100%;
+}
+.datatable--table__cell:first-child, .exhibitors__cell:first-child {
+  margin-right: 0;
+}
+.datatable--table__cell:nth-child(2), .exhibitors__cell:nth-child(2) {
+  margin-left: 0;
+  margin-right: 0;
+  justify-content: center;
+  min-width: 200px;
+}
+.datatable--table__cell:last-child, .exhibitors__cell:last-child {
+  margin-left: 0;
+  justify-content: flex-end;
+  min-width: 120px;
+}
+.datatable__pagination-wrapper {
+  width: 100%;
+  margin-top: auto;
+  order: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.datatable__pagination-wrapper .dataTables_paginate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.datatable__pagination-wrapper .dataTables_paginate .pagination {
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "SF Pro Display", var(--font-fallback);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--primary);
+  background: transparent;
+  border: none;
+  padding: 12px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button:not(.current):not(.previous):not(.next):not(.disabled) {
+  background: transparent;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button:hover:not(.disabled):not(.current) {
+  background-color: rgba(43, 59, 115, 0.1);
+  text-decoration: none;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.current {
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 4px;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.previous {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 8px 14px;
+  height: 40px;
+  min-width: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-base), var(--font-fallback);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  line-height: normal;
+  color: var(--primary);
+  box-shadow: none;
+  position: absolute;
+  left: 0;
+  white-space: nowrap;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.previous i {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.previous:hover:not(.disabled) {
+  background-color: rgba(43, 59, 115, 0.1);
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.previous.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.previous.disabled:hover {
+  background-color: var(--white);
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.next {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 8px 14px;
+  height: 40px;
+  min-width: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-base), var(--font-fallback);
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  line-height: normal;
+  color: var(--primary);
+  box-shadow: none;
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.next i {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.next:hover:not(.disabled) {
+  background-color: rgba(43, 59, 115, 0.1);
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.next.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.datatable__pagination-wrapper .dataTables_paginate .paginate_button.next.disabled:hover {
+  background-color: var(--white);
+}
+.datatable .dataTables_wrapper, .exhibitors .dataTables_wrapper, .company .dataTables_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.datatable .dataTables_wrapper .dataTables_length, .exhibitors .dataTables_wrapper .dataTables_length, .company .dataTables_wrapper .dataTables_length,
+.datatable .dataTables_wrapper .dataTables_filter,
+.exhibitors .dataTables_wrapper .dataTables_filter,
+.company .dataTables_wrapper .dataTables_filter {
+  display: none;
+}
+.datatable .dataTables_wrapper .dataTables_info, .exhibitors .dataTables_wrapper .dataTables_info, .company .dataTables_wrapper .dataTables_info {
+  display: none;
 }
 
 .hero {
@@ -4495,19 +4756,6 @@ main.main {
 .speakers-page {
   padding: 30px 0 60px;
 }
-.speakers-page__title {
-  font-family: var(--font-family);
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: normal;
-  margin: 0;
-}
-@media (max-width: 767px) {
-  .speakers-page__title {
-    font-size: 32px;
-  }
-}
 @media (max-width: 767px) {
   .speakers-page__list {
     margin-top: 0;
@@ -4758,143 +5006,46 @@ main.main {
   }
 }
 
-.company-page {
-  padding: 30px 0 60px;
-}
-.company-page__title {
-  font-family: var(--font-family);
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: normal;
-  margin: 0;
-}
-@media (max-width: 767px) {
-  .company-page__title {
-    font-size: 32px;
-  }
-}
-.company-page__container {
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 0;
-}
-.company-page__header {
-  background-color: #3A4064;
-  padding: 20px 40px;
-  border-radius: 8px 8px 0 0;
-}
-@media (max-width: 991px) {
-  .company-page__header {
-    padding: 16px 24px;
-  }
-}
-.company-page__header-title {
-  font-family: var(--font-family);
-  font-size: 24px;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin: 0;
-  line-height: normal;
-  text-align: center;
-}
-@media (max-width: 767px) {
-  .company-page__header-title {
-    font-size: 20px;
-  }
-}
-.company-page__list {
-  padding: 30px 40px;
-}
-@media (max-width: 991px) {
-  .company-page__list {
-    padding: 24px 16px;
-  }
-}
-.company-page__grid {
-  margin-bottom: 0;
-}
-.company-page__item {
-  background-color: #F6F8FB;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 20px;
-  font-family: var(--font-family);
-  font-size: 16px;
-  font-weight: var(--font-weight-regular);
-  color: #3A4064;
-  transition: all 0.3s ease;
-  min-height: 60px;
+.exhibitors__filter-group {
   display: flex;
-  align-items: center;
-  margin: 0;
+  flex-direction: column;
+  gap: 10px;
 }
-.company-page__item:hover {
-  background-color: #E8EBF0;
+.exhibitors__filter-label {
+  font-family: var(--font-base), var(--font-fallback);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-tight);
+  color: var(--primary);
 }
-@media (max-width: 767px) {
-  .company-page__item {
-    font-size: 14px;
-    padding: 12px 16px;
-    min-height: 56px;
-  }
+.exhibitors__filter-input {
+  position: relative;
 }
-.company-page__pagination {
-  padding: 30px 0 0;
-  margin-top: 0;
+.exhibitors__filter-input i.fa-search {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-3);
+  font-size: 15px;
+  z-index: 1;
 }
-@media (max-width: 991px) {
-  .company-page__pagination {
-    padding: 24px 0 0;
-  }
-}
-.company-page__pagination .pagination {
-  margin: 0;
-  justify-content: center;
-}
-.company-page__pagination .pagination .page-item .page-link {
-  font-family: var(--font-family);
-  font-size: 16px;
-  font-weight: var(--font-weight-regular);
-  color: #3A4064;
+.exhibitors__filter-input input.form-control {
+  padding-left: 45px;
+  background-color: var(--card-2);
   border: none;
   border-radius: 4px;
-  padding: 8px 16px;
-  margin: 0 4px;
-  transition: all 0.3s ease;
-  background: #F6F8FB;
+  height: 60px;
+  font-family: var(--font-base), var(--font-fallback);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-tight);
+  color: var(--gray-1);
 }
-.company-page__pagination .pagination .page-item .page-link:hover {
-  background-color: #E8EBF0;
-  color: #3A4064;
+.exhibitors__filter-input input.form-control::-moz-placeholder {
+  color: var(--gray-3);
 }
-@media (max-width: 767px) {
-  .company-page__pagination .pagination .page-item .page-link {
-    padding: 6px 12px;
-    font-size: 14px;
-    margin: 0 2px;
-  }
-}
-.company-page__pagination .pagination .page-item.active .page-link {
-  background-color: #3A4064;
-  color: #FFFFFF;
-}
-.company-page__pagination .pagination .page-item.disabled .page-link {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-  color: #3A4064;
-  background: #F6F8FB;
-}
-.company-page__container--datatable .company-datatable {
-  display: none !important;
-}
-.company-page__container--datatable .dataTables_wrapper .dataTables_length,
-.company-page__container--datatable .dataTables_wrapper .dataTables_filter,
-.company-page__container--datatable .dataTables_wrapper .dataTables_info,
-.company-page__container--datatable .dataTables_wrapper .dataTables_paginate {
-  display: none !important;
+.exhibitors__filter-input input.form-control::placeholder {
+  color: var(--gray-3);
 }
 /*# sourceMappingURL=main.css.map */

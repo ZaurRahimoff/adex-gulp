@@ -1,0 +1,58 @@
+// Exhibitors Page Styles
+.exhibitors {
+  // Используем общий компонент datatable
+  @extend .datatable;
+
+  &__filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__filter-label {
+    font-family: var(--font-base), var(--font-fallback);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-tight);
+    color: var(--primary);
+  }
+
+  &__filter-input {
+    position: relative;
+
+    i.fa-search {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-3);
+      font-size: 15px;
+      z-index: 1;
+    }
+
+    input.form-control {
+      padding-left: 45px;
+      background-color: var(--card-2);
+      border: none;
+      border-radius: 4px;
+      height: 60px;
+      font-family: var(--font-base), var(--font-fallback);
+      font-weight: var(--font-weight-regular);
+      font-size: var(--font-size-body);
+      line-height: var(--line-height-tight);
+      color: var(--gray-1);
+
+      &::placeholder {
+        color: var(--gray-3);
+      }
+    }
+  }
+
+  &__row {
+    @extend .datatable--table__row;
+  }
+
+  &__cell {
+    @extend .datatable--table__cell;
+  }
+}

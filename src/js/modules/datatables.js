@@ -1,302 +1,248 @@
 /**
  * DataTables Module - универсальная инициализация DataTables
- * Автоматически инициализирует все таблицы с классом .company-datatable и атрибутом data-datatable-init="true"
+ * Поддерживает настройку через data-атрибуты
  * 
- * Использование в HTML:
- * <table class="company-datatable" data-datatable-init="true">
- *   <thead>...</thead>
- *   <tbody>...</tbody>
- * </table>
+ * Использование:
+ * <table data-datatables-init="true" data-datatables-config='{"renderType":"grid","pageLength":10}'>
+ * 
+ * Data-атрибуты:
+ * - data-datatables-init="true" - включить инициализацию
+ * - data-datatables-config='{"renderType":"grid","pageLength":10}' - конфигурация JSON
  */
 
-// Дефолтная конфигурация для таблицы компаний
-const defaultConfig = {
-  language: {
-    search: '',
-    lengthMenu: '',
-    info: '',
-    infoEmpty: '',
-    infoFiltered: '',
-    paginate: {
-      first: '← After',
-      last: 'Before →',
-      next: 'Before →',
-      previous: '← After'
+/**
+ * Парсинг конфигурации из data-атрибутов
+ * @param {jQuery} $table - jQuery объект таблицы
+ * @returns {Object} Конфигурация DataTables
+ */
+function parseDataTableConfig($table) {
+  const defaultConfig = {
+    pageLength: 10,
+    lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
+    searching: false,
+    info: false,
+    lengthChange: false,
+    paging: true,
+    order: [],
+    autoWidth: false,
+    renderType: 'table', // 'grid' или 'table'
+    gridContainer: '[data-grid-container]', // селектор контейнера для grid
+    gridCardClass: 'datatable--grid__card', // класс карточки для grid
+    blockClass: 'datatable', // базовый класс блока
+    language: {
+      paginate: {
+        previous: 'After',
+        next: 'Before'
+      }
     },
-    emptyTable: '',
-    zeroRecords: ''
-  },
-  pageLength: 18, // Показывать 18 компаний на странице (9 строк в две колонки)
-  lengthMenu: [[18, 36, 54, -1], [18, 36, 54, 'Все']],
-  order: [], // Без сортировки по умолчанию
-  searching: false, // Отключаем поиск
-  paging: true,
-  info: false, // Скрываем информацию
-  autoWidth: false,
-  responsive: false,
-  dom: 'rtp', // Только таблица и пагинация (без поиска, длины, информации)
-  drawCallback: function() {
-    // Синхронизация визуальной сетки с DataTables
-    syncCompanyGrid(this);
-  }
-};
+    dom: 'rt<"datatable__pagination-wrapper"p>'
+  };
 
-/**
- * Синхронизация визуальной сетки компаний с DataTables
- */
-function syncCompanyGrid(dataTable) {
-  if (typeof jQuery === 'undefined') {
-    return;
-  }
-
-  const $table = jQuery(dataTable.table().node());
-  const $container = $table.closest('.company-page__container');
-  const $grid = $container.find('#companyGrid');
-  // Пагинация теперь находится под контейнером на том же уровне
-  let $pagination = $container.siblings('#companyPagination');
-  
-  // Если не найдена как sibling, ищем в родительском элементе (col-12)
-  if (!$pagination.length) {
-    $pagination = $container.closest('.col-12').find('#companyPagination');
-  }
-
-  if (!$grid.length || !$pagination.length) {
-    return;
-  }
-
-  // Получаем данные текущей страницы
-  const pageInfo = dataTable.page.info();
-  const currentPage = pageInfo.page;
-  const pageLength = pageInfo.length;
-  const start = pageInfo.start;
-  const end = pageInfo.end;
-  const total = pageInfo.recordsTotal;
-
-  // Получаем все компании из таблицы
-  const allCompanies = [];
-  dataTable.rows({ search: 'applied' }).every(function() {
-    const data = this.data();
-    allCompanies.push(data[0]); // Берем первую колонку
-  });
-
-  // Получаем компании для текущей страницы
-  const pageCompanies = allCompanies.slice(start, end);
-
-  // Заполняем сетку компаниями текущей страницы в две колонки
-  let html = '';
-  pageCompanies.forEach((company) => {
-    html += '<div class="col-12 col-md-6">';
-    html += `<div class="company-page__item">${company}</div>`;
-    html += '</div>';
-  });
-  
-  // Обновляем содержимое сетки
-  const $row = $grid.find('.row');
-  if ($row.length) {
-    $row.html(html);
-  } else {
-    $grid.html(`<div class="row g-3">${html}</div>`);
-  }
-
-  // Создаем кастомную пагинацию
-  createCustomPagination($pagination, pageInfo, dataTable);
-}
-
-/**
- * Создание кастомной пагинации
- */
-function createCustomPagination($pagination, pageInfo, dataTable) {
-  const currentPage = pageInfo.page;
-  const totalPages = pageInfo.pages;
-  const total = pageInfo.recordsTotal;
-
-  if (totalPages <= 1) {
-    $pagination.empty();
-    return;
-  }
-
-  let html = '<nav aria-label="Company pagination"><ul class="pagination justify-content-center mb-0">';
-
-  // Кнопка "← After" (Previous)
-  const prevDisabled = currentPage === 0 ? 'disabled' : '';
-  html += `<li class="page-item ${prevDisabled}">`;
-  html += `<a class="page-link" href="#" data-page="prev" aria-label="Previous">`;
-  html += '<span aria-hidden="true">← After</span>';
-  html += '</a></li>';
-
-  // Номера страниц
-  const maxVisible = 7;
-  let startPage = Math.max(0, currentPage - Math.floor(maxVisible / 2));
-  let endPage = Math.min(totalPages - 1, startPage + maxVisible - 1);
-
-  if (endPage - startPage < maxVisible - 1) {
-    startPage = Math.max(0, endPage - maxVisible + 1);
-  }
-
-  // Первая страница
-  if (startPage > 0) {
-    html += `<li class="page-item"><a class="page-link" href="#" data-page="0">1</a></li>`;
-    if (startPage > 1) {
-      html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
-    }
-  }
-
-  // Страницы
-  for (let i = startPage; i <= endPage; i++) {
-    const active = i === currentPage ? 'active' : '';
-    html += `<li class="page-item ${active}">`;
-    html += `<a class="page-link" href="#" data-page="${i}">${i + 1}</a>`;
-    html += '</li>';
-  }
-
-  // Последняя страница
-  if (endPage < totalPages - 1) {
-    if (endPage < totalPages - 2) {
-      html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
-    }
-    html += `<li class="page-item"><a class="page-link" href="#" data-page="${totalPages - 1}">${totalPages}</a></li>`;
-  }
-
-  // Кнопка "Before →" (Next)
-  const nextDisabled = currentPage >= totalPages - 1 ? 'disabled' : '';
-  html += `<li class="page-item ${nextDisabled}">`;
-  html += `<a class="page-link" href="#" data-page="next" aria-label="Next">`;
-  html += '<span aria-hidden="true">Before →</span>';
-  html += '</a></li>';
-
-  html += '</ul></nav>';
-
-  $pagination.html(html);
-
-  // Обработчики кликов
-  $pagination.find('a[data-page]').on('click', function(e) {
-    e.preventDefault();
-    const page = jQuery(this).attr('data-page');
-
-    if (page === 'prev') {
-      dataTable.page('previous').draw('page');
-    } else if (page === 'next') {
-      dataTable.page('next').draw('page');
-    } else {
-      dataTable.page(parseInt(page)).draw('page');
-    }
-  });
-}
-
-/**
- * Инициализация DataTables для элемента
- * @param {jQuery} $table - jQuery элемент table
- */
-function initDataTable($table) {
-  // Проверка наличия jQuery и DataTables
-  if (typeof jQuery === 'undefined' || typeof jQuery.fn.DataTable === 'undefined') {
-    console.warn('DataTables: jQuery или DataTables не загружены');
-    return null;
-  }
-
-  // Проверяем, не инициализирована ли уже таблица
-  if ($table.hasClass('dataTable')) {
-    return $table.DataTable();
-  }
-
-  // Получаем конфигурацию из data-атрибута или используем дефолтную
-  let config = { ...defaultConfig };
-  
-  const configAttr = $table.attr('data-datatable-config');
+  // Парсим конфигурацию из data-атрибута
+  const configAttr = $table.attr('data-datatables-config');
   if (configAttr) {
     try {
-      const customConfig = JSON.parse(configAttr);
-      config = { ...config, ...customConfig };
+      const customConfig = JSON.parse(configAttr.replace(/&quot;/g, '"'));
+      return { ...defaultConfig, ...customConfig };
     } catch (e) {
       console.warn('DataTables: Ошибка парсинга конфигурации', e);
     }
   }
 
-  // Инициализация DataTables
-  const dataTable = $table.DataTable(config);
-
-  // Применение кастомных классов
-  const $wrapper = $table.closest('.company-page__container');
-  if ($wrapper.length) {
-    $wrapper.addClass('company-page__container--datatable');
-    
-    // Скрываем стандартные элементы управления DataTables
-    $wrapper.find('.dataTables_length, .dataTables_filter, .dataTables_info').hide();
-    
-    // Первоначальная синхронизация сетки
-    syncCompanyGrid(dataTable);
+  // Парсим отдельные data-атрибуты
+  const config = { ...defaultConfig };
+  
+  if ($table.attr('data-page-length')) {
+    config.pageLength = parseInt($table.attr('data-page-length'), 10);
+  }
+  
+  if ($table.attr('data-render-type')) {
+    config.renderType = $table.attr('data-render-type');
+  }
+  
+  if ($table.attr('data-grid-container')) {
+    config.gridContainer = $table.attr('data-grid-container');
+  }
+  
+  if ($table.attr('data-grid-card-class')) {
+    config.gridCardClass = $table.attr('data-grid-card-class');
+  }
+  
+  if ($table.attr('data-block-class')) {
+    config.blockClass = $table.attr('data-block-class');
   }
 
-  return dataTable;
+  return config;
 }
 
 /**
- * Инициализация всех DataTables элементов на странице
+ * Инициализация DataTables для элемента
+ * @param {HTMLElement} tableElement - HTML элемент table
  */
-function initAllDataTables() {
+function initDataTable(tableElement) {
   // Проверка наличия jQuery и DataTables
   if (typeof jQuery === 'undefined' || typeof jQuery.fn.DataTable === 'undefined') {
     console.warn('DataTables: jQuery или DataTables не загружены');
     return;
   }
 
-  const $tables = jQuery('table[data-datatable-init="true"]');
+  const $table = jQuery(tableElement);
+
+  // Проверяем, не инициализирована ли уже таблица
+  if ($table.hasClass('dataTable')) {
+    return;
+  }
+
+  // Получаем конфигурацию
+  const config = parseDataTableConfig($table);
+  const $wrapper = $table.closest(`.${config.blockClass}__wrapper`);
+
+  // Настройка drawCallback в зависимости от типа рендеринга
+  if (config.renderType === 'grid') {
+    config.drawCallback = function(settings) {
+      const api = this.api();
+      const pageInfo = api.page.info();
+      
+      // Находим контейнер для grid
+      const $grid = $wrapper.find(config.gridContainer);
+      if ($grid.length === 0) return;
+      
+      // Очищаем grid
+      $grid.empty();
+      
+      // Получаем видимые строки текущей страницы
+      const visibleRows = api.rows({ page: 'current' }).nodes();
+      
+      // Создаем карточки для видимых строк
+      jQuery(visibleRows).each(function(rowIndex) {
+        const $row = jQuery(this);
+        const $firstCell = $row.find('td').first();
+        const cellText = $firstCell.text();
+        
+        // Определяем номер строки в сетке (каждая строка содержит 2 карточки)
+        const globalRowIndex = pageInfo.start + rowIndex;
+        const gridRowNumber = Math.floor(globalRowIndex / 2);
+        // Нечетные строки сетки (0, 2, 4...) -> серые, четные (1, 3, 5...) -> белые
+        const isOddGridRow = gridRowNumber % 2 === 0;
+        const bgColor = isOddGridRow ? 'var(--card-2)' : 'var(--white)';
+        
+        const $col = jQuery('<div>').addClass('col');
+        const $card = jQuery('<div>')
+          .addClass(config.gridCardClass)
+          .css('background-color', bgColor)
+          .text(cellText);
+        
+        $col.append($card);
+        $grid.append($col);
+      });
+    };
+  } else if (config.renderType === 'table') {
+    // Для table типа настраиваем отображение строк как grid
+    config.drawCallback = function(settings) {
+      const api = this.api();
+      const visibleRows = api.rows({ page: 'current' }).nodes();
+      
+      // Применяем стили к строкам таблицы
+      jQuery(visibleRows).each(function() {
+        const $row = jQuery(this);
+        $row.addClass(`${config.blockClass}--table__row`);
+        $row.find('td').each(function() {
+          const $cell = jQuery(this);
+          $cell.addClass(`${config.blockClass}--table__cell`);
+        });
+      });
+    };
+  }
+
+  // Инициализация DataTables
+  const dataTable = $table.DataTable(config);
   
-  $tables.each(function() {
-    const $table = jQuery(this);
-    initDataTable($table);
+  // Настройка пагинации
+  const $dataTablesWrapper = $table.closest('.dataTables_wrapper');
+  const $paginationContainer = $dataTablesWrapper.find(`.${config.blockClass}__pagination-wrapper`);
+  
+  if ($paginationContainer.length) {
+    // Перемещаем контейнер пагинации в конец wrapper'а
+    $paginationContainer.detach();
+    $wrapper.append($paginationContainer);
+  }
+  
+  // Функция для добавления иконок Font Awesome в кнопки пагинации
+  function addPaginationIcons() {
+    const $previousBtn = $paginationContainer.find('.paginate_button.previous');
+    const $nextBtn = $paginationContainer.find('.paginate_button.next');
+    
+    // Добавляем иконку в кнопку "After" (Previous)
+    if ($previousBtn.length && !$previousBtn.find('i').length) {
+      const $icon = jQuery('<i>').addClass('fas fa-arrow-left');
+      $previousBtn.prepend($icon);
+    }
+    
+    // Добавляем иконку в кнопку "Before" (Next)
+    if ($nextBtn.length && !$nextBtn.find('i').length) {
+      const $icon = jQuery('<i>').addClass('fas fa-arrow-right');
+      $nextBtn.append($icon);
+    }
+  }
+  
+  // Добавляем иконки после инициализации
+  addPaginationIcons();
+  
+  // Добавляем иконки при каждом обновлении пагинации
+  dataTable.on('draw', function() {
+    setTimeout(addPaginationIcons, 0);
+  });
+  
+  // Триггерим drawCallback вручную для начального рендеринга
+  if (config.renderType === 'grid') {
+    dataTable.draw();
+  }
+}
+
+/**
+ * Инициализация всех DataTables элементов
+ */
+function initAllDataTables() {
+  const tables = document.querySelectorAll('[data-datatables-init="true"]');
+  
+  tables.forEach(table => {
+    initDataTable(table);
   });
 }
 
 /**
- * Публичный API для ручной инициализации
+ * Настройка инициализации для динамически добавленных элементов
  */
-export const DataTablesInit = {
-  /**
-   * Инициализировать конкретную таблицу
-   * @param {string|jQuery} selector - селектор или jQuery элемент
-   * @param {object} customConfig - кастомная конфигурация
-   */
-  init: function(selector, customConfig = {}) {
-    if (typeof jQuery === 'undefined' || typeof jQuery.fn.DataTable === 'undefined') {
-      console.warn('DataTables: jQuery или DataTables не загружены');
-      return null;
-    }
+function setupDynamicInit() {
+  // Используем MutationObserver для отслеживания новых элементов
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === 1) { // Element node
+          // Проверяем, является ли узел таблицей
+          if (node.tagName === 'TABLE' && node.hasAttribute('data-datatables-init')) {
+            if (node.getAttribute('data-datatables-init') === 'true') {
+              initDataTable(node);
+            }
+          }
+          // Проверяем дочерние элементы
+          const tables = node.querySelectorAll && node.querySelectorAll('[data-datatables-init="true"]');
+          if (tables) {
+            tables.forEach(table => {
+              initDataTable(table);
+            });
+          }
+        }
+      });
+    });
+  });
 
-    const $table = typeof selector === 'string' ? jQuery(selector) : selector;
-    
-    if ($table.length && $table.is('table')) {
-      const config = { ...defaultConfig, ...customConfig };
-      return $table.DataTable(config);
-    }
-    
-    return null;
-  },
-
-  /**
-   * Уничтожить DataTables для таблицы
-   * @param {string|jQuery} selector - селектор или jQuery элемент
-   */
-  destroy: function(selector) {
-    if (typeof jQuery === 'undefined' || typeof jQuery.fn.DataTable === 'undefined') {
-      console.warn('DataTables: jQuery или DataTables не загружены');
-      return;
-    }
-
-    const $table = typeof selector === 'string' ? jQuery(selector) : selector;
-    
-    if ($table.length && $table.hasClass('dataTable')) {
-      $table.DataTable().destroy();
-    }
-  },
-
-  /**
-   * Переинициализировать все DataTables на странице
-   */
-  reinit: function() {
-    initAllDataTables();
-  }
-};
+  // Наблюдаем за изменениями в body
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+}
 
 /**
  * Инициализация DataTables модуля
@@ -312,6 +258,9 @@ export function initDataTablesModule() {
 
     // Инициализация всех DataTables элементов
     initAllDataTables();
+
+    // Настройка инициализации для динамически добавленных элементов
+    setupDynamicInit();
     
     return true;
   }
@@ -347,9 +296,4 @@ export function initDataTablesModule() {
     // Останавливаем проверку через 10 секунд
     setTimeout(() => clearInterval(checkInterval), 10000);
   }
-}
-
-// Экспортируем для глобального доступа (если нужно)
-if (typeof window !== 'undefined') {
-  window.DataTablesInit = DataTablesInit;
 }

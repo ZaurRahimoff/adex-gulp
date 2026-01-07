@@ -1,0 +1,119 @@
+extends ../layouts/default
+
+block variables
+  - var pageTitle = 'ADEX - Exhibitors List'
+  - var pageDescription = 'ADEX - Exhibitors list'
+  - var pageKeywords = 'ADEX, exhibitors, participants'
+  - var pageCanonical = 'https://adex.az/exhibitors'
+  - var pageOgImage = 'https://adex.az/og-image.jpg'
+  - var pageAuthor = 'ADEX'
+
+block content
+  // Breadcrumb Section
+  include ../mixins/_breadcrumb
+  +breadcrumb([
+    {text: 'Главная', href: 'index.html'},
+    {text: 'Список участников', href: null}
+  ])
+
+  // Main Content
+  section.exhibitors.page__spacing
+    .container
+      // Title Section
+      .row.align-items-center.mb-5.g-4
+        .col-12.col-md-6
+          h1.page-title Exhibitors List
+        .col-12.col-md-6.text-start.text-lg-end
+          .select2-wrapper.mb-4.mb-lg-0.d-inline-block(style="min-width: 120px;")
+            include ../mixins/_select2
+            +select2(
+              'year',
+              '2025',
+              [
+                {value: '2025', text: '2025'},
+                {value: '2024', text: '2024'}
+              ],
+              {placeholder: 'Выберите год', allowClear: false, minimumResultsForSearch: Infinity},
+              'primary',
+              false,
+              'year-select',
+              '',
+              ''
+            )
+      
+      // Filters Section
+      .row.mb-4.g-4
+        .col-12.col-lg-8
+          .exhibitors__filter-group
+            label.exhibitors__filter-label Company
+            .exhibitors__filter-input
+              i.fas.fa-search
+              input.form-control(type="text" placeholder="Search company")
+        .col-12.col-lg-4
+          .exhibitors__filter-group
+            label.exhibitors__filter-label Country
+            .exhibitors__filter-input
+              include ../mixins/_select2
+              +select2(
+                'country',
+                'Azerbaijan',
+                [
+                  {value: 'Azerbaijan', text: 'Azerbaijan'},
+                  {value: 'Turkey', text: 'Turkey'},
+                  {value: 'USA', text: 'USA'}
+                ],
+                {placeholder: 'Выберите страну', allowClear: false, minimumResultsForSearch: Infinity},
+                'default',
+                false,
+                'country-select',
+                '',
+                ''
+              )
+        .col-12
+          .exhibitors__filter-group
+            label.exhibitors__filter-label Product Categories
+            .exhibitors__filter-input
+              include ../mixins/_select2
+              +select2(
+                'categories',
+                '',
+                [
+                  {value: '', text: 'None'},
+                  {value: 'category1', text: 'Category 1'},
+                  {value: 'category2', text: 'Category 2'}
+                ],
+                {placeholder: 'None', allowClear: false, minimumResultsForSearch: Infinity},
+                'default',
+                false,
+                'categories-select',
+                '',
+                ''
+              )
+      
+      // DataTable Section
+      include ../mixins/_datatable
+      -
+        var exhibitorRows = [
+          {company: 'ASELSAN', country: 'Azerbaijan', stand: '6A523'},
+          {company: '"ATESHGAH" INSURANCE COMPANY', country: 'Azerbaijan', stand: '-'},
+          {company: '"AZERSILAH" DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '6A500'},
+          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '3A130'},
+          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '1A120'},
+          {company: '"Q-STP" LLC', country: 'Azerbaijan', stand: '2A230'},
+          {company: '3E AZERBAIJAN LLC', country: 'Azerbaijan', stand: '3A011'},
+          {company: 'ADT GROUP', country: 'Azerbaijan', stand: '4A012'},
+          {company: 'APA GROUP', country: 'Azerbaijan', stand: '-'},
+          {company: 'AZ TV', country: 'Azerbaijan', stand: '5M014'},
+          {company: 'ASELSAN', country: 'Azerbaijan', stand: '6A523'},
+          {company: '"ATESHGAH" INSURANCE COMPANY', country: 'Azerbaijan', stand: '-'},
+          {company: '"AZERSILAH" DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '6A500'},
+          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '3A130'},
+          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '1A120'},
+          {company: '"Q-STP" LLC', country: 'Azerbaijan', stand: '2A230'},
+          {company: '3E AZERBAIJAN LLC', country: 'Azerbaijan', stand: '3A011'},
+          {company: 'ADT GROUP', country: 'Azerbaijan', stand: '4A012'},
+          {company: 'APA GROUP', country: 'Azerbaijan', stand: '-'},
+          {company: 'AZ TV', country: 'Azerbaijan', stand: '5M014'}
+        ]
+      +datatable('table', 'Exhibitors', [{name: 'Company', dataAttr: 'company'}, {name: 'Country', dataAttr: 'country'}, {name: 'Stand', dataAttr: 'stand'}], exhibitorRows, 'exhibitors', {pageLength: 10, renderType: 'table'})
+

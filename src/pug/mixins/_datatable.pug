@@ -1,0 +1,47 @@
+//- Миксин для универсального компонента DataTables
+//- @param {String} type - Тип таблицы: 'grid' (карточки) или 'table' (обычная таблица)
+//- @param {String} title - Заголовок таблицы
+//- @param {Array} columns - Массив объектов с колонками {name: 'Column Name', dataAttr: 'data-column'}
+//- @param {Array} rows - Массив объектов с данными строк
+//- @param {String} blockClass - Базовый класс для блока (по умолчанию 'datatable')
+//- @param {Object} config - Дополнительные настройки для data-атрибутов
+
+mixin datatable(type = 'grid', title = '', columns = [], rows = [], blockClass = 'datatable', config = {})
+  - var defaultConfig = { pageLength: 10, renderType: type, gridContainer: '[data-grid-container]', gridCardClass: `${blockClass}__card`, blockClass: blockClass, ...config }
+  - var configJson = JSON.stringify(defaultConfig).replace(/"/g, '\'')
+  
+  section(class=`${blockClass} page__spacing`)
+    .container
+      .row.align-items-center.mb-5.g-4
+        .col-12.col-md-6
+          h2.page-title= title
+      .row
+        .col-12
+          div(class=`${blockClass}__wrapper`)
+            div(class=`${blockClass}__header`)
+              h2(class=`${blockClass}__title`)= title
+            
+            if type === 'grid'
+              table(class=`${blockClass}__table table` cellpadding="0" cellspacing="0" width="100%" data-datatables-init="true" data-datatables-config=configJson style="display: none;")
+                thead(class=`${blockClass}__thead`)
+                  tr
+                    each col in columns
+                      th(class=`${blockClass}__th`)= col.name
+                tbody(class=`${blockClass}__tbody`)
+                  each row, index in rows
+                    tr(class=`${blockClass}__row` data-row-index=index)
+                      each col in columns
+                        td(class=`${blockClass}__cell` data-col=col.dataAttr)= row[col.dataAttr] || ''
+              div(class=`row row-cols-1 row-cols-md-2 g-4` data-grid-container)
+            else
+              table(class=`${blockClass}__table table` cellpadding="0" cellspacing="0" width="100%" data-datatables-init="true" data-datatables-config=configJson)
+                thead(class=`${blockClass}__thead`)
+                  tr
+                    each col in columns
+                      th(class=`${blockClass}__th`)= col.name
+                tbody(class=`${blockClass}__tbody`)
+                  each row, index in rows
+                    tr(class=`${blockClass}__row` data-row-index=index)
+                      each col in columns
+                        td(class=`${blockClass}__cell` data-col=col.dataAttr)= row[col.dataAttr] || ''
+
