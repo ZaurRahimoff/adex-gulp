@@ -17,293 +17,462 @@ block content
   ])
 
   // Main Content
-  section.events-programme-page.page__spacing
+  section.ep.page__spacing
     .container
       // Page Title and Year Selector
       .row.align-items-center.mb-4
         .col-12.col-md-auto
           h1.page-title.mb-0 Events Programme
         .col-12.col-md-auto.ms-md-auto
-          .events-programme-page__year-selector
-            button.btn.events-programme-page__year-btn(type="button")
-              span 2024
-              i.fas.fa-caret-down.ms-2
+          .select2-wrapper.mt-4.mt-md-0(style="min-width: 120px;")
+            include ../mixins/_select2
+            +select2(
+              'year',
+              '2024',
+              [
+                {value: '2024', text: '2024'},
+                {value: '2025', text: '2025'},
+                {value: '2026', text: '2026'},
+                {value: '2027', text: '2027'}
+              ],
+              {placeholder: 'Выберите год', allowClear: false, minimumResultsForSearch: Infinity},
+              'primary',
+              'year-select',
+              '',
+              ''
+            )
 
       // Tabs
       .row.mb-4
         .col-12
-          .d-flex.flex-wrap.gap-3.events-programme-page__tabs
-            button.btn.events-programme-page__tab(type="button" data-type="press-conference")
-              | Press Conference
-            button.btn.events-programme-page__tab.events-programme-page__tab--active(type="button" data-type="day" data-day="1")
-              | 1 Day
-            button.btn.events-programme-page__tab(type="button" data-type="day" data-day="2")
-              | 2 Day
-            button.btn.events-programme-page__tab(type="button" data-type="day" data-day="3")
-              | 3 Day
+          ul.nav.nav-tabs.ep__tabs.justify-content-start.justify-content-md-center.mb-4(role="tablist")
+            li.nav-item(role="presentation")
+              button.nav-link.ep__tab#press-conference-tab(
+                data-bs-toggle="tab"
+                data-bs-target="#press-conference"
+                type="button"
+                role="tab"
+                aria-controls="press-conference"
+                aria-selected="false"
+                data-type="press-conference"
+              ) Press Conference
+            li.nav-item(role="presentation")
+              button.nav-link.ep__tab.active#day-1-tab(
+                data-bs-toggle="tab"
+                data-bs-target="#day-1"
+                type="button"
+                role="tab"
+                aria-controls="day-1"
+                aria-selected="true"
+                data-type="day"
+                data-day="1"
+              ) 1 Day
+            li.nav-item(role="presentation")
+              button.nav-link.ep__tab#day-2-tab(
+                data-bs-toggle="tab"
+                data-bs-target="#day-2"
+                type="button"
+                role="tab"
+                aria-controls="day-2"
+                aria-selected="false"
+                data-type="day"
+                data-day="2"
+              ) 2 Day
+            li.nav-item(role="presentation")
+              button.nav-link.ep__tab#day-3-tab(
+                data-bs-toggle="tab"
+                data-bs-target="#day-3"
+                type="button"
+                role="tab"
+                aria-controls="day-3"
+                aria-selected="false"
+                data-type="day"
+                data-day="3"
+              ) 3 Day
 
-      // Hero Image
-      .row.mb-4
-        .col-12
-          .events-programme-page__hero-image
-            img(src="assets/img/webp/events-programme-hero.webp" alt="Events Programme" loading="lazy")
+          // Hero Image
+          .row.d-none.d-md-flex
+            .col-12
+              .ep__hero-image
+                img(src="assets/img/webp/event-programme.webp" alt="Events Programme" loading="lazy")
 
-      // Day Header Block
-      .row.mb-4
-        .col-12
-          .events-programme-page__day-header
-            .row.align-items-center
-              .col-12.col-md-auto
-                .events-programme-page__day-info
-                  h2.events-programme-page__day-title 1 Day
-                  .events-programme-page__day-date
-                    i.fas.fa-calendar-alt
-                    span 24 September, Thursday
-              .col-12.col-md-auto.ms-md-auto
-                include ../mixins/_button
-                a.btn.btn--secondary.events-programme-page__download-btn(href="#")
-                  i.fas.fa-download.me-2
-                  | Download the programme
+          // Tab Content
+          .tab-content#events-programme
+            // Press Conference Tab
+            .tab-pane.fade#press-conference(role="tabpanel" aria-labelledby="press-conference-tab")
+              // Press Conference content will be here
+              .row.mb-4
+                .col-12
+                  .ep__events-list
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span TBA
+                      .ep__event-content
+                        p.ep__event-title Press Conference content will be added here
 
-      // Events List
-      .row.mb-4
-        .col-12
-          .events-programme-page__events-list
-            // Event Item 1
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 10:00 - 11:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Exhibition Official Opening Ceremony (Baku Expo Center, 1st hall)
-                p.events-programme-page__event-note
-                  | *only for participants, media and organisers
+            // Day 1 Tab
+            .tab-pane.fade.show.active#day-1(role="tabpanel" aria-labelledby="day-1-tab")
+              // Day Header Block
+              .row.mb-4
+                .col-12
+                  .ep__day-header
+                    .row.align-items-center
+                      .col-12.col-md-auto
+                        .ep__day-info
+                          h2.ep__day-title 1 Day
+                          .ep__day-date
+                            i.fal.fa-calendar-alt
+                            span 24 September, Thursday
+                      .col-12.col-md-auto.ms-md-auto
+                        include ../mixins/_button
+                        a.btn.btn--secondary.ep__download-btn(href="#")
+                          i.fal.fa-download.me-2
+                          | Download the programme
 
-            // Event Item 2
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 11:00 - 12:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Exhibition tour with the participation of official guests
+              // Events List
+              .row.mb-4
+                .col-12
+                  .ep__events-list
+                    // Event Item 1
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 10:00 - 11:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 10:00 - 11:00
+                        p.ep__event-title
+                          | Exhibition Official Opening Ceremony (Baku Expo Center, 1st hall)
+                        p.ep__event-note
+                          | *only for participants, media and organisers
 
-            // Event Item 3
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 14:00 - 18:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Exhibition working hours
+                    // Speaker 3
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Ramil Azizov
+                          p.ep__participant-role Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department
 
-            // Event Item 4
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 14:00 - 18:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Model from the military history museum of Azerbaijan: "The Path to Victory in Moments"
-                  br
-                  | (Baku Expo Center, 4th hall)
+                    // Event Item 2
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 11:00 - 12:00
+                      .ep__event-content
+                        p.ep__event-title
+                          | Exhibition tour with the participation of official guests
 
-            // Event Item 5
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 14:00 - 18:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | "National Military Industry Complex of the Future" startup project presentation
-                  br
-                  | (Baku Expo Center, foyer)
+                    // Event Item 3
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 14:00 - 18:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 14:00 - 18:00
+                        p.ep__event-title
+                          | Exhibition working hours
 
-            // Event Item 6
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 14:00 - 18:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | VR Zone
-                  br
-                  | (Baku Expo Center, 4th hall)
+                    // Event Item 4
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 14:00 - 18:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 14:00 - 18:00
+                        p.ep__event-title
+                          | Model from the military history museum of Azerbaijan: "The Path to Victory in Moments"
+                          br
+                          | (Baku Expo Center, 4th hall)
 
-            // Event Item 7
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 14:00 - 18:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Bilateral meetings between representatives of relevant Azerbaijani institutions and exhibitors
-                  br
-                  | *only for exhibitors and representatives of relevant Azerbaijani institutions
+                    // Event Item 5
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 14:00 - 18:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 14:00 - 18:00
+                        p.ep__event-title
+                          | "National Military Industry Complex of the Future" startup project presentation
+                          br
+                          | (Baku Expo Center, foyer)
 
-            // Event Item 8
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 14:00 - 18:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Bilateral meetings between representatives of international delegations and exhibitors
-                  br
-                  | *only for exhibitors and representatives of international delegations
+                    // Event Item 6
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 14:00 - 18:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 14:00 - 18:00
+                        p.ep__event-title
+                          | VR Zone
+                          br
+                          | (Baku Expo Center, 4th hall)
 
-            // Event Item 9 - Panel Discussion
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 15:00 - 16:00
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Panel discussion:
-                  br
-                  | The experience of the Republic of Azerbaijan in the reconstruction of liberated territories: the role of military industry, problems, and solutions
-                  br
-                  | (Baku Expo Center, 1st hall, presentation area)
+                    // Event Item 7
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 14:00 - 18:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 14:00 - 18:00
+                        p.ep__event-title
+                          | Bilateral meetings between representatives of relevant Azerbaijani institutions and exhibitors
+                          br
+                          | *only for exhibitors and representatives of relevant Azerbaijani institutions
 
-      // Moderator Section
-      .row.mb-4
-        .col-12
-          .events-programme-page__section-label Moderator
-          .events-programme-page__participant-card
-            .events-programme-page__participant-avatar
-              img(src="assets/img/webp/speaker1.webp" alt="Vugar Mustafayev" loading="lazy")
-            .events-programme-page__participant-info
-              h3.events-programme-page__participant-name Vugar Mustafayev
-              p.events-programme-page__participant-role Ministry of Defence Industry of the Republic of Azerbaijan Minister
+                    // Event Item 8
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 14:00 - 18:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 14:00 - 18:00
+                        p.ep__event-title
+                          | Bilateral meetings between representatives of international delegations and exhibitors
+                          br
+                          | *only for exhibitors and representatives of international delegations
 
-      // Speakers Section
-      .row.mb-4
-        .col-12
-          .events-programme-page__section-label Speakers
-          .events-programme-page__participants-list
-            // Speaker 1
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker2.webp" alt="Emil Hasanov" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Emil Hasanov
-                p.events-programme-page__participant-role Public Council under the Azerbaijan Mine Action Agency Deputy Chairman
+                    // Event Item 9 - Panel Discussion
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 15:00 - 16:00
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 15:00 - 16:00
+                        p.ep__event-title
+                          | Panel discussion:
+                          br
+                          | The experience of the Republic of Azerbaijan in the reconstruction of liberated territories: the role of military industry, problems, and solutions
+                          br
+                          | (Baku Expo Center, 1st hall, presentation area)
 
-            // Speaker 2
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker3.webp" alt="Eflatun Mamedov" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Eflatun Mamedov
-                p.events-programme-page__participant-role Ministry of Defense of the Republic of Azerbaijan Head of the Mine Action Department of the Main Directorate of Engineering Troops
-                ul.events-programme-page__participant-bio
-                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                  li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+              // Moderator Section
+              .row.mb-4
+                .col-12
+                  .ep__section-label Moderator
+                  .ep__participant-card
+                    .ep__participant-main
+                      .ep__participant-avatar
+                        img(src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Vugar Mustafayev" loading="lazy")
+                      .ep__participant-info
+                        h3.ep__participant-name Vugar Mustafayev
+                        p.ep__participant-role Ministry of Defence Industry of the Republic of Azerbaijan Minister
 
-      // More Events
-      .row.mb-4
-        .col-12
-          .events-programme-page__events-list
-            // Event Item 10
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 16:10 - 17:10
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Panel discussion:
-                  br
-                  | Automation and robotics in the defence sector: prospects and challenges
-                  br
-                  | (Baku Expo Center, 1st hall, presentation area)
+              // Speakers Section
+              .row.mb-4
+                .col-12
+                  .ep__section-label Speakers
+                  .ep__participants-list
+                    // Speaker 1
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Emil Hasanov" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Emil Hasanov
+                          p.ep__participant-role Public Council under the Azerbaijan Mine Action Agency Deputy Chairman
 
-      // More Speakers
-      .row.mb-4
-        .col-12
-          .events-programme-page__section-label Moderator
-          .events-programme-page__participant-card
-            .events-programme-page__participant-avatar
-              img(src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy")
-            .events-programme-page__participant-info
-              h3.events-programme-page__participant-name Vilayat Valiyev
-              p.events-programme-page__participant-role Azerbaijan Technical University Rector
+                    // Speaker 2
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Eflatun Mamedov" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Eflatun Mamedov
+                          p.ep__participant-role Ministry of Defense of the Republic of Azerbaijan Head of the Mine Action Department of the Main Directorate of Engineering Troops
+                      .ep__participant-bio
+                        ul
+                          li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                          li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                          li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                          li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                          li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
 
-      .row.mb-4
-        .col-12
-          .events-programme-page__section-label Speakers
-          .events-programme-page__participants-list
-            // Speaker 3
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Ramil Azizov
-                p.events-programme-page__participant-role Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department
+              // More Events
+              .row.mb-4
+                .col-12
+                  .ep__events-list
+                    // Event Item 10
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 16:10 - 17:10
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 16:10 - 17:10
+                        p.ep__event-title
+                          | Panel discussion:
+                          br
+                          | Automation and robotics in the defence sector: prospects and challenges
+                          br
+                          | (Baku Expo Center, 1st hall, presentation area)
 
-            // Speaker 4
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Khagani Abdullayev
-                p.events-programme-page__participant-role Azerbaijan National Aviation Academy Vice Rector for New Technologies
+              // More Speakers
+              .row.mb-4
+                .col-12
+                  .ep__section-label Moderator
+                  .ep__participant-card
+                    .ep__participant-main
+                      .ep__participant-avatar
+                        img(src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy")
+                      .ep__participant-info
+                        h3.ep__participant-name Vilayat Valiyev
+                        p.ep__participant-role Azerbaijan Technical University Rector
 
-            // Speaker 5
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Yasin Kaygusuz
-                p.events-programme-page__participant-role Turkish Aerospace Industries Product Manager for International Programs
+              .row.mb-4
+                .col-12
+                  .ep__section-label Speakers
+                  .ep__participants-list
+                    // Speaker 3
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Ramil Azizov
+                          p.ep__participant-role Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department
 
-            // Speaker 6
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Manafaddin Namazov
-                p.events-programme-page__participant-role Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity
+                    // Speaker 4
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Khagani Abdullayev
+                          p.ep__participant-role Azerbaijan National Aviation Academy Vice Rector for New Technologies
 
-            // Speaker 7
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Asad Rustamov
-                p.events-programme-page__participant-role National Defense University Deputy Rector of Military Management Institute
+                    // Speaker 5
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Yasin Kaygusuz
+                          p.ep__participant-role Turkish Aerospace Industries Product Manager for International Programs
 
-            // Speaker 8
-            .events-programme-page__participant-card
-              .events-programme-page__participant-avatar
-                img(src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy")
-              .events-programme-page__participant-info
-                h3.events-programme-page__participant-name Gunel Aliyeva
-                p.events-programme-page__participant-role Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department
+                    // Speaker 6
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Manafaddin Namazov
+                          p.ep__participant-role Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity
 
-      // Last Event
-      .row.mb-4
-        .col-12
-          .events-programme-page__events-list
-            // Event Item 11
-            .events-programme-page__event-item
-              .events-programme-page__event-time
-                i.fas.fa-clock
-                span 19:20 - 21:30
-              .events-programme-page__event-content
-                p.events-programme-page__event-title
-                  | Evening reception (Gulustan Palace)
-                  br
-                  | *buses will depart from Baku Expo Center to Gulustan Palace at 18:15 and from Gulustan Palace to Four Seasons Hotel Baku - Hilton Baku - Azadliq Square - The Ritz-Carlton, Baku at 21:45
-                  br
-                  | *only for exhibitors, invited guests and organisers
+                    // Speaker 7
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Asad Rustamov
+                          p.ep__participant-role National Defense University Deputy Rector of Military Management Institute
 
-      // Show All Button
-      .row
-        .col-12.text-center
-          include ../mixins/_button
-          +button("Show all", "primary", "button", "#", "default", null, "events-programme-page__show-all-btn")
+                    // Speaker 8
+                    .ep__participant-card
+                      .ep__participant-main
+                        .ep__participant-avatar
+                          img(src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy")
+                        .ep__participant-info
+                          h3.ep__participant-name Gunel Aliyeva
+                          p.ep__participant-role Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department
+
+              // Last Event
+              .row.mb-4
+                .col-12
+                  .ep__events-list
+                    // Event Item 11
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 19:20 - 21:30
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 19:20 - 21:30
+                        p.ep__event-title
+                          | Evening reception (Gulustan Palace)
+                          br
+                          | *buses will depart from Baku Expo Center to Gulustan Palace at 18:15 and from Gulustan Palace to Four Seasons Hotel Baku - Hilton Baku - Azadliq Square - The Ritz-Carlton, Baku at 21:45
+                          br
+                          | *only for exhibitors, invited guests and organisers
+
+              // Show All Button
+              .row.gy-4
+                .col-12.d-block.d-md-none
+                  a.btn.btn--primary-solid.ep__download-btn.py-3.px-4(href="#")
+                    i.fal.fa-download.me-2
+                    | Download the programme
+                .col-12.text-center.mx-auto
+                  include ../mixins/_button
+                  +button("Show all", "primary-solid", "button", "", "default", null, "ep__show-all-btn")
+
+            // Day 2 Tab
+            .tab-pane.fade#day-2(role="tabpanel" aria-labelledby="day-2-tab")
+              // Day 2 Header Block
+              .row.mb-4
+                .col-12
+                  .ep__day-header
+                    .row.align-items-center
+                      .col-12.col-md-auto
+                        .ep__day-info
+                          h2.ep__day-title 2 Day
+                          .ep__day-date
+                            i.fas.fa-calendar-alt
+                            span 25 September, Friday
+                      .col-12.col-md-auto.ms-md-auto
+                        include ../mixins/_button
+                        a.btn.btn--secondary.ep__download-btn(href="#")
+                          i.fas.fa-download.me-2
+                          | Download the programme
+
+              // Day 2 Events List
+              .row.mb-4
+                .col-12
+                  .ep__events-list
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span TBA
+                      .ep__event-content
+                        p.ep__event-title Day 2 content will be added here
+
+            // Day 3 Tab
+            .tab-pane.fade#day-3(role="tabpanel" aria-labelledby="day-3-tab")
+              // Day 3 Header Block
+              .row.mb-4
+                .col-12
+                  .ep__day-header
+                    .row.align-items-center
+                      .col-12.col-md-auto
+                        .ep__day-info
+                          h2.ep__day-title 3 Day
+                          .ep__day-date
+                            i.fas.fa-calendar-alt
+                            span 26 September, Saturday
+                      .col-12.col-md-auto.ms-md-auto
+                        include ../mixins/_button
+                        a.btn.btn--secondary.ep__download-btn(href="#")
+                          i.fas.fa-download.me-2
+                          | Download the programme
+
+              // Day 3 Events List
+              .row.mb-4
+                .col-12
+                  .ep__events-list
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span TBA
+                      .ep__event-content
+                        p.ep__event-title Day 3 content will be added here
 

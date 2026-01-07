@@ -72,6 +72,29 @@
     }
   }
 
+  &--primary-solid {
+    background-color: var(--primary);
+    border: none;
+    color: var(--white);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(43, 59, 115, 0.9);
+      color: var(--white);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(43, 59, 115, 0.85);
+      color: var(--white);
+    }
+
+    // Иконки внутри кнопки должны быть белыми
+    i,
+    &::after,
+    &::before {
+      color: var(--white);
+    }
+  }
+
   &--secondary {
     // Secondary = solid кнопки из navbar (белый фон, primary текст)
     background: var(--white);

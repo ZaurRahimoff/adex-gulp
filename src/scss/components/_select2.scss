@@ -1,0 +1,483 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+
+// ============================================
+// Select2 Component - универсальный компонент
+// ============================================
+
+// Базовые стили для Select2 контейнера
+.select2-container {
+  // width: 100% !important;
+
+  .select2-selection {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    line-height: normal;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background-color: var(--white);
+    min-height: 40px;
+    transition: var(--transition-base);
+
+    &:hover {
+      border-color: var(--primary);
+    }
+
+    &:focus,
+    &.select2-container--focus & {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.1);
+    }
+  }
+
+  .select2-selection__rendered {
+    padding: 8px 12px;
+    color: var(--gray-1);
+    line-height: normal;
+  }
+
+  .select2-selection__arrow {
+    height: 100%;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+
+    b {
+      border-color: var(--gray-2) transparent transparent transparent;
+      border-width: 5px 5px 0 5px;
+      margin-top: -2.5px;
+      margin-left: -5px;
+    }
+  }
+
+  // Открытое состояние
+  &.select2-container--open {
+    .select2-selection {
+      border-color: var(--primary);
+    }
+
+    .select2-selection__arrow {
+      b {
+        border-color: transparent transparent var(--gray-2) transparent;
+        border-width: 0 5px 5px 5px;
+        margin-top: -2.5px;
+      }
+    }
+  }
+
+  // Отключенное состояние
+  &.select2-container--disabled {
+    .select2-selection {
+      background-color: var(--card-2);
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  // Мультиселект - стили для тегов выбранных элементов
+  &.select2-container--default {
+    .select2-selection--multiple {
+      .select2-selection__rendered {
+        padding: 4px 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .select2-selection__choice {
+        background-color: var(--primary);
+        border: none;
+        border-radius: 6px;
+        padding: 4px 8px;
+        color: var(--white);
+        font-size: var(--font-size-body2);
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0;
+        line-height: normal;
+
+        .select2-selection__choice__display {
+          color: var(--white);
+        }
+
+        .select2-selection__choice__remove {
+          color: var(--white);
+          opacity: 0.8;
+          cursor: pointer;
+          margin-right: 0;
+          padding: 0;
+          width: 16px;
+          height: 16px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          background: transparent;
+          font-size: 14px;
+          line-height: 1;
+
+          &:hover {
+            opacity: 1;
+            color: var(--white);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// Варианты стилей Select2
+// ============================================
+
+// Default вариант использует базовые стили выше (белый фон, серая рамка)
+// Дополнительных переопределений не требуется
+
+// Primary вариант (синий фон, белый текст)
+.select2-container--primary {
+  .select2-selection {
+    background-color: var(--primary) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 10px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    font-family: var(--font-family) !important;
+    font-size: 20px !important; // H6 | Medium из дизайна Figma
+    font-weight: var(--font-weight-medium) !important; // 500
+    color: var(--white) !important;
+    transition: var(--transition-base) !important;
+
+    &:hover {
+      opacity: 0.9 !important;
+    }
+
+    .select2-selection__rendered {
+      color: var(--white) !important;
+      padding: 0 !important;
+      line-height: normal !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex: 0 0 auto !important; // Не растягивается, занимает только необходимое место
+    }
+
+    .select2-selection__arrow {
+      height: auto !important;
+      right: auto !important;
+      top: auto !important;
+      transform: none !important;
+      width: auto !important;
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex: 0 0 auto !important; // Не растягивается
+      margin: 0 !important;
+
+      // Скрываем стандартную стрелку Select2
+      b {
+        display: none !important;
+      }
+
+      // Добавляем Font Awesome иконку через ::after
+      &::after {
+        content: '\f0d7'; // Font Awesome 6 Pro Solid caret-down (из дизайна Figma)
+        font-family: 'Font Awesome 6 Pro', 'Font Awesome 7 Pro' !important;
+        font-weight: 900 !important; // Solid
+        font-size: 13px !important; // Размер из дизайна Figma
+        color: var(--white) !important;
+        line-height: 1 !important;
+        display: inline-block !important;
+      }
+    }
+  }
+
+  // Мультиселект для primary
+  .select2-selection--multiple {
+    .select2-selection__rendered {
+      padding: 4px 8px !important;
+      padding-right: 30px !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 4px !important;
+    }
+
+    .select2-selection__choice {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 4px !important;
+      padding: 4px 8px !important;
+      color: var(--white) !important;
+      font-size: var(--font-size-body2) !important;
+      font-weight: 500 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin: 0 !important;
+      line-height: normal !important;
+
+      .select2-selection__choice__display {
+        color: var(--white) !important;
+      }
+
+      .select2-selection__choice__remove {
+        color: var(--white) !important;
+        opacity: 0.8 !important;
+        cursor: pointer !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+        width: 16px !important;
+        height: 16px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: none !important;
+        background: transparent !important;
+        font-size: 14px !important;
+        line-height: 1 !important;
+
+        &:hover {
+          opacity: 1 !important;
+          color: var(--white) !important;
+        }
+      }
+    }
+  }
+
+  &.select2-container--open {
+    .select2-selection {
+      opacity: 0.9 !important;
+    }
+
+    .select2-selection__arrow {
+      &::after {
+        content: '\f0d8'; // Font Awesome 6 Pro Solid caret-up (при открытии)
+      }
+    }
+  }
+}
+
+// Secondary вариант (outline стиль - прозрачный фон, primary рамка)
+.select2-container--secondary {
+  .select2-selection {
+    background-color: transparent !important;
+    border: 1px solid var(--primary) !important;
+    border-radius: 4px !important;
+    padding: 10px 15px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-h6) !important;
+    font-weight: var(--font-weight-medium) !important;
+    color: var(--primary) !important;
+    transition: var(--transition-base) !important;
+
+    &:hover {
+      background-color: rgba(43, 59, 115, 0.05) !important;
+      border-color: var(--primary) !important;
+    }
+
+    .select2-selection__rendered {
+      color: var(--primary) !important;
+      padding: 0 !important;
+      padding-right: 30px !important;
+      line-height: normal !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    .select2-selection__arrow {
+      height: 100% !important;
+      right: 15px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 20px !important;
+
+      b {
+        border-color: var(--primary) transparent transparent transparent !important;
+        border-width: 5px 5px 0 5px !important;
+        margin-top: -2.5px !important;
+        margin-left: -5px !important;
+      }
+    }
+  }
+
+  // Мультиселект для secondary
+  .select2-selection--multiple {
+    .select2-selection__rendered {
+      padding: 4px 8px !important;
+      padding-right: 30px !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 4px !important;
+    }
+
+    .select2-selection__choice {
+      background-color: var(--primary) !important;
+      border: none !important;
+      border-radius: 6px !important;
+      padding: 4px 8px !important;
+      color: var(--white) !important;
+      font-size: var(--font-size-body2) !important;
+      font-weight: 500 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      margin: 0 !important;
+      line-height: normal !important;
+
+      .select2-selection__choice__display {
+        color: var(--white) !important;
+      }
+
+      .select2-selection__choice__remove {
+        color: var(--white) !important;
+        opacity: 0.8 !important;
+        cursor: pointer !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+        width: 16px !important;
+        height: 16px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: none !important;
+        background: transparent !important;
+        font-size: 14px !important;
+        line-height: 1 !important;
+
+        &:hover {
+          opacity: 1 !important;
+          color: var(--white) !important;
+        }
+      }
+    }
+  }
+
+  &.select2-container--open {
+    .select2-selection {
+      background-color: rgba(43, 59, 115, 0.05) !important;
+    }
+
+    .select2-selection__arrow {
+      b {
+        border-color: transparent transparent var(--primary) transparent !important;
+        border-width: 0 5px 5px 5px !important;
+        margin-top: -2.5px !important;
+      }
+    }
+  }
+}
+
+// ============================================
+// Выпадающий список
+// ============================================
+
+.select2-dropdown {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 5px;
+  border-radius: 4px;
+  z-index: 2;
+
+  .select2-results {
+    border-radius: 4px;
+    padding: 0;
+    // background-color: var(--white); 
+    overflow: hidden;
+
+    .select2-results__option {
+      padding: 10px 15px;
+      font-family: var(--font-family);
+      font-size: var(--font-size-body);
+      color: var(--gray-1);
+      transition: var(--transition-base);
+      cursor: pointer;
+
+      &--highlighted {
+        background-color: var(--card-2);
+        color: var(--primary);
+      }
+
+      &[aria-selected="true"] {
+        background-color: var(--primary);
+        color: var(--white);
+      }
+
+      &--disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .select2-results__message {
+      padding: 10px 15px;
+      color: var(--gray-3);
+      font-size: var(--font-size-body2);
+    }
+  }
+
+  .select2-search {
+    padding: 8px;
+
+    .select2-search__field {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: var(--font-family);
+      font-size: var(--font-size-body);
+
+      &:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.1);
+      }
+    }
+  }
+}
+
+// ============================================
+// Responsive
+// ============================================
+
+@include md-down {
+  .select2-container {
+    .select2-selection {
+      min-height: 36px;
+      font-size: var(--font-size-body2);
+    }
+
+    .select2-selection__rendered {
+      padding: 6px 10px;
+    }
+  }
+
+  // Primary вариант на мобильных
+  .select2-container--primary {
+    .select2-selection {
+      min-height: 36px !important;
+      font-size: var(--font-size-body2) !important;
+      padding: 8px 12px !important;
+    }
+  }
+
+  // Secondary вариант на мобильных
+  .select2-container--secondary {
+    .select2-selection {
+      min-height: 36px !important;
+      font-size: var(--font-size-body2) !important;
+      padding: 8px 12px !important;
+    }
+  }
+}

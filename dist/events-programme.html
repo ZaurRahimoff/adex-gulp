@@ -80,6 +80,8 @@
     <link rel="stylesheet" href="assets/plugins/youtube-lite/lite-yt-embed.css">
     <!-- Fancybox CSS-->
     <link rel="stylesheet" href="assets/plugins/fancybox/fancybox.css">
+    <!-- Select2 CSS-->
+    <link rel="stylesheet" href="assets/plugins/select2/select2.min.css">
     <!-- Custom Styles-->
     <link rel="stylesheet" href="assets/css/normal.min.css">
   </head>
@@ -216,7 +218,7 @@
               </div>
             </section>
       <!-- Main Content-->
-      <section class="events-programme-page page__spacing">
+      <section class="ep page__spacing">
         <div class="container">
           <!-- Page Title and Year Selector-->
           <div class="row align-items-center mb-4">
@@ -224,259 +226,407 @@
               <h1 class="page-title mb-0">Events Programme</h1>
             </div>
             <div class="col-12 col-md-auto ms-md-auto">
-              <div class="events-programme-page__year-selector">
-                <button class="btn events-programme-page__year-btn" type="button"><span>2024</span><i class="fas fa-caret-down ms-2"></i></button>
+              <div class="select2-wrapper mt-4 mt-md-0" style="min-width: 120px;">
+                                <div class="select2-wrapper" data-select2-config="{&amp;quot;placeholder&amp;quot;:&amp;quot;Выберите год&amp;quot;,&amp;quot;allowClear&amp;quot;:false,&amp;quot;minimumResultsForSearch&amp;quot;:null,&amp;quot;width&amp;quot;:&amp;quot;100%&amp;quot;}">
+                                  <select class="select2 select2 " id="select2-year-f6be3t8de" name="year" data-select2-init="true" data-select2-variant="primary">
+                                    <option value="2024" selected>2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                  </select>
+                                </div>
               </div>
             </div>
           </div>
           <!-- Tabs-->
           <div class="row mb-4">
             <div class="col-12">
-              <div class="d-flex flex-wrap gap-3 events-programme-page__tabs">
-                <button class="btn events-programme-page__tab" type="button" data-type="press-conference">Press Conference</button>
-                <button class="btn events-programme-page__tab events-programme-page__tab--active" type="button" data-type="day" data-day="1">1 Day</button>
-                <button class="btn events-programme-page__tab" type="button" data-type="day" data-day="2">2 Day</button>
-                <button class="btn events-programme-page__tab" type="button" data-type="day" data-day="3">3 Day</button>
+              <ul class="nav nav-tabs ep__tabs justify-content-start justify-content-md-center mb-4" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link ep__tab" id="press-conference-tab" data-bs-toggle="tab" data-bs-target="#press-conference" type="button" role="tab" aria-controls="press-conference" aria-selected="false" data-type="press-conference">Press Conference</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link ep__tab active" id="day-1-tab" data-bs-toggle="tab" data-bs-target="#day-1" type="button" role="tab" aria-controls="day-1" aria-selected="true" data-type="day" data-day="1">1 Day</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link ep__tab" id="day-2-tab" data-bs-toggle="tab" data-bs-target="#day-2" type="button" role="tab" aria-controls="day-2" aria-selected="false" data-type="day" data-day="2">2 Day</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link ep__tab" id="day-3-tab" data-bs-toggle="tab" data-bs-target="#day-3" type="button" role="tab" aria-controls="day-3" aria-selected="false" data-type="day" data-day="3">3 Day</button>
+                </li>
+              </ul>
+              <!-- Hero Image-->
+              <div class="row d-none d-md-flex">
+                <div class="col-12">
+                  <div class="ep__hero-image"><img src="assets/img/webp/event-programme.webp" alt="Events Programme" loading="lazy"></div>
+                </div>
               </div>
-            </div>
-          </div>
-          <!-- Hero Image-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__hero-image"><img src="assets/img/webp/events-programme-hero.webp" alt="Events Programme" loading="lazy"></div>
-            </div>
-          </div>
-          <!-- Day Header Block-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__day-header">
-                <div class="row align-items-center">
-                  <div class="col-12 col-md-auto">
-                    <div class="events-programme-page__day-info">
-                      <h2 class="events-programme-page__day-title">1 Day</h2>
-                      <div class="events-programme-page__day-date"><i class="fas fa-calendar-alt"></i><span>24 September, Thursday</span></div>
+              <!-- Tab Content-->
+              <div class="tab-content" id="events-programme">
+                <!-- Press Conference Tab-->
+                <div class="tab-pane fade" id="press-conference" role="tabpanel" aria-labelledby="press-conference-tab">
+                  <!-- Press Conference content will be here-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__events-list">
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>TBA</span></div>
+                          <div class="ep__event-content">
+                            <p class="ep__event-title">Press Conference content will be added here</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-12 col-md-auto ms-md-auto"><a class="btn btn--secondary events-programme-page__download-btn" href="#"><i class="fas fa-download me-2"></i>Download the programme</a>
+                </div>
+                <!-- Day 1 Tab-->
+                <div class="tab-pane fade show active" id="day-1" role="tabpanel" aria-labelledby="day-1-tab">
+                  <!-- Day Header Block-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__day-header">
+                        <div class="row align-items-center">
+                          <div class="col-12 col-md-auto">
+                            <div class="ep__day-info">
+                              <h2 class="ep__day-title">1 Day</h2>
+                              <div class="ep__day-date"><i class="fal fa-calendar-alt"></i><span>24 September, Thursday</span></div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-auto ms-md-auto"><a class="btn btn--secondary ep__download-btn" href="#"><i class="fal fa-download me-2"></i>Download the programme</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Events List-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__events-list">
+                        <!-- Event Item 1-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>10:00 - 11:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>10:00 - 11:00</span></div>
+                            <p class="ep__event-title">Exhibition Official Opening Ceremony (Baku Expo Center, 1st hall)</p>
+                            <p class="ep__event-note">*only for participants, media and organisers</p>
+                          </div>
+                        </div>
+                        <!-- Speaker 3-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Ramil Azizov</h3>
+                              <p class="ep__participant-role">Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Event Item 2-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>11:00 - 12:00</span></div>
+                          <div class="ep__event-content">
+                            <p class="ep__event-title">Exhibition tour with the participation of official guests</p>
+                          </div>
+                        </div>
+                        <!-- Event Item 3-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>14:00 - 18:00</span></div>
+                            <p class="ep__event-title">Exhibition working hours</p>
+                          </div>
+                        </div>
+                        <!-- Event Item 4-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>14:00 - 18:00</span></div>
+                            <p class="ep__event-title">Model from the military history museum of Azerbaijan: "The Path to Victory in Moments"<br>(Baku Expo Center, 4th hall)</p>
+                          </div>
+                        </div>
+                        <!-- Event Item 5-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>14:00 - 18:00</span></div>
+                            <p class="ep__event-title">"National Military Industry Complex of the Future" startup project presentation<br>(Baku Expo Center, foyer)</p>
+                          </div>
+                        </div>
+                        <!-- Event Item 6-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>14:00 - 18:00</span></div>
+                            <p class="ep__event-title">VR Zone<br>(Baku Expo Center, 4th hall)</p>
+                          </div>
+                        </div>
+                        <!-- Event Item 7-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>14:00 - 18:00</span></div>
+                            <p class="ep__event-title">Bilateral meetings between representatives of relevant Azerbaijani institutions and exhibitors<br>*only for exhibitors and representatives of relevant Azerbaijani institutions</p>
+                          </div>
+                        </div>
+                        <!-- Event Item 8-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>14:00 - 18:00</span></div>
+                            <p class="ep__event-title">Bilateral meetings between representatives of international delegations and exhibitors<br>*only for exhibitors and representatives of international delegations</p>
+                          </div>
+                        </div>
+                        <!-- Event Item 9 - Panel Discussion-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>15:00 - 16:00</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>15:00 - 16:00</span></div>
+                            <p class="ep__event-title">Panel discussion:<br>The experience of the Republic of Azerbaijan in the reconstruction of liberated territories: the role of military industry, problems, and solutions<br>(Baku Expo Center, 1st hall, presentation area)</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Moderator Section-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__section-label">Moderator</div>
+                      <div class="ep__participant-card">
+                        <div class="ep__participant-main">
+                          <div class="ep__participant-avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Vugar Mustafayev" loading="lazy"></div>
+                          <div class="ep__participant-info">
+                            <h3 class="ep__participant-name">Vugar Mustafayev</h3>
+                            <p class="ep__participant-role">Ministry of Defence Industry of the Republic of Azerbaijan Minister</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Speakers Section-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__section-label">Speakers</div>
+                      <div class="ep__participants-list">
+                        <!-- Speaker 1-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Emil Hasanov" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Emil Hasanov</h3>
+                              <p class="ep__participant-role">Public Council under the Azerbaijan Mine Action Agency Deputy Chairman</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Speaker 2-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Eflatun Mamedov" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Eflatun Mamedov</h3>
+                              <p class="ep__participant-role">Ministry of Defense of the Republic of Azerbaijan Head of the Mine Action Department of the Main Directorate of Engineering Troops</p>
+                            </div>
+                          </div>
+                          <div class="ep__participant-bio">
+                            <ul>
+                              <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
+                              <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
+                              <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
+                              <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
+                              <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- More Events-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__events-list">
+                        <!-- Event Item 10-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>16:10 - 17:10</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>16:10 - 17:10</span></div>
+                            <p class="ep__event-title">Panel discussion:<br>Automation and robotics in the defence sector: prospects and challenges<br>(Baku Expo Center, 1st hall, presentation area)</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- More Speakers-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__section-label">Moderator</div>
+                      <div class="ep__participant-card">
+                        <div class="ep__participant-main">
+                          <div class="ep__participant-avatar"><img src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy"></div>
+                          <div class="ep__participant-info">
+                            <h3 class="ep__participant-name">Vilayat Valiyev</h3>
+                            <p class="ep__participant-role">Azerbaijan Technical University Rector</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__section-label">Speakers</div>
+                      <div class="ep__participants-list">
+                        <!-- Speaker 3-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Ramil Azizov</h3>
+                              <p class="ep__participant-role">Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Speaker 4-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Khagani Abdullayev</h3>
+                              <p class="ep__participant-role">Azerbaijan National Aviation Academy Vice Rector for New Technologies</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Speaker 5-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Yasin Kaygusuz</h3>
+                              <p class="ep__participant-role">Turkish Aerospace Industries Product Manager for International Programs</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Speaker 6-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Manafaddin Namazov</h3>
+                              <p class="ep__participant-role">Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Speaker 7-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Asad Rustamov</h3>
+                              <p class="ep__participant-role">National Defense University Deputy Rector of Military Management Institute</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Speaker 8-->
+                        <div class="ep__participant-card">
+                          <div class="ep__participant-main">
+                            <div class="ep__participant-avatar"><img src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy"></div>
+                            <div class="ep__participant-info">
+                              <h3 class="ep__participant-name">Gunel Aliyeva</h3>
+                              <p class="ep__participant-role">Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Last Event-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__events-list">
+                        <!-- Event Item 11-->
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>19:20 - 21:30</span></div>
+                          <div class="ep__event-content">
+                            <div class="ep__event-time-mobile"><span>19:20 - 21:30</span></div>
+                            <p class="ep__event-title">Evening reception (Gulustan Palace)<br>*buses will depart from Baku Expo Center to Gulustan Palace at 18:15 and from Gulustan Palace to Four Seasons Hotel Baku - Hilton Baku - Azadliq Square - The Ritz-Carlton, Baku at 21:45<br>*only for exhibitors, invited guests and organisers</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Show All Button-->
+                  <div class="row gy-4">
+                    <div class="col-12 d-block d-md-none"><a class="btn btn--primary-solid ep__download-btn py-3 px-4" href="#"><i class="fal fa-download me-2"></i>Download the programme</a></div>
+                    <div class="col-12 text-center mx-auto">
+                                            <button class="btn btn--primary-solid ep__show-all-btn" type="button">Show all
+                                            </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Day 2 Tab-->
+                <div class="tab-pane fade" id="day-2" role="tabpanel" aria-labelledby="day-2-tab">
+                  <!-- Day 2 Header Block-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__day-header">
+                        <div class="row align-items-center">
+                          <div class="col-12 col-md-auto">
+                            <div class="ep__day-info">
+                              <h2 class="ep__day-title">2 Day</h2>
+                              <div class="ep__day-date"><i class="fas fa-calendar-alt"></i><span>25 September, Friday</span></div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-auto ms-md-auto"><a class="btn btn--secondary ep__download-btn" href="#"><i class="fas fa-download me-2"></i>Download the programme</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Day 2 Events List-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__events-list">
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>TBA</span></div>
+                          <div class="ep__event-content">
+                            <p class="ep__event-title">Day 2 content will be added here</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Day 3 Tab-->
+                <div class="tab-pane fade" id="day-3" role="tabpanel" aria-labelledby="day-3-tab">
+                  <!-- Day 3 Header Block-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__day-header">
+                        <div class="row align-items-center">
+                          <div class="col-12 col-md-auto">
+                            <div class="ep__day-info">
+                              <h2 class="ep__day-title">3 Day</h2>
+                              <div class="ep__day-date"><i class="fas fa-calendar-alt"></i><span>26 September, Saturday</span></div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-auto ms-md-auto"><a class="btn btn--secondary ep__download-btn" href="#"><i class="fas fa-download me-2"></i>Download the programme</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Day 3 Events List-->
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="ep__events-list">
+                        <div class="ep__event-item">
+                          <div class="ep__event-time"><i class="fas fa-clock"></i><span>TBA</span></div>
+                          <div class="ep__event-content">
+                            <p class="ep__event-title">Day 3 content will be added here</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- Events List-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__events-list">
-                <!-- Event Item 1-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>10:00 - 11:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Exhibition Official Opening Ceremony (Baku Expo Center, 1st hall)</p>
-                    <p class="events-programme-page__event-note">*only for participants, media and organisers</p>
-                  </div>
-                </div>
-                <!-- Event Item 2-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>11:00 - 12:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Exhibition tour with the participation of official guests</p>
-                  </div>
-                </div>
-                <!-- Event Item 3-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Exhibition working hours</p>
-                  </div>
-                </div>
-                <!-- Event Item 4-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Model from the military history museum of Azerbaijan: "The Path to Victory in Moments"<br>(Baku Expo Center, 4th hall)</p>
-                  </div>
-                </div>
-                <!-- Event Item 5-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">"National Military Industry Complex of the Future" startup project presentation<br>(Baku Expo Center, foyer)</p>
-                  </div>
-                </div>
-                <!-- Event Item 6-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">VR Zone<br>(Baku Expo Center, 4th hall)</p>
-                  </div>
-                </div>
-                <!-- Event Item 7-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Bilateral meetings between representatives of relevant Azerbaijani institutions and exhibitors<br>*only for exhibitors and representatives of relevant Azerbaijani institutions</p>
-                  </div>
-                </div>
-                <!-- Event Item 8-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>14:00 - 18:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Bilateral meetings between representatives of international delegations and exhibitors<br>*only for exhibitors and representatives of international delegations</p>
-                  </div>
-                </div>
-                <!-- Event Item 9 - Panel Discussion-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>15:00 - 16:00</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Panel discussion:<br>The experience of the Republic of Azerbaijan in the reconstruction of liberated territories: the role of military industry, problems, and solutions<br>(Baku Expo Center, 1st hall, presentation area)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Moderator Section-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__section-label">Moderator</div>
-              <div class="events-programme-page__participant-card">
-                <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker1.webp" alt="Vugar Mustafayev" loading="lazy"></div>
-                <div class="events-programme-page__participant-info">
-                  <h3 class="events-programme-page__participant-name">Vugar Mustafayev</h3>
-                  <p class="events-programme-page__participant-role">Ministry of Defence Industry of the Republic of Azerbaijan Minister</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Speakers Section-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__section-label">Speakers</div>
-              <div class="events-programme-page__participants-list">
-                <!-- Speaker 1-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker2.webp" alt="Emil Hasanov" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Emil Hasanov</h3>
-                    <p class="events-programme-page__participant-role">Public Council under the Azerbaijan Mine Action Agency Deputy Chairman</p>
-                  </div>
-                </div>
-                <!-- Speaker 2-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker3.webp" alt="Eflatun Mamedov" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Eflatun Mamedov</h3>
-                    <p class="events-programme-page__participant-role">Ministry of Defense of the Republic of Azerbaijan Head of the Mine Action Department of the Main Directorate of Engineering Troops</p>
-                    <ul class="events-programme-page__participant-bio">
-                      <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
-                      <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
-                      <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
-                      <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
-                      <li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- More Events-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__events-list">
-                <!-- Event Item 10-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>16:10 - 17:10</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Panel discussion:<br>Automation and robotics in the defence sector: prospects and challenges<br>(Baku Expo Center, 1st hall, presentation area)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- More Speakers-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__section-label">Moderator</div>
-              <div class="events-programme-page__participant-card">
-                <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy"></div>
-                <div class="events-programme-page__participant-info">
-                  <h3 class="events-programme-page__participant-name">Vilayat Valiyev</h3>
-                  <p class="events-programme-page__participant-role">Azerbaijan Technical University Rector</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__section-label">Speakers</div>
-              <div class="events-programme-page__participants-list">
-                <!-- Speaker 3-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Ramil Azizov</h3>
-                    <p class="events-programme-page__participant-role">Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department</p>
-                  </div>
-                </div>
-                <!-- Speaker 4-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Khagani Abdullayev</h3>
-                    <p class="events-programme-page__participant-role">Azerbaijan National Aviation Academy Vice Rector for New Technologies</p>
-                  </div>
-                </div>
-                <!-- Speaker 5-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Yasin Kaygusuz</h3>
-                    <p class="events-programme-page__participant-role">Turkish Aerospace Industries Product Manager for International Programs</p>
-                  </div>
-                </div>
-                <!-- Speaker 6-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Manafaddin Namazov</h3>
-                    <p class="events-programme-page__participant-role">Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity</p>
-                  </div>
-                </div>
-                <!-- Speaker 7-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Asad Rustamov</h3>
-                    <p class="events-programme-page__participant-role">National Defense University Deputy Rector of Military Management Institute</p>
-                  </div>
-                </div>
-                <!-- Speaker 8-->
-                <div class="events-programme-page__participant-card">
-                  <div class="events-programme-page__participant-avatar"><img src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy"></div>
-                  <div class="events-programme-page__participant-info">
-                    <h3 class="events-programme-page__participant-name">Gunel Aliyeva</h3>
-                    <p class="events-programme-page__participant-role">Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Last Event-->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="events-programme-page__events-list">
-                <!-- Event Item 11-->
-                <div class="events-programme-page__event-item">
-                  <div class="events-programme-page__event-time"><i class="fas fa-clock"></i><span>19:20 - 21:30</span></div>
-                  <div class="events-programme-page__event-content">
-                    <p class="events-programme-page__event-title">Evening reception (Gulustan Palace)<br>*buses will depart from Baku Expo Center to Gulustan Palace at 18:15 and from Gulustan Palace to Four Seasons Hotel Baku - Hilton Baku - Azadliq Square - The Ritz-Carlton, Baku at 21:45<br>*only for exhibitors, invited guests and organisers</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Show All Button-->
-          <div class="row">
-            <div class="col-12 text-center"><a class="btn btn--primary events-programme-page__show-all-btn" href="#" role="button">Show all</a>
             </div>
           </div>
         </div>
@@ -545,8 +695,10 @@
     <script src="assets/plugins/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- Swiper JS-->
     <script src="assets/plugins/swiper/swiper-bundle.min.js"></script>
-    <!-- jQuery (required for DataTables)-->
+    <!-- jQuery (required for DataTables and Select2)-->
     <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Select2 JS-->
+    <script src="assets/plugins/select2/select2.min.js"></script>
     <!-- DataTables JS-->
     <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap5.min.js"></script>

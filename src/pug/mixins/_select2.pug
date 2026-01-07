@@ -1,0 +1,57 @@
+//- Select2 Mixin - универсальный компонент для Select2
+//- Usage (single select):
+//-   +select2('year', '2024', [
+//-     {value: '2024', text: '2024'},
+//-     {value: '2025', text: '2025'}
+//-   ], {placeholder: 'Выберите год'}, 'default', false)
+//-
+//- Usage (multiple select):
+//-   +select2('categories', ['cat1', 'cat2'], [
+//-     {value: 'cat1', text: 'Category 1'},
+//-     {value: 'cat2', text: 'Category 2'}
+//-   ], {placeholder: 'Выберите категории'}, 'default', true)
+//-
+//- Parameters:
+//-   name - имя поля (обязательный)
+//-   defaultValue - значение по умолчанию (optional, для multiple - массив значений)
+//-   options - массив опций [{value: '', text: ''}] (обязательный)
+//-   config - объект конфигурации Select2 (optional)
+//-   variant - вариант стиля: 'default', 'primary', 'secondary' (optional, default: 'default')
+//-   multiple - включить мультиселект (optional, default: false)
+//-   id - ID элемента (optional, генерируется автоматически)
+//-   extraClasses - дополнительные классы (optional)
+//-   wrapperClasses - классы для обертки (optional)
+
+mixin select2(name, defaultValue = null, options = [], config = {}, variant = 'default', multiple = false, id = null, extraClasses = '', wrapperClasses = '')
+  - var selectId = id || `select2-${name}-${Math.random().toString(36).substr(2, 9)}`
+  - var defaultConfig = {placeholder: 'Выберите...', allowClear: false, minimumResultsForSearch: Infinity, width: '100%'}
+  - var finalConfig = {}
+  - finalConfig.placeholder = config.placeholder !== undefined ? config.placeholder : defaultConfig.placeholder
+  - finalConfig.allowClear = config.allowClear !== undefined ? config.allowClear : defaultConfig.allowClear
+  - finalConfig.minimumResultsForSearch = config.minimumResultsForSearch !== undefined ? config.minimumResultsForSearch : defaultConfig.minimumResultsForSearch
+  - finalConfig.width = config.width !== undefined ? config.width : defaultConfig.width
+  - var configJson = JSON.stringify(finalConfig).replace(/"/g, '&quot;')
+  - var validVariants = ['default', 'primary', 'secondary']
+  - var finalVariant = validVariants.includes(variant) ? variant : 'default'
+  - var isMultiple = multiple === true
+  - var defaultValueArray = isMultiple && Array.isArray(defaultValue) ? defaultValue : (isMultiple ? [] : null)
+  - var defaultValueSingle = !isMultiple && defaultValue ? defaultValue : null
+  
+  .select2-wrapper(class=wrapperClasses data-select2-config=configJson data-select2-multiple=isMultiple)
+    select.select2(
+      id=selectId
+      name=isMultiple ? `${name}[]` : name
+      class=`select2 ${extraClasses}`
+      data-select2-init="true"
+      data-select2-variant=finalVariant
+      multiple=isMultiple ? true : false
+    )
+      if finalConfig.placeholder && !defaultValueSingle && !isMultiple
+        option(value="")= finalConfig.placeholder
+      each option in options
+        - var isSelected = false
+        - if (isMultiple && defaultValueArray)
+          - isSelected = defaultValueArray.includes(String(option.value))
+        - else if (!isMultiple && defaultValueSingle)
+          - isSelected = String(option.value) === String(defaultValueSingle)
+        option(value=option.value selected=isSelected)= option.text

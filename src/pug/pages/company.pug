@@ -1,0 +1,101 @@
+extends ../layouts/default
+
+block variables
+  - var pageTitle = 'ADEX - Company'
+  - var pageDescription = 'ADEX - Список компаний-участников выставки'
+  - var pageKeywords = 'ADEX, компании, участники, выставка'
+  - var pageCanonical = 'https://adex.az/company'
+  - var pageOgImage = 'https://adex.az/og-image.jpg'
+  - var pageAuthor = 'ADEX'
+
+block content
+  // Breadcrumb Section
+  include ../mixins/_breadcrumb
+  +breadcrumb([
+    {text: 'Главная', href: 'index.html'},
+    {text: 'Company', href: null}
+  ])
+
+  // Main Content
+  section.company-page.page__spacing
+    .container
+      .row.gx-lg-5
+        // Left Column - Main Content
+        .col-12.col-lg-12
+          // Page Title and Year Selector
+          .row.mb-4.g-4.align-items-center
+            .col-12.col-md-8
+              h1.company-page__title Company
+            .col-12.col-md-4.text-start.text-md-end
+              .select2-wrapper.mb-4.mt-md-0.d-inline-block(style="min-width: 120px;")
+                include ../mixins/_select2
+                +select2(
+                  'year',
+                  '2025',
+                  [
+                    {value: '2025', text: '2025'},
+                    {value: '2024', text: '2024'},
+                    {value: '2023', text: '2023'}
+                  ],
+                  {placeholder: 'Выберите год', allowClear: false, minimumResultsForSearch: Infinity},
+                  'primary',
+                  false,
+                  'year-select',
+                  '',
+                  ''
+                )
+
+          // Company List Container
+          .company-page__container
+            // Container Header
+            .company-page__header
+              h2.company-page__header-title Company
+            // Company List - DataTable (скрытая структура для пагинации)
+            .company-page__list
+              table.company-datatable.table.table-hover(data-datatable-init="true" style="display: none;")
+                thead
+                  tr
+                    th Company
+                tbody
+                  tr
+                    td ACWA Power
+                  tr
+                    td Adnan Bu Fateem
+                  tr
+                    td ABB
+                  tr
+                    td "Azneft" Production Union of SOCAR
+                  tr
+                    td American Chamber of Commerce in Azerbaijan
+                  tr
+                    td Ansaldo Energia
+                  tr
+                    td Asan Radio
+                  tr
+                    td Asian Development Bank
+                  tr
+                    td AsstrA-Associated Traffic AG
+                  tr
+                    td AZEL Systems LLC
+                  tr
+                    td Azerbaijan Energy Regulatory Agency (AERA)
+                  tr
+                    td Azerbaijan Green Energy Company
+                  tr
+                    td Azerbaijan Today
+                  tr
+                    td Baker Hughes
+                  tr
+                    td Baku Steel Company
+                  tr
+                    td Boston Consulting Group
+                  tr
+                    td BP
+                  tr
+                    td Branch of "Van Oord Dredging and Marine Contractors B.V." in the Republic of Azerbaijan
+              // Визуальное отображение компаний в два столбца (заполняется через JavaScript)
+              .company-page__grid#companyGrid
+                .row.g-3
+          // Кастомная пагинация (под контейнером)
+          .company-page__pagination#companyPagination
+

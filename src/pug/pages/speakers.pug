@@ -1,0 +1,142 @@
+extends ../layouts/default
+
+block variables
+  - var pageTitle = 'ADEX - Список докладчиков'
+  - var pageDescription = 'ADEX - Список докладчиков, спикеры выставки'
+  - var pageKeywords = 'ADEX, докладчики, спикеры, выставка'
+  - var pageCanonical = 'https://adex.az/speakers'
+  - var pageOgImage = 'https://adex.az/og-image.jpg'
+  - var pageAuthor = 'ADEX'
+
+block content
+  // Breadcrumb Section
+  include ../mixins/_breadcrumb
+  +breadcrumb([
+    {text: 'Главная', href: 'index.html'},
+    {text: 'Список докладчиков', href: null}
+  ])
+
+  // Main Content
+  section.speakers-page.page__spacing
+    .container
+      // Page Title and Year Selector
+      .row.mb-5.g-4
+        .col-12.col-lg-8.order-2.order-lg-1
+          h1.speakers-page__title Please welcome our honourable speakers
+        .col-12.col-lg-4.order-2.order-lg-2.text-start.text-lg-end
+          .select2-wrapper.mb-4.mt-lg-0.d-inline-block(style="min-width: 120px;")
+            include ../mixins/_select2
+            +select2(
+              'year',
+              '2026',
+              [
+                {value: '2026', text: '2026'},
+                {value: '2025', text: '2025'}
+              ],
+              {placeholder: 'Выберите год', allowClear: false, minimumResultsForSearch: Infinity},
+              'primary',
+              false,
+              'year-select',
+              '',
+              ''
+            )
+
+        // Speakers List
+        .col-12.col-lg-8.order-3.order-lg-2
+          .speakers-page__list
+            // Bootstrap 5 Accordion
+            .accordion#speakersAccordion
+              // Speaker 1 - Expanded
+              .accordion-item.speakers__card
+                h2.accordion-header#headingOne
+                  button.accordion-button.speakers__header(
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  )
+                    .speakers__main
+                      .speakers__avatar
+                        img(src="assets/img/speakers/parviz-shahbazov.jpg" alt="Parviz Shahbazov")
+                      .speakers__info
+                        h3.speakers__name Parviz Shahbazov
+                        p.speakers__role Minister of Energy of the Republic of Azerbaijan
+                      .speakers__arrow
+                        i.fas.fa-arrow-left
+                #collapseOne.accordion-collapse.collapse.show(
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#speakersAccordion"
+                )
+                  .accordion-body.speakers__bio
+                    p Parviz Shahbazov was born in Baku on November 24, 1969. He studied at Azerbaijan State Oil Academy, 1986-1992, and did military service in 1988-1989. He worked as an attaché in the Embassy of the Republic of Azerbaijan to the Federal Republic of Germany during the period of 1992-1996 and served as the Second Secretary, First Secretary, Head of Division for Europe, and Deputy Head of the Department for Europe, United States of America and Canada of the Ministry of Foreign Affairs of the Republic of Azerbaijan during the period 1996-2001. He then served as Advisor and Chargé d'affaires of the Embassy of the Republic of Azerbaijan to the Republic of Austria during the period 2001-2005. He was the Chairman of the Security Cooperation Forum of the OSCE in 2005. After that, he was appointed as the Ambassador Extraordinary and Plenipotentiary of the Republic of Azerbaijan to the Federal Republic of Germany in 2005 and served in this position till 2016. He served as the Ambassador-at-large of the Ministry of Foreign Affairs of the Republic of Azerbaijan during the period 2016-2017. He was appointed as the Minister of Energy of the Republic of Azerbaijan on October 12, 2017. He is fluent in Azerbaijani (native), Russian, English and German. He is married and has two children.
+
+              // Speaker 2 - Collapsed
+              .accordion-item.speakers__card
+                h2.accordion-header#headingTwo
+                  button.accordion-button.collapsed.speakers__header(
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  )
+                    .speakers__main
+                      .speakers__avatar
+                        img(src="assets/img/speakers/viriato-cassama.jpg" alt="Viriato Luís Soares Cassamá")
+                      .speakers__info
+                        h3.speakers__name Viriato Luís Soares Cassamá
+                        p.speakers__role Minister of Environment, Biodiversity, and Climate Action, Republic of Guinea-Bissau
+                      .speakers__arrow
+                        i.fas.fa-arrow-left
+                #collapseTwo.accordion-collapse.collapse(
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#speakersAccordion"
+                )
+                  .accordion-body.speakers__bio
+                    p Biography of Viriato Luís Soares Cassamá will be available soon.
+
+              // Speaker 3 - Collapsed
+              .accordion-item.speakers__card
+                h2.accordion-header#headingThree
+                  button.accordion-button.collapsed.speakers__header(
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  )
+                    .speakers__main
+                      .speakers__avatar
+                        img(src="assets/img/speakers/rovshan-najaf.jpg" alt="Rovshan Najaf")
+                      .speakers__info
+                        h3.speakers__name Rovshan Najaf
+                        p.speakers__role SOCAR President
+                    .speakers__arrow
+                      i.fas.fa-arrow-left
+                #collapseThree.accordion-collapse.collapse(
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#speakersAccordion"
+                )
+                  .accordion-body.speakers__bio
+                    p Biography of Rovshan Najaf will be available soon.
+
+          // Show All Button
+          .text-center.mt-4
+            include ../mixins/_button
+            +button("Show all", "primary-solid", "button", "", "default", null, "speakers-page__show-all")
+              i.fas.fa-caret-down.ms-2
+
+        // Sidebar with Action Buttons
+        .col-12.col-lg-4.order-1.order-lg-3
+          include ../mixins/_button
+          .actions__block
+            .row.flex-row.flex-lg-column.flex-nowrap.flex-md-wrap.g-3.g-md-5
+              .col-auto.col-md-12
+                +button("Бронирование стенда", "action", "button", "#")
+              .col-auto.col-md-12
+                +button("Станте спонсором", "action", "button", "#")
+              .col-auto.col-md-12
+                +button("Обратная связь", "action", "button", "#")
+              .col-auto.col-md-12
+                +button("Купите билет", "action", "button", "#")

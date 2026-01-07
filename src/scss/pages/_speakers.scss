@@ -1,0 +1,343 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+
+// ============================================
+// Speakers Page Styles
+// ============================================
+
+.speakers-page {
+  padding: 30px 0 60px;
+
+  // Page Title
+  &__title {
+    font-family: var(--font-family);
+    font-size: 48px; // H1 | Bold
+    font-weight: 700; // Bold
+    color: var(--primary); // #2B3B73
+    line-height: normal;
+    margin: 0;
+
+    @include md-down {
+      font-size: 32px;
+    }
+  }
+
+  // Speakers List
+  &__list {
+    // margin-top: 30px;
+
+    @include md-down {
+      margin-top: 0;
+    }
+
+    // Speakers block (внутри списка)
+    .speakers {
+      // Speaker Card (Accordion Item)
+      &__card {
+        background-color: var(--card-2); // #F8F9FA
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+        padding: 20px 40px;
+        margin-bottom: 20px;
+        overflow: hidden;
+
+        .accordion-item {
+          border: none;
+        }
+
+        .accordion-button {
+          background-color: transparent;
+          border: none;
+          box-shadow: none;
+          padding: 0 0 0 0;
+
+          @include md-down {
+            // padding: 16px;
+          }
+
+          // Скрываем стандартную стрелку Bootstrap
+          &::after {
+            display: none;
+          }
+
+          &:not(.collapsed) {
+            background-color: transparent;
+            box-shadow: none;
+            padding: 0 0 0 0;
+
+            .speakers__arrow {
+              i {
+                transform: rotate(90deg); // arrow-left повернутая вверх при открытии (как в дизайне)
+              }
+            }
+          }
+
+          &:focus {
+            box-shadow: none;
+            border-color: transparent;
+          }
+
+          &.collapsed {
+            .speakers__arrow {
+              i {
+                transform: rotate(270deg); // arrow-left повернутая вниз при закрытии (как в дизайне)
+              }
+            }
+          }
+        }
+      }
+
+      // Speaker Header
+      &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0;
+        position: relative;
+
+        @include md-down {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 0;
+        }
+      }
+
+      // Speaker Main (Avatar + Info)
+      &__main {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        flex: 1;
+        width: 100%;
+
+        @include md-down {
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+          width: 100%;
+        }
+      }
+
+      // Speaker Avatar
+      &__avatar {
+        width: 150px;
+        height: 150px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        @include md-down {
+          width: 150px; // На мобильной остается 150px как в дизайне
+          height: 150px;
+        }
+      }
+
+      // Speaker Info
+      &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1;
+
+        @include md-down {
+          align-items: center;
+          text-align: center;
+          width: 100%;
+        }
+      }
+
+      // Speaker Name
+      &__name {
+        font-family: var(--font-family);
+        font-size: 24px; // H4 | Bold
+        font-weight: 700; // Bold
+        color: var(--gray-1); // #212529
+        line-height: normal;
+        margin: 0;
+
+        @include md-down {
+          // font-size: 20px;
+        }
+      }
+
+      // Speaker Role
+      &__role {
+        font-family: var(--font-family);
+        font-size: 20px; // H6 | Medium
+        font-weight: 500; // Medium
+        color: var(--gray-2); // #495057
+        line-height: normal;
+        margin: 0;
+
+        @include md-down {
+          // font-size: 16px;
+        }
+      }
+
+      // Speaker Arrow
+      &__arrow {
+        width: 35px;
+        height: 35px;
+        background-color: var(--white);
+        border-radius: 17.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: var(--transition-base);
+        position: relative;
+        // top: 50%;
+        // right: 0;
+        // transform: translateY(-50%);
+
+        i {
+          font-size: 18px;
+          color: var(--primary);
+          transition: transform 0.3s ease;
+        }
+
+        @include md-down {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 35px; // На мобильной тоже 35px как в дизайне
+          height: 35px;
+
+          i {
+            font-size: 18px; // На мобильной тоже 18px
+          }
+        }
+      }
+
+      // Speaker Bio (Accordion Body)
+      &__bio {
+        padding: 20px 0 0 0;
+        border-top: 1px solid var(--line); // #EEEEEE - разделитель из дизайна
+        margin-top: 20px;
+
+        p {
+          font-family: var(--font-family);
+          font-size: 18px; // Body | Regular
+          font-weight: 400; // Regular
+          color: var(--gray-2); // #495057
+          line-height: normal;
+          margin: 0;
+
+          @include md-down {
+            font-size: 18px; // На мобильной тоже 18px как в дизайне
+          }
+        }
+
+        @include md-down {
+          padding: 16px;
+        }
+      }
+    }
+  }
+
+  // Show All Button
+  &__show-all {
+    background-color: var(--primary) !important;
+    border: none !important;
+    color: var(--white) !important;
+    padding: 10px 15px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 400; // Regular
+    border-radius: 8px;
+    transition: var(--transition-base);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(43, 59, 115, 0.9) !important;
+      color: var(--white) !important;
+    }
+
+    i {
+      font-size: 13px;
+    }
+  }
+
+  // Sidebar
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include md-down {
+      margin-top: 24px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 24px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  // Action Buttons
+  &__action {
+    @include md-down {
+      flex: 0 0 auto;
+      min-width: 300px;
+    }
+  }
+
+  // Mobile adjustments
+  @include md-down {
+    padding: 0 0 40px;
+
+    &__title {
+      font-size: 48px; // На мобильной тоже 48px как в дизайне
+      margin-bottom: 32px;
+    }
+
+    &__list {
+      margin-top: 0;
+
+      .speakers {
+        &__header {
+          position: relative;
+          min-height: 182px; // Минимальная высота для размещения аватара и текста
+        }
+
+        &__main {
+          width: 100%;
+          gap: 16px;
+        }
+
+        &__card {
+          margin-bottom: 16px;
+          gap: 0; // Убираем gap между header и bio на мобильной
+          padding: 16px;
+
+          .accordion-button {
+            // padding: 16px;
+            position: relative;
+          }
+        }
+
+        &__bio {
+          padding: 16px 0 0 0;
+          margin-top: 16px;
+        }
+      }
+    }
+
+    &__show-all {
+      margin-top: 24px;
+    }
+  }
+}

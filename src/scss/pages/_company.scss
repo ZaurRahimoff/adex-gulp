@@ -1,0 +1,179 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+@import '../mixins/utilities';
+
+// ============================================
+// Company Page
+// ============================================
+
+.company-page {
+  padding: 30px 0 60px;
+
+  // Page Title
+  &__title {
+    font-family: var(--font-family);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: normal;
+    margin: 0;
+
+    @include md-down {
+      font-size: 32px;
+    }
+  }
+
+  // Main Container
+  &__container {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 0;
+  }
+
+  // Container Header
+  &__header {
+    background-color: #3A4064;
+    padding: 20px 40px;
+    border-radius: 8px 8px 0 0;
+
+    @include lg-down {
+      padding: 16px 24px;
+    }
+  }
+
+  &__header-title {
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: normal;
+    text-align: center;
+
+    @include md-down {
+      font-size: 20px;
+    }
+  }
+
+  // Company List
+  &__list {
+    padding: 30px 40px;
+
+    @include lg-down {
+      padding: 24px 16px;
+    }
+  }
+
+  // Company Grid
+  &__grid {
+    margin-bottom: 0;
+  }
+
+  // Company Item (карточки компаний)
+  &__item {
+    background-color: #F6F8FB;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 20px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    color: #3A4064;
+    transition: all 0.3s ease;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+
+    &:hover {
+      background-color: #E8EBF0;
+    }
+
+    @include md-down {
+      font-size: 14px;
+      padding: 12px 16px;
+      min-height: 56px;
+    }
+  }
+
+  // Кастомная пагинация (под контейнером)
+  &__pagination {
+    padding: 30px 0 0;
+    margin-top: 0;
+
+    @include lg-down {
+      padding: 24px 0 0;
+    }
+
+    .pagination {
+      margin: 0;
+      justify-content: center;
+
+      .page-item {
+        .page-link {
+          font-family: var(--font-family);
+          font-size: 16px;
+          font-weight: var(--font-weight-regular);
+          color: #3A4064;
+          border: none;
+          border-radius: 4px;
+          padding: 8px 16px;
+          margin: 0 4px;
+          transition: all 0.3s ease;
+          background: #F6F8FB;
+
+          &:hover {
+            background-color: #E8EBF0;
+            color: #3A4064;
+          }
+
+          @include md-down {
+            padding: 6px 12px;
+            font-size: 14px;
+            margin: 0 2px;
+          }
+        }
+
+        &.active {
+          .page-link {
+            background-color: #3A4064;
+            color: #FFFFFF;
+          }
+        }
+
+        &.disabled {
+          .page-link {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            color: #3A4064;
+            background: #F6F8FB;
+          }
+        }
+      }
+    }
+  }
+
+  // DataTables стили (скрытая таблица)
+  &__container {
+    &--datatable {
+      .company-datatable {
+        display: none !important;
+      }
+
+      // Скрываем стандартные элементы управления DataTables
+      .dataTables_wrapper {
+        .dataTables_length,
+        .dataTables_filter,
+        .dataTables_info,
+        .dataTables_paginate {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
