@@ -1,0 +1,145 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+
+// ============================================
+// Pagination Component
+// ============================================
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+
+  @include lg-down {
+    margin-top: 16px;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
+  &__btn {
+    background: var(--primary); // #2B3B73
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-family);
+    font-size: $font-size-body2; // 14px
+    font-weight: var(--font-weight-regular);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    height: 40px;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.3);
+    }
+
+    i {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include lg-down {
+      padding: 6px 12px;
+      font-size: 12px;
+      height: 36px;
+
+      i {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__numbers {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    @include lg-down {
+      // order: 3;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  &__number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--primary); // #2B3B73
+    border: none;
+    border-radius: 4px;
+    font-family: 'SF Pro Display', var(--font-family);
+    font-size: $font-size-body2; // 14px
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover:not(&--active) {
+      background: rgba(43, 59, 115, 0.1);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.2);
+    }
+
+    &.active {
+      background: var(--primary); // #2B3B73
+      color: var(--card-2); // #F8F9FA (близко к белому)
+    }
+
+    @include lg-down {
+      width: 36px;
+      height: 36px;
+      font-size: 12px;
+
+      // На мобильных показываем только первую и последнюю кнопки
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+  }
+
+  &__dots {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary); // #2B3B73
+    font-family: 'SF Pro Display', var(--font-family);
+    font-size: $font-size-body2; // 14px
+    font-weight: var(--font-weight-medium);
+
+    @include lg-down {
+      width: 36px;
+      height: 36px;
+      font-size: 12px;
+
+      // На мобильных показываем только первое многоточие
+      &:not(:first-of-type) {
+        display: none;
+      }
+    }
+  }
+}

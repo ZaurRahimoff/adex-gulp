@@ -1,0 +1,85 @@
+extends ../layouts/default
+
+block variables
+	- var pageTitle = 'ADEX - News Detail'
+	- var pageDescription = 'Artificial intelligence is applied to the big picture of the energy industry'
+	- var pageKeywords = 'ADEX, news, artificial intelligence, energy industry'
+	- var pageCanonical = 'https://adex.az/news-detail.html'
+	- var pageOgImage = 'https://adex.az/og-image.jpg'
+	- var pageAuthor = 'ADEX'
+
+block content
+	// Breadcrumb
+	include ../mixins/_breadcrumb
+	+breadcrumb([
+		{text: 'Главная', href: 'index.html'},
+		{text: 'Новости', href: 'news.html'},
+		{text: 'Детальная новость', href: null}
+	])
+
+	// News Detail Section
+	section.news-detail-page.page__spacing
+		.container
+			// News Detail Header (Gray Container)
+			.news-detail__header
+				h1.news-detail__header-title Artificial intelligence is applied to the big picture of the energy industry
+
+			// News Detail Image
+			.news-detail__image-wrapper
+				img.news-detail__image(src="assets/img/webp/news-detail.webp" alt="Artificial intelligence is applied to the big picture of the energy industry" loading="lazy")
+				.news-detail__image-overlay
+
+			// News Detail Content
+			.page-content
+				h2 Caspian Agro and InterFood Azerbaijan
+				p The 2025 spring exhibition season will commence with the 18th Azerbaijan International Agriculture Exhibition – Caspian Agro and the 30th Anniversary Azerbaijan International Food Industry Exhibition – InterFood Azerbaijan, the region's largest international agricultural and food industry events, taking place from May 13 to 16.
+
+				p For many years, the President of the Republic of Azerbaijan, Ilham Aliyev, has visited the Caspian Agro and InterFood Azerbaijan exhibitions, exploring the exhibition pavilions and engaging with participants at the Baku Expo Center. In 2024, President Ilham Aliyev was accompanied by the President of Belarus, Alexander Lukashenko, during his visit to these events.
+
+				p The Caspian Agro exhibition is organised with the support of the Ministry of Agriculture of the Republic of Azerbaijan.
+
+				p Additionally, the exhibitions receive active support from the Food Safety Agency of the Republic of Azerbaijan (AQTA), the Small and Medium Business Development Agency (KOBİA) of the Republic of Azerbaijan, the Export and Investment Promotion Agency of the Republic of Azerbaijan – AZPROMO, The National Confederation of Entrepreneurs (Employers) Organisations of the Republic of Azerbaijan (ASK), Azerbaijan Food and Beverage Industrialists Association (AFBIA), Food and Agriculture Organisation of the United Nations (FAO), and Azerbaijan Exhibition Organisers Association (ASTA).
+
+				p The 2024 edition of Caspian Agro and InterFood Azerbaijan marked a record-breaking success, covering all four halls and the outdoor area of the Baku Expo Center. Nearly 13,000 visitors and 500 companies from 38 countries participated. Compared to previous years, a 10% increase in the scale of the exhibitions has been observed.
+
+				p Most of the available spaces at the Baku Expo Center have already been occupied by exhibitors representing various countries this year, as well. As a result, only a limited number of spots remain for participation in the exhibitions.
+
+				p For the upcoming edition, companies from Azerbaijan, Belgium, Belarus, China, Egypt, Finland, France, Germany, Greece, India, Iran, Italy, Jordan, Latvia, the Netherlands, Palestine, Russia, South Korea, Sri Lanka, Türkiye, Turkmenistan, the United States and Uzbekistan have already confirmed their participation. National pavilions from Belarus, Germany, Georgia, Italy, the Netherlands, Sri Lanka, South Korea, and, for the first time, India and Egypt, will showcase agricultural and food industry products. Prior Leasing ASC will serve as the registration sponsor for this exhibition.
+
+				p Caspian Agro is the largest agricultural exhibition in the region. The agro-industrial sector is a rapidly developing field with significant prospects. Caspian Agro will once again bring together leading participants in the agricultural industry, local and international experts, as well as thousands of professional visitors, including importers, exporters, distributors of agricultural products, wholesale and retail trade representatives, and farmers.
+
+				p During the exhibition days, the International Agricultural Innovations Forum will be held under the organization of the Ministry of Agriculture of the Republic of Azerbaijan. The forum will address key topics related to the agricultural sector. Now in its second consecutive year, the forum will feature discussions on the development of sustainable agriculture, international cooperation, innovative solutions in agriculture, and other relevant topics.
+
+				p Each year, the organisers arrange exhibition tours for farmers from various regions of Azerbaijan. This year, as part of the exhibitions, farmers will once again have the opportunity to explore the latest industry innovations and international expertise. As a result of these exhibition tours, knowledge exchange is encouraged, which in turn contributes to improving production quality and enhancing living conditions in rural areas.
+
+				p Starting from 2025, Caspian Event Organisers and Iteca Caspian, the organisers of international exhibitions in Azerbaijan, are expanding their cooperation with the Small and Medium Business Development Agency (KOBİA) of the Republic of Azerbaijan in a new direction. This initiative aims to facilitate the participation of SMEs from various regions in international exhibitions held in Baku. With the support of KOBİA, tours will be organised to enable SMEs from different regions of the country to take part in all exhibitions. This initiative will contribute to the development of SMEs, their integration into the broader business community, the establishment of new partnerships, familiarisation with industry innovations, and the adoption of new technologies. The Caspian Agro exhibition will be held at the same venue – Baku Expo Centre – alongside with InterFood Azerbaijan. As one of the leading international events in the food industry, InterFood Azerbaijan will celebrate its 30th anniversary in 2025. For many years, this exhibition has served as a key platform bringing together local and international food industry manufacturers, distributors, wholesalers, retailers, and leading sector players.
+
+				p Each year, dozens of food industry manufacturers from various countries around the world participate in the InterFood Azerbaijan exhibition, showcasing their products and technologies. The exhibition is not only a platform for presenting food and beverages but also an important venue for introducing the latest technological innovations in the industry. It provides an opportunity to explore the newest trends in areas such as food processing technologies, packaging solutions, healthy nutrition, and eco-friendly products.
+
+				p Azerbaijan's food industry is developing rapidly, and InterFood Azerbaijan plays a crucial role in this process. Through the exhibition, local manufacturers gain access to international markets, while foreign companies show greater interest in investing in the Azerbaijani market. This, in turn, contributes to strengthening the country's food security and export potential.
+
+				p As part of the exhibition's event programme of InterFood Azerbaijan, the traditional Gold Shah 2025 - National Culinary Championship will be held with the support of the organisers. This will be the fifth edition of the championship, organised by the Azerbaijan Culinary Specialists Association. This year, the championship will be dedicated to "Halal Food" and will take place in Hall 3 of the Baku Expo Centre. The Gold Shah Championship is a licensed event by the World Association of Chefs' Societies ("Worldchefs") and is conducted in accordance with international standards and regulations. Since 2024, the championship has been authorised to host international teams and has been granted the status of a Worldchefs Continental Championship. The Worldchefs-licensed competition will attract eight teams from Azerbaijan, Kazakhstan, Kyrgyzstan, Malaysia, Russia, Singapore, Turkey, and Uzbekistan. Additionally, more than 30 local teams will compete, with over 300 individual chefs participating across more than 10 categories. The judging panel will consist of licensed chef-judges from Worldchefs, representing 16 different countries. As part of the exhibitions, the traditional bilateral business meetings (B2B and B2G) will provide an opportunity for representatives of local and international companies to discuss cooperation and potential partnerships in a face-to-face format. Additionally, within the framework of these bilateral meetings, representatives of private companies will have the chance to meet with officials from government institutions. As one of the most important platforms in the agricultural and food industry sectors, the Caspian Agro and InterFood Azerbaijan exhibitions will provide an opportunity to establish direct connections with the region's key producers and distributors. Companies will have the chance to showcase their products and services to potential customers and partners, while participants will be able to explore the latest technologies and trends in the relevant industries. Most importantly, these events will contribute to the development of Azerbaijan's agricultural and food industries by enhancing the country's export potential, attracting foreign investments, and serving as a favourable platform for ensuring food security and implementing innovative solutions.
+
+			// Divider with Date and Social Buttons
+			.news-detail__divider
+				.news-detail__date
+					i.far.fa-calendar
+					span 24.01.2025
+				.news-detail__social-buttons
+					a.news-detail__social-btn(href="#" aria-label="Share on Facebook")
+						i.fab.fa-facebook-f
+					a.news-detail__social-btn(href="#" aria-label="Share on Twitter")
+						i.fab.fa-twitter
+					a.news-detail__social-btn(href="#" aria-label="Share on LinkedIn")
+						i.fab.fa-linkedin-in
+					a.news-detail__social-btn(href="#" aria-label="Share on WhatsApp")
+						i.fab.fa-whatsapp
+
+	// Social Sidebar
+	.social-sidebar
+		a.social-sidebar__link(href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram")
+			i.fab.fa-instagram
+		a.social-sidebar__link(href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn")
+			i.fab.fa-linkedin-in
+		a.social-sidebar__link(href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp")
+			i.fab.fa-whatsapp

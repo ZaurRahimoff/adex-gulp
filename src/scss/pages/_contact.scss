@@ -1,0 +1,209 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+@import '../mixins/utilities';
+
+// ============================================
+// Contact Page Section
+// ============================================
+.contact {
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 60px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include lg-down {
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold);
+    color: var(--primary); // #2B3B73
+    line-height: normal;
+    margin: 0;
+
+    @include lg-down {
+      font-size: 36px;
+    }
+  }
+
+  &__wrapper {
+    background: var(--card-2); // #F8F9FA
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include lg-down {
+      padding: 16px;
+      gap: 16px;
+    }
+  }
+
+  &__card {
+    background: var(--white);
+    border: none !important;
+    border-radius: 12px;
+    box-shadow: none !important;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+
+    @include lg-down {
+      padding: 16px;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+  }
+
+  &__logo {
+    width: 150px;
+    height: auto;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 40px;
+    border-right: 1px solid var(--line); // #EEE
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @include lg-down {
+      width: 150px;
+      padding-right: 0;
+      padding-bottom: 16px;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+  }
+
+  &__divider {
+    display: none; // Hidden on both desktop and mobile, border is on logo element
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include lg-down {
+      gap: 16px;
+      align-items: center;
+    }
+  }
+
+  &__company {
+    font-family: var(--font-family);
+    font-size: $font-size-h3; // 36px
+    font-weight: var(--font-weight-bold);
+    color: var(--primary); // #2B3B73
+    line-height: normal;
+    margin: 0;
+
+    @include lg-down {
+      font-size: 28px;
+    }
+  }
+
+  &__person {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    @include lg-down {
+      align-items: center;
+    }
+  }
+
+  &__name {
+    font-family: var(--font-family);
+    font-size: $font-size-h4; // 24px
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-1); // #212529
+    line-height: normal;
+    margin: 0;
+
+    @include lg-down {
+      font-size: 20px;
+    }
+  }
+
+  &__position {
+    font-family: var(--font-family);
+    font-size: $font-size-h6; // 20px
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-2); // #495057
+    line-height: normal;
+    margin: 0;
+
+    @include lg-down {
+      font-size: 18px;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include lg-down {
+      align-items: center;
+    }
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include lg-down {
+      justify-content: center;
+    }
+  }
+
+  &__contact-icon {
+    font-size: 15px;
+    color: var(--primary); // #2B3B73
+    flex-shrink: 0;
+    width: 15px;
+    text-align: center;
+  }
+
+  &__contact-text {
+    font-family: var(--font-family);
+    font-size: $font-size-body1; // 16px
+    font-weight: var(--font-weight-regular);
+    color: var(--gray-2); // #495057
+    line-height: normal;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    @include lg-down {
+      font-size: 14px;
+    }
+  }
+}

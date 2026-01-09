@@ -29,6 +29,63 @@
     }
   }
 
+  
+  // ============================================
+  // Bootstrap Accordion Customization
+  // ============================================
+  .accordion {
+    --bs-accordion-border-width: 0;
+    --bs-accordion-border-radius: 12px;
+    --bs-accordion-bg: transparent;
+    --bs-accordion-btn-focus-box-shadow: none;
+  }
+
+  // Коллапс с частичным отображением контента
+  .accordion-collapse {
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+    
+    // При закрытом состоянии - показываем часть контента
+    &.collapse:not(.show) {
+      display: block !important;
+      max-height: 180px !important;
+      overflow: hidden;
+      opacity: 1;
+      position: relative;
+      
+      @include lg-down {
+        max-height: 140px !important;
+      }
+
+      // Градиент снизу для плавного обрезания
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(to bottom, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 100%);
+        pointer-events: none;
+      }
+    }
+
+    // При открытом состоянии - показываем весь контент
+    &.collapse.show {
+      max-height: none !important;
+      opacity: 1;
+      
+      &::after {
+        display: none;
+      }
+    }
+
+    // Анимация
+    &.collapsing {
+      transition: max-height 0.35s ease;
+    }
+  }
+
+
   // Show All Button
   &__show-all {
     background-color: var(--primary) !important;
@@ -284,60 +341,5 @@
     @include lg-down {
       font-size: var(--font-size-body1); // 16px
     }
-  }
-}
-
-// ============================================
-// Bootstrap Accordion Customization
-// ============================================
-.accordion {
-  --bs-accordion-border-width: 0;
-  --bs-accordion-border-radius: 12px;
-  --bs-accordion-bg: transparent;
-  --bs-accordion-btn-focus-box-shadow: none;
-}
-
-// Коллапс с частичным отображением контента
-.accordion-collapse {
-  transition: max-height 0.35s ease, opacity 0.35s ease;
-  
-  // При закрытом состоянии - показываем часть контента
-  &.collapse:not(.show) {
-    display: block !important;
-    max-height: 180px !important;
-    overflow: hidden;
-    opacity: 1;
-    position: relative;
-    
-    @include lg-down {
-      max-height: 140px !important;
-    }
-
-    // Градиент снизу для плавного обрезания
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background: linear-gradient(to bottom, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 100%);
-      pointer-events: none;
-    }
-  }
-
-  // При открытом состоянии - показываем весь контент
-  &.collapse.show {
-    max-height: none !important;
-    opacity: 1;
-    
-    &::after {
-      display: none;
-    }
-  }
-
-  // Анимация
-  &.collapsing {
-    transition: max-height 0.35s ease;
   }
 }

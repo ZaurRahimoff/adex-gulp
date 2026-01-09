@@ -1,0 +1,99 @@
+extends ../layouts/default
+
+block variables
+	- var pageTitle = 'ADEX - Product Categories'
+	- var pageDescription = 'Product categories for ADEX exhibition'
+	- var pageKeywords = 'ADEX, product categories, exhibition'
+	- var pageCanonical = 'https://adex.az/categories.html'
+	- var pageOgImage = 'https://adex.az/og-image.jpg'
+	- var pageAuthor = 'ADEX'
+
+block content
+	// Breadcrumb
+	include ../mixins/_breadcrumb
+	+breadcrumb([
+		{text: 'Главная', href: 'index.html'},
+		{text: 'Разделы', href: null}
+	])
+
+	// Categories Section
+	section.categories-page.page__spacing
+		.container
+			// Categories Title
+			h1.page-title.lh-base.mb-4 Product Categories
+
+			// Bootstrap 5 Accordion
+			.accordion.categories__accordion#categoriesAccordion
+				// Accordion Item 1 - Collapsed
+				.accordion-item.categories__item
+					h2.accordion-header#headingOne
+						button.accordion-button.collapsed.categories__button(
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseOne"
+							aria-expanded="false"
+							aria-controls="collapseOne"
+						)
+							span.categories__title-text Aircraft and aviation systems
+							.categories__icon
+								i.fas.fa-plus.categories__icon-plus
+								i.fas.fa-minus.categories__icon-minus
+					#collapseOne.accordion-collapse.collapse(
+						aria-labelledby="headingOne"
+						data-bs-parent="#categoriesAccordion"
+					)
+						.accordion-body.categories__body
+							ul.categories__list
+								li Category items will be available soon.
+
+				// Accordion Item 2 - Expanded
+				.accordion-item.categories__item
+					h2.accordion-header#headingTwo
+						button.accordion-button.categories__button(
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseTwo"
+							aria-expanded="true"
+							aria-controls="collapseTwo"
+						)
+							span.categories__title-text Armed combat vehicles
+							.categories__icon
+								i.fas.fa-plus.categories__icon-plus
+								i.fas.fa-minus.categories__icon-minus
+					#collapseTwo.accordion-collapse.collapse.show(
+						aria-labelledby="headingTwo"
+						data-bs-parent="#categoriesAccordion"
+					)
+						.accordion-body.categories__body
+							ul.categories__list
+								li Armour plating of light and heavy machinery
+								li Armoured personnel carriers
+								li Cavalry fighting vehicles
+								li Component parts for mobile fighting vehicles
+								li Infantry fighting vehicles
+								li Self-propelled artillery mounts
+								li Tanks (land battleships)
+								li Tires
+								li Upgrade and repair of land-based military equipment
+
+				// Accordion Item 3 - Collapsed
+				.accordion-item.categories__item
+					h2.accordion-header#headingThree
+						button.accordion-button.collapsed.categories__button(
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapseThree"
+							aria-expanded="false"
+							aria-controls="collapseThree"
+						)
+							span.categories__title-text Associations
+							.categories__icon
+								i.fas.fa-plus.categories__icon-plus
+								i.fas.fa-minus.categories__icon-minus
+					#collapseThree.accordion-collapse.collapse(
+						aria-labelledby="headingThree"
+						data-bs-parent="#categoriesAccordion"
+					)
+						.accordion-body.categories__body
+							ul.categories__list
+								li Category items will be available soon.

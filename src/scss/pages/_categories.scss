@@ -1,0 +1,195 @@
+@import '../variables/colors';
+@import '../variables/typography';
+@import '../variables/variables';
+@import '../mixins/media';
+@import '../mixins/utilities';
+
+// ============================================
+// Categories Page Section
+// ============================================
+.categories {
+  &__accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+  }
+
+  &__item {
+    background: var(--card-2); // #F8F9FA
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    overflow: hidden;
+
+    &:first-of-type {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    @include lg-down {
+      border-radius: 12px;
+    }
+  }
+
+  &__button {
+    background: transparent !important;
+    border: none !important;
+    padding: 40px !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+
+    @include lg-down {
+      padding: 24px !important;
+    }
+
+    // Убираем стандартную иконку Bootstrap
+    &::after {
+      display: none !important;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none !important;
+      border: none !important;
+    }
+
+    &:not(.collapsed) {
+      background: transparent !important;
+      color: inherit;
+      box-shadow: none !important;
+
+      .categories__icon-plus {
+        opacity: 0;
+        transform: rotate(90deg);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .categories__icon-minus {
+        opacity: 1;
+        transform: rotate(0deg);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    &.collapsed {
+      .categories__icon-plus {
+        opacity: 1;
+        transform: rotate(0deg);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .categories__icon-minus {
+        opacity: 0;
+        transform: rotate(-90deg);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &__title-text {
+    font-family: var(--font-family);
+    font-size: $font-size-h4; // 24px
+    font-weight: var(--font-weight-medium); // 500
+    color: var(--gray-1); // #212529
+    line-height: 1;
+    flex: 1;
+
+    @include lg-down {
+      font-size: $font-size-h6; // 20px
+    }
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+
+    @include lg-down {
+      width: 42px;
+      height: 42px;
+    }
+
+    i {
+      font-size: 22px;
+      color: var(--primary); // #212529
+      transition: none;
+      position: absolute;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &-plus,
+    &-minus {
+      display: block;
+    }
+  }
+
+  &__body {
+    padding: 0 40px 40px 40px;
+
+    @include lg-down {
+      padding: 0 24px 24px 24px;
+    }
+  }
+
+  &__list {
+    font-family: var(--font-family);
+    font-size: $font-size-h6; // 20px
+    font-weight: var(--font-weight-medium); // 500
+    color: var(--gray-2); // #495057
+    line-height: 1;
+    margin: 0;
+    padding-left: 30px;
+    list-style-type: disc;
+
+    @include lg-down {
+      font-size: var(--font-size-body1); // 16px
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 0;
+      line-height: 1.5;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ============================================
+// Bootstrap Accordion Customization
+// ============================================
+.categories__accordion.accordion {
+  --bs-accordion-border-width: 0;
+  --bs-accordion-border-radius: 0;
+  --bs-accordion-bg: transparent;
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-btn-padding-x: 0;
+  --bs-accordion-btn-padding-y: 0;
+  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-body-padding-y: 0;
+}

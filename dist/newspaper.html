@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- SEO Meta - Optimized for Search Engines-->
-    <title>ADEX - Exhibitors List</title>
-    <meta name="description" content="ADEX - Список участников выставки">
-    <meta name="keywords" content="ADEX, участники, exhibitors, выставка">
+    <title>ADEX - Daily Newspaper</title>
+    <meta name="description" content="Daily newspaper for ADEX exhibition">
+    <meta name="keywords" content="ADEX, newspaper, daily newspaper, exhibition">
     <meta name="author" content="ADEX">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Russian, English, Azerbaijani">
     <meta name="revisit-after" content="7 days">
-    <link rel="canonical" href="https://adex.az/exhibitors">
+    <link rel="canonical" href="https://adex.az/newspaper.html">
     <!-- Open Graph - Facebook, LinkedIn-->
-    <meta property="og:title" content="ADEX - Exhibitors List">
-    <meta property="og:description" content="ADEX - Список участников выставки">
+    <meta property="og:title" content="ADEX - Daily Newspaper">
+    <meta property="og:description" content="Daily newspaper for ADEX exhibition">
     <meta property="og:image" content="https://adex.az/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://adex.az/exhibitors">
+    <meta property="og:url" content="https://adex.az/newspaper.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
@@ -27,8 +27,8 @@
     <meta property="og:site_name" content="ADEX">
     <!-- Twitter Card-->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ADEX - Exhibitors List">
-    <meta name="twitter:description" content="ADEX - Список участников выставки">
+    <meta name="twitter:title" content="ADEX - Daily Newspaper">
+    <meta name="twitter:description" content="Daily newspaper for ADEX exhibition">
     <meta name="twitter:image" content="https://adex.az/og-image.jpg">
     <meta name="twitter:site" content="@adex.az">
     <meta name="twitter:creator" content="@adex.az">
@@ -204,7 +204,7 @@
     </header>
     <!-- Main-->
     <main class="main flex-shrink-0">
-      <!-- Breadcrumb Section-->
+      <!-- Breadcrumb-->
             <section class="breadcrumb-section">
               <div class="container">
                 <div class="row">
@@ -212,238 +212,68 @@
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Список участников</li>
+                        <li class="breadcrumb-item active" aria-current="page">Газета выставки</li>
                       </ol>
                     </nav>
                   </div>
                 </div>
               </div>
             </section>
-      <!-- Main Content-->
-      <section class="exhibitors-page page__spacing">
+      <!-- Newspaper Section-->
+      <section class="newspaper-page page__spacing">
         <div class="container">
-          <!-- Title Section-->
-          <div class="row align-items-center mb-5 g-4">
-            <div class="col-12 col-md-6">
-              <h1 class="page-title lh-base">Exhibitors List</h1>
-            </div>
-            <div class="col-12 col-md-6 text-start text-lg-end">
-              <div class="select2-wrapper mb-4 mb-lg-0 d-inline-block" style="min-width: 120px;">
-                                <div class="select2-wrapper" data-select2-config="{&amp;quot;placeholder&amp;quot;:&amp;quot;Выберите год&amp;quot;,&amp;quot;allowClear&amp;quot;:false,&amp;quot;minimumResultsForSearch&amp;quot;:null,&amp;quot;width&amp;quot;:&amp;quot;100%&amp;quot;}">
-                                  <select class="select2 select2 " id="year-select" name="year" data-select2-init="true" data-select2-variant="primary">
-                                    <option value="2025" selected>2025</option>
-                                    <option value="2024">2024</option>
-                                  </select>
-                                </div>
-              </div>
-            </div>
+          <!-- Header with Title and Year Selector-->
+          <div class="newspaper__header mb-4">
+            <h1 class="page-title lh-base mb-0 d-inline-block">Daily Newspaper</h1>
+            <div class="newspaper__year-selector"><span class="newspaper__year-text">2024</span><i class="fas fa-caret-down"></i></div>
           </div>
-          <!-- Filters Section-->
-          <div class="row mb-4 g-4">
-            <div class="col-12 col-lg-8">
-              <div class="exhibitors-page__filter-group">
-                <label class="exhibitors-page__filter-label">Company</label>
-                <div class="exhibitors-page__filter-input"><i class="fas fa-search"></i>
-                  <input class="form-control" type="text" placeholder="Search company">
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-4">
-              <div class="exhibitors-page__filter-group">
-                <label class="exhibitors-page__filter-label">Country</label>
-                <div class="exhibitors-page__filter-input">
-                                    <div class="select2-wrapper" data-select2-config="{&amp;quot;placeholder&amp;quot;:&amp;quot;Выберите страну&amp;quot;,&amp;quot;allowClear&amp;quot;:false,&amp;quot;minimumResultsForSearch&amp;quot;:null,&amp;quot;width&amp;quot;:&amp;quot;100%&amp;quot;}">
-                                      <select class="select2 select2 " id="country-select" name="country" data-select2-init="true" data-select2-variant="default">
-                                        <option value="Azerbaijan" selected>Azerbaijan</option>
-                                        <option value="Turkey">Turkey</option>
-                                        <option value="USA">USA</option>
-                                      </select>
-                                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="exhibitors-page__filter-group">
-                <label class="exhibitors-page__filter-label">Product Categories</label>
-                <div class="exhibitors-page__filter-input">
-                                    <div class="select2-wrapper" data-select2-config="{&amp;quot;placeholder&amp;quot;:&amp;quot;None&amp;quot;,&amp;quot;allowClear&amp;quot;:false,&amp;quot;minimumResultsForSearch&amp;quot;:null,&amp;quot;width&amp;quot;:&amp;quot;100%&amp;quot;}">
-                                      <select class="select2 select2 " id="categories-select" name="categories" data-select2-init="true" data-select2-variant="default">
-                                        <option value="">None</option>
-                                        <option value="">None</option>
-                                        <option value="category1">Category 1</option>
-                                        <option value="category2">Category 2</option>
-                                      </select>
-                                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Exhibitors DataTable Component-->
-                    <div class="exhibitors__wrapper">
-                      <div class="exhibitors__content">
-                        <table class="exhibitors__table" id="exhibitorsTable" data-datatables-init="true" data-datatables-config="{&quot;title&quot;:null,&quot;blockClass&quot;:&quot;exhibitors&quot;,&quot;renderType&quot;:&quot;table&quot;,&quot;pageLength&quot;:10,&quot;gridColumns&quot;:2,&quot;cardClass&quot;:&quot;datatable__card&quot;,&quot;cardAltClass&quot;:&quot;datatable__card--alt&quot;,&quot;showHeader&quot;:true,&quot;searching&quot;:false,&quot;info&quot;:false,&quot;lengthChange&quot;:false,&quot;paging&quot;:true,&quot;responsive&quot;:true,&quot;order&quot;:false,&quot;autoWidth&quot;:false,&quot;columnDefs&quot;:[{&quot;targets&quot;:[0],&quot;width&quot;:&quot;30%&quot;},{&quot;targets&quot;:[1],&quot;width&quot;:&quot;30%&quot;}],&quot;gridContainer&quot;:&quot;[data-grid-container]&quot;,&quot;gridCardClass&quot;:&quot;exhibitors__card&quot;,&quot;columns&quot;:[{&quot;name&quot;:&quot;Company&quot;,&quot;key&quot;:&quot;company&quot;},{&quot;name&quot;:&quot;Country&quot;,&quot;key&quot;:&quot;country&quot;},{&quot;name&quot;:&quot;Stand&quot;,&quot;key&quot;:&quot;stand&quot;}]}">
-                          <thead>
-                            <tr>
-                              <th>Company</th>
-                              <th>Country</th>
-                              <th>Stand</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td data-column="company">ASELSAN</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">6A523</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">&quot;ATESHGAH&quot; INSURANCE COMPANY</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">-</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">&quot;AZERSILAH&quot; DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">6A500</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">3A130</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">1A120</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">&quot;Q-STP&quot; LLC</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">2A230</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">3E AZERBAIJAN LLC</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">3A011</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">ADT GROUP</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">4A012</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">APA GROUP</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">-</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">AZ TV</td>
-                              <td data-column="country">Azerbaijan</td>
-                              <td data-column="stand">5M014</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">ASELSAN 2</td>
-                              <td data-column="country">Turkey</td>
-                              <td data-column="stand">6A524</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Boeing</td>
-                              <td data-column="country">USA</td>
-                              <td data-column="stand">1A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Lockheed Martin</td>
-                              <td data-column="country">USA</td>
-                              <td data-column="stand">1A002</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Airbus Defence</td>
-                              <td data-column="country">France</td>
-                              <td data-column="stand">2A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Thales Group</td>
-                              <td data-column="country">France</td>
-                              <td data-column="stand">2A002</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">BAE Systems</td>
-                              <td data-column="country">UK</td>
-                              <td data-column="stand">3A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Rheinmetall</td>
-                              <td data-column="country">Germany</td>
-                              <td data-column="stand">4A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Leonardo S.p.A.</td>
-                              <td data-column="country">Italy</td>
-                              <td data-column="stand">5A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Saab AB</td>
-                              <td data-column="country">Sweden</td>
-                              <td data-column="stand">6A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Rafael Advanced Defense Systems</td>
-                              <td data-column="country">Israel</td>
-                              <td data-column="stand">7A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Korea Aerospace Industries</td>
-                              <td data-column="country">South Korea</td>
-                              <td data-column="stand">8A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Turkish Aerospace Industries</td>
-                              <td data-column="country">Turkey</td>
-                              <td data-column="stand">9A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Rostec</td>
-                              <td data-column="country">Russia</td>
-                              <td data-column="stand">10A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Hanwha Defense</td>
-                              <td data-column="country">South Korea</td>
-                              <td data-column="stand">11A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">General Dynamics</td>
-                              <td data-column="country">USA</td>
-                              <td data-column="stand">12A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Northrop Grumman</td>
-                              <td data-column="country">USA</td>
-                              <td data-column="stand">13A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Raytheon Technologies</td>
-                              <td data-column="country">USA</td>
-                              <td data-column="stand">14A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">L3Harris Technologies</td>
-                              <td data-column="country">USA</td>
-                              <td data-column="stand">15A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">Elbit Systems</td>
-                              <td data-column="country">Israel</td>
-                              <td data-column="stand">16A001</td>
-                            </tr>
-                            <tr>
-                              <td data-column="company">MBDA</td>
-                              <td data-column="country">Europe</td>
-                              <td data-column="stand">17A001</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
+          <!-- Newspaper Card Wrapper-->
+          <div class="newspaper__wrapper">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-md-4 g-4">
+                <div class="col">
+                  <div class="card newspaper__card h-100">
+                    <div class="newspaper__image-wrapper"><img class="newspaper__image card-img-top" src="assets/img/webp/news1.webp" alt="Adex 2024 Newspaper" loading="lazy"></div>
+                    <div class="card-footer newspaper__content"><span class="newspaper__name">Adex 2024</span>
+                      <button class="newspaper__download" type="button" aria-label="Download newspaper"><i class="fas fa-arrow-down-long-to-line"></i></button>
                     </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card newspaper__card h-100">
+                    <div class="newspaper__image-wrapper"><img class="newspaper__image card-img-top" src="assets/img/webp/news1.webp" alt="Adex 2024 Newspaper" loading="lazy"></div>
+                    <div class="card-footer newspaper__content"><span class="newspaper__name">Adex fdsfsdfsdfsdf fsdfsdfdsfsd fsd 2024</span>
+                      <button class="newspaper__download" type="button" aria-label="Download newspaper"><i class="fas fa-arrow-down-long-to-line"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card newspaper__card h-100">
+                    <div class="newspaper__image-wrapper"><img class="newspaper__image card-img-top" src="assets/img/webp/news1.webp" alt="Adex 2024 Newspaper" loading="lazy"></div>
+                    <div class="card-footer newspaper__content"><span class="newspaper__name">Adex 2024</span>
+                      <button class="newspaper__download" type="button" aria-label="Download newspaper"><i class="fas fa-arrow-down-long-to-line"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card newspaper__card h-100">
+                    <div class="newspaper__image-wrapper"><img class="newspaper__image card-img-top" src="assets/img/webp/news1.webp" alt="Adex 2024 Newspaper" loading="lazy"></div>
+                    <div class="card-footer newspaper__content"><span class="newspaper__name">Adex 2024</span>
+                      <button class="newspaper__download" type="button" aria-label="Download newspaper"><i class="fas fa-arrow-down-long-to-line"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card newspaper__card h-100">
+                    <div class="newspaper__image-wrapper"><img class="newspaper__image card-img-top" src="assets/img/webp/news1.webp" alt="Adex 2024 Newspaper" loading="lazy"></div>
+                    <div class="card-footer newspaper__content"><span class="newspaper__name">Adex 2024</span>
+                      <button class="newspaper__download" type="button" aria-label="Download newspaper"><i class="fas fa-arrow-down-long-to-line"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

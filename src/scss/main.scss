@@ -33,6 +33,7 @@
 @import 'components/social-sidebar';
 @import 'components/content';
 @import 'components/datatable';
+@import 'components/pagination';
 
 // Pages
 @import 'pages/home';
@@ -47,3 +48,9 @@
 @import 'pages/venue';
 @import 'pages/working-hours2';
 @import 'pages/visit-exhibition';
+@import 'pages/categories';
+@import 'pages/newspaper';
+@import 'pages/support';
+@import 'pages/news';
+@import 'pages/news-detail';
+@import 'pages/contact';

@@ -1,0 +1,168 @@
+extends ../layouts/default
+
+block variables
+	- var pageTitle = 'ADEX - News'
+	- var pageDescription = 'Latest news from ADEX exhibition'
+	- var pageKeywords = 'ADEX, news, exhibition news, latest updates'
+	- var pageCanonical = 'https://adex.az/news.html'
+	- var pageOgImage = 'https://adex.az/og-image.jpg'
+	- var pageAuthor = 'ADEX'
+
+block content
+	// Breadcrumb
+	include ../mixins/_breadcrumb
+	include ../mixins/_pagination
+	+breadcrumb([
+		{text: 'Главная', href: 'index.html'},
+		{text: 'Новости', href: null}
+	])
+
+	// News Section
+	section.news-page.page__spacing
+		.container
+			// News Title
+			h1.page-title.lh-base.mb-4 News
+
+			// News Cards Grid
+			.row.row-cols-1.row-cols-md-3.g-4
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news1.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news2.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news3.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news1.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news2.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100
+						img.news__image.card-img-top(src="assets/img/webp/news3.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100
+						img.news__image.card-img-top(src="assets/img/webp/news1.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100
+						img.news__image.card-img-top(src="assets/img/webp/news2.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100
+						img.news__image.card-img-top(src="assets/img/webp/news3.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news1.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news2.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+				.col
+					a.card.news__card.text-decoration-none.h-100(href="news-detail.html")
+						img.news__image.card-img-top(src="assets/img/webp/news3.webp" alt="AI is being imposed into the big picture of the energy industry" loading="lazy")
+						.card-body.news__body
+							.news__date
+								i.far.fa-calendar
+								span 24.01.2025
+							h2.news__title AI is being imposed into the big picture of the energy industry
+							.news__link
+								span Read more
+								i.far.fa-arrow-right
+
+			// Pagination
+			+pagination({
+				currentPage: 1,
+				totalPages: 10,
+				prevText: 'After',
+				nextText: 'Before',
+				showDivider: true
+			})
