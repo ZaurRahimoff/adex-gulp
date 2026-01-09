@@ -1,0 +1,110 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+@import "../mixins/utilities";
+
+// ============================================
+// Venue Page Section
+// ============================================
+.venue-page {
+  padding: 40px 0;
+  background: var(--white);
+
+  @include lg-down {
+    padding: 40px 0;
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0 0 40px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: var(--font-size-h3); // 36px
+      margin-bottom: 24px;
+    }
+  }
+
+  &__image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 460px;
+    margin-bottom: 40px;
+
+    @include lg-down {
+      height: 460px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__info-cards {
+    margin-bottom: 0;
+
+    @include lg-down {
+      margin-bottom: 0;
+    }
+  }
+
+  &__card {
+    background: var(--card-2); // #F8F9FA
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    height: 121px;
+    display: flex;
+    align-items: center;
+
+    @include lg-down {
+      padding: 16px;
+      height: 121px;
+    }
+  }
+
+  &__card-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__card-icon {
+    font-size: 20px;
+    color: var(--primary); // #2B3B73
+    flex-shrink: 0;
+  }
+
+  &__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+
+  &__card-title {
+    font-family: var(--font-family);
+    font-size: $font-size-body; // 18px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--gray-1); // #212529
+    margin: 0;
+    line-height: normal;
+  }
+
+  &__card-subtitle {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body1); // 16px
+    font-weight: $font-weight-regular; // 400
+    color: var(--gray-2); // #495057
+    margin: 0;
+    line-height: normal;
+  }
+}

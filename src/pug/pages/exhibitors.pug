@@ -2,8 +2,8 @@ extends ../layouts/default
 
 block variables
   - var pageTitle = 'ADEX - Exhibitors List'
-  - var pageDescription = 'ADEX - Exhibitors list'
-  - var pageKeywords = 'ADEX, exhibitors, participants'
+  - var pageDescription = 'ADEX - Список участников выставки'
+  - var pageKeywords = 'ADEX, участники, exhibitors, выставка'
   - var pageCanonical = 'https://adex.az/exhibitors'
   - var pageOgImage = 'https://adex.az/og-image.jpg'
   - var pageAuthor = 'ADEX'
@@ -17,12 +17,12 @@ block content
   ])
 
   // Main Content
-  section.exhibitors.page__spacing
+  section.exhibitors-page.page__spacing
     .container
       // Title Section
       .row.align-items-center.mb-5.g-4
         .col-12.col-md-6
-          h1.page-title Exhibitors List
+          h1.exhibitors-page__title Exhibitors List
         .col-12.col-md-6.text-start.text-lg-end
           .select2-wrapper.mb-4.mb-lg-0.d-inline-block(style="min-width: 120px;")
             include ../mixins/_select2
@@ -44,15 +44,15 @@ block content
       // Filters Section
       .row.mb-4.g-4
         .col-12.col-lg-8
-          .exhibitors__filter-group
-            label.exhibitors__filter-label Company
-            .exhibitors__filter-input
+          .exhibitors-page__filter-group
+            label.exhibitors-page__filter-label Company
+            .exhibitors-page__filter-input
               i.fas.fa-search
               input.form-control(type="text" placeholder="Search company")
         .col-12.col-lg-4
-          .exhibitors__filter-group
-            label.exhibitors__filter-label Country
-            .exhibitors__filter-input
+          .exhibitors-page__filter-group
+            label.exhibitors-page__filter-label Country
+            .exhibitors-page__filter-input
               include ../mixins/_select2
               +select2(
                 'country',
@@ -70,9 +70,9 @@ block content
                 ''
               )
         .col-12
-          .exhibitors__filter-group
-            label.exhibitors__filter-label Product Categories
-            .exhibitors__filter-input
+          .exhibitors-page__filter-group
+            label.exhibitors-page__filter-label Product Categories
+            .exhibitors-page__filter-input
               include ../mixins/_select2
               +select2(
                 'categories',
@@ -90,10 +90,11 @@ block content
                 ''
               )
       
-      // DataTable Section
+      // Exhibitors DataTable Component
       include ../mixins/_datatable
       -
-        var exhibitorRows = [
+        // Данные участников выставки
+        const exhibitorData = [
           {company: 'ASELSAN', country: 'Azerbaijan', stand: '6A523'},
           {company: '"ATESHGAH" INSURANCE COMPANY', country: 'Azerbaijan', stand: '-'},
           {company: '"AZERSILAH" DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '6A500'},
@@ -104,16 +105,58 @@ block content
           {company: 'ADT GROUP', country: 'Azerbaijan', stand: '4A012'},
           {company: 'APA GROUP', country: 'Azerbaijan', stand: '-'},
           {company: 'AZ TV', country: 'Azerbaijan', stand: '5M014'},
-          {company: 'ASELSAN', country: 'Azerbaijan', stand: '6A523'},
-          {company: '"ATESHGAH" INSURANCE COMPANY', country: 'Azerbaijan', stand: '-'},
-          {company: '"AZERSILAH" DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '6A500'},
-          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '3A130'},
-          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '1A120'},
-          {company: '"Q-STP" LLC', country: 'Azerbaijan', stand: '2A230'},
-          {company: '3E AZERBAIJAN LLC', country: 'Azerbaijan', stand: '3A011'},
-          {company: 'ADT GROUP', country: 'Azerbaijan', stand: '4A012'},
-          {company: 'APA GROUP', country: 'Azerbaijan', stand: '-'},
-          {company: 'AZ TV', country: 'Azerbaijan', stand: '5M014'}
-        ]
-      +datatable('table', 'Exhibitors', [{name: 'Company', dataAttr: 'company'}, {name: 'Country', dataAttr: 'country'}, {name: 'Stand', dataAttr: 'stand'}], exhibitorRows, 'exhibitors', {pageLength: 10, renderType: 'table'})
-
+          {company: 'ASELSAN 2', country: 'Turkey', stand: '6A524'},
+          {company: 'Boeing', country: 'USA', stand: '1A001'},
+          {company: 'Lockheed Martin', country: 'USA', stand: '1A002'},
+          {company: 'Airbus Defence', country: 'France', stand: '2A001'},
+          {company: 'Thales Group', country: 'France', stand: '2A002'},
+          {company: 'BAE Systems', country: 'UK', stand: '3A001'},
+          {company: 'Rheinmetall', country: 'Germany', stand: '4A001'},
+          {company: 'Leonardo S.p.A.', country: 'Italy', stand: '5A001'},
+          {company: 'Saab AB', country: 'Sweden', stand: '6A001'},
+          {company: 'Rafael Advanced Defense Systems', country: 'Israel', stand: '7A001'},
+          {company: 'Korea Aerospace Industries', country: 'South Korea', stand: '8A001'},
+          {company: 'Turkish Aerospace Industries', country: 'Turkey', stand: '9A001'},
+          {company: 'Rostec', country: 'Russia', stand: '10A001'},
+          {company: 'Hanwha Defense', country: 'South Korea', stand: '11A001'},
+          {company: 'General Dynamics', country: 'USA', stand: '12A001'},
+          {company: 'Northrop Grumman', country: 'USA', stand: '13A001'},
+          {company: 'Raytheon Technologies', country: 'USA', stand: '14A001'},
+          {company: 'L3Harris Technologies', country: 'USA', stand: '15A001'},
+          {company: 'Elbit Systems', country: 'Israel', stand: '16A001'},
+          {company: 'MBDA', country: 'Europe', stand: '17A001'}
+        ];
+        
+        // Колонки таблицы
+        const exhibitorColumns = [
+          {name: 'Company', key: 'company'},
+          {name: 'Country', key: 'country'},
+          {name: 'Stand', key: 'stand'}
+        ];
+        
+        // Опции DataTable
+        const exhibitorOptions = {
+          blockClass: 'exhibitors',
+          renderType: 'table',
+          pageLength: 10,
+          searching: false,
+          info: false,
+          lengthChange: false,
+          paging: true,
+          showHeader: true,
+          responsive: true,  // Отключаем стандартный Responsive
+          order: false,
+          autoWidth: false,
+          columnDefs: [
+            {
+              targets: [0],
+              width: '30%'
+            },
+            {
+              targets: [1],
+              width: '30%'
+            }
+          ]
+        };
+      
+      +datatable('exhibitorsTable', exhibitorColumns, exhibitorData, exhibitorOptions)

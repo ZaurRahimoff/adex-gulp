@@ -1,0 +1,293 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+@import "../mixins/utilities";
+
+// ============================================
+// Venue Page Section
+// ============================================
+.venue-page {
+  padding: 40px 0;
+  background: var(--white);
+
+  @include lg-down {
+    padding: 10px 0;
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0 0 40px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: var(--font-size-h3); // 36px
+      margin-bottom: 24px;
+    }
+  }
+
+  &__image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 460px;
+    margin-bottom: 40px;
+
+    @include lg-down {
+      height: 460px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__info-cards {
+    margin-bottom: 40px;
+
+    @include lg-down {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__card {
+    background: var(--card-2); // #F8F9FA
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    height: 121px;
+    display: flex;
+    align-items: center;
+
+    @include lg-down {
+      padding: 16px;
+      height: 121px;
+    }
+  }
+
+  &__card-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__card-icon {
+    font-size: 20px;
+    color: var(--primary); // #2B3B73
+    flex-shrink: 0;
+  }
+
+  &__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+
+  &__card-title {
+    font-family: var(--font-family);
+    font-size: $font-size-body; // 18px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--gray-1); // #212529
+    margin: 0;
+    line-height: normal;
+  }
+
+  &__card-subtitle {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body1); // 16px
+    font-weight: $font-weight-regular; // 400
+    color: var(--gray-2); // #495057
+    margin: 0;
+    line-height: normal;
+  }
+}
+
+// ============================================
+// Working Hours Page Section
+// ============================================
+.working-hours-page {
+  padding:40px 0;
+  background: var(--white);
+
+  @include lg-down {
+    padding: 10px 0;
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0 0 40px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: var(--font-size-h3); // 36px
+      margin-bottom: 24px;
+    }
+  }
+
+  &__cards {
+    margin-bottom: 24px;
+  }
+
+  // Desktop cards (3 separate cards)
+  &__card {
+    background: var(--primary); // #2B3B73
+    border-radius: 12px;
+    padding: 40px;
+    height: 118px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__card-content {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__card-icon {
+    font-size: 20px;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  &__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+
+    @include lg-down {
+      gap: 10px;
+    }
+  }
+
+  &__card-time {
+    font-family: var(--font-family);
+    font-size: var(--font-size-body1); // 16px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--white);
+    margin: 0;
+    line-height: normal;
+
+    @include lg-down {
+      font-size: $font-size-body2; // 14px
+    }
+  }
+
+  &__card-day {
+    font-family: var(--font-family);
+    font-size: $font-size-body3; // 12px
+    font-weight: $font-weight-regular; // 400
+    color: var(--white);
+    margin: 0;
+    line-height: normal;
+  }
+
+  // Mobile card (single card with all hours)
+  &__card-mobile {
+    background: var(--primary); // #2B3B73
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__card-mobile-title {
+    font-family: var(--font-family);
+    font-size: $font-size-h6; // 20px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--white);
+    margin: 0;
+    line-height: 1;
+  }
+
+  &__card-mobile-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__note {
+    margin-top: 24px;
+
+    @include lg-down {
+      margin-top: 16px;
+    }
+
+    p {
+      font-family: var(--font-family);
+      font-size: $font-size-body; // 18px
+      font-weight: $font-weight-regular; // 400
+      color: #ee1c23;
+      margin: 0;
+      line-height: normal;
+    }
+  }
+}
+
+// ============================================
+// Services Page Section
+// ============================================
+.services-page {
+  padding: 40px 0;
+  background: var(--white);
+
+  @include lg-down {
+    padding: 20px 0;
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0 0 20px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: var(--font-size-h3); // 36px
+      margin-bottom: 20px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: var(--info); // #2B3B73
+    flex-shrink: 0;
+  }
+
+  &__text {
+    font-family: var(--font-family);
+    font-size: $font-size-h4; // 24px
+    font-weight: $font-weight-medium; // 500
+    color: var(--gray-1); // #212529
+    margin: 0;
+    line-height: normal;
+  }
+}

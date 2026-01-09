@@ -1,0 +1,81 @@
+extends ../layouts/default
+
+block variables
+	- var pageTitle = 'ADEX - Письма Приветствия'
+	- var pageDescription = 'Письма приветствия от организаторов выставки ADEX'
+	- var pageKeywords = 'ADEX, письма приветствия, выставка'
+	- var pageCanonical = 'https://adex.az/welcome-letters.html'
+	- var pageOgImage = 'https://adex.az/og-image.jpg'
+	- var pageAuthor = 'ADEX'
+
+block content
+	// Breadcrumb
+	include ../mixins/_breadcrumb
+	+breadcrumb([
+		{text: 'Главная', href: 'index.html'},
+		{text: 'Письма Приветствия', href: null}
+	])
+
+	// Welcome Letters Section
+	section.welcome-letters-section
+		.container
+			.row
+				.col-12.col-lg-8.order-2.order-lg-1
+					// Page Title
+					h1.welcome-letters-section__title Welcome Letters
+
+					// Welcome Letters Accordion
+					include ../mixins/_welcome-letter-accordion
+					.accordion#welcomeLettersAccordion
+						// Letter 1 - Ilham Aliyev (открыт)
+						+welcome-letter-accordion(
+							'1',
+							'Ilham Aliyev',
+							'President of the Republic of Azerbaijan',
+							'assets/img/welcome/ilham-aliyev.jpg',
+							'Dear Exhibitors and Guests,',
+							'I extend my greetings on the occasion of the opening of the 5th Anniversary Azerbaijan International Defence Exhibition ADEX-2024. Welcome to Azerbaijan! Our country has consistently demonstrated its ability to organise prestigious international events at the highest level and with utmost professionalism. Azerbaijan\'s modern infrastructure and stable security environment are always positively recognized by the global community when hosting large-scale, highly significant events. A prime example of this is the 29th session of the Conference of the Parties to the UN Framework Convention on Climate Change (COP29), which is considered one of the most prestigious global events and will be held in our country this year. It can be confidently stated that the ADEX exhibition, now in its fifth edition, will once again be conducted to the highest standards, as in previous years. The defence industry holds substantial potential for reducing carbon emissions, and I believe that ADEX 2024, taking place ahead of COP29, offers an ideal platform for professional discussions on this topic. ADEX plays a unique role in fostering business relationships between prominent military-industrial enterprises, as well as leading international companies from allied and friendly countries. This exhibition provides extensive opportunities to explore the latest advancements in modern defence technologies and military equipment available for export on the global arms market, and to establish new agreements in the realm of international military-technical cooperation. Hundreds of world-renowned companies showcase their products at this event. ADEX is a significant occasion for countries to strengthen their defence industries, enhance production capabilities, implement modern and innovative tools, and exchange valuable experiences. I would like to specifically note that the state places special importance on strengthening Azerbaijan\'s defence capabilities and ensuring national security, with further development in these areas being a top priority. In recent years, our country\'s defence industry has experienced rapid growth. Alongside the improvement of existing production facilities to meet current standards, efforts to establish new production areas have been successfully implemented. As a result of well-executed reforms, the variety of defence products manufactured in our country has expanded, with over 1,000 military products now produced in Azerbaijan. The Armed Forces of Azerbaijan are equipped with state-of-the-art weaponry, and defence industry companies from around the world are showing strong interest in our products. New collaborations in the defence sector are being established with many friendly and allied countries, while existing relationships continue to thrive. Azerbaijan is enhancing its military and technical capabilities by achieving dynamic progress in the defence field. The strength and capabilities of Azerbaijan\'s military-industrial complex, which played a pivotal role in the liberation of our internationally recognized territories, as well as the modern weapons produced domestically, are also showcased at the ADEX exhibition. It is no coincidence that the combat experience of the Azerbaijani Armed Forces, whether from the 44-day Patriotic War or local anti-terrorist operations, is meticulously analyzed in military centres of developed countries today. In conjunction with ADEX, the 14th Securex Caspian International Exhibition for Internal Security, Protection, and Rescue Equipment is also being held. This exhibition highlights innovative models of equipment, comprehensive protection systems, and weapons for law enforcement, border control, rescue, firefighting, and special services. I am confident that the products showcased at this exhibition will be well-received by participants. Dear guests, I would like to once again express my pleasure in seeing all of you in Azerbaijan and wish success to all participants of both exhibitions!',
+							true
+						)
+
+						// Letter 2 - Vuqar Mustafayev (закрыт)
+						+welcome-letter-accordion(
+							'2',
+							'Vuqar Mustafayev',
+							'Ministry of Defence Industry of the Republic of Azerbaijan Minister',
+							'assets/img/welcome/vuqar-mustafayev.jpg',
+							'Dear participants of the exhibition! Esteemed guests! Ladies and gentlemen!',
+							'It is with great pleasure to welcome you to the 5th Anniversary Azerbaijan International Defence Exhibition ADEX 2024, which will be held on 24-26 September, 2024 in Baku city. The exhibition is organized by the Ministry of Defence Industry of the Republic of Azerbaijan and will bring together leading defence industry companies from around the world. ADEX 2024 will showcase the latest developments in defence technologies, military equipment, and security solutions. We are confident that this exhibition will provide an excellent platform for international cooperation and business development in the defence sector.',
+							false
+						)
+
+						// Letter 3 - Zakir Hasanov (закрыт)
+						+welcome-letter-accordion(
+							'3',
+							'Zakir Hasanov',
+							'Ministry of Defence of the Republic of Azerbaijan Minister',
+							'assets/img/welcome/zakir-hasanov.jpg',
+							'Honourable exhibitors! Dear ladies and gentlemen!',
+							'It is my great pleasure to welcome you to the 5th Azerbaijan International Defence Exhibition "ADEX-2024," which is being held in the city of Baku, the capital of ancient Azerbaijan, located at the crossroads of Eastern and Western cultures. This prestigious event brings together defence industry leaders, military representatives, and security experts from around the world. We look forward to fruitful discussions and the establishment of new partnerships that will contribute to regional and global security.',
+							false
+						)
+
+					// Show All Button
+					.text-center.mt-4.d-lg-none
+						button.btn.welcome-letters-section__show-all(type="button")
+							| Show all
+							i.fas.fa-caret-down.ms-2
+
+				// Right Column - Action Buttons
+				.col-12.col-lg-4.order-1.order-lg-3
+					include ../mixins/_button
+					.actions__block
+						.row.flex-row.flex-lg-column.flex-nowrap.flex-md-wrap.g-3.g-md-5
+							.col-auto.col-md-12
+								+button("Бронирование стенда", "action", "button", "#")
+							.col-auto.col-md-12
+								+button("Станте спонсором", "action", "button", "#")
+							.col-auto.col-md-12
+								+button("Обратная связь", "action", "button", "#")
+							.col-auto.col-md-12
+								+button("Купите билет", "action", "button", "#")

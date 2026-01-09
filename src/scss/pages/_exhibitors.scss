@@ -1,8 +1,27 @@
-// Exhibitors Page Styles
-.exhibitors {
-  // Используем общий компонент datatable
-  @extend .datatable;
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
 
+// Exhibitors Page Styles
+.exhibitors-page {
+  padding: 30px 0 60px;
+
+  // Page Title
+  &__title {
+    font-family: var(--font-family);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: normal;
+    margin: 0;
+
+    @include md-down {
+      font-size: 32px;
+    }
+  }
+
+  // Filters Section
   &__filter-group {
     display: flex;
     flex-direction: column;
@@ -10,9 +29,9 @@
   }
 
   &__filter-label {
-    font-family: var(--font-base), var(--font-fallback);
+    font-family: var(--font-family);
     font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-body1);
     line-height: var(--line-height-tight);
     color: var(--primary);
   }
@@ -36,9 +55,9 @@
       border: none;
       border-radius: 4px;
       height: 60px;
-      font-family: var(--font-base), var(--font-fallback);
+      font-family: var(--font-family);
       font-weight: var(--font-weight-regular);
-      font-size: var(--font-size-body);
+      font-size: var(--font-size-body1);
       line-height: var(--line-height-tight);
       color: var(--gray-1);
 
@@ -48,11 +67,477 @@
     }
   }
 
-  &__row {
-    @extend .datatable--table__row;
+  // Кастомизация компонента datatable для Exhibitors
+  .exhibitors {
+    // Wrapper
+    &__wrapper {
+      width: 100%;
+    }
+
+    // Content (серый фон контейнера)
+    &__content {
+      background-color: var(--card-1);
+      border-radius: 12px;
+      padding: 40px;
+
+      @include md-down {
+        padding: 30px 20px;
+      }
+
+      @include sm-down {
+        padding: 20px 15px;
+      }
+    }
+
+    // Table (стандартная HTML таблица)
+    &__table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 20px;
+      margin-bottom: 30px;
+
+      // Table Header
+      thead {
+        display: table-header-group !important; // Переопределяем DataTables display: none
+
+        tr {
+          background-color: var(--primary);
+          border-radius: 12px;
+
+          @include sm-down {
+            width: 100%;
+            display: flex;
+          }
+
+          th {
+            padding: 30px 40px;
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1;
+            color: var(--white);
+            border: none;
+
+            @include md-down {
+              padding: 20px 30px;
+              font-size: 20px;
+            }
+
+            @include sm-down {
+              padding: 15px 20px;
+              font-size: 18px;
+            }
+
+            // Первая ячейка с закругленным левым краем
+            &:first-child {
+              border-top-left-radius: 12px;
+              border-bottom-left-radius: 12px;
+              text-align: left;
+              width: auto; // Company - гибкая ширина
+            }
+
+            // Вторая ячейка (Country)
+            &:nth-child(2) {
+              text-align: center;
+              width: 200px;
+
+              @include md-down {
+                width: auto;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+              }
+
+              @include sm-down {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+              }
+
+              @include xs-down {
+                border-top-right-radius: 12px;
+                border-bottom-right-radius: 12px;
+              }
+            }
+
+            // Третья ячейка (Stand) с закругленным правым краем
+            &:last-child {
+              border-top-right-radius: 12px;
+              border-bottom-right-radius: 12px;
+              text-align: right;
+              width: 150px;
+
+              @include md-down {
+                width: auto;
+              }
+            }
+          }
+        }
+      }
+
+      // Table Body
+      tbody {
+        @include sm-down {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+        }
+
+        tr {
+          background-color: var(--white);
+          border-radius: 12px;
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+          transition: var(--transition-base);
+
+          &:hover {
+            box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+          }
+
+          @include sm-down {
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            &.child {
+              justify-content: center;
+            }
+          }
+
+          &.dt-hasChild {
+            td {
+              &:first-child {
+                @include md-down {
+                  &::before {
+                    content: "\f068" !important;
+                    transition: var(--transition-base);
+                    transform: rotate(0deg);
+                  }
+                }
+              }
+            }
+          }
+
+          td {
+            padding: 20px 40px;
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.2;
+            color: var(--gray-1);
+            border: none;
+            vertical-align: middle;
+
+            @include md-down {
+              padding: 15px 20px;
+              font-size: 14px;
+            }
+
+            // Первая ячейка (Company) с закругленным левым краем
+            &:first-child {
+              border-top-left-radius: 12px;
+              border-bottom-left-radius: 12px;
+
+              @include md-down {
+                // border-top-left-radius: 12px;
+                // border-bottom-left-radius: 12px;
+                text-align: left;
+                // width: 100%;
+                // display: flex;
+                // align-items: center;
+                // justify-content: flex-start;
+
+                &::before {
+                  content: "\2b" !important;
+                  position: relative;
+                  width: 22px;
+                  height: 22px;
+                  background-color: var(--primary);
+                  border-radius: 50%;
+                  color: var(--white) !important;
+                  font-size: 16px;
+                  font-weight: 700;
+                  display: flex !important;
+                  align-items: center;
+                  justify-content: center;
+                  text-align: center;
+                  font-family: "Font Awesome 7 Pro";
+                  padding: 3px;
+                  line-height: normal;
+                  transform: rotate(90deg);
+                  transition: var(--transition-base);
+                }
+              }
+
+              @include sm-down {
+                border-top-left-radius: 12px;
+                border-bottom-left-radius: 12px;
+                // text-align: left;
+                // width: 100%;
+                display: flex;
+                align-items: center;
+                // justify-content: flex-start;
+              }
+            }
+
+            // Вторая ячейка (Country)
+            &:nth-child(2) {
+              text-align: center;
+              // width: 200px;
+
+              @include md-down {
+                width: auto;
+                text-align: left;
+                // border-top-right-radius: 12px;
+                // border-bottom-right-radius: 12px;
+              }
+
+              @include sm-down {
+                width: auto;
+                text-align: left;
+                border-top-right-radius: none;
+                border-bottom-right-radius: none;
+              }
+
+              @include xs-down {
+                border-top-right-radius: 12px;
+                border-bottom-right-radius: 12px;
+              }
+            }
+
+            // Третья ячейка (Stand) с закругленным правым краем
+            &:last-child {
+              border-top-right-radius: 12px;
+              border-bottom-right-radius: 12px;
+              text-align: center;
+              // width: 150px;
+
+              @include md-down {
+                width: auto;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Pagination wrapper
+    &__pagination-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include md-down {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      // Интеграция с DataTables пагинацией
+      .dataTables_paginate {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .pagination {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        .paginate_button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 14px;
+          background-color: var(--white);
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 1;
+          color: var(--primary);
+          text-decoration: none;
+          transition: var(--transition-base);
+          height: 40px;
+          min-width: 40px;
+
+          &:hover:not(.disabled) {
+            background-color: var(--card-1);
+          }
+
+          &.current {
+            background-color: var(--primary);
+            color: var(--white);
+            pointer-events: none;
+            font-weight: 500;
+          }
+
+          &.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+          }
+
+          // Кнопка Previous (After)
+          &.previous {
+            gap: 8px;
+
+            i {
+              font-size: 14px;
+            }
+          }
+
+          // Кнопка Next (Before)
+          &.next {
+            gap: 8px;
+
+            i {
+              font-size: 14px;
+            }
+          }
+
+          // Номера страниц
+          &:not(.previous):not(.next) {
+            width: 40px;
+            padding: 12px;
+            font-weight: 500;
+            line-height: 1.4;
+          }
+        }
+
+        // Dots (многоточие)
+        .ellipsis {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          font-family: var(--font-family);
+          font-weight: 500;
+          font-size: 14px;
+          color: var(--primary);
+          pointer-events: none;
+        }
+      }
+    }
   }
 
-  &__cell {
-    @extend .datatable--table__cell;
+  // ============================================
+  // Мобильная версия
+  // ============================================
+
+  @include md-down {
+    &__content {
+      padding: 16px;
+      background-color: #e9ecef;
+    }
+
+    &__table {
+      border-spacing: 0 16px;
+
+      // Header (Company + Country)
+      thead {
+        tr {
+          display: flex !important;
+          align-items: center;
+          justify-content: space-between;
+          height: 80px;
+          padding: 0 40px;
+
+          th {
+            padding: 0 !important;
+            font-size: 24px;
+            flex: 0 0 auto;
+            border: none;
+
+            // Скрываем колонку Stand
+            &:last-child {
+              display: none !important;
+            }
+
+            // Company (слева)
+            &:first-child {
+              text-align: left;
+            }
+
+            // Country (справа)
+            &:nth-child(2) {
+              text-align: right;
+            }
+          }
+        }
+      }
+
+      // Карточки компаний
+      tbody {
+        tr {
+          background-color: #f8f9fa;
+          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+          border-radius: 12px;
+          display: flex !important;
+          align-items: center;
+          gap: 10px;
+          padding: 16px;
+          padding-left: 48px !important; // Место для кнопки "+"
+          min-height: 60px;
+          position: relative;
+
+          td {
+            padding: 0 !important;
+            font-size: 18px;
+            border: none !important;
+
+            // Скрываем колонку Stand
+            &:last-child {
+              display: none !important;
+            }
+
+            // Company (слева, растягивается)
+            &:first-child {
+              flex: 1 1 auto;
+              // max-width: 178px;
+              word-wrap: break-word;
+
+              // Кнопка
+              &::before {
+                content: "\2b";
+                position: absolute;
+                left: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 22px;
+                height: 22px;
+                background-color: var(--primary);
+                border-radius: 50%;
+                color: var(--white);
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 22px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                font-family: "Font Awesome 7 Pro";
+              }
+            }
+
+            // Country (справа, фиксированная ширина)
+            &:nth-child(2) {
+              flex: 0 0 auto;
+              width: auto;
+              max-width: 113px;
+              text-align: right;
+              word-wrap: break-word;
+            }
+          }
+        }
+      }
+    }
   }
 }

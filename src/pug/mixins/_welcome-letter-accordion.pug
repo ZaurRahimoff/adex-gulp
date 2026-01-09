@@ -1,0 +1,43 @@
+//- Welcome Letter Accordion Mixin - переиспользуемый компонент для аккордиона письма
+//- Usage:
+//-   +welcome-letter-accordion('1', 'Ilham Aliyev', 'President of the Republic of Azerbaijan', 'assets/img/welcome/ilham-aliyev.jpg', 'Dear Exhibitors and Guests,', 'I extend my greetings...', true)
+//-
+//- Parameters:
+//-   id - уникальный идентификатор аккордиона (обязательно)
+//-   name - имя автора письма (обязательно)
+//-   position - должность автора (обязательно)
+//-   photo - путь к фотографии автора (обязательно)
+//-   greeting - заголовок письма/приветствие (обязательно)
+//-   text - текст письма (обязательно)
+//-   isExpanded - открыт ли аккордион по умолчанию (опционально, по умолчанию false)
+
+mixin welcome-letter-accordion(id, name, position, photo, greeting, text, isExpanded = false)
+  - var headingId = `heading${id}`
+  - var collapseId = `collapse${id}`
+  - var expandedClass = isExpanded ? '' : 'collapsed'
+  - var showClass = isExpanded ? 'show' : ''
+  - var ariaExpanded = isExpanded ? 'true' : 'false'
+  
+  .accordion-item.welcome-letter__card
+    h2.accordion-header(id=headingId)
+      button.accordion-button.welcome-letter__header(
+        class=expandedClass
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target=`#${collapseId}`
+        aria-expanded=ariaExpanded
+        aria-controls=collapseId
+      )
+        .welcome-letter__header-content
+          .welcome-letter__avatar
+            img(src=photo alt=name)
+          .welcome-letter__info
+            h3.welcome-letter__name= name
+            p.welcome-letter__position= position
+        .welcome-letter__toggle
+          i.fas.fa-arrow-left
+    
+    div(id=collapseId class=`accordion-collapse collapse ${showClass}` aria-labelledby=headingId data-bs-parent="#welcomeLettersAccordion")
+      .accordion-body.welcome-letter__content
+        h4.welcome-letter__greeting= greeting
+        p.welcome-letter__text= text

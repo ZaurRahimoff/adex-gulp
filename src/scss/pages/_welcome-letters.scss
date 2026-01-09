@@ -1,0 +1,343 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+@import "../mixins/utilities";
+
+// ============================================
+// Welcome Letters Section
+// ============================================
+.welcome-letters-section {
+  padding: 80px 0;
+  background: var(--white);
+
+  @include lg-down {
+    padding: 40px 0;
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0 0 40px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: var(--font-size-h3); // 36px на мобильном
+      margin-bottom: 32px;
+    }
+  }
+
+  // Show All Button
+  &__show-all {
+    background-color: var(--primary) !important;
+    border: none !important;
+    color: var(--white) !important;
+    padding: 10px 15px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 8px;
+    transition: var(--transition-base);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(43, 59, 115, 0.9) !important;
+      color: var(--white) !important;
+    }
+
+    i {
+      font-size: 13px;
+    }
+  }
+}
+
+// ============================================
+// Welcome Letter Accordion Card
+// ============================================
+.welcome-letter {
+  
+  // Accordion Item (карточка письма)
+  &__card {
+    background: var(--card-2); // #F8F9FA
+    border: none !important;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 40px;
+    
+    @include lg-down {
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    // Убираем стандартные стили Bootstrap accordion
+    &:first-of-type {
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      margin-bottom: 0;
+    }
+  }
+
+  // Accordion Header (заголовок с фото и именем)
+  &__header {
+    background: var(--card-1); // #E9ECEF
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    box-shadow: none !important;
+    transition: none !important;
+
+    @include lg-down {
+      padding: 16px;
+      gap: 16px;
+      flex-direction: row;
+    }
+
+    // Убираем стандартную иконку Bootstrap
+    &::after {
+      display: none !important;
+    }
+
+    &:hover {
+      background: var(--card-1);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none !important;
+      border: none !important;
+    }
+
+    // При открытом состоянии
+    &:not(.collapsed) {
+      background: var(--card-1);
+      color: inherit;
+      box-shadow: none;
+
+      .welcome-letter__toggle i {
+        transform: rotate(90deg);
+      }
+    }
+
+    // При закрытом состоянии
+    &.collapsed {
+      .welcome-letter__toggle i {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  // Контент заголовка (фото + инфо)
+  &__header-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    min-width: 0;
+
+    @include lg-down {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  // Аватар
+  &__avatar {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+
+    @include lg-down {
+      width: 76px;
+      height: 76px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Инфо (имя + должность)
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    min-width: 0;
+
+    @include lg-down {
+      gap: 10px;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  // Имя
+  &__name {
+    font-family: var(--font-family);
+    font-size: $font-size-h4; // 24px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--gray-1); // #212529
+    margin: 0;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: $font-size-h6; // 20px
+    }
+  }
+
+  // Должность
+  &__position {
+    font-family: var(--font-family);
+    font-size: $font-size-h6; // 20px
+    font-weight: $font-weight-medium; // 500
+    color: var(--gray-2); // #495057
+    margin: 0;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: var(--font-size-body1); // 16px
+    }
+  }
+
+  // Кнопка toggle (круглая с иконкой)
+  &__toggle {
+    width: 35px;
+    height: 35px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @include lg-down {
+      width: 35px;
+      height: 35px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    i {
+      font-size: 18px;
+      color: var(--primary); // #2B3B73
+      transition: transform 0.3s ease;
+    }
+  }
+
+  // Accordion Body (контент письма)
+  &__content {
+    padding: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include lg-down {
+      padding: 16px 0 0 0;
+      gap: 16px;
+    }
+  }
+
+  // Приветствие (заголовок письма)
+  &__greeting {
+    font-family: var(--font-family);
+    font-size: $font-size-h5; // 22px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: $font-size-h6; // 20px
+    }
+  }
+
+  // Текст письма
+  &__text {
+    font-family: var(--font-family);
+    font-size: $font-size-body; // 18px
+    font-weight: $font-weight-regular; // 400
+    color: var(--gray-1); // #212529
+    margin: 0;
+    line-height: 1.5;
+
+    @include lg-down {
+      font-size: var(--font-size-body1); // 16px
+    }
+  }
+}
+
+// ============================================
+// Bootstrap Accordion Customization
+// ============================================
+.accordion {
+  --bs-accordion-border-width: 0;
+  --bs-accordion-border-radius: 12px;
+  --bs-accordion-bg: transparent;
+  --bs-accordion-btn-focus-box-shadow: none;
+}
+
+// Коллапс с частичным отображением контента
+.accordion-collapse {
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+  
+  // При закрытом состоянии - показываем часть контента
+  &.collapse:not(.show) {
+    display: block !important;
+    max-height: 180px !important;
+    overflow: hidden;
+    opacity: 1;
+    position: relative;
+    
+    @include lg-down {
+      max-height: 140px !important;
+    }
+
+    // Градиент снизу для плавного обрезания
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 100%);
+      pointer-events: none;
+    }
+  }
+
+  // При открытом состоянии - показываем весь контент
+  &.collapse.show {
+    max-height: none !important;
+    opacity: 1;
+    
+    &::after {
+      display: none;
+    }
+  }
+
+  // Анимация
+  &.collapsing {
+    transition: max-height 0.35s ease;
+  }
+}

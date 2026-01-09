@@ -1,54 +1,116 @@
 extends ../layouts/default
 
 block variables
-  - var pageTitle = 'ADEX - Company'
-  - var pageDescription = 'ADEX - Company list'
-  - var pageKeywords = 'ADEX, company, companies'
-  - var pageCanonical = 'https://adex.az/company'
-  - var pageOgImage = 'https://adex.az/og-image.jpg'
-  - var pageAuthor = 'ADEX'
+  - var pageTitle = "Список делегатов | ADEX"
+  - var currentPage = "company"
 
 block content
-  // Breadcrumb Section
+  //- Breadcrumb
   include ../mixins/_breadcrumb
   +breadcrumb([
     {text: 'Главная', href: 'index.html'},
-    {text: 'Company', href: null}
+    {text: 'Список делегатов', href: null}
   ])
-
-  // Main Content
-  include ../mixins/_datatable
-  -
-    var companyRows = [
-      {company: 'ACWA Power'},
-      {company: 'Adnan Bu Fateem'},
-      {company: 'ABB'},
-      {company: '"Azneft" Production Union of SOCAR'},
-      {company: 'American Chamber of Commerce in Azerbaijan'},
-      {company: 'Ansaldo Energia'},
-      {company: 'Asan Radio'},
-      {company: 'Asian Development Bank'},
-      {company: 'AsstrA-Associated Traffic AG'},
-      {company: 'AZEL Systems LLC'},
-      {company: 'Azerbaijan Energy Regulatory Agency (AERA)'},
-      {company: 'Azerbaijan Green Energy Company'},
-      {company: 'Azerbaijan Today'},
-      {company: 'Baker Hughes'},
-      {company: 'Baku Steel Company'},
-      {company: 'Boston Consulting Group'},
-      {company: 'BP'},
-      {company: 'Branch of "Van Oord Dredging and Marine Contractors B.V." in the Republic of Azerbaijan'},
-      {company: 'ACWA Power'},
-      {company: 'Adnan Bu Fateem'},
-      {company: 'ABB'},
-      {company: '"Azneft" Production Union of SOCAR'},
-      {company: 'American Chamber of Commerce in Azerbaijan'},
-      {company: 'Ansaldo Energia'},
-      {company: 'Asan Radio'},
-      {company: 'Asian Development Bank'},
-      {company: 'AsstrA-Associated Traffic AG'},
-      {company: 'AZEL Systems LLC'}
-    ]
-  +datatable('grid', 'Company', [{name: 'Company Name', dataAttr: 'company'}], companyRows, 'company', {pageLength: 18, renderType: 'grid', gridCardClass: 'company__card'})
-    block yearSelect
-
+  
+  //- Company Section
+  section.company
+    .container
+      .company__head
+        h1.company__title Company
+        .company__year-select
+          span.company__year 2025
+          i.fa-solid.fa-caret-down.company__year-icon
+      
+      //- DataTable для компаний
+      include ../mixins/_datatable
+      -
+        // Данные компаний (можно расширить до 100+ записей)
+        const companyData = [
+          'ACWA Power',
+          'Adnan Bu Fateem',
+          'ABB',
+          '"Azneft" Production Union of SOCAR',
+          'American Chamber of Commerce in Azerbaijan',
+          'Ansaldo Energia',
+          'Asan Radio',
+          'Asian Development Bank',
+          'AsstrA-Associated Traffic AG',
+          'AZEL Systems LLC',
+          'Azerbaijan Energy Regulatory Agency (AERA)',
+          'Azerbaijan Green Energy Company',
+          'Azerbaijan Today',
+          'Baker Hughes',
+          'Baku Steel Company',
+          'Boston Consulting Group',
+          'BP',
+          'Branch of "Van Oord Dredging and Marine Contractors B.V." in the Republic of Azerbaijan',
+          'British Council',
+          'Bureau Veritas',
+          'Caspian Energy Company',
+          'Caspian European Club',
+          'Caspian Sunrise',
+          'Chevron',
+          'China National Petroleum Corporation',
+          'Coca-Cola',
+          'Deloitte Azerbaijan',
+          'DHL Express',
+          'Equinor',
+          'Ernst & Young',
+          'European Bank for Reconstruction and Development',
+          'ExxonMobil',
+          'FedEx',
+          'Gazprom',
+          'General Electric',
+          'Heydar Aliyev Foundation',
+          'Honeywell',
+          'IKEA',
+          'International Bank of Azerbaijan',
+          'Japan Tobacco International',
+          'KPMG Azerbaijan',
+          'Lukoil',
+          'Mars Inc',
+          'McDonald\'s',
+          'Microsoft',
+          'Nestle',
+          'Nobel Oil Services',
+          'Oracle',
+          'PepsiCo',
+          'PricewaterhouseCoopers',
+          'Rosneft',
+          'Samsung',
+          'Schneider Electric',
+          'Shell',
+          'Siemens',
+          'Statoil',
+          'Tata Consultancy Services',
+          'Technip',
+          'Total',
+          'Toyota',
+          'Turkmenistan Airlines',
+          'Turkish Airlines',
+          'Unilever',
+          'United Nations',
+          'Visa',
+          'Volkswagen',
+          'World Bank',
+          'Yara International',
+          'Zara'
+        ];
+        
+        // Опции для DataTable
+        const datatableOptions = {
+          title: 'Company',
+          blockClass: 'company',
+          renderType: 'grid',
+          pageLength: 18,
+          gridColumns: 2,
+          cardClass: 'company__card',
+          cardAltClass: 'company__card--alt',
+          searching: false,
+          info: false,
+          lengthChange: false,
+          responsive: false,
+          paging: true
+        };
+      
+      +datatable('companyTable', companyData, datatableOptions)

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- SEO Meta - Optimized for Search Engines-->
     <title>ADEX - Exhibitors List</title>
-    <meta name="description" content="ADEX - Exhibitors list">
-    <meta name="keywords" content="ADEX, exhibitors, participants">
+    <meta name="description" content="ADEX - Список участников выставки">
+    <meta name="keywords" content="ADEX, участники, exhibitors, выставка">
     <meta name="author" content="ADEX">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Russian, English, Azerbaijani">
@@ -15,7 +15,7 @@
     <link rel="canonical" href="https://adex.az/exhibitors">
     <!-- Open Graph - Facebook, LinkedIn-->
     <meta property="og:title" content="ADEX - Exhibitors List">
-    <meta property="og:description" content="ADEX - Exhibitors list">
+    <meta property="og:description" content="ADEX - Список участников выставки">
     <meta property="og:image" content="https://adex.az/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -28,7 +28,7 @@
     <!-- Twitter Card-->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ADEX - Exhibitors List">
-    <meta name="twitter:description" content="ADEX - Exhibitors list">
+    <meta name="twitter:description" content="ADEX - Список участников выставки">
     <meta name="twitter:image" content="https://adex.az/og-image.jpg">
     <meta name="twitter:site" content="@adex.az">
     <meta name="twitter:creator" content="@adex.az">
@@ -74,6 +74,8 @@
     <link rel="stylesheet" href="assets/plugins/addtocalendar/atcb.min.css">
     <!-- DataTables Bootstrap 5 CSS-->
     <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap5.min.css">
+    <!-- DataTables Responsive CSS-->
+    <link rel="stylesheet" href="assets/plugins/datatables/responsive.bootstrap5.min.css">
     <!-- Flag Icons CSS-->
     <link rel="stylesheet" href="assets/plugins/flags/flag-icons.min.css">
     <!-- Lite YouTube Embed CSS-->
@@ -218,12 +220,12 @@
               </div>
             </section>
       <!-- Main Content-->
-      <section class="exhibitors page__spacing">
+      <section class="exhibitors-page page__spacing">
         <div class="container">
           <!-- Title Section-->
           <div class="row align-items-center mb-5 g-4">
             <div class="col-12 col-md-6">
-              <h1 class="page-title">Exhibitors List</h1>
+              <h1 class="exhibitors-page__title">Exhibitors List</h1>
             </div>
             <div class="col-12 col-md-6 text-start text-lg-end">
               <div class="select2-wrapper mb-4 mb-lg-0 d-inline-block" style="min-width: 120px;">
@@ -239,17 +241,17 @@
           <!-- Filters Section-->
           <div class="row mb-4 g-4">
             <div class="col-12 col-lg-8">
-              <div class="exhibitors__filter-group">
-                <label class="exhibitors__filter-label">Company</label>
-                <div class="exhibitors__filter-input"><i class="fas fa-search"></i>
+              <div class="exhibitors-page__filter-group">
+                <label class="exhibitors-page__filter-label">Company</label>
+                <div class="exhibitors-page__filter-input"><i class="fas fa-search"></i>
                   <input class="form-control" type="text" placeholder="Search company">
                 </div>
               </div>
             </div>
             <div class="col-12 col-lg-4">
-              <div class="exhibitors__filter-group">
-                <label class="exhibitors__filter-label">Country</label>
-                <div class="exhibitors__filter-input">
+              <div class="exhibitors-page__filter-group">
+                <label class="exhibitors-page__filter-label">Country</label>
+                <div class="exhibitors-page__filter-input">
                                     <div class="select2-wrapper" data-select2-config="{&amp;quot;placeholder&amp;quot;:&amp;quot;Выберите страну&amp;quot;,&amp;quot;allowClear&amp;quot;:false,&amp;quot;minimumResultsForSearch&amp;quot;:null,&amp;quot;width&amp;quot;:&amp;quot;100%&amp;quot;}">
                                       <select class="select2 select2 " id="country-select" name="country" data-select2-init="true" data-select2-variant="default">
                                         <option value="Azerbaijan" selected>Azerbaijan</option>
@@ -261,9 +263,9 @@
               </div>
             </div>
             <div class="col-12">
-              <div class="exhibitors__filter-group">
-                <label class="exhibitors__filter-label">Product Categories</label>
-                <div class="exhibitors__filter-input">
+              <div class="exhibitors-page__filter-group">
+                <label class="exhibitors-page__filter-label">Product Categories</label>
+                <div class="exhibitors-page__filter-input">
                                     <div class="select2-wrapper" data-select2-config="{&amp;quot;placeholder&amp;quot;:&amp;quot;None&amp;quot;,&amp;quot;allowClear&amp;quot;:false,&amp;quot;minimumResultsForSearch&amp;quot;:null,&amp;quot;width&amp;quot;:&amp;quot;100%&amp;quot;}">
                                       <select class="select2 select2 " id="categories-select" name="categories" data-select2-init="true" data-select2-variant="default">
                                         <option value="">None</option>
@@ -276,136 +278,172 @@
               </div>
             </div>
           </div>
-          <!-- DataTable Section-->
-                    <section class="exhibitors page__spacing">
-                      <div class="container">
-                        <div class="row align-items-center mb-5 g-4">
-                          <div class="col-12 col-md-6">
-                            <h2 class="page-title">Exhibitors</h2>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="exhibitors__wrapper">
-                              <div class="exhibitors__header">
-                                <h2 class="exhibitors__title">Exhibitors</h2>
-                              </div>
-                              <table class="exhibitors__table table" cellpadding="0" cellspacing="0" width="100%" data-datatables-init="true" data-datatables-config="{'pageLength':10,'renderType':'table','gridContainer':'[data-grid-container]','gridCardClass':'exhibitors__card','blockClass':'exhibitors'}">
-                                <thead class="exhibitors__thead">
-                                  <tr>
-                                    <th class="exhibitors__th">Company</th>
-                                    <th class="exhibitors__th">Country</th>
-                                    <th class="exhibitors__th">Stand</th>
-                                  </tr>
-                                </thead>
-                                <tbody class="exhibitors__tbody">
-                                  <tr class="exhibitors__row" data-row-index="0">
-                                    <td class="exhibitors__cell" data-col="company">ASELSAN</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">6A523</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="1">
-                                    <td class="exhibitors__cell" data-col="company">&quot;ATESHGAH&quot; INSURANCE COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">-</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="2">
-                                    <td class="exhibitors__cell" data-col="company">&quot;AZERSILAH&quot; DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">6A500</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="3">
-                                    <td class="exhibitors__cell" data-col="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">3A130</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="4">
-                                    <td class="exhibitors__cell" data-col="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">1A120</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="5">
-                                    <td class="exhibitors__cell" data-col="company">&quot;Q-STP&quot; LLC</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">2A230</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="6">
-                                    <td class="exhibitors__cell" data-col="company">3E AZERBAIJAN LLC</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">3A011</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="7">
-                                    <td class="exhibitors__cell" data-col="company">ADT GROUP</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">4A012</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="8">
-                                    <td class="exhibitors__cell" data-col="company">APA GROUP</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">-</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="9">
-                                    <td class="exhibitors__cell" data-col="company">AZ TV</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">5M014</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="10">
-                                    <td class="exhibitors__cell" data-col="company">ASELSAN</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">6A523</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="11">
-                                    <td class="exhibitors__cell" data-col="company">&quot;ATESHGAH&quot; INSURANCE COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">-</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="12">
-                                    <td class="exhibitors__cell" data-col="company">&quot;AZERSILAH&quot; DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">6A500</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="13">
-                                    <td class="exhibitors__cell" data-col="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">3A130</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="14">
-                                    <td class="exhibitors__cell" data-col="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">1A120</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="15">
-                                    <td class="exhibitors__cell" data-col="company">&quot;Q-STP&quot; LLC</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">2A230</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="16">
-                                    <td class="exhibitors__cell" data-col="company">3E AZERBAIJAN LLC</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">3A011</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="17">
-                                    <td class="exhibitors__cell" data-col="company">ADT GROUP</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">4A012</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="18">
-                                    <td class="exhibitors__cell" data-col="company">APA GROUP</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">-</td>
-                                  </tr>
-                                  <tr class="exhibitors__row" data-row-index="19">
-                                    <td class="exhibitors__cell" data-col="company">AZ TV</td>
-                                    <td class="exhibitors__cell" data-col="country">Azerbaijan</td>
-                                    <td class="exhibitors__cell" data-col="stand">5M014</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
+          <!-- Exhibitors DataTable Component-->
+                    <div class="exhibitors__wrapper">
+                      <div class="exhibitors__content">
+                        <table class="exhibitors__table" id="exhibitorsTable" data-datatables-init="true" data-datatables-config="{&quot;title&quot;:null,&quot;blockClass&quot;:&quot;exhibitors&quot;,&quot;renderType&quot;:&quot;table&quot;,&quot;pageLength&quot;:10,&quot;gridColumns&quot;:2,&quot;cardClass&quot;:&quot;datatable__card&quot;,&quot;cardAltClass&quot;:&quot;datatable__card--alt&quot;,&quot;showHeader&quot;:true,&quot;searching&quot;:false,&quot;info&quot;:false,&quot;lengthChange&quot;:false,&quot;paging&quot;:true,&quot;responsive&quot;:true,&quot;order&quot;:false,&quot;autoWidth&quot;:false,&quot;columnDefs&quot;:[{&quot;targets&quot;:[0],&quot;width&quot;:&quot;30%&quot;},{&quot;targets&quot;:[1],&quot;width&quot;:&quot;30%&quot;}],&quot;gridContainer&quot;:&quot;[data-grid-container]&quot;,&quot;gridCardClass&quot;:&quot;exhibitors__card&quot;,&quot;columns&quot;:[{&quot;name&quot;:&quot;Company&quot;,&quot;key&quot;:&quot;company&quot;},{&quot;name&quot;:&quot;Country&quot;,&quot;key&quot;:&quot;country&quot;},{&quot;name&quot;:&quot;Stand&quot;,&quot;key&quot;:&quot;stand&quot;}]}">
+                          <thead>
+                            <tr>
+                              <th>Company</th>
+                              <th>Country</th>
+                              <th>Stand</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td data-column="company">ASELSAN</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">6A523</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">&quot;ATESHGAH&quot; INSURANCE COMPANY</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">-</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">&quot;AZERSILAH&quot; DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">6A500</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">3A130</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">&quot;AZERSILAH&quot; DEFENSE İNDUSTRY HOLDING&quot; - CLOSED JOINT STOCK COMPANY</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">1A120</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">&quot;Q-STP&quot; LLC</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">2A230</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">3E AZERBAIJAN LLC</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">3A011</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">ADT GROUP</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">4A012</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">APA GROUP</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">-</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">AZ TV</td>
+                              <td data-column="country">Azerbaijan</td>
+                              <td data-column="stand">5M014</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">ASELSAN 2</td>
+                              <td data-column="country">Turkey</td>
+                              <td data-column="stand">6A524</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Boeing</td>
+                              <td data-column="country">USA</td>
+                              <td data-column="stand">1A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Lockheed Martin</td>
+                              <td data-column="country">USA</td>
+                              <td data-column="stand">1A002</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Airbus Defence</td>
+                              <td data-column="country">France</td>
+                              <td data-column="stand">2A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Thales Group</td>
+                              <td data-column="country">France</td>
+                              <td data-column="stand">2A002</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">BAE Systems</td>
+                              <td data-column="country">UK</td>
+                              <td data-column="stand">3A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Rheinmetall</td>
+                              <td data-column="country">Germany</td>
+                              <td data-column="stand">4A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Leonardo S.p.A.</td>
+                              <td data-column="country">Italy</td>
+                              <td data-column="stand">5A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Saab AB</td>
+                              <td data-column="country">Sweden</td>
+                              <td data-column="stand">6A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Rafael Advanced Defense Systems</td>
+                              <td data-column="country">Israel</td>
+                              <td data-column="stand">7A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Korea Aerospace Industries</td>
+                              <td data-column="country">South Korea</td>
+                              <td data-column="stand">8A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Turkish Aerospace Industries</td>
+                              <td data-column="country">Turkey</td>
+                              <td data-column="stand">9A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Rostec</td>
+                              <td data-column="country">Russia</td>
+                              <td data-column="stand">10A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Hanwha Defense</td>
+                              <td data-column="country">South Korea</td>
+                              <td data-column="stand">11A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">General Dynamics</td>
+                              <td data-column="country">USA</td>
+                              <td data-column="stand">12A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Northrop Grumman</td>
+                              <td data-column="country">USA</td>
+                              <td data-column="stand">13A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Raytheon Technologies</td>
+                              <td data-column="country">USA</td>
+                              <td data-column="stand">14A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">L3Harris Technologies</td>
+                              <td data-column="country">USA</td>
+                              <td data-column="stand">15A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">Elbit Systems</td>
+                              <td data-column="country">Israel</td>
+                              <td data-column="stand">16A001</td>
+                            </tr>
+                            <tr>
+                              <td data-column="company">MBDA</td>
+                              <td data-column="country">Europe</td>
+                              <td data-column="stand">17A001</td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                    </section>
+                    </div>
         </div>
       </section>
     </main>
@@ -479,6 +517,8 @@
     <!-- DataTables JS-->
     <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap5.min.js"></script>
+    <!-- DataTables Responsive JS-->
+    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
     <!-- Add to Calendar Button JS-->
     <script src="assets/plugins/addtocalendar/atcb.min.js"></script>
     <!-- Lite YouTube Embed JS-->

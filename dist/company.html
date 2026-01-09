@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- SEO Meta - Optimized for Search Engines-->
-    <title>ADEX - Company</title>
-    <meta name="description" content="ADEX - Company list">
-    <meta name="keywords" content="ADEX, company, companies">
-    <meta name="author" content="ADEX">
+    <title>Список делегатов | ADEX</title>
+    <meta name="description">
+    <meta name="keywords">
+    <meta name="author">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Russian, English, Azerbaijani">
     <meta name="revisit-after" content="7 days">
-    <link rel="canonical" href="https://adex.az/company">
+    <link rel="canonical">
     <!-- Open Graph - Facebook, LinkedIn-->
-    <meta property="og:title" content="ADEX - Company">
-    <meta property="og:description" content="ADEX - Company list">
-    <meta property="og:image" content="https://adex.az/og-image.jpg">
+    <meta property="og:title" content="Список делегатов | ADEX">
+    <meta property="og:description">
+    <meta property="og:image">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://adex.az/company">
+    <meta property="og:url">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
@@ -27,9 +27,9 @@
     <meta property="og:site_name" content="ADEX">
     <!-- Twitter Card-->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ADEX - Company">
-    <meta name="twitter:description" content="ADEX - Company list">
-    <meta name="twitter:image" content="https://adex.az/og-image.jpg">
+    <meta name="twitter:title" content="Список делегатов | ADEX">
+    <meta name="twitter:description">
+    <meta name="twitter:image">
     <meta name="twitter:site" content="@adex.az">
     <meta name="twitter:creator" content="@adex.az">
     <!-- Structured Data - JSON-LD for Event-->
@@ -74,6 +74,8 @@
     <link rel="stylesheet" href="assets/plugins/addtocalendar/atcb.min.css">
     <!-- DataTables Bootstrap 5 CSS-->
     <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap5.min.css">
+    <!-- DataTables Responsive CSS-->
+    <link rel="stylesheet" href="assets/plugins/datatables/responsive.bootstrap5.min.css">
     <!-- Flag Icons CSS-->
     <link rel="stylesheet" href="assets/plugins/flags/flag-icons.min.css">
     <!-- Lite YouTube Embed CSS-->
@@ -202,7 +204,6 @@
     </header>
     <!-- Main-->
     <main class="main flex-shrink-0">
-      <!-- Breadcrumb Section-->
             <section class="breadcrumb-section">
               <div class="container">
                 <div class="row">
@@ -210,126 +211,245 @@
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Company</li>
+                        <li class="breadcrumb-item active" aria-current="page">Список делегатов</li>
                       </ol>
                     </nav>
                   </div>
                 </div>
               </div>
             </section>
-      <!-- Main Content-->
-            <section class="company page__spacing">
-              <div class="container">
-                <div class="row align-items-center mb-5 g-4">
-                  <div class="col-12 col-md-6">
-                    <h2 class="page-title">Company</h2>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
+      <section class="company">
+        <div class="container">
+          <div class="company__head">
+            <h1 class="company__title">Company</h1>
+            <div class="company__year-select"><span class="company__year">2025</span><i class="fa-solid fa-caret-down company__year-icon"></i></div>
+          </div>
                     <div class="company__wrapper">
-                      <div class="company__header">
-                        <h2 class="company__title">Company</h2>
+                      <div class="company__content">
+                        <div class="company__header">
+                          <h2 class="company__title">Company</h2>
+                        </div>
+                        <div class="company__grid row row-cols-1 row-cols-md-2 g-3" data-grid-container></div>
+                        <table class="d-none" id="companyTable" data-datatables-init="true" data-datatables-config="{&quot;title&quot;:&quot;Company&quot;,&quot;blockClass&quot;:&quot;company&quot;,&quot;renderType&quot;:&quot;grid&quot;,&quot;pageLength&quot;:18,&quot;gridColumns&quot;:2,&quot;cardClass&quot;:&quot;company__card&quot;,&quot;cardAltClass&quot;:&quot;company__card--alt&quot;,&quot;showHeader&quot;:true,&quot;searching&quot;:false,&quot;info&quot;:false,&quot;lengthChange&quot;:false,&quot;responsive&quot;:false,&quot;paging&quot;:true,&quot;gridContainer&quot;:&quot;[data-grid-container]&quot;,&quot;gridCardClass&quot;:&quot;company__card&quot;,&quot;columns&quot;:null}">
+                          <thead>
+                            <tr>
+                              <th>Data</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>ACWA Power</td>
+                            </tr>
+                            <tr>
+                              <td>Adnan Bu Fateem</td>
+                            </tr>
+                            <tr>
+                              <td>ABB</td>
+                            </tr>
+                            <tr>
+                              <td>&quot;Azneft&quot; Production Union of SOCAR</td>
+                            </tr>
+                            <tr>
+                              <td>American Chamber of Commerce in Azerbaijan</td>
+                            </tr>
+                            <tr>
+                              <td>Ansaldo Energia</td>
+                            </tr>
+                            <tr>
+                              <td>Asan Radio</td>
+                            </tr>
+                            <tr>
+                              <td>Asian Development Bank</td>
+                            </tr>
+                            <tr>
+                              <td>AsstrA-Associated Traffic AG</td>
+                            </tr>
+                            <tr>
+                              <td>AZEL Systems LLC</td>
+                            </tr>
+                            <tr>
+                              <td>Azerbaijan Energy Regulatory Agency (AERA)</td>
+                            </tr>
+                            <tr>
+                              <td>Azerbaijan Green Energy Company</td>
+                            </tr>
+                            <tr>
+                              <td>Azerbaijan Today</td>
+                            </tr>
+                            <tr>
+                              <td>Baker Hughes</td>
+                            </tr>
+                            <tr>
+                              <td>Baku Steel Company</td>
+                            </tr>
+                            <tr>
+                              <td>Boston Consulting Group</td>
+                            </tr>
+                            <tr>
+                              <td>BP</td>
+                            </tr>
+                            <tr>
+                              <td>Branch of &quot;Van Oord Dredging and Marine Contractors B.V.&quot; in the Republic of Azerbaijan</td>
+                            </tr>
+                            <tr>
+                              <td>British Council</td>
+                            </tr>
+                            <tr>
+                              <td>Bureau Veritas</td>
+                            </tr>
+                            <tr>
+                              <td>Caspian Energy Company</td>
+                            </tr>
+                            <tr>
+                              <td>Caspian European Club</td>
+                            </tr>
+                            <tr>
+                              <td>Caspian Sunrise</td>
+                            </tr>
+                            <tr>
+                              <td>Chevron</td>
+                            </tr>
+                            <tr>
+                              <td>China National Petroleum Corporation</td>
+                            </tr>
+                            <tr>
+                              <td>Coca-Cola</td>
+                            </tr>
+                            <tr>
+                              <td>Deloitte Azerbaijan</td>
+                            </tr>
+                            <tr>
+                              <td>DHL Express</td>
+                            </tr>
+                            <tr>
+                              <td>Equinor</td>
+                            </tr>
+                            <tr>
+                              <td>Ernst &amp; Young</td>
+                            </tr>
+                            <tr>
+                              <td>European Bank for Reconstruction and Development</td>
+                            </tr>
+                            <tr>
+                              <td>ExxonMobil</td>
+                            </tr>
+                            <tr>
+                              <td>FedEx</td>
+                            </tr>
+                            <tr>
+                              <td>Gazprom</td>
+                            </tr>
+                            <tr>
+                              <td>General Electric</td>
+                            </tr>
+                            <tr>
+                              <td>Heydar Aliyev Foundation</td>
+                            </tr>
+                            <tr>
+                              <td>Honeywell</td>
+                            </tr>
+                            <tr>
+                              <td>IKEA</td>
+                            </tr>
+                            <tr>
+                              <td>International Bank of Azerbaijan</td>
+                            </tr>
+                            <tr>
+                              <td>Japan Tobacco International</td>
+                            </tr>
+                            <tr>
+                              <td>KPMG Azerbaijan</td>
+                            </tr>
+                            <tr>
+                              <td>Lukoil</td>
+                            </tr>
+                            <tr>
+                              <td>Mars Inc</td>
+                            </tr>
+                            <tr>
+                              <td>McDonald's</td>
+                            </tr>
+                            <tr>
+                              <td>Microsoft</td>
+                            </tr>
+                            <tr>
+                              <td>Nestle</td>
+                            </tr>
+                            <tr>
+                              <td>Nobel Oil Services</td>
+                            </tr>
+                            <tr>
+                              <td>Oracle</td>
+                            </tr>
+                            <tr>
+                              <td>PepsiCo</td>
+                            </tr>
+                            <tr>
+                              <td>PricewaterhouseCoopers</td>
+                            </tr>
+                            <tr>
+                              <td>Rosneft</td>
+                            </tr>
+                            <tr>
+                              <td>Samsung</td>
+                            </tr>
+                            <tr>
+                              <td>Schneider Electric</td>
+                            </tr>
+                            <tr>
+                              <td>Shell</td>
+                            </tr>
+                            <tr>
+                              <td>Siemens</td>
+                            </tr>
+                            <tr>
+                              <td>Statoil</td>
+                            </tr>
+                            <tr>
+                              <td>Tata Consultancy Services</td>
+                            </tr>
+                            <tr>
+                              <td>Technip</td>
+                            </tr>
+                            <tr>
+                              <td>Total</td>
+                            </tr>
+                            <tr>
+                              <td>Toyota</td>
+                            </tr>
+                            <tr>
+                              <td>Turkmenistan Airlines</td>
+                            </tr>
+                            <tr>
+                              <td>Turkish Airlines</td>
+                            </tr>
+                            <tr>
+                              <td>Unilever</td>
+                            </tr>
+                            <tr>
+                              <td>United Nations</td>
+                            </tr>
+                            <tr>
+                              <td>Visa</td>
+                            </tr>
+                            <tr>
+                              <td>Volkswagen</td>
+                            </tr>
+                            <tr>
+                              <td>World Bank</td>
+                            </tr>
+                            <tr>
+                              <td>Yara International</td>
+                            </tr>
+                            <tr>
+                              <td>Zara</td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                      <table class="company__table table" cellpadding="0" cellspacing="0" width="100%" data-datatables-init="true" data-datatables-config="{'pageLength':18,'renderType':'grid','gridContainer':'[data-grid-container]','gridCardClass':'company__card','blockClass':'company'}" style="display: none;">
-                        <thead class="company__thead">
-                          <tr>
-                            <th class="company__th">Company Name</th>
-                          </tr>
-                        </thead>
-                        <tbody class="company__tbody">
-                          <tr class="company__row" data-row-index="0">
-                            <td class="company__cell" data-col="company">ACWA Power</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="1">
-                            <td class="company__cell" data-col="company">Adnan Bu Fateem</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="2">
-                            <td class="company__cell" data-col="company">ABB</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="3">
-                            <td class="company__cell" data-col="company">&quot;Azneft&quot; Production Union of SOCAR</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="4">
-                            <td class="company__cell" data-col="company">American Chamber of Commerce in Azerbaijan</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="5">
-                            <td class="company__cell" data-col="company">Ansaldo Energia</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="6">
-                            <td class="company__cell" data-col="company">Asan Radio</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="7">
-                            <td class="company__cell" data-col="company">Asian Development Bank</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="8">
-                            <td class="company__cell" data-col="company">AsstrA-Associated Traffic AG</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="9">
-                            <td class="company__cell" data-col="company">AZEL Systems LLC</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="10">
-                            <td class="company__cell" data-col="company">Azerbaijan Energy Regulatory Agency (AERA)</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="11">
-                            <td class="company__cell" data-col="company">Azerbaijan Green Energy Company</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="12">
-                            <td class="company__cell" data-col="company">Azerbaijan Today</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="13">
-                            <td class="company__cell" data-col="company">Baker Hughes</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="14">
-                            <td class="company__cell" data-col="company">Baku Steel Company</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="15">
-                            <td class="company__cell" data-col="company">Boston Consulting Group</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="16">
-                            <td class="company__cell" data-col="company">BP</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="17">
-                            <td class="company__cell" data-col="company">Branch of &quot;Van Oord Dredging and Marine Contractors B.V.&quot; in the Republic of Azerbaijan</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="18">
-                            <td class="company__cell" data-col="company">ACWA Power</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="19">
-                            <td class="company__cell" data-col="company">Adnan Bu Fateem</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="20">
-                            <td class="company__cell" data-col="company">ABB</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="21">
-                            <td class="company__cell" data-col="company">&quot;Azneft&quot; Production Union of SOCAR</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="22">
-                            <td class="company__cell" data-col="company">American Chamber of Commerce in Azerbaijan</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="23">
-                            <td class="company__cell" data-col="company">Ansaldo Energia</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="24">
-                            <td class="company__cell" data-col="company">Asan Radio</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="25">
-                            <td class="company__cell" data-col="company">Asian Development Bank</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="26">
-                            <td class="company__cell" data-col="company">AsstrA-Associated Traffic AG</td>
-                          </tr>
-                          <tr class="company__row" data-row-index="27">
-                            <td class="company__cell" data-col="company">AZEL Systems LLC</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div class="row row-cols-1 row-cols-md-2 g-4" data-grid-container></div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+        </div>
+      </section>
     </main>
     <!-- Footer-->
     <!-- Footer-->
@@ -401,6 +521,8 @@
     <!-- DataTables JS-->
     <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap5.min.js"></script>
+    <!-- DataTables Responsive JS-->
+    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
     <!-- Add to Calendar Button JS-->
     <script src="assets/plugins/addtocalendar/atcb.min.js"></script>
     <!-- Lite YouTube Embed JS-->

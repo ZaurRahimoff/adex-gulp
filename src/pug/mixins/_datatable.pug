@@ -1,47 +1,141 @@
-//- Миксин для универсального компонента DataTables
-//- @param {String} type - Тип таблицы: 'grid' (карточки) или 'table' (обычная таблица)
-//- @param {String} title - Заголовок таблицы
-//- @param {Array} columns - Массив объектов с колонками {name: 'Column Name', dataAttr: 'data-column'}
-//- @param {Array} rows - Массив объектов с данными строк
-//- @param {String} blockClass - Базовый класс для блока (по умолчанию 'datatable')
-//- @param {Object} config - Дополнительные настройки для data-атрибутов
+//- DataTable Mixin - универсальный компонент таблицы с DataTables
+//- 
+//- Usage:
+//-   +datatable(tableId, data, options)
+//-   +datatable(tableId, columns, data, options) - для табличного режима
+//-
+//- Parameters:
+//-   tableId (string) - уникальный ID для таблицы
+//-   columns (array) - массив объектов колонок [{name: 'Title', key: 'field'}] (для table режима)
+//-   data (array) - массив объектов с данными
+//-   options (object) - опции конфигурации
+//-     title (string) - заголовок таблицы
+//-     blockClass (string) - базовый BEM класс блока (default: 'datatable')
+//-     renderType (string) - тип рендеринга: 'grid' или 'table' (default: 'grid')
+//-     pageLength (number) - количество элементов на странице (default: 10)
+//-     gridColumns (number) - количество колонок в grid (default: 2)
+//-     cardClass (string) - класс для карточек (default: 'datatable__card')
+//-     cardAltClass (string) - класс для альтернативных карточек (default: 'datatable__card--alt')
+//-     searching (boolean) - включить поиск (default: false)
+//-     info (boolean) - показывать информацию (default: false)
+//-     lengthChange (boolean) - показывать выбор количества элементов (default: false)
+//-     responsive (boolean) - адаптивный режим (default: false)
 
-mixin datatable(type = 'grid', title = '', columns = [], rows = [], blockClass = 'datatable', config = {})
-  - var defaultConfig = { pageLength: 10, renderType: type, gridContainer: '[data-grid-container]', gridCardClass: `${blockClass}__card`, blockClass: blockClass, ...config }
-  - var configJson = JSON.stringify(defaultConfig).replace(/"/g, '\'')
+mixin datatable(tableId, columnsOrData, dataOrOptions, optionsOrNull)
+  -
+    // Определяем, какой режим вызова (2, 3 или 4 параметра)
+    let columns = [];
+    let data = [];
+    let options = {};
+    
+    if (typeof dataOrOptions === 'undefined') {
+      // 2 параметра: +datatable(id, data)
+      data = columnsOrData;
+      options = {};
+    } else if (typeof optionsOrNull === 'undefined') {
+      // 3 параметра: +datatable(id, data, options)
+      data = columnsOrData;
+      options = dataOrOptions;
+    } else {
+      // 4 параметра: +datatable(id, columns, data, options)
+      columns = columnsOrData;
+      data = dataOrOptions;
+      options = optionsOrNull || {};
+    }
+    
+    // Дефолтные опции (только для компонента, стандартные настройки DataTables задаются в JS)
+    const defaults = {
+      title: null,
+      blockClass: 'datatable',
+      renderType: 'grid',
+      pageLength: 10,
+      gridColumns: 2,
+      cardClass: 'datatable__card',
+      cardAltClass: 'datatable__card--alt',
+      showHeader: true
+    };
+    
+    // Объединяем опции
+    const config = Object.assign({}, defaults, options);
+    
+    // Формируем data-атрибут конфигурации
+    // УНИВЕРСАЛЬНЫЙ ПОДХОД: передаём ВСЕ опции из config в DataTables
+    // Это позволяет использовать ЛЮБЫЕ настройки DataTables через атрибуты в Pug
+    const datatableConfigObject = {
+      ...config,  // Передаём все настройки из config
+      // Перезаписываем специфичные для компонента настройки
+      gridContainer: '[data-grid-container]',
+      gridCardClass: `${config.blockClass}__card`,
+      columns: columns.length > 0 ? columns : null
+    };
+    
+    const datatableConfig = JSON.stringify(datatableConfigObject);
+    
+    // Определяем классы
+    const wrapperClass = `${config.blockClass}__wrapper`;
+    const contentClass = `${config.blockClass}__content`;
+    const headerClass = `${config.blockClass}__header`;
+    const titleClass = `${config.blockClass}__title`;
+    const gridClass = `${config.blockClass}__grid`;
+    const tableClass = `${config.blockClass}__table`;
+    const gridColumnsClass = config.gridColumns === 2 ? 'row-cols-1 row-cols-md-2' : `row-cols-${config.gridColumns}`;
   
-  section(class=`${blockClass} page__spacing`)
-    .container
-      .row.align-items-center.mb-5.g-4
-        .col-12.col-md-6
-          h2.page-title= title
-      .row
-        .col-12
-          div(class=`${blockClass}__wrapper`)
-            div(class=`${blockClass}__header`)
-              h2(class=`${blockClass}__title`)= title
-            
-            if type === 'grid'
-              table(class=`${blockClass}__table table` cellpadding="0" cellspacing="0" width="100%" data-datatables-init="true" data-datatables-config=configJson style="display: none;")
-                thead(class=`${blockClass}__thead`)
-                  tr
-                    each col in columns
-                      th(class=`${blockClass}__th`)= col.name
-                tbody(class=`${blockClass}__tbody`)
-                  each row, index in rows
-                    tr(class=`${blockClass}__row` data-row-index=index)
-                      each col in columns
-                        td(class=`${blockClass}__cell` data-col=col.dataAttr)= row[col.dataAttr] || ''
-              div(class=`row row-cols-1 row-cols-md-2 g-4` data-grid-container)
-            else
-              table(class=`${blockClass}__table table` cellpadding="0" cellspacing="0" width="100%" data-datatables-init="true" data-datatables-config=configJson)
-                thead(class=`${blockClass}__thead`)
-                  tr
-                    each col in columns
-                      th(class=`${blockClass}__th`)= col.name
-                tbody(class=`${blockClass}__tbody`)
-                  each row, index in rows
-                    tr(class=`${blockClass}__row` data-row-index=index)
-                      each col in columns
-                        td(class=`${blockClass}__cell` data-col=col.dataAttr)= row[col.dataAttr] || ''
-
+  //- Wrapper для всей таблицы
+  div(class=wrapperClass)
+    //- Content блок
+    div(class=contentClass)
+      //- Header с заголовком (только для grid режима)
+      if config.title && config.renderType === 'grid'
+        div(class=headerClass)
+          h2(class=titleClass)= config.title
+      
+      //- Grid контейнер для grid режима
+      if config.renderType === 'grid'
+        div(class=`${gridClass} row ${gridColumnsClass} g-3` data-grid-container)
+          //- Сюда будут динамически добавляться карточки через JS
+        
+        //- Скрытая таблица для DataTables
+        table.d-none(
+          id=tableId
+          data-datatables-init="true"
+          data-datatables-config=datatableConfig
+        )
+          thead
+            tr
+              if columns.length > 0
+                each column in columns
+                  th= column.name
+              else
+                th Data
+          tbody
+            each item in data
+              tr
+                if columns.length > 0
+                  each column in columns
+                    td(data-column=column.key)= item[column.key] || '-'
+                else
+                  td= typeof item === 'object' ? item.name || item.company || item.title || JSON.stringify(item) : item
+      
+      //- Видимая таблица для table режима
+      if config.renderType === 'table'
+        table(
+          id=tableId
+          class=tableClass
+          data-datatables-init="true"
+          data-datatables-config=datatableConfig
+        )
+          thead
+            tr
+              if columns.length > 0
+                each column in columns
+                  th= column.name
+              else
+                th Data
+          tbody
+            each item in data
+              tr
+                if columns.length > 0
+                  each column in columns
+                    td(data-column=column.key)= item[column.key] || '-'
+                else
+                  td= typeof item === 'object' ? item.name || item.company || item.title || JSON.stringify(item) : item
