@@ -7,6 +7,9 @@ import { initMobileMenu } from './modules/mobile-menu';
 import { initScrollToTop } from './modules/scroll-to-top';
 import { initSelect2Module } from './modules/select2';
 import { initDataTablesModule } from './modules/datatables';
+import { initFancybox } from './modules/fancybox';
+import { initPhoneInput } from './modules/phone-input';
+import { initFileUpload } from './modules/file-upload';
 
 // Инициализация всех модулей после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
@@ -30,5 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация DataTables
   initDataTablesModule();
+
+  // Инициализация Fancybox
+  initFancybox();
+
+  // Инициализация Phone Input
+  initPhoneInput();
+
+  // Инициализация File Upload
+  initFileUpload();
 });
 

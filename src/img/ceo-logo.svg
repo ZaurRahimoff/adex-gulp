@@ -1,0 +1,14 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" rx="12" fill="#2B3B73"/>
+  
+  <!-- CEO Text -->
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CEO</text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="115" font-family="Arial, sans-serif" font-size="16" fill="#FFFFFF" text-anchor="middle">Caspian Event</text>
+  <text x="100" y="135" font-family="Arial, sans-serif" font-size="16" fill="#FFFFFF" text-anchor="middle">Organisers</text>
+  
+  <!-- Border -->
+  <rect x="10" y="10" width="180" height="180" rx="8" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.3"/>
+</svg>

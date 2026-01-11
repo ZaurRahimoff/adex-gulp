@@ -34,10 +34,12 @@
 @import 'components/content';
 @import 'components/datatable';
 @import 'components/pagination';
+@import 'components/speaker-modal';
 
 // Pages
 @import 'pages/home';
 @import 'pages/about';
+@import 'pages/about-company';
 @import 'pages/events-programme';
 @import 'pages/speakers';
 @import 'pages/company';
@@ -54,3 +56,7 @@
 @import 'pages/news';
 @import 'pages/news-detail';
 @import 'pages/contact';
+@import 'pages/photo-gallery';
+@import 'pages/photo-gallery-details';
+@import 'pages/feedback';
+@import 'pages/form-page';

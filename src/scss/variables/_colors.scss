@@ -26,6 +26,7 @@ $black: #0C0B0B;
 $background: $white;
 $card-background: $card;
 $error: #dc3545;
+$error-red: #ee1c23; // Красный цвет для ошибок из Figma
 $gray: #999999;
 
 // Map для генерации CSS переменных
@@ -49,5 +50,6 @@ $colors-map: (
   'background': $background,
   'card-background': $card-background,
   'error': $error,
+  'error-red': $error-red,
   'gray': $gray
 );

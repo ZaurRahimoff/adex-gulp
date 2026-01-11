@@ -1,0 +1,26 @@
+//- Speaker Modal Mixin - модальное окно для спикера
+//- Usage:
+//-   +speaker-modal('1', 'Ramil Azizov', 'Mine Action Agency...', 'assets/img/webp/speaker5.webp', '')
+//-   +speaker-modal('2', 'Emil Hasanov', 'Public Council...', 'assets/img/webp/speaker1.webp', '<ul><li>Bio item 1</li></ul>')
+//-
+//- Parameters:
+//-   id - уникальный идентификатор модального окна (обязательно)
+//-   name - имя спикера (обязательно)
+//-   role - роль/должность спикера (обязательно)
+//-   avatar - URL аватара спикера (обязательно)
+//-   bio - биография спикера в HTML формате (опционально, по умолчанию пустая строка)
+
+mixin speaker-modal(id, name, role, avatar, bio = '')
+	.modal.fade.speaker-modal(id=`speakerModal-${id}` tabindex="-1" aria-labelledby=`speakerModalLabel-${id}` aria-hidden="true")
+		.modal-dialog.modal-dialog-centered
+			.modal-content.speaker-modal__content
+				.modal-header.speaker-modal__header
+					button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+				.modal-body.speaker-modal__body
+					.speaker-modal__avatar
+						img(src=avatar alt=name loading="lazy")
+					h3.speaker-modal__name(id=`speakerModalLabel-${id}`)= name
+					p.speaker-modal__role= role
+					if bio
+						.speaker-modal__bio
+							!= bio

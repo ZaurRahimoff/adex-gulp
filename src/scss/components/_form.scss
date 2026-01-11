@@ -1,7 +1,7 @@
-@import '../variables/colors';
-@import '../variables/typography';
-@import '../variables/variables';
-@import '../mixins/media';
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
 
 // ============================================
 // Form Components - универсальные компоненты форм
@@ -20,14 +20,14 @@
 .form-label {
   display: block;
   font-family: var(--font-family);
-  font-size: var(--font-size-body1);
-  font-weight: var(--font-weight-medium);
+  font-size: $font-size-body1; // 16px
+  font-weight: var(--font-weight-bold); // 700
   line-height: var(--line-height-normal);
-  color: var(--gray-2);
-  margin-bottom: 8px;
+  color: var(--gray-1); // #212529
+  margin-bottom: 20px;
 
   .text-danger {
-    color: var(--primary);
+    color: #ee1c23; // Красный цвет для required asterisk
     margin-left: 4px;
   }
 }
@@ -37,21 +37,23 @@
 .form-select {
   display: block;
   width: 100%;
-  padding: 12px 16px;
+  padding: 20px;
   font-family: var(--font-family);
-  font-size: var(--font-size-body);
+  font-size: $font-size-body1; // 16px
+  font-weight: var(--font-weight-regular); // 400
   line-height: var(--line-height-normal);
-  color: var(--gray-2);
+  color: var(--gray-2); // #495057
   background-color: var(--white);
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: 4px;
+  height: 60px;
   transition: var(--transition-base);
   appearance: none;
 
   &:focus {
     outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(43, 59, 115, 0.1);
+    border-color: var(--primary); // #2B3B73
+    box-shadow: none; // Убираем box-shadow согласно дизайну
   }
 
   &:disabled {
@@ -65,19 +67,64 @@
     opacity: 1;
   }
 
-  &:invalid:not(:placeholder-shown) {
-    border-color: #dc3545;
+  // Completed state (readonly с заполненным значением)
+  &.is-completed,
+  &[readonly] {
+    background-color: var(--card-1); // #E9ECEF
+    border: none;
+    cursor: default;
   }
 
+  // Error state
+  &.is-invalid,
+  &:invalid:not(:placeholder-shown) {
+    border-color: #ee1c23; // Красный цвет из Figma
+
+    &:focus {
+      border-color: #ee1c23;
+      box-shadow: none;
+    }
+  }
+
+  // Valid state (опционально, если нужен)
+  &.is-valid,
   &:valid:not(:placeholder-shown) {
     border-color: #28a745;
+
+    &:focus {
+      border-color: #28a745;
+      box-shadow: none;
+    }
   }
 }
 
 // Textarea specific
-.form-control {
+textarea.form-control {
   resize: vertical;
-  min-height: 100px;
+  min-height: 150px;
+  height: auto; // Переопределяем фиксированную высоту для textarea
+  padding: 20px;
+  border-radius: 4px;
+  font-size: $font-size-body1; // 16px
+  font-weight: var(--font-weight-regular); // 400
+  color: var(--gray-2); // #495057
+  border: 1px solid #e0e0e0;
+
+  &:focus {
+    border-color: var(--primary);
+    box-shadow: none;
+  }
+
+  &.is-invalid,
+  &:invalid:not(:placeholder-shown) {
+    border-color: #ee1c23;
+  }
+
+  &.is-completed,
+  &[readonly] {
+    background-color: var(--card-1);
+    border: none;
+  }
 }
 
 // Select specific
@@ -149,14 +196,14 @@
   }
 }
 
-// Form validation states
+// Form validation states (дополнительные классы для явного управления)
 .form-control.is-invalid,
 .form-select.is-invalid {
-  border-color: #dc3545;
+  border-color: #ee1c23; // Красный цвет из Figma
 
   &:focus {
-    border-color: #dc3545;
-    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    border-color: #ee1c23;
+    box-shadow: none;
   }
 }
 
@@ -166,7 +213,7 @@
 
   &:focus {
     border-color: #28a745;
-    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+    box-shadow: none;
   }
 }
 
@@ -175,7 +222,7 @@
   width: 100%;
   margin-top: 8px;
   font-size: var(--font-size-body2);
-  color: #dc3545;
+  color: #ee1c23; // Красный цвет из Figma
 }
 
 .valid-feedback {
@@ -186,16 +233,710 @@
   color: #28a745;
 }
 
+// Phone Input with Country Code (intl-tel-input)
+// Переопределяем пути к флагам, так как библиотека использует ../img/flags.png
+// но файлы находятся в assets/plugins/intl-tel-input/img/
+.iti__flag {
+  background-image: url("../plugins/intl-tel-input/img/flags.png") !important;
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2 / 1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    background-image: url("../plugins/intl-tel-input/img/flags@2x.png") !important;
+  }
+}
+
+// Глобальные стили для dropdown списка стран (библиотека добавляет его в body)
+.iti__country-list {
+  position: absolute;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-height: 200px;
+  overflow: hidden; // Изменено на hidden для правильного отображения скруглений
+  z-index: 1000;
+  margin-top: 4px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  width: 100%; // Ширина равна ширине input поля
+  box-sizing: border-box;
+
+  // Поле поиска
+  .iti__search-box {
+    padding: 12px;
+    border-bottom: 1px solid var(--line); // #EEEEEE
+    margin: 0;
+    background: var(--white);
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 100%;
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-family: var(--font-family);
+      font-size: $font-size-body1; // 16px
+      font-weight: var(--font-weight-regular); // 400
+      color: var(--gray-2); // #495057
+      background: var(--white);
+      transition: var(--transition-base);
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary); // #2B3B73
+        box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.1);
+      }
+
+      &::placeholder {
+        color: var(--gray-3); // #9DA2AB
+        opacity: 1;
+      }
+    }
+  }
+
+  // Контейнер списка стран с прокруткой (ul внутри .iti__country-list)
+  > ul {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  // Элементы списка стран
+  .iti__country {
+    padding: 10px 12px;
+    font-family: var(--font-family);
+    font-size: $font-size-body1; // 16px
+    font-weight: var(--font-weight-regular); // 400
+    color: var(--gray-2); // #495057
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: var(--card-2); // #F8F9FA
+    }
+
+    &--highlight {
+      background-color: var(--card-2); // #F8F9FA
+    }
+
+    // Флаг страны
+    .iti__flag {
+      flex-shrink: 0;
+    }
+
+    // Название страны
+    .iti__country-name {
+      flex: 1;
+    }
+
+    // Код страны
+    .iti__dial-code {
+      color: var(--gray-3); // #9DA2AB
+      font-weight: var(--font-weight-regular); // 400
+    }
+  }
+}
+
+.iti--inline-dropdown .iti__dropdown-content {
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-width: 200px;
+  margin-top: 4px;
+  background: var(--white);
+}
+
+.form-phone-wrapper {
+  display: flex;
+  align-items: stretch;
+  background: var(--white);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  height: 60px;
+  overflow: visible; // Изменено на visible для отображения dropdown
+  transition: var(--transition-base);
+  position: relative;
+
+  &:focus-within {
+    border-color: var(--primary); // #2B3B73
+    box-shadow: none; // Убираем box-shadow согласно дизайну
+  }
+
+  // Error state для phone wrapper
+  &.is-invalid {
+    border-color: #ee1c23;
+  }
+
+  // Completed state для phone wrapper
+  &.is-completed {
+    background-color: var(--card-1);
+    border: none;
+  }
+
+  // Стилизация для intl-tel-input
+  .iti {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    position: relative; // Для правильного позиционирования dropdown
+  }
+
+  .iti__flag-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-right: 1px solid var(--line); // #EEEEEE
+    z-index: 1;
+    background: var(--white);
+  }
+
+  .iti__selected-flag {
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+  }
+
+  .iti__flag {
+    width: 21px;
+    height: 15px;
+    margin-right: 0;
+  }
+
+  .iti__selected-dial-code {
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: var(--font-weight-regular);
+    color: var(--secondary); // #091724
+    margin-left: 5px;
+    display: inline-block !important; // Принудительно показываем код страны
+    visibility: visible !important;
+  }
+
+  .iti__arrow {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid var(--gray-2);
+    margin-left: 2px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  // Локальные стили для dropdown внутри wrapper (если библиотека использует их)
+  .iti__country-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    max-height: 200px;
+    overflow: hidden; // Изменено на hidden для правильного отображения скруглений
+    z-index: 1000;
+    margin-top: 4px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+
+    .iti__search-box {
+      padding: 12px;
+      border-bottom: 1px solid var(--line); // #EEEEEE
+      margin: 0;
+      background: var(--white);
+      flex-shrink: 0;
+
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        font-family: var(--font-family);
+        font-size: $font-size-body1; // 16px
+        font-weight: var(--font-weight-regular); // 400
+        color: var(--gray-2); // #495057
+        background: var(--white);
+        transition: var(--transition-base);
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: var(--primary); // #2B3B73
+          box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.1);
+        }
+
+        &::placeholder {
+          color: var(--gray-3); // #9DA2AB
+          opacity: 1;
+        }
+      }
+    }
+
+    // Контейнер списка стран с прокруткой
+    > ul {
+      max-height: 200px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  }
+
+  .iti__country {
+    padding: 10px 12px;
+    font-family: var(--font-family);
+    font-size: $font-size-body1; // 16px
+    font-weight: var(--font-weight-regular); // 400
+    color: var(--gray-2); // #495057
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+
+    &:hover {
+      background-color: var(--card-2); // #F8F9FA
+    }
+
+    &--highlight {
+      background-color: var(--card-2); // #F8F9FA
+    }
+  }
+
+  // Input стилизация
+  .form-phone__input {
+    padding-left: 110px !important; // Место для флага и кода страны
+  }
+}
+
+.form-phone__country-code {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-right: 1px solid var(--line); // #EEEEEE
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.form-phone__country-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.form-phone__flag {
+  display: inline-flex;
+  align-items: center;
+  width: 21px;
+  height: 15px;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  .fi {
+    width: 21px;
+    height: 15px;
+    display: block;
+  }
+}
+
+.form-phone__code {
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  color: var(--secondary); // #091724
+  white-space: nowrap;
+}
+
+.form-phone__caret {
+  font-size: 12px;
+  color: var(--gray-2);
+  margin-left: 2px;
+}
+
+.form-phone__country-select {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.form-phone__input {
+  flex: 1;
+  border: none;
+  border-radius: 0;
+  padding: 0 20px;
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: $font-size-body1; // 16px
+  font-weight: var(--font-weight-regular); // 400
+  color: var(--gray-2); // #495057
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// ============================================
+// Form Container Components - универсальные компоненты контейнера формы
+// ============================================
+
+// Form Container - контейнер формы с фоном, padding, border-radius
+.form-container {
+  background: var(--card-2); // #F8F9FA
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 40px;
+
+  @include lg-down {
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+// Form Note - примечание о required полях
+.form-note {
+  font-family: var(--font-family);
+  font-size: $font-size-body1; // 16px
+  font-weight: var(--font-weight-regular); // 400
+  color: var(--gray-3); // #9DA2AB
+  margin: 0 0 30px;
+  line-height: 1.5;
+
+  @include lg-down {
+    font-size: $font-size-body1; // 16px
+    margin-bottom: 16px;
+  }
+
+  &__asterisk {
+    color: #ee1c23; // Red asterisk color from Figma
+  }
+}
+
+// Form Divider - горизонтальный разделитель
+.form-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line); // #EEEEEE
+  margin: 0 0 30px;
+
+  @include lg-down {
+    margin-bottom: 16px;
+  }
+}
+
+// Form Layout - контейнер для формы с flex layout и gap
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include lg-down {
+    gap: 20px;
+  }
+}
+
+// Form Input Transparent - модификатор для input с прозрачной границей
+.form-input-transparent {
+  height: 60px;
+  border-radius: 4px;
+  background: var(--white);
+  font-size: $font-size-body1; // 16px
+  border: 1px solid transparent;
+
+  @include lg-down {
+    height: 60px;
+  }
+}
+
+// Form Textarea Transparent - модификатор для textarea с прозрачной границей
+.form-textarea-transparent {
+  height: 150px;
+  min-height: 150px;
+  resize: vertical;
+  border: 1px solid transparent;
+
+  @include lg-down {
+    height: 150px;
+    min-height: 150px;
+  }
+}
+
+// Form Submit - универсальная кнопка submit
+.form-submit {
+  background: var(--primary); // #2B3B73
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  height: 70px;
+  font-family: var(--font-family);
+  font-size: $font-size-h6; // 20px
+  font-weight: var(--font-weight-bold); // 700
+  line-height: 1;
+  padding: 0;
+  width: 100%;
+  cursor: pointer;
+  transition: var(--transition-base);
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include lg-down {
+    height: 70px;
+    width: 100%;
+  }
+
+  &:hover {
+    background: darken(#2b3b73, 5%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Form Phone Group - wrapper для phone input с фиксированной высотой
+.form-phone-group {
+  height: 60px;
+
+  @include lg-down {
+    height: 60px;
+  }
+
+  .form-phone-wrapper {
+    height: 100%;
+  }
+
+  .form-phone__input {
+    height: 100%;
+    padding: 0 20px;
+  }
+}
+
 // Responsive adjustments
 @include md-down {
   .form-control,
   .form-select {
-    padding: 10px 14px;
-    font-size: var(--font-size-body1);
+    padding: 20px;
+    font-size: $font-size-body1; // 16px
+    height: 60px;
+  }
+
+  textarea.form-control {
+    padding: 20px;
+    height: auto;
+    min-height: 150px;
   }
 
   .form-label {
-    font-size: var(--font-size-body1);
+    font-size: $font-size-body1; // 16px
+    margin-bottom: 20px;
+  }
+
+  .form-phone-wrapper {
+    height: 60px;
+  }
+
+  .form-phone__input {
+    padding: 0 20px;
   }
 }
 
+// Form File Upload - компонент для загрузки файлов
+.form-file-wrapper {
+  display: flex;
+  align-items: stretch;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 60px;
+}
+
+.form-file__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.form-file__display {
+  flex: 1;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  padding: 0 20px;
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: $font-size-body1; // 16px
+  font-weight: var(--font-weight-regular); // 400
+  color: var(--gray-2); // #495057
+  background-color: var(--white);
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  border-right: none;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary); // #2B3B73
+  }
+
+  &::placeholder {
+    color: var(--gray-3); // #9DA2AB
+    opacity: 1;
+  }
+}
+
+.form-file__button {
+  width: 60px;
+  height: 60px;
+  background: var(--primary); // #2B3B73
+  border: none;
+  border-radius: 0 4px 4px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-base);
+  flex-shrink: 0;
+
+  i {
+    color: var(--white);
+    font-size: 25px;
+  }
+
+  &:hover {
+    background: darken(#2b3b73, 5%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Form Checkbox Group - группа чекбоксов
+.form-checkbox-group {
+  background: var(--white);
+  border-radius: 4px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--line); // #EEEEEE
+  min-height: 350px;
+
+  @include lg-down {
+    padding: 20px;
+    min-height: auto;
+  }
+}
+
+.form-checkbox-group__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.form-checkbox-group__caret {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: 20px;
+    color: var(--gray-2); // #495057
+  }
+}
+
+.form-checkbox-group__divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line); // #EEEEEE
+  margin-bottom: 15px;
+}
+
+.form-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .form-check-input {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--line); // #EEEEEE
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+
+    &:checked {
+      background-color: var(--primary); // #2B3B73
+      border-color: var(--primary);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.1);
+    }
+  }
+
+  .form-check-label {
+    font-family: var(--font-family);
+    font-size: $font-size-body3; // 12px
+    font-weight: var(--font-weight-regular); // 400
+    color: var(--gray-2); // #495057
+    cursor: pointer;
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.form-label--group {
+  margin-bottom: 20px;
+}

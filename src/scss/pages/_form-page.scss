@@ -1,0 +1,87 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+
+// ============================================
+// Form Section - страница регистрации
+// ============================================
+.form-section {
+	padding: 40px 0;
+	background: var(--white);
+
+	@include lg-down {
+		padding: 40px 0 24px;
+	}
+
+	// Page Title
+	&__title {
+		font-family: var(--font-family);
+		font-size: $font-size-h1; // 48px
+		font-weight: var(--font-weight-bold); // 700
+		color: var(--primary); // #2B3B73
+		margin: 0 0 40px;
+		line-height: 1;
+
+		@include lg-down {
+			font-size: $font-size-h1; // 48px
+			margin-bottom: 24px;
+		}
+	}
+}
+
+// ============================================
+// Form Registration - контейнер формы регистрации
+// ============================================
+.form-registration {
+	background: var(--card-2); // #F8F9FA
+	border-radius: 12px;
+	padding: 40px;
+	margin-bottom: 40px;
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+
+	@include lg-down {
+		padding: 16px;
+		margin-bottom: 24px;
+	}
+
+	// Information Block
+	&__info {
+		margin-bottom: 30px;
+
+		@include lg-down {
+			margin-bottom: 16px;
+		}
+
+		&-title {
+			font-family: var(--font-family);
+			font-size: $font-size-body; // 18px
+			font-weight: var(--font-weight-bold); // 700
+			color: var(--gray-1); // #212529
+			margin: 0 0 16px;
+			line-height: 1.5;
+		}
+
+		&-text {
+			font-family: var(--font-family);
+			font-size: $font-size-body1; // 16px
+			font-weight: var(--font-weight-regular); // 400
+			color: var(--gray-2); // #495057
+			margin: 0 0 16px;
+			line-height: 1.5;
+		}
+
+		&-note {
+			font-family: var(--font-family);
+			font-size: $font-size-body2; // 14px
+			font-weight: var(--font-weight-regular); // 400
+			color: var(--gray-3); // #9DA2AB
+			margin: 0;
+			line-height: 1.5;
+		}
+
+		&-asterisk {
+			color: #ee1c23;
+		}
+	}
+}

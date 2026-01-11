@@ -84,6 +84,8 @@
     <link rel="stylesheet" href="assets/plugins/fancybox/fancybox.css">
     <!-- Select2 CSS-->
     <link rel="stylesheet" href="assets/plugins/select2/select2.min.css">
+    <!-- Intl Tel Input CSS-->
+    <link rel="stylesheet" href="assets/plugins/intl-tel-input/intl-tel-input.min.css">
     <!-- Custom Styles-->
     <link rel="stylesheet" href="assets/css/normal.min.css">
   </head>
@@ -230,7 +232,7 @@
             <div class="col-12 col-md-auto ms-md-auto">
               <div class="select2-wrapper mt-4 mt-md-0" style="min-width: 120px;">
                                 <div class="select2-wrapper" data-select2-config="{&amp;quot;placeholder&amp;quot;:&amp;quot;Выберите год&amp;quot;,&amp;quot;allowClear&amp;quot;:false,&amp;quot;minimumResultsForSearch&amp;quot;:null,&amp;quot;width&amp;quot;:&amp;quot;100%&amp;quot;}">
-                                  <select class="select2 select2 " id="select2-year-bqk35o9x1" name="year" data-select2-init="true" data-select2-variant="primary">
+                                  <select class="select2 select2 " id="select2-year-4l6z9m68b" name="year" data-select2-init="true" data-select2-variant="primary">
                                     <option value="2024" selected>2024</option>
                                     <option value="2025">2025</option>
                                     <option value="2026">2026</option>
@@ -314,7 +316,7 @@
                           </div>
                         </div>
                         <!-- Speaker 3-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-1">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -323,6 +325,20 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-1" tabindex="-1" aria-labelledby="speakerModalLabel-1" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-1">Ramil Azizov</h3>
+                                                        <p class="speaker-modal__role">Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                         <!-- Event Item 2-->
                         <div class="ep__event-item">
                           <div class="ep__event-time"><i class="fas fa-clock"></i><span>11:00 - 12:00</span></div>
@@ -393,7 +409,7 @@
                   <div class="row mb-4">
                     <div class="col-12">
                       <div class="ep__section-label">Moderator</div>
-                      <div class="ep__participant-card">
+                      <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-2">
                         <div class="ep__participant-main">
                           <div class="ep__participant-avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Vugar Mustafayev" loading="lazy"></div>
                           <div class="ep__participant-info">
@@ -402,6 +418,20 @@
                           </div>
                         </div>
                       </div>
+                                            <div class="modal fade speaker-modal" id="speakerModal-2" tabindex="-1" aria-labelledby="speakerModalLabel-2" aria-hidden="true">
+                                              <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content speaker-modal__content">
+                                                  <div class="modal-header speaker-modal__header">
+                                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body speaker-modal__body">
+                                                    <div class="speaker-modal__avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Vugar Mustafayev" loading="lazy"></div>
+                                                    <h3 class="speaker-modal__name" id="speakerModalLabel-2">Vugar Mustafayev</h3>
+                                                    <p class="speaker-modal__role">Ministry of Defence Industry of the Republic of Azerbaijan Minister</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
                     </div>
                   </div>
                   <!-- Speakers Section-->
@@ -410,7 +440,7 @@
                       <div class="ep__section-label">Speakers</div>
                       <div class="ep__participants-list">
                         <!-- Speaker 1-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-3">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Emil Hasanov" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -419,8 +449,22 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-3" tabindex="-1" aria-labelledby="speakerModalLabel-3" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Emil Hasanov" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-3">Emil Hasanov</h3>
+                                                        <p class="speaker-modal__role">Public Council under the Azerbaijan Mine Action Agency Deputy Chairman</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                         <!-- Speaker 2-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-4">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Eflatun Mamedov" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -438,6 +482,22 @@
                             </ul>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-4" tabindex="-1" aria-labelledby="speakerModalLabel-4" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Eflatun Mamedov" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-4">Eflatun Mamedov</h3>
+                                                        <p class="speaker-modal__role">Ministry of Defense of the Republic of Azerbaijan Head of the Mine Action Department of the Main Directorate of Engineering Troops</p>
+                                                        <div class="speaker-modal__bio"><ul><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li></ul>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                       </div>
                     </div>
                   </div>
@@ -460,7 +520,7 @@
                   <div class="row mb-4">
                     <div class="col-12">
                       <div class="ep__section-label">Moderator</div>
-                      <div class="ep__participant-card">
+                      <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-5">
                         <div class="ep__participant-main">
                           <div class="ep__participant-avatar"><img src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy"></div>
                           <div class="ep__participant-info">
@@ -469,6 +529,20 @@
                           </div>
                         </div>
                       </div>
+                                            <div class="modal fade speaker-modal" id="speakerModal-5" tabindex="-1" aria-labelledby="speakerModalLabel-5" aria-hidden="true">
+                                              <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content speaker-modal__content">
+                                                  <div class="modal-header speaker-modal__header">
+                                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body speaker-modal__body">
+                                                    <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy"></div>
+                                                    <h3 class="speaker-modal__name" id="speakerModalLabel-5">Vilayat Valiyev</h3>
+                                                    <p class="speaker-modal__role">Azerbaijan Technical University Rector</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
                     </div>
                   </div>
                   <div class="row mb-4">
@@ -476,7 +550,7 @@
                       <div class="ep__section-label">Speakers</div>
                       <div class="ep__participants-list">
                         <!-- Speaker 3-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-6">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -485,8 +559,22 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-6" tabindex="-1" aria-labelledby="speakerModalLabel-6" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-6">Ramil Azizov</h3>
+                                                        <p class="speaker-modal__role">Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                         <!-- Speaker 4-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-7">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -495,8 +583,22 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-7" tabindex="-1" aria-labelledby="speakerModalLabel-7" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-7">Khagani Abdullayev</h3>
+                                                        <p class="speaker-modal__role">Azerbaijan National Aviation Academy Vice Rector for New Technologies</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                         <!-- Speaker 5-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-8">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -505,8 +607,22 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-8" tabindex="-1" aria-labelledby="speakerModalLabel-8" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-8">Yasin Kaygusuz</h3>
+                                                        <p class="speaker-modal__role">Turkish Aerospace Industries Product Manager for International Programs</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                         <!-- Speaker 6-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-9">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -515,8 +631,22 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-9" tabindex="-1" aria-labelledby="speakerModalLabel-9" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-9">Manafaddin Namazov</h3>
+                                                        <p class="speaker-modal__role">Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                         <!-- Speaker 7-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-10">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -525,8 +655,22 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-10" tabindex="-1" aria-labelledby="speakerModalLabel-10" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-10">Asad Rustamov</h3>
+                                                        <p class="speaker-modal__role">National Defense University Deputy Rector of Military Management Institute</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                         <!-- Speaker 8-->
-                        <div class="ep__participant-card">
+                        <div class="ep__participant-card speaker-card-clickable" data-bs-toggle="modal" data-bs-target="#speakerModal-11">
                           <div class="ep__participant-main">
                             <div class="ep__participant-avatar"><img src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy"></div>
                             <div class="ep__participant-info">
@@ -535,6 +679,20 @@
                             </div>
                           </div>
                         </div>
+                                                <div class="modal fade speaker-modal" id="speakerModal-11" tabindex="-1" aria-labelledby="speakerModalLabel-11" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content speaker-modal__content">
+                                                      <div class="modal-header speaker-modal__header">
+                                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body speaker-modal__body">
+                                                        <div class="speaker-modal__avatar"><img src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy"></div>
+                                                        <h3 class="speaker-modal__name" id="speakerModalLabel-11">Gunel Aliyeva</h3>
+                                                        <p class="speaker-modal__role">Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department</p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                       </div>
                     </div>
                   </div>
@@ -712,6 +870,8 @@
     <script src="assets/plugins/youtube-lite/lite-yt-embed.js"></script>
     <!-- Fancybox JS-->
     <script src="assets/plugins/fancybox/fancybox.umd.js"></script>
+    <!-- Intl Tel Input JS-->
+    <script src="assets/plugins/intl-tel-input/intl-tel-input.min.js"></script>
     <!-- Custom Scripts-->
     <script src="assets/js/script.min.js"></script>
   </body>

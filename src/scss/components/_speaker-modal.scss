@@ -1,0 +1,172 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+
+// ============================================
+// Speaker Modal - модальное окно спикера
+// ============================================
+.speaker-modal {
+  &__content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &__header {
+    border-bottom: 1px solid var(--line); // #EEEEEE
+    padding: 20px 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .btn-close {
+      margin: 0;
+      opacity: 1;
+      width: 24px;
+      height: 24px;
+      background-size: 16px;
+      background-color: var(--gray-3); // #9DA2AB
+      border-radius: 50%;
+      transition: var(--transition-base);
+
+      &:hover {
+        background-color: var(--gray-2); // #495057
+        opacity: 1;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.1);
+      }
+    }
+  }
+
+  &__body {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+
+    @include lg-down {
+      padding: 32px 24px;
+      gap: 20px;
+    }
+
+    @include md-down {
+      padding: 24px 16px;
+      gap: 16px;
+    }
+  }
+
+  &__avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin: 0 auto;
+
+    @include md-down {
+      width: 120px;
+      height: 120px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-family: var(--font-family);
+    font-size: $font-size-h3; // 32px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--gray-1); // #212529
+    margin: 0;
+    line-height: 1.2;
+
+    @include md-down {
+      font-size: $font-size-h4; // 24px
+    }
+  }
+
+  &__role {
+    font-family: var(--font-family);
+    font-size: $font-size-h6; // 20px
+    font-weight: var(--font-weight-medium); // 500
+    color: var(--gray-2); // #495057
+    margin: 0;
+    line-height: 1.4;
+
+    @include md-down {
+      font-size: $font-size-body1; // 16px
+      font-weight: var(--font-weight-regular); // 400
+    }
+  }
+
+  &__bio {
+    font-family: var(--font-family);
+    font-size: $font-size-body; // 18px
+    font-weight: var(--font-weight-regular); // 400
+    color: var(--gray-2); // #495057
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    line-height: 1.6;
+    max-height: calc(100vh - 400px);
+    overflow-y: auto;
+    padding-right: 8px;
+
+    // Кастомный скроллбар
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--card-2); // #F8F9FA
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--gray-3); // #9DA2AB
+      border-radius: 3px;
+
+      &:hover {
+        background: var(--gray-2); // #495057
+      }
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-left: 27px;
+      margin-bottom: 12px;
+      line-height: 1.6;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include lg-down {
+      max-height: calc(100vh - 350px);
+    }
+
+    @include md-down {
+      font-size: $font-size-body1; // 16px
+      max-height: calc(100vh - 300px);
+
+      li {
+        margin-left: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

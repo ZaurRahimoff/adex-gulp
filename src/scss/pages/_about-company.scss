@@ -1,0 +1,258 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+@import "../mixins/utilities";
+
+// ============================================
+// About Company Section
+// ============================================
+.about-company-section {
+  padding: 40px 0;
+  background: var(--white);
+
+  @include lg-down {
+    padding: 40px 0;
+  }
+
+  // Page Title
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0 0 40px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: $font-size-h1; // 48px
+      margin-bottom: 24px;
+    }
+  }
+
+  // Video Block с lite-youtube
+  &__video {
+    width: 100%;
+    max-width: 1280px;
+    height: 480px;
+    margin: 0 auto 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+
+    @include lg-down {
+      max-width: 100%;
+      height: 100%;
+      max-height: 408px;
+      margin-bottom: 24px;
+      aspect-ratio: 1 / 1;
+    }
+
+    // Стили для lite-youtube компонента
+    lite-youtube {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      display: block;
+      background-color: #000;
+      position: relative;
+      border-radius: 12px;
+
+      // Кастомная кнопка Play (синий фон + белая иконка как на макете Figma)
+      > .lty-playbtn {
+        width: 100px !important;
+        height: 100px !important;
+        background: var(--primary) !important; // Синий фон
+        border-radius: 50% !important;
+        border: none !important;
+        box-shadow: 0px 0px 20px 0px rgba(43, 59, 115, 0.3) !important;
+        cursor: pointer;
+        filter: none;
+        transform: translate(-50%, -50%) !important;
+        transition: var(--transition-base);
+
+        @include lg-down {
+          width: 60px !important;
+          height: 60px !important;
+        }
+
+        // Заменяем стандартную иконку на Font Awesome (белая иконка)
+        &::before {
+          content: '\f04b';
+          font-family: 'Font Awesome 7 Pro';
+          font-weight: 400;
+          font-size: 40px;
+          color: #FFFFFF !important; // Белая иконка
+          border: none !important;
+          width: auto !important;
+          height: auto !important;
+          position: relative;
+          left: 3px;
+
+          @include lg-down {
+            font-size: 20px;
+            left: 2px;
+          }
+        }
+      }
+
+      &:hover > .lty-playbtn {
+        background: #3d4f8a !important; // Более тёмный синий при наведении
+        transform: translate(-50%, -50%) scale(1.05) !important;
+        box-shadow: 0px 0px 30px 0px rgba(43, 59, 115, 0.5) !important;
+
+        @include lg-down {
+          transform: scale(1.05);
+        }
+      }
+
+      // Скрываем стандартный градиент lite-youtube
+      &::before {
+        display: none !important;
+      }
+    }
+  }
+
+  // Content Block (Logo + Text)
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+
+    @include lg-down {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include lg-down {
+      width: 200px;
+      height: 200px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    font-family: var(--font-family);
+    font-size: $font-size-body; // 18px
+    font-weight: $font-weight-regular; // 400
+    color: var(--gray-2); // #495057
+    line-height: 1.5;
+
+    @include lg-down {
+      font-size: $font-size-body; // 18px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // Contact Card
+  &__contact {
+    background: var(--card-2); // #F8F9FA
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 40px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include lg-down {
+      padding: 16px;
+      margin-bottom: 24px;
+      min-height: auto;
+    }
+  }
+
+  &__contact-title {
+    font-family: var(--font-family);
+    font-size: $font-size-h3; // 36px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin: 0 0 20px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: $font-size-h3; // 36px
+      margin-bottom: 20px;
+    }
+  }
+
+  &__contact-info {
+    width: 100%;
+  }
+
+  &__contact-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-family);
+    font-size: $font-size-body1; // 16px
+    font-weight: $font-weight-regular; // 400
+    color: var(--gray-2); // #495057
+    line-height: 1.5;
+
+    @include lg-down {
+      font-size: $font-size-body1; // 16px
+    }
+
+    &--address {
+      align-items: flex-start;
+
+      .about-company-section__contact-icon {
+        margin-top: 3px;
+      }
+    }
+
+    a {
+      color: var(--gray-2);
+      text-decoration: none;
+      transition: var(--transition-base);
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+
+  &__contact-icon {
+    font-size: 15px;
+    color: var(--primary); // #2B3B73
+    flex-shrink: 0;
+    width: 15px;
+    text-align: center;
+  }
+
+  // Divider
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background: var(--line); // #EEEEEE
+    margin: 0;
+  }
+}

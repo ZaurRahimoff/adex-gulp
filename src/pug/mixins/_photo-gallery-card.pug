@@ -1,0 +1,28 @@
+//- Photo Gallery Card Mixin
+//- @param {String} image - Path to image
+//- @param {String} title - Card title
+//- @param {String} [alt] - Image alt text (defaults to title)
+//- @param {String} [caption] - Fancybox caption (defaults to title)
+//- Usage:
+//-   +photo-gallery-card({
+//-     image: 'assets/img/photo1.png',
+//-     title: 'Press Conference 2024'
+//-   })
+//-   +photo-gallery-card({
+//-     image: 'assets/img/photo2.png',
+//-     title: 'Opening ceremony',
+//-     alt: 'Opening ceremony of ADEX 2024',
+//-     caption: 'Opening ceremony - ADEX 2024'
+//-   })
+
+mixin photo-gallery-card(options)
+	- var image = options.image || ''
+	- var title = options.title || 'Gallery Image'
+	- var alt = options.alt || title
+	- var caption = options.caption || title
+
+	a.photo-gallery-section__card(href=image data-fancybox="gallery" data-caption=caption)
+		.photo-gallery-section__image-wrapper
+			img.photo-gallery-section__image(src=image alt=alt loading="lazy")
+		.photo-gallery-section__card-content
+			h3.photo-gallery-section__card-title= title

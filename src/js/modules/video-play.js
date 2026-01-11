@@ -21,10 +21,16 @@ export function initVideoPlay() {
         const isPlaying = src.includes('autoplay=1');
         
         if (!isPlaying) {
-          // Добавляем autoplay к URL
           const separator = src.includes('?') ? '&' : '?';
-          iframe.src = src + separator + 'autoplay=1';
+          iframe.src = src + separator + 'autoplay=1&mute=1';
+          iframe.style.display = 'block';
+          iframe.style.zIndex = '3';
           this.style.display = 'none';
+          
+          const videoImage = videoWrapper.querySelector('.hero__video-image');
+          if (videoImage) {
+            videoImage.style.display = 'none';
+          }
         }
       } else if (video) {
         // Для обычного video элемента

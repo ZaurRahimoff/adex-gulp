@@ -8,6 +8,9 @@ var _mobileMenu = require("./modules/mobile-menu");
 var _scrollToTop = require("./modules/scroll-to-top");
 var _select = require("./modules/select2");
 var _datatables = require("./modules/datatables");
+var _fancybox = require("./modules/fancybox");
+var _phoneInput = require("./modules/phone-input");
+var _fileUpload = require("./modules/file-upload");
 // Main JavaScript file
 // Импорт модулей
 
@@ -33,9 +36,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Инициализация DataTables
   (0, _datatables.initDataTablesModule)();
+
+  // Инициализация Fancybox
+  (0, _fancybox.initFancybox)();
+
+  // Инициализация Phone Input
+  (0, _phoneInput.initPhoneInput)();
+
+  // Инициализация File Upload
+  (0, _fileUpload.initFileUpload)();
 });
 
-},{"./modules/datatables":2,"./modules/event-program-tabs":3,"./modules/mobile-menu":4,"./modules/scroll-to-top":5,"./modules/select2":6,"./modules/swiper":7,"./modules/video-play":8}],2:[function(require,module,exports){
+},{"./modules/datatables":2,"./modules/event-program-tabs":3,"./modules/fancybox":4,"./modules/file-upload":5,"./modules/mobile-menu":6,"./modules/phone-input":7,"./modules/scroll-to-top":8,"./modules/select2":9,"./modules/swiper":10,"./modules/video-play":11}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -463,6 +475,98 @@ function initEventProgramTabs() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.initFancybox = initFancybox;
+/**
+ * Модуль для инициализации Fancybox
+ */
+function initFancybox() {
+  // Проверяем наличие Fancybox
+  if (typeof Fancybox === 'undefined') {
+    console.warn('Fancybox is not loaded');
+    return;
+  }
+
+  // Проверяем, есть ли элементы с data-fancybox на странице
+  const fancyboxElements = document.querySelectorAll('[data-fancybox]');
+  if (fancyboxElements.length === 0) {
+    return; // Нет элементов для инициализации
+  }
+
+  // Инициализация Fancybox для всех элементов с data-fancybox
+  // Используем более простую конфигурацию для избежания конфликтов
+  try {
+    Fancybox.bind('[data-fancybox]', {
+      // Базовые настройки
+      Toolbar: {
+        display: {
+          left: ['infobar'],
+          middle: [],
+          right: ['slideshow', 'download', 'thumbs', 'close']
+        }
+      },
+      Thumbs: {
+        autoStart: false
+      },
+      Image: {
+        zoom: true,
+        wheel: 'slide'
+      }
+    });
+  } catch (error) {
+    console.error('Fancybox initialization error:', error);
+  }
+}
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initFileUpload = initFileUpload;
+/**
+ * Модуль для обработки загрузки файлов
+ */
+function initFileUpload() {
+  // Находим все кнопки загрузки файлов
+  const fileButtons = document.querySelectorAll('button[data-file-input]');
+  fileButtons.forEach(button => {
+    const inputId = button.getAttribute('data-file-input');
+    const fileInput = document.getElementById(inputId);
+    const displayInput = document.getElementById(`${inputId}_display`);
+    if (!fileInput || !displayInput) {
+      return;
+    }
+
+    // Обработчик клика на кнопку
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      fileInput.click();
+    });
+
+    // Обработчик изменения файла
+    fileInput.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        displayInput.value = file.name;
+      } else {
+        displayInput.value = '';
+      }
+    });
+
+    // Обработчик клика на поле display для открытия диалога
+    displayInput.addEventListener('click', function () {
+      fileInput.click();
+    });
+  });
+}
+
+},{}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.initMobileMenu = initMobileMenu;
 /**
  * Модуль для управления мобильным меню
@@ -498,7 +602,213 @@ function initMobileMenu() {
   });
 }
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initPhoneInput = initPhoneInput;
+/**
+ * Модуль для инициализации intl-tel-input
+ */
+function initPhoneInput() {
+  // Проверяем наличие библиотеки
+  if (typeof intlTelInput === 'undefined') {
+    console.warn('intl-tel-input is not loaded');
+    return;
+  }
+
+  // Находим все поля телефона
+  const phoneInputs = document.querySelectorAll('input[data-phone-input="true"]');
+  if (phoneInputs.length === 0) {
+    return;
+  }
+  phoneInputs.forEach(input => {
+    // Валидация ввода только цифр
+    // Используем keypress для предотвращения ввода нецифровых символов
+    input.addEventListener('keypress', function (e) {
+      // Разрешаем только цифры (0-9)
+      // Служебные клавиши (Backspace, Delete, Tab, Escape, Enter, стрелки) обрабатываются через keydown/keyup
+      const char = String.fromCharCode(e.which || e.keyCode);
+      const keyCode = e.which || e.keyCode;
+
+      // Разрешаем служебные клавиши (Backspace=8, Tab=9, Enter=13)
+      // и комбинации с Ctrl/Cmd (для копирования/вставки)
+      if (keyCode >= 8 && keyCode <= 13) {
+        return; // Разрешаем служебные клавиши
+      }
+
+      // Разрешаем только цифры (0-9) или комбинации с Ctrl/Cmd
+      if (!/[0-9]/.test(char) && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+      }
+    });
+
+    // Дополнительная валидация на событие input (на случай вставки через clipboard)
+    input.addEventListener('input', function (e) {
+      // Получаем текущее значение и оставляем только цифры
+      let value = e.target.value.replace(/[^\d]/g, '');
+
+      // Если значение содержит нецифровые символы, очищаем их
+      if (e.target.value !== value) {
+        // Сохраняем позицию курсора
+        const cursorPosition = e.target.selectionStart;
+        const originalLength = e.target.value.length;
+        e.target.value = value;
+
+        // Восстанавливаем позицию курсора (с учетом удаленных символов)
+        const removedChars = originalLength - value.length;
+        const newPosition = Math.max(0, cursorPosition - removedChars);
+        e.target.setSelectionRange(newPosition, newPosition);
+      }
+    });
+
+    // Получаем настройки из data-атрибутов
+    const defaultCountry = input.getAttribute('data-default-country') || 'az';
+
+    // Предпочитаемые страны (строка через запятую или JSON массив)
+    let preferredCountries = ['az', 'ru', 'tr', 'us', 'gb']; // дефолт
+    const preferredCountriesAttr = input.getAttribute('data-preferred-countries');
+    if (preferredCountriesAttr) {
+      try {
+        // Пробуем распарсить как JSON
+        preferredCountries = JSON.parse(preferredCountriesAttr);
+      } catch (e) {
+        // Если не JSON, разбиваем по запятой
+        preferredCountries = preferredCountriesAttr.split(',').map(c => c.trim()).filter(c => c);
+      }
+    }
+
+    // Исключенные страны (строка через запятую или JSON массив)
+    let excludeCountries = []; // дефолт - нет исключенных стран
+    const excludeCountriesAttr = input.getAttribute('data-exclude-countries');
+    if (excludeCountriesAttr && excludeCountriesAttr.trim() !== '') {
+      try {
+        // Пробуем распарсить как JSON
+        excludeCountries = JSON.parse(excludeCountriesAttr);
+      } catch (e) {
+        // Если не JSON, разбиваем по запятой
+        excludeCountries = excludeCountriesAttr.split(',').map(c => c.trim()).filter(c => c);
+      }
+    }
+
+    // Отделять код страны от номера
+    const separateDialCode = input.getAttribute('data-separate-dial-code') === 'true' || input.getAttribute('data-separate-dial-code') === true;
+
+    // Показывать код страны рядом с флагом
+    const showSelectedDialCode = input.getAttribute('data-show-selected-dial-code') !== 'false';
+
+    // Национальный режим
+    const nationalMode = input.getAttribute('data-national-mode') === 'true' || input.getAttribute('data-national-mode') === true;
+
+    // Форматировать при вводе
+    const formatOnDisplay = input.getAttribute('data-format-on-display') !== 'false';
+
+    // Автоматический placeholder
+    const autoPlaceholder = input.getAttribute('data-auto-placeholder') || 'off';
+
+    // Инициализация intl-tel-input
+    const itiConfig = {
+      initialCountry: defaultCountry,
+      preferredCountries: preferredCountries,
+      separateDialCode: separateDialCode,
+      utilsScript: '',
+      // Не используем utils для уменьшения размера
+      nationalMode: nationalMode,
+      autoPlaceholder: autoPlaceholder,
+      formatOnDisplay: formatOnDisplay,
+      customPlaceholder: function (selectedCountryPlaceholder, selectedCountryData) {
+        return selectedCountryPlaceholder;
+      },
+      // Указываем путь к флагам
+      flagContainerClass: 'iti__flag-container',
+      flagClass: 'iti__flag'
+    };
+
+    // Добавляем исключенные страны только если они указаны
+    if (excludeCountries.length > 0) {
+      itiConfig.excludeCountries = excludeCountries;
+    }
+    const iti = intlTelInput(input, itiConfig);
+
+    // Управление отображением кода страны рядом с флагом
+    const wrapper = input.closest('.form-phone-wrapper');
+    if (wrapper) {
+      wrapper.classList.add('intl-tel-input-wrapper');
+
+      // Функция для получения и отображения кода страны
+      const updateDialCodeDisplay = () => {
+        const flagContainer = wrapper.querySelector('.iti__flag-container');
+        if (!flagContainer) return;
+
+        // Получаем текущую выбранную страну
+        const selectedCountryData = iti.getSelectedCountryData();
+        const dialCode = selectedCountryData ? selectedCountryData.dialCode : '';
+
+        // Ищем существующий элемент кода страны
+        let dialCodeElement = flagContainer.querySelector('.iti__selected-dial-code');
+
+        // Если элемента нет и нужно показывать код, создаем его
+        if (!dialCodeElement && showSelectedDialCode && dialCode) {
+          dialCodeElement = document.createElement('span');
+          dialCodeElement.className = 'iti__selected-dial-code';
+          dialCodeElement.textContent = '+' + dialCode;
+
+          // Вставляем после флага
+          const flag = flagContainer.querySelector('.iti__flag');
+          if (flag && flag.parentNode) {
+            flag.parentNode.insertBefore(dialCodeElement, flag.nextSibling);
+          }
+        }
+
+        // Обновляем отображение
+        if (dialCodeElement) {
+          if (showSelectedDialCode && dialCode) {
+            dialCodeElement.textContent = '+' + dialCode;
+            dialCodeElement.style.display = '';
+            dialCodeElement.style.visibility = 'visible';
+          } else {
+            dialCodeElement.style.display = 'none';
+            dialCodeElement.style.visibility = 'hidden';
+          }
+        }
+      };
+
+      // Обновляем отображение после инициализации (с небольшой задержкой для создания DOM)
+      setTimeout(updateDialCodeDisplay, 100);
+
+      // Обработка изменения страны для обновления отображения кода
+      input.addEventListener('countrychange', function () {
+        setTimeout(updateDialCodeDisplay, 0);
+      });
+    }
+
+    // Обработка валидации
+    input.addEventListener('blur', function () {
+      if (iti.isValidNumber()) {
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+        if (wrapper) {
+          wrapper.classList.remove('is-invalid');
+        }
+      } else {
+        input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
+        if (wrapper) {
+          wrapper.classList.add('is-invalid');
+        }
+      }
+    });
+
+    // Обработка валидации при изменении страны (уже обрабатывается выше в countrychange)
+
+    // Сохраняем экземпляр для доступа извне
+    input.intlTelInputInstance = iti;
+  });
+}
+
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -521,7 +831,7 @@ function initScrollToTop() {
   });
 }
 
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -791,7 +1101,7 @@ if (typeof window !== 'undefined') {
   window.Select2Init = Select2Init;
 }
 
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1027,7 +1337,7 @@ function parseValue(value) {
   return value;
 }
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1053,10 +1363,15 @@ function initVideoPlay() {
         const src = iframe.src;
         const isPlaying = src.includes('autoplay=1');
         if (!isPlaying) {
-          // Добавляем autoplay к URL
           const separator = src.includes('?') ? '&' : '?';
-          iframe.src = src + separator + 'autoplay=1';
+          iframe.src = src + separator + 'autoplay=1&mute=1';
+          iframe.style.display = 'block';
+          iframe.style.zIndex = '3';
           this.style.display = 'none';
+          const videoImage = videoWrapper.querySelector('.hero__video-image');
+          if (videoImage) {
+            videoImage.style.display = 'none';
+          }
         }
       } else if (video) {
         // Для обычного video элемента

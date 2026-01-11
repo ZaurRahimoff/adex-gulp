@@ -148,13 +148,18 @@ block content
                           | *only for participants, media and organisers
 
                     // Speaker 3
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-1"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Ramil Azizov
                           p.ep__participant-role Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('1', 'Ramil Azizov', 'Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department', 'assets/img/webp/speaker5.webp', '')
 
                     // Event Item 2
                     .ep__event-item
@@ -260,13 +265,18 @@ block content
               .row.mb-4
                 .col-12
                   .ep__section-label Moderator
-                  .ep__participant-card
+                  .ep__participant-card.speaker-card-clickable(
+                    data-bs-toggle="modal"
+                    data-bs-target="#speakerModal-2"
+                  )
                     .ep__participant-main
                       .ep__participant-avatar
                         img(src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Vugar Mustafayev" loading="lazy")
                       .ep__participant-info
                         h3.ep__participant-name Vugar Mustafayev
                         p.ep__participant-role Ministry of Defence Industry of the Republic of Azerbaijan Minister
+                  include ../mixins/_speaker-modal
+                  +speaker-modal('2', 'Vugar Mustafayev', 'Ministry of Defence Industry of the Republic of Azerbaijan Minister', 'https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=', '')
 
               // Speakers Section
               .row.mb-4
@@ -274,16 +284,24 @@ block content
                   .ep__section-label Speakers
                   .ep__participants-list
                     // Speaker 1
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-3"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Emil Hasanov" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Emil Hasanov
                           p.ep__participant-role Public Council under the Azerbaijan Mine Action Agency Deputy Chairman
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('3', 'Emil Hasanov', 'Public Council under the Azerbaijan Mine Action Agency Deputy Chairman', 'https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=', '')
 
                     // Speaker 2
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-4"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=" alt="Eflatun Mamedov" loading="lazy")
@@ -297,6 +315,8 @@ block content
                           li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                           li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                           li is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('4', 'Eflatun Mamedov', 'Ministry of Defense of the Republic of Azerbaijan Head of the Mine Action Department of the Main Directorate of Engineering Troops', 'https://media.istockphoto.com/id/1399565382/photo/young-happy-mixed-race-businessman-standing-with-his-arms-crossed-working-alone-in-an-office.jpg?s=612x612&w=0&k=20&c=buXwOYjA_tjt2O3-kcSKqkTp2lxKWJJ_Ttx2PhYe3VM=', '<ul><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li><li>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</li></ul>')
 
               // More Events
               .row.mb-4
@@ -321,71 +341,106 @@ block content
               .row.mb-4
                 .col-12
                   .ep__section-label Moderator
-                  .ep__participant-card
+                  .ep__participant-card.speaker-card-clickable(
+                    data-bs-toggle="modal"
+                    data-bs-target="#speakerModal-5"
+                  )
                     .ep__participant-main
                       .ep__participant-avatar
                         img(src="assets/img/webp/speaker4.webp" alt="Vilayat Valiyev" loading="lazy")
                       .ep__participant-info
                         h3.ep__participant-name Vilayat Valiyev
                         p.ep__participant-role Azerbaijan Technical University Rector
+                  include ../mixins/_speaker-modal
+                  +speaker-modal('5', 'Vilayat Valiyev', 'Azerbaijan Technical University Rector', 'assets/img/webp/speaker4.webp', '')
 
               .row.mb-4
                 .col-12
                   .ep__section-label Speakers
                   .ep__participants-list
                     // Speaker 3
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-6"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="assets/img/webp/speaker5.webp" alt="Ramil Azizov" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Ramil Azizov
                           p.ep__participant-role Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('6', 'Ramil Azizov', 'Mine Action Agency of the Republic of Azerbaijan Head of the Risk Education and Victim Assistance Department', 'assets/img/webp/speaker5.webp', '')
 
                     // Speaker 4
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-7"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="assets/img/webp/speaker6.webp" alt="Khagani Abdullayev" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Khagani Abdullayev
                           p.ep__participant-role Azerbaijan National Aviation Academy Vice Rector for New Technologies
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('7', 'Khagani Abdullayev', 'Azerbaijan National Aviation Academy Vice Rector for New Technologies', 'assets/img/webp/speaker6.webp', '')
 
                     // Speaker 5
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-8"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="assets/img/webp/speaker7.webp" alt="Yasin Kaygusuz" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Yasin Kaygusuz
                           p.ep__participant-role Turkish Aerospace Industries Product Manager for International Programs
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('8', 'Yasin Kaygusuz', 'Turkish Aerospace Industries Product Manager for International Programs', 'assets/img/webp/speaker7.webp', '')
 
                     // Speaker 6
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-9"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="assets/img/webp/speaker8.webp" alt="Manafaddin Namazov" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Manafaddin Namazov
                           p.ep__participant-role Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('9', 'Manafaddin Namazov', 'Azerbaijan Technical University Director of the Institute of Industrial Systems and Cybersecurity', 'assets/img/webp/speaker8.webp', '')
 
                     // Speaker 7
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-10"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="assets/img/webp/speaker9.webp" alt="Asad Rustamov" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Asad Rustamov
                           p.ep__participant-role National Defense University Deputy Rector of Military Management Institute
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('10', 'Asad Rustamov', 'National Defense University Deputy Rector of Military Management Institute', 'assets/img/webp/speaker9.webp', '')
 
                     // Speaker 8
-                    .ep__participant-card
+                    .ep__participant-card.speaker-card-clickable(
+                      data-bs-toggle="modal"
+                      data-bs-target="#speakerModal-11"
+                    )
                       .ep__participant-main
                         .ep__participant-avatar
                           img(src="assets/img/webp/speaker10.webp" alt="Gunel Aliyeva" loading="lazy")
                         .ep__participant-info
                           h3.ep__participant-name Gunel Aliyeva
                           p.ep__participant-role Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department
+                    include ../mixins/_speaker-modal
+                    +speaker-modal('11', 'Gunel Aliyeva', 'Ministry of Defence Industry of the Republic of Azerbaijan, National Aerospace Agency Head of Remote Sensing Optical-Electronic Devices Department', 'assets/img/webp/speaker10.webp', '')
 
               // Last Event
               .row.mb-4
