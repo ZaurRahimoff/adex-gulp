@@ -25,14 +25,22 @@
       opacity: 1;
       width: 24px;
       height: 24px;
-      background-size: 16px;
-      background-color: var(--gray-3); // #9DA2AB
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      // background-size: 16px;
+      // background-color: var(--primary); // #9DA2AB
+      background: none;
+      font-size: 24px;
+      color: var(--primary);
       border-radius: 50%;
       transition: var(--transition-base);
 
       &:hover {
-        background-color: var(--gray-2); // #495057
+        background-color: var(--card-1); // #495057
         opacity: 1;
+        transition: var(--transition-base);
       }
 
       &:focus {

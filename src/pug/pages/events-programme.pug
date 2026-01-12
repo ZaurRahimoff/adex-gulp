@@ -23,7 +23,7 @@ block content
       .row.align-items-center.mb-4
         .col-12.col-md-auto
           h1.page-title.lh-base Events Programme
-        .col-12.col-md-auto.ms-md-auto
+        .col-auto.col-md-auto.ms-md-auto
           .select2-wrapper.mt-4.mt-md-0(style="min-width: 120px;")
             include ../mixins/_select2
             +select2(
@@ -126,7 +126,7 @@ block content
                             span 24 September, Thursday
                       .col-12.col-md-auto.ms-md-auto
                         include ../mixins/_button
-                        a.btn.btn--secondary.ep__download-btn(href="#")
+                        a.btn.btn--secondary.ep__download-btn.d-none.d-md-block(href="#")
                           i.fal.fa-download.me-2
                           | Download the programme
 

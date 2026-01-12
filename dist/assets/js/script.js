@@ -501,7 +501,7 @@ function initFancybox() {
         display: {
           left: ['infobar'],
           middle: [],
-          right: ['slideshow', 'download', 'thumbs', 'close']
+          right: ['slideshow', 'thumbs', 'close']
         }
       },
       Thumbs: {

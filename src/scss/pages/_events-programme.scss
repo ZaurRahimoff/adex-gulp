@@ -243,6 +243,7 @@
       font-size: 14px; // Body 2 | Regular на мобильных
       font-weight: 400;
       gap: 11px;
+      // margin-bottom: 10px;
     }
 
     i {
@@ -318,7 +319,7 @@
     font-size: 18px; // Body | Bold
     font-weight: 700; // Bold
     color: var(--gray-2); // #495057
-    width: 150px;
+    // width: 150px;
     flex-shrink: 0;
     line-height: normal;
 
@@ -629,10 +630,10 @@
     cursor: pointer;
     transition: var(--transition-base);
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+    // &:hover {
+    //   // transform: translateY(-2px);
+    //   // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    // }
 
     &:active {
       transform: translateY(0);

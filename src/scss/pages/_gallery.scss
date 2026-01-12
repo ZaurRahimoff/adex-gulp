@@ -4,57 +4,47 @@
 @import "../mixins/media";
 
 // ============================================
-// Photo Gallery Section
+// Gallery Section (общая для photo и video галерей)
 // ============================================
-.photo-gallery-section {
+.gallery-section {
   padding: 40px 0;
   background: var(--white);
 
   @include lg-down {
     padding: 40px 0 24px;
   }
+}
 
-  // Header with title and year selector
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    gap: 20px;
+// ============================================
+// Gallery Header
+// ============================================
+.gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px;
 
-    @include lg-down {
-      margin-bottom: 24px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
+  @include lg-down {
+    margin-bottom: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+// ============================================
+// Year Selector (общий компонент)
+// ============================================
+.year-selector {
+  position: relative;
+  display: inline-block;
+
+  @include lg-down {
+    align-self: flex-start;
   }
 
-  // Page Title
-  &__title {
-    font-family: var(--font-family);
-    font-size: $font-size-h1; // 48px
-    font-weight: var(--font-weight-bold); // 700
-    color: var(--primary); // #2B3B73
-    margin: 0;
-    line-height: 1;
-
-    @include lg-down {
-      font-size: $font-size-h1; // 48px
-    }
-  }
-
-  // Year Selector
-  &__year-selector {
-    position: relative;
-    display: inline-block;
-
-    @include lg-down {
-      align-self: flex-start;
-    }
-  }
-
-  &__year-select {
+  &__select {
     background: var(--primary); // #2B3B73
     color: var(--white);
     border: none;
@@ -89,40 +79,12 @@
       color: var(--gray-2);
     }
   }
-
-  // Pagination
-  .pagination {
-    margin-top: 40px;
-
-    @include lg-down {
-      margin-top: 24px;
-    }
-  }
-
-  // Pagination customization for mobile
-  .pagination {
-    @include lg-down {
-      &__btn {
-        background: var(--card-2); // #F8F9FA
-        color: var(--primary); // #2B3B73
-
-        &:hover {
-          background: darken(#F8F9FA, 5%);
-        }
-
-        &:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-      }
-    }
-  }
 }
 
 // ============================================
-// Bootstrap Card Customization
+// Gallery Card (общая карточка для photo и video)
 // ============================================
-.photo-gallery-card {
+.gallery-card {
   border: 1px solid var(--line); // #EEEEEE
   border-radius: 8px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
@@ -176,6 +138,33 @@
 
     @include lg-down {
       font-size: $font-size-h4; // 24px
+    }
+  }
+}
+
+// ============================================
+// Pagination в галерее
+// ============================================
+.gallery-section {
+  .pagination {
+    margin-top: 40px;
+
+    @include lg-down {
+      margin-top: 24px;
+
+      &__btn {
+        background: var(--card-2); // #F8F9FA
+        color: var(--primary); // #2B3B73
+
+        &:hover {
+          background: darken(#F8F9FA, 5%);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
     }
   }
 }

@@ -1,10 +1,10 @@
 extends ../layouts/default
 
 block variables
-	- var pageTitle = 'ADEX - Photo Gallery'
-	- var pageDescription = 'Photo Gallery of ADEX Azerbaijan International Defence Exhibition'
-	- var pageKeywords = 'ADEX, photo gallery, exhibition photos, Azerbaijan'
-	- var pageCanonical = 'https://adex.az/photo-gallery.html'
+	- var pageTitle = 'ADEX - Video Gallery'
+	- var pageDescription = 'Video Gallery of ADEX Azerbaijan International Defence Exhibition'
+	- var pageKeywords = 'ADEX, video gallery, exhibition videos, Azerbaijan'
+	- var pageCanonical = 'https://adex.az/video-gallery.html'
 	- var pageOgImage = 'https://adex.az/og-image.jpg'
 	- var pageAuthor = 'ADEX'
 
@@ -13,15 +13,15 @@ block content
 	include ../mixins/_breadcrumb
 	+breadcrumb([
 		{text: 'Главная', href: 'index.html'},
-		{text: 'Фотогалерея', href: null}
+		{text: 'Видеогалерея', href: null}
 	])
 
-	// Photo Gallery Section
+	// Video Gallery Section
 	section.gallery-section
 		.container
 			// Header with title and year selector
 			.gallery-header
-				h1.page-title Photo Galery
+				h1.page-title Video Gallery
 
 				// Year selector
 				.year-selector
@@ -35,7 +35,7 @@ block content
 			.row.g-4
 				// Card 1
 				.col-12.col-lg-4
-					a.card.h-100.gallery-card.text-decoration-none(href="photo-gallery-details.html")
+					a.card.h-100.gallery-card.text-decoration-none(href="video-gallery-details.html")
 						.card-img-top.gallery-card__img-wrapper
 							img.card-img.gallery-card__img(src="assets/img/webp/news1.webp" alt="Press Conference 2024" loading="lazy")
 						.card-body
@@ -43,7 +43,7 @@ block content
 
 				// Card 2
 				.col-12.col-lg-4
-					a.card.h-100.gallery-card.text-decoration-none(href="photo-gallery-details.html")
+					a.card.h-100.gallery-card.text-decoration-none(href="video-gallery-details.html")
 						.card-img-top.gallery-card__img-wrapper
 							img.card-img.gallery-card__img(src="assets/img/webp/news2.webp" alt="The visit of the President" loading="lazy")
 						.card-body
@@ -51,7 +51,7 @@ block content
 
 				// Card 3
 				.col-12.col-lg-4
-					a.card.h-100.gallery-card.text-decoration-none(href="photo-gallery-details.html")
+					a.card.h-100.gallery-card.text-decoration-none(href="video-gallery-details.html")
 						.card-img-top.gallery-card__img-wrapper
 							img.card-img.gallery-card__img(src="assets/img/webp/news3.webp" alt="Opening ceremony" loading="lazy")
 						.card-body
@@ -59,15 +59,15 @@ block content
 
 				// Card 4
 				.col-12.col-lg-4
-					a.card.h-100.gallery-card.text-decoration-none(href="photo-gallery-details.html")
+					a.card.h-100.gallery-card.text-decoration-none(href="video-gallery-details.html")
 						.card-img-top.gallery-card__img-wrapper
-							img.card-img.gallery-card__img(src="assets/img/webp/news4.webp" alt="1st day of the exhibition" loading="lazy")
+							img.card-img.gallery-card__img(src="assets/img/webp/news1.webp" alt="1st day of the exhibition" loading="lazy")
 						.card-body
 							h5.card-title 1st day of the exhibition
 
 				// Card 5
 				.col-12.col-lg-4
-					a.card.h-100.gallery-card.text-decoration-none(href="photo-gallery-details.html")
+					a.card.h-100.gallery-card.text-decoration-none(href="video-gallery-details.html")
 						.card-img-top.gallery-card__img-wrapper
 							img.card-img.gallery-card__img(src="assets/img/webp/news1.webp" alt="2nd day of the exhibition" loading="lazy")
 						.card-body
@@ -75,18 +75,19 @@ block content
 
 				// Card 6
 				.col-12.col-lg-4
-					a.card.h-100.gallery-card.text-decoration-none(href="photo-gallery-details.html")
+					a.card.h-100.gallery-card.text-decoration-none(href="video-gallery-details.html")
 						.card-img-top.gallery-card__img-wrapper
 							img.card-img.gallery-card__img(src="assets/img/webp/news2.webp" alt="3rd day of the exhibition" loading="lazy")
 						.card-body
 							h5.card-title 3rd day of the exhibition
 
-				// Pagination
-				include ../mixins/_pagination
-				+pagination({
-					currentPage: 1,
-					totalPages: 10,
-					prevText: 'After',
-					nextText: 'Before',
-					showDivider: false
-				})
+				.col-12.col-lg-12
+					// Pagination
+					include ../mixins/_pagination
+					+pagination({
+						currentPage: 1,
+						totalPages: 10,
+						prevText: 'After',
+						nextText: 'Before',
+						showDivider: false
+					})

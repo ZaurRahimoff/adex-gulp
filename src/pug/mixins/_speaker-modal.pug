@@ -12,10 +12,11 @@
 
 mixin speaker-modal(id, name, role, avatar, bio = '')
 	.modal.fade.speaker-modal(id=`speakerModal-${id}` tabindex="-1" aria-labelledby=`speakerModalLabel-${id}` aria-hidden="true")
-		.modal-dialog.modal-dialog-centered
+		.modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable
 			.modal-content.speaker-modal__content
-				.modal-header.speaker-modal__header
+				.modal-header.speaker-modal__header.p-2
 					button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+						i.fas.fa-xmark
 				.modal-body.speaker-modal__body
 					.speaker-modal__avatar
 						img(src=avatar alt=name loading="lazy")
