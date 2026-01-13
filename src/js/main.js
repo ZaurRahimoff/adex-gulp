@@ -6,6 +6,7 @@ import { initVideoPlay } from './modules/video-play';
 import { initMobileMenu } from './modules/mobile-menu';
 import { initScrollToTop } from './modules/scroll-to-top';
 import { initSelect2Module } from './modules/select2';
+import { initNiceSelectModule } from './modules/nice-select';
 import { initDataTablesModule } from './modules/datatables';
 import { initFancybox } from './modules/fancybox';
 import { initPhoneInput } from './modules/phone-input';
@@ -30,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация Select2
   initSelect2Module();
+
+  // Инициализация Nice Select
+  initNiceSelectModule();
 
   // Инициализация DataTables
   initDataTablesModule();

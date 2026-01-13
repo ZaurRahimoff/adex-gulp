@@ -24,71 +24,32 @@ block content
         .col-12.col-md-6
           h1.page-title.lh-base Exhibitors List
         .col-12.col-md-6.text-start.text-lg-end
-          .select2-wrapper.mb-4.mb-lg-0.d-inline-block(style="min-width: 120px;")
-            include ../mixins/_select2
-            +select2(
-              'year',
-              '2025',
-              [
-                {value: '2025', text: '2025'},
-                {value: '2024', text: '2024'}
-              ],
-              {placeholder: 'Выберите год', allowClear: false, minimumResultsForSearch: Infinity},
-              'primary',
-              false,
-              'year-select',
-              '',
-              ''
-            )
+          .mb-4.mb-lg-0.d-inline-block(style="min-width: 120px;")
+            include ../mixins/_nice-select
+            +nice-select('year', '2025', [
+              {value: '2025', text: '2025'},
+              {value: '2024', text: '2024'}
+            ], '', false, '', 'nice-select--year')
       
       // Filters Section
-      .row.mb-4.g-4
+      form.row.mb-4.g-4
         .col-12.col-lg-8
-          .exhibitors-page__filter-group
-            label.exhibitors-page__filter-label Company
-            .exhibitors-page__filter-input
-              i.fas.fa-search
-              input.form-control(type="text" placeholder="Search company")
+          include ../mixins/_form-input
+          +form-input('company', 'text', 'Company', 'Search company', false, '', 'form-control--card', '', '', true)
         .col-12.col-lg-4
-          .exhibitors-page__filter-group
-            label.exhibitors-page__filter-label Country
-            .exhibitors-page__filter-input
-              include ../mixins/_select2
-              +select2(
-                'country',
-                'Azerbaijan',
-                [
-                  {value: 'Azerbaijan', text: 'Azerbaijan'},
-                  {value: 'Turkey', text: 'Turkey'},
-                  {value: 'USA', text: 'USA'}
-                ],
-                {placeholder: 'Выберите страну', allowClear: false, minimumResultsForSearch: Infinity},
-                'default',
-                false,
-                'country-select',
-                '',
-                ''
-              )
+          include ../mixins/_form-select
+          +form-select('country', 'Country', [
+            {value: 'Azerbaijan', text: 'Azerbaijan'},
+            {value: 'Turkey', text: 'Turkey'},
+            {value: 'USA', text: 'USA'}
+          ], false, '', 'form-control--card', 'Azerbaijan')
         .col-12
-          .exhibitors-page__filter-group
-            label.exhibitors-page__filter-label Product Categories
-            .exhibitors-page__filter-input
-              include ../mixins/_select2
-              +select2(
-                'categories',
-                '',
-                [
-                  {value: '', text: 'None'},
-                  {value: 'category1', text: 'Category 1'},
-                  {value: 'category2', text: 'Category 2'}
-                ],
-                {placeholder: 'None', allowClear: false, minimumResultsForSearch: Infinity},
-                'default',
-                false,
-                'categories-select',
-                '',
-                ''
-              )
+          include ../mixins/_form-select
+          +form-select('categories', 'Product Categories', [
+            {value: '', text: 'None'},
+            {value: 'category1', text: 'Category 1'},
+            {value: 'category2', text: 'Category 2'}
+          ], false, '', 'form-control--card', '')
       
       // Exhibitors DataTable Component
       include ../mixins/_datatable
@@ -160,3 +121,18 @@ block content
         };
       
       +datatable('exhibitorsTable', exhibitorColumns, exhibitorData, exhibitorOptions)
+
+      // Company Modals
+      include ../mixins/_company-modal
+      each company, index in exhibitorData
+        +company-modal(
+          index,
+          company.company,
+          'https://adex.az/company_img/1659955968_profile_ceo_az_BSVT_engl_NEW.jpg',
+          'State-owned Foreign Trade Unitary Enterprise “Belspetsvneshtechnika” is the leading enterprise of the Republic of Belarus which specializes in export of high-tech products and knowledge intensive technologies designed for military application. “Belspetsvneshtechnika” serves as a system integrator and uses inventions of the enterprises of State Authority for Military Industry. Successful application of advanced solutions and introduction of innovative technologies while creating military products allows the company to dominate on specialized military equipment and armament market..',
+          'https://example.com',
+          'info@example.com',
+          '+1 234 567 890',
+          company.country,
+          company.stand
+        )

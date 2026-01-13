@@ -27,7 +27,7 @@
   margin-bottom: 20px;
 
   .text-danger {
-    color: #ee1c23; // Красный цвет для required asterisk
+    color: var(--error-red); // Красный цвет для required asterisk
     margin-left: 4px;
   }
 }
@@ -44,7 +44,7 @@
   line-height: var(--line-height-normal);
   color: var(--gray-2); // #495057
   background-color: var(--white);
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--line);
   border-radius: 4px;
   height: 60px;
   transition: var(--transition-base);
@@ -78,10 +78,10 @@
   // Error state
   &.is-invalid,
   &:invalid:not(:placeholder-shown) {
-    border-color: #ee1c23; // Красный цвет из Figma
+    border-color: var(--error-red); // Красный цвет из Figma
 
     &:focus {
-      border-color: #ee1c23;
+      border-color: var(--error-red);
       box-shadow: none;
     }
   }
@@ -89,10 +89,10 @@
   // Valid state (опционально, если нужен)
   &.is-valid,
   &:valid:not(:placeholder-shown) {
-    border-color: #28a745;
+    border-color: var(--success);
 
     &:focus {
-      border-color: #28a745;
+      border-color: var(--success);
       box-shadow: none;
     }
   }
@@ -108,7 +108,7 @@ textarea.form-control {
   font-size: $font-size-body1; // 16px
   font-weight: var(--font-weight-regular); // 400
   color: var(--gray-2); // #495057
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--line);
 
   &:focus {
     border-color: var(--primary);
@@ -117,7 +117,7 @@ textarea.form-control {
 
   &.is-invalid,
   &:invalid:not(:placeholder-shown) {
-    border-color: #ee1c23;
+    border-color: var(--error-red);
   }
 
   &.is-completed,
@@ -155,7 +155,7 @@ textarea.form-control {
   margin-right: 10px;
   cursor: pointer;
   flex-shrink: 0;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--line);
   transition: var(--transition-base);
 
   &[type="checkbox"] {
@@ -199,20 +199,20 @@ textarea.form-control {
 // Form validation states (дополнительные классы для явного управления)
 .form-control.is-invalid,
 .form-select.is-invalid {
-  border-color: #ee1c23; // Красный цвет из Figma
+  border-color: var(--error-red); // Красный цвет из Figma
 
   &:focus {
-    border-color: #ee1c23;
+    border-color: var(--error-red);
     box-shadow: none;
   }
 }
 
 .form-control.is-valid,
 .form-select.is-valid {
-  border-color: #28a745;
+  border-color: var(--success);
 
   &:focus {
-    border-color: #28a745;
+    border-color: var(--success);
     box-shadow: none;
   }
 }
@@ -222,7 +222,7 @@ textarea.form-control {
   width: 100%;
   margin-top: 8px;
   font-size: var(--font-size-body2);
-  color: #ee1c23; // Красный цвет из Figma
+  color: var(--error-red); // Красный цвет из Figma
 }
 
 .valid-feedback {
@@ -230,7 +230,7 @@ textarea.form-control {
   width: 100%;
   margin-top: 8px;
   font-size: var(--font-size-body2);
-  color: #28a745;
+  color: var(--success);
 }
 
 // Phone Input with Country Code (intl-tel-input)
@@ -252,7 +252,7 @@ textarea.form-control {
 // Глобальные стили для dropdown списка стран (библиотека добавляет его в body)
 .iti__country-list {
   position: absolute;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--line);
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   max-height: 200px;
@@ -278,7 +278,7 @@ textarea.form-control {
     input {
       width: 100%;
       padding: 10px 12px;
-      border: 1px solid #e0e0e0;
+      border: 1px solid var(--line);
       border-radius: 4px;
       font-family: var(--font-family);
       font-size: $font-size-body1; // 16px
@@ -387,7 +387,7 @@ textarea.form-control {
 
   // Error state для phone wrapper
   &.is-invalid {
-    border-color: #ee1c23;
+    border-color: var(--error-red);
   }
 
   // Completed state для phone wrapper
@@ -652,7 +652,7 @@ textarea.form-control {
   }
 
   &__asterisk {
-    color: #ee1c23; // Red asterisk color from Figma
+    color: var(--error-red); // Red asterisk color from Figma
   }
 }
 
@@ -690,6 +690,34 @@ textarea.form-control {
   @include lg-down {
     height: 60px;
   }
+}
+
+// Form Input Wrapper - обертка для input с иконкой
+.form-input-wrapper {
+  position: relative;
+
+  &--icon {
+    .form-control {
+      padding-left: 45px;
+    }
+  }
+}
+
+.form-input__icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-3);
+  font-size: 15px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+// Form Input с фоном card-2 и без границы
+.form-control--card {
+  background-color: var(--card-2);
+  border: none;
 }
 
 // Form Textarea Transparent - модификатор для textarea с прозрачной границей
@@ -815,7 +843,7 @@ textarea.form-control {
   color: var(--gray-2); // #495057
   background-color: var(--white);
   cursor: pointer;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--line);
   border-right: none;
 
   &:focus {

@@ -132,8 +132,13 @@ mixin datatable(tableId, columnsOrData, dataOrOptions, optionsOrNull)
               else
                 th Data
           tbody
-            each item in data
-              tr
+            each item, index in data
+              tr.company-row-clickable(
+                data-bs-toggle="modal"
+                data-bs-target=`#companyModal-${index}`
+                data-company-id=index
+                style="cursor: pointer;"
+              )
                 if columns.length > 0
                   each column in columns
                     td(data-column=column.key)= item[column.key] || '-'

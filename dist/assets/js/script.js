@@ -7,6 +7,7 @@ var _videoPlay = require("./modules/video-play");
 var _mobileMenu = require("./modules/mobile-menu");
 var _scrollToTop = require("./modules/scroll-to-top");
 var _select = require("./modules/select2");
+var _niceSelect = require("./modules/nice-select");
 var _datatables = require("./modules/datatables");
 var _fancybox = require("./modules/fancybox");
 var _phoneInput = require("./modules/phone-input");
@@ -34,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Инициализация Select2
   (0, _select.initSelect2Module)();
 
+  // Инициализация Nice Select
+  (0, _niceSelect.initNiceSelectModule)();
+
   // Инициализация DataTables
   (0, _datatables.initDataTablesModule)();
 
@@ -47,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
   (0, _fileUpload.initFileUpload)();
 });
 
-},{"./modules/datatables":2,"./modules/event-program-tabs":3,"./modules/fancybox":4,"./modules/file-upload":5,"./modules/mobile-menu":6,"./modules/phone-input":7,"./modules/scroll-to-top":8,"./modules/select2":9,"./modules/swiper":10,"./modules/video-play":11}],2:[function(require,module,exports){
+},{"./modules/datatables":2,"./modules/event-program-tabs":3,"./modules/fancybox":4,"./modules/file-upload":5,"./modules/mobile-menu":6,"./modules/nice-select":7,"./modules/phone-input":8,"./modules/scroll-to-top":9,"./modules/select2":10,"./modules/swiper":11,"./modules/video-play":12}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -97,7 +101,7 @@ function parseDataTableConfig($table) {
         next: 'Before'
       }
     },
-    dom: 'rt<"datatable__pagination-wrapper"p>'
+    dom: 'rt<"datatable__pagination"p>'
   };
 
   // Начинаем с дефолтной конфигурации
@@ -176,10 +180,10 @@ function initDataTable(tableElement) {
   // Обновляем dom в зависимости от типа рендеринга
   if (config.renderType === 'table') {
     // Для table режима показываем thead (t включает thead)
-    config.dom = `t<"${config.blockClass}__pagination-wrapper"p>`;
+    config.dom = `t<"${config.blockClass}__pagination"p>`;
   } else {
     // Для grid режима скрываем таблицу
-    config.dom = `<"${config.blockClass}__content-wrapper"rt><"${config.blockClass}__pagination-wrapper"p>`;
+    config.dom = `<"${config.blockClass}__content-wrapper"rt><"${config.blockClass}__pagination"p>`;
   }
 
   // Применяем responsive настройку
@@ -306,7 +310,7 @@ function initDataTable(tableElement) {
 
   // Настройка пагинации
   const $dataTablesWrapper = $table.closest('.dataTables_wrapper');
-  const $paginationContainer = $dataTablesWrapper.find(`.${customSettings.blockClass}__pagination-wrapper`);
+  const $paginationContainer = $dataTablesWrapper.find(`.${customSettings.blockClass}__pagination`);
 
   // Пагинация остается внутри wrapper для корректного отображения
   // (больше не перемещаем её наружу)
@@ -608,6 +612,137 @@ function initMobileMenu() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.NiceSelectInit = void 0;
+exports.initNiceSelectModule = initNiceSelectModule;
+/**
+ * Nice Select Module
+ * Инициализация jquery-nice-select для селектов
+ */
+
+/**
+ * Инициализация Nice Select для конкретного элемента
+ * @param {jQuery|HTMLElement|string} element - элемент для инициализации
+ */
+function initNiceSelect(element) {
+  // Проверка наличия jQuery и niceSelect
+  if (typeof jQuery === 'undefined' || typeof jQuery.fn.niceSelect === 'undefined') {
+    console.warn('Nice Select: jQuery или niceSelect не загружены');
+    return;
+  }
+  const $element = typeof element === 'string' ? jQuery(element) : jQuery(element);
+  if ($element.length && $element.is('select')) {
+    // Проверяем, не инициализирован ли уже
+    if (!$element.closest('.nice-select').length) {
+      $element.niceSelect();
+    }
+  }
+}
+
+/**
+ * Инициализация всех Nice Select элементов на странице
+ */
+function initAllNiceSelect() {
+  // Проверка наличия jQuery и niceSelect
+  if (typeof jQuery === 'undefined' || typeof jQuery.fn.niceSelect === 'undefined') {
+    console.warn('Nice Select: jQuery или niceSelect не загружены');
+    return;
+  }
+  const $selects = jQuery('select[data-nice-select-init="true"]');
+  $selects.each(function () {
+    const $select = jQuery(this);
+    initNiceSelect($select);
+  });
+}
+
+/**
+ * Публичный API для ручной инициализации
+ */
+const NiceSelectInit = exports.NiceSelectInit = {
+  /**
+   * Инициализировать конкретный элемент
+   * @param {string|jQuery} selector - селектор или jQuery элемент
+   */
+  init: function (selector) {
+    initNiceSelect(selector);
+  },
+  /**
+   * Уничтожить Nice Select для элемента
+   * @param {string|jQuery} selector - селектор или jQuery элемент
+   */
+  destroy: function (selector) {
+    if (typeof jQuery === 'undefined' || typeof jQuery.fn.niceSelect === 'undefined') {
+      console.warn('Nice Select: jQuery или niceSelect не загружены');
+      return;
+    }
+    const $element = typeof selector === 'string' ? jQuery(selector) : jQuery(selector);
+    if ($element.length) {
+      $element.niceSelect('destroy');
+    }
+  },
+  /**
+   * Переинициализировать все Nice Select на странице
+   */
+  reinit: function () {
+    initAllNiceSelect();
+  }
+};
+
+/**
+ * Инициализация Nice Select модуля
+ * Вызывается автоматически при загрузке DOM
+ */
+function initNiceSelectModule() {
+  // Функция для попытки инициализации
+  function tryInit() {
+    // Проверка наличия jQuery и niceSelect
+    if (typeof jQuery === 'undefined' || typeof jQuery.fn.niceSelect === 'undefined') {
+      return false;
+    }
+
+    // Инициализация всех Nice Select элементов
+    initAllNiceSelect();
+    return true;
+  }
+
+  // Пытаемся инициализировать сразу
+  if (tryInit()) {
+    return;
+  }
+
+  // Если не получилось, ждем загрузки скриптов
+  if (document.readyState === 'loading') {
+    window.addEventListener('load', function () {
+      if (!tryInit()) {
+        // Если все еще не загружено, пытаемся через интервал
+        const checkInterval = setInterval(() => {
+          if (tryInit()) {
+            clearInterval(checkInterval);
+          }
+        }, 100);
+
+        // Останавливаем проверку через 10 секунд
+        setTimeout(() => clearInterval(checkInterval), 10000);
+      }
+    });
+  } else {
+    // DOM уже загружен, но скрипты могут еще загружаться
+    const checkInterval = setInterval(() => {
+      if (tryInit()) {
+        clearInterval(checkInterval);
+      }
+    }, 100);
+
+    // Останавливаем проверку через 10 секунд
+    setTimeout(() => clearInterval(checkInterval), 10000);
+  }
+}
+
+},{}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.initPhoneInput = initPhoneInput;
 /**
  * Модуль для инициализации intl-tel-input
@@ -808,7 +943,7 @@ function initPhoneInput() {
   });
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -831,7 +966,7 @@ function initScrollToTop() {
   });
 }
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1101,7 +1236,7 @@ if (typeof window !== 'undefined') {
   window.Select2Init = Select2Init;
 }
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1337,7 +1472,7 @@ function parseValue(value) {
   return value;
 }
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

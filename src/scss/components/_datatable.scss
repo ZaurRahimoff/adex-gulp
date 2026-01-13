@@ -1,7 +1,7 @@
-@import '../variables/colors';
-@import '../variables/typography';
-@import '../variables/variables';
-@import '../mixins/media';
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
 
 // ============================================
 // DataTable Component - универсальный компонент для таблиц
@@ -121,7 +121,7 @@
     // Table Header
     thead {
       display: table-header-group !important; // Переопределяем DataTables display: none
-      
+
       tr {
         background-color: var(--primary);
         border-radius: 12px;
@@ -173,6 +173,20 @@
           box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
         }
 
+        // Кликабельные строки компаний
+        &.company-row-clickable {
+          cursor: pointer;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.2);
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+        }
+
         td {
           padding: 20px 40px;
           font-family: var(--font-family);
@@ -200,111 +214,6 @@
             border-bottom-right-radius: 12px;
           }
         }
-      }
-    }
-  }
-
-  // Pagination wrapper
-  &__pagination-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @include md-down {
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    // DataTables pagination
-    .dataTables_paginate {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-
-      .pagination {
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .paginate_button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 14px;
-        background-color: var(--white);
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-family: var(--font-family);
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 1;
-        color: var(--primary);
-        text-decoration: none;
-        transition: var(--transition-base);
-        height: 40px;
-        min-width: 40px;
-
-        &:hover:not(.disabled) {
-          background-color: var(--card-1);
-        }
-
-        &.current {
-          background-color: var(--primary);
-          color: var(--white);
-          pointer-events: none;
-        }
-
-        &.disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-          pointer-events: none;
-        }
-
-        // Кнопка Previous (After)
-        &.previous {
-          gap: 8px;
-
-          i {
-            font-size: 14px;
-          }
-        }
-
-        // Кнопка Next (Before)
-        &.next {
-          gap: 8px;
-
-          i {
-            font-size: 14px;
-          }
-        }
-
-        // Номера страниц
-        &:not(.previous):not(.next) {
-          width: 40px;
-          padding: 12px;
-          font-weight: 500;
-          line-height: 1.4;
-        }
-      }
-
-      // Dots (многоточие)
-      .ellipsis {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        font-family: var(--font-family);
-        font-weight: 500;
-        font-size: 14px;
-        color: var(--primary);
-        pointer-events: none;
       }
     }
   }
@@ -344,16 +253,194 @@
       }
     }
   }
+}
 
-  // Пагинация
-  .dataTables_paginate {
-    .pagination {
+// ============================================
+// Pagination
+// ============================================
+// &__pagination {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+
+//   @include md-down {
+//     flex-direction: column;
+//     gap: 20px;
+//   }
+
+// DataTables pagination
+.dataTables_paginate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
+
+  .paginate_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+
+    // Ссылка внутри кнопки
+    .page-link {
       display: flex;
       align-items: center;
-      gap: 2px;
+      justify-content: center;
+      padding: 8px 14px;
+      background-color: var(--white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition-base);
+      max-height: 40px;
+      // min-width: 40px;
+
+      &:hover {
+        background-color: var(--card-1);
+      }
+    }
+
+    // Активное состояние
+    &.active .page-link {
+      background-color: var(--primary);
+      color: var(--white);
+      pointer-events: none;
+    }
+
+    // Disabled состояние
+    &.disabled {
+      .page-link {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      i {
+        opacity: 0.5;
+      }
+    }
+
+    // Кнопка Previous (After) - иконка слева, текст справа
+    &.previous {
+      gap: 8px;
+      margin-right: auto;
+      background-color: var(--white);
+      border: none;
+      border-radius: 8px;
+      // cursor: pointer;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+      color: var(--primary);
+      padding: 8px 14px;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: var(--transition-base);
+
+      i {
+        font-size: 14px;
+        color: var(--primary);
+        order: -1;
+      }
+
+      &:not(.disabled) {
+        cursor: pointer;
+      }
+
+      .page-link {
+        // order: 1;
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    // Кнопка Next (Before) - текст слева, иконка справа
+    &.next {
+      gap: 8px;
+      margin-left: auto;
+      background-color: var(--white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1;
+      color: var(--primary);
+      padding: 8px 14px;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: var(--transition-base);
+
+      &:not(.disabled) {
+        cursor: pointer;
+      }
+
+      .page-link {
+        // order: -1;
+        background-color: transparent;
+        outline: none;
+        box-shadow: none;
+        // padding: 0;
+      }
+
+      i {
+        font-size: 14px;
+        color: var(--primary);
+        order: 1;
+      }
+    }
+
+    // Номера страниц
+    &:not(.previous):not(.next) {
+      .page-link {
+        width: 40px;
+        padding: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
     }
   }
+
+  // Dots (многоточие)
+  .ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--primary);
+    pointer-events: none;
+  }
 }
+// }
 
 // ============================================
 // Responsive адаптация
@@ -361,16 +448,15 @@
 
 @include md-down {
   .datatable {
-  
     // Мобильная версия таблицы
     &__content {
       padding: 16px;
       background-color: #e9ecef;
     }
-    
+
     &__table {
       border-spacing: 0 16px;
-      
+
       // Header для мобильной версии (Company + Country)
       thead {
         tr {
@@ -379,25 +465,25 @@
           justify-content: space-between;
           height: 80px;
           padding: 0 40px;
-          
+
           th {
             padding: 0;
             font-size: 24px;
             flex: 0 0 auto;
             border: none;
-            
+
             // Скрываем колонку Stand
             &:last-child {
               display: none !important;
             }
-            
+
             // Company (слева)
             &:first-child {
               text-align: left;
               padding-left: 48px; // Место для кнопки "+"
               position: relative;
             }
-            
+
             // Country (справа)
             &:nth-child(2) {
               text-align: right;
@@ -405,7 +491,7 @@
           }
         }
       }
-      
+
       // Карточки для мобильной версии
       tbody {
         tr {
@@ -424,19 +510,19 @@
             padding: 0;
             font-size: 18px;
             border: none;
-            
+
             // Скрываем колонку Stand на мобильных
             &:last-child {
               display: none !important;
             }
-            
+
             // Company (слева, растягивается)
             &:first-child {
               flex: 1 1 auto;
               max-width: 178px;
-              word-wrap: break-word;              
+              word-wrap: break-word;
             }
-            
+
             // Country (справа, фиксированная ширина)
             &:nth-child(2) {
               flex: 0 0 auto;

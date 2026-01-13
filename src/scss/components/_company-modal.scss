@@ -1,0 +1,474 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+
+// ============================================
+// Company Modal - модальное окно компании
+// ============================================
+.company-modal {
+  .modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .modal-header {
+    background-color: var(--white); // Белый фон как в Figma
+    border-bottom: none;
+    padding: 40px 40px 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    // Разделительная линия после header
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: var(--line); // #EEEEEE
+    }
+
+    .btn-close {
+      margin: 0;
+      opacity: 1;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: none;
+      font-size: 24px;
+      margin-left: 10px;
+      color: var(--primary); // Primary цвет для кнопки закрытия
+      border-radius: 0;
+      transition: var(--transition-base);
+      flex-shrink: 0;
+      z-index: 2;
+
+      &:hover {
+        opacity: 0.7;
+        transition: var(--transition-base);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 2px rgba(43, 59, 115, 0.1);
+      }
+    }
+
+    @include md-down {
+      padding: 24px 24px 16px 24px;
+    }
+  }
+
+  .modal-body {
+    padding: 20px 40px 40px 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0;
+    position: relative;
+    border-top: 1px solid var(--line); // Разделительная линия после header
+
+    @include md-down {
+      padding: 16px 24px 24px 24px;
+    }
+
+    // Кастомный скроллбар
+    &::-webkit-scrollbar {
+      width: 7px;
+      padding: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--card-2); // #F8F9FA
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--gray-3); // #9DA2AB
+      border-radius: 3px;
+    }
+
+    &::-ms-scrollbar {
+      width: 10px;
+    }
+
+    // Логотип и кнопка Report в одной строке
+    > .company-logo {
+      // order: 1;
+      margin: 20px 0 0 40px;
+
+      @include md-down {
+        margin: 16px 0 0 24px;
+        width: 100%;
+      }
+    }
+
+    // Кнопка Report справа от логотипа
+    > .company-report__btn {
+      // order: 2;
+      margin: 20px 40px 0 auto;
+      align-self: flex-start;
+
+      i {
+        font-size: 16px;
+        color: var(--primary);
+        transform: rotate(90deg);
+      }
+
+      @include md-down {
+        margin: 16px 24px 0 auto;
+        width: auto;
+      }
+    }
+
+    // Stand (если есть)
+    > .company-stand {
+      // order: 3;
+      width: 100%;
+    }
+
+    // Разделительная линия после логотипа и кнопки (перед описанием)
+    > .company-description {
+      // order: 4;
+      width: 100%;
+      padding: 20px 40px;
+      margin: 0;
+      border-top: 1px solid var(--line); // Разделительная линия перед описанием
+
+      @include md-down {
+        padding: 16px 24px;
+      }
+
+      // Разделительная линия после описания
+      // &::after {
+      //   content: '';
+      //   display: block;
+      //   width: 100%;
+      //   height: 1px;
+      //   // background-color: var(--line);
+      //   // margin-top: 20px;
+      //   // margin-left: -40px;
+      //   // margin-right: -40px;
+
+      //   @include md-down {
+      //     margin-left: -24px;
+      //     margin-right: -24px;
+      //     margin-top: 16px;
+      //   }
+      // }
+    }
+
+    > .company-contacts {
+      // order: 5;
+      width: 100%;
+      margin: 0;
+      padding: 20px 40px;
+
+      @include md-down {
+        padding: 16px 24px;
+      }
+    }
+
+    > .company-report__collapse {
+      // order: 6;
+      width: 100%;
+      margin: 0;
+      padding: 0 40px;
+
+      @include md-down {
+        padding: 0 24px;
+      }
+    }
+  }
+
+
+  .modal-header {
+    position: relative;
+  }
+
+  .company-name {
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // Primary цвет как в Figma
+    // margin: -40px 0 0 0; // Отрицательный margin чтобы "подтянуть" в header
+    // padding: 0 40px 20px 40px;
+    width: 100%;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    // order: -1;
+
+    @include md-down {
+      font-size: 20px;
+      // margin: -24px 0 0 0;
+      // padding: 0 24px 16px 24px;
+    }
+  }
+
+  .company-stand {
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: var(--font-weight-medium); // 500
+    color: var(--gray-2); // #495057
+    margin: 0;
+    // padding: 20px 40px;
+    line-height: 1.4;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    @include md-down {
+      font-size: 14px;
+      padding: 16px 24px;
+    }
+  }
+
+  // Дисклеймер (если будет добавлен в Pug)
+  .company-warning {
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: var(--font-weight-medium); // 500
+    color: var(--error-red); // #ee1c23 - красный цвет из Figma
+    text-align: center;
+    // padding: 20px 40px;
+    margin: 0;
+    width: 100%;
+
+    @include md-down {
+      font-size: 14px;
+      padding: 16px 24px;
+    }
+  }
+
+  .company-logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    margin: auto auto 0 auto;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; // cover как в Figma
+    }
+  }
+
+  .company-description {
+    font-family: var(--font-family);
+    font-size: 16px; // Точный размер из Figma
+    font-weight: var(--font-weight-regular); // 400
+    color: var(--gray-2); // #495057
+    text-align: left;
+    line-height: 1.5;
+    margin: 0;
+
+    p {
+      margin: 0 0 20px 0; // Отступ между параграфами
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Стили для Website ссылки
+    a {
+      color: var(--primary);
+      text-decoration: underline;
+      font-weight: var(--font-weight-bold);
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    @include md-down {
+      font-size: 14px;
+      max-width: 100%;
+    }
+  }
+
+  .company-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    // padding: 20px 40px;
+    background: transparent; // В Figma нет серого блока для контактов
+    border-radius: 0;
+
+    @include md-down {
+      // padding: 16px 24px;
+      gap: 8px;
+    }
+  }
+
+  .company-contact__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-family);
+    font-size: $font-size-body1; // 16px
+    font-weight: var(--font-weight-regular); // 400
+    color: var(--gray-2); // #495057
+    text-align: left;
+
+    i {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary); // #2B3B73
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    a {
+      color: var(--primary); // #2B3B73
+      text-decoration: none;
+      transition: var(--transition-base);
+      word-break: break-word;
+
+      &:hover {
+        text-decoration: underline;
+        color: darken(#2b3b73, 10%);
+      }
+    }
+
+    span {
+      word-break: break-word;
+    }
+
+    @include md-down {
+      font-size: $font-size-body2; // 14px
+      gap: 10px;
+
+      i {
+        width: 20px;
+        height: 20px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .company-report__btn {
+    width: 144px; // Точный размер из Figma
+    height: 35px; // Точный размер из Figma
+    border: 1px solid var(--primary);
+    border-radius: 17.5px; // Половина высоты для скругления
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    padding: 9px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: auto 0 auto auto;
+
+    // Иконка стрелки вниз (повернутая на 270deg)
+    i {
+      color: var(--primary);
+      font-size: 16px;
+       transform: rotate(0deg);
+      transition: var(--transition-base);
+    }
+
+    @include md-down {
+      width: 120px;
+      height: 32px;
+      font-size: 14px;
+    }
+
+    &[aria-expanded="false"] {
+      i {
+        transform: rotate(0deg);
+        transition: var(--transition-base);
+      }
+    }
+
+    &[aria-expanded="true"] {
+      i {
+        transform: rotate(180deg);
+        transition: var(--transition-base);
+      }
+    }
+
+    &:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+      transition: var(--transition-base);
+
+      i {
+        color: var(--white);
+        transition: var(--transition-base);
+      }
+
+      &:not(:disabled) {
+        background: var(--primary);
+        color: var(--white);
+        border-color: var(--primary);
+        transition: var(--transition-base);
+
+        i {
+          color: var(--white);
+          transition: var(--transition-base);
+        }
+      }
+    }
+  }
+
+  .company-report__collapse {
+    width: 100%;
+    // margin: 16px 24px 0 24px;
+
+    @include md-down {
+      width: 100%;
+    }
+  }
+
+  .company-report__form {
+    // padding: 24px;
+    // background: var(--card-2); // #F8F9FA
+    // border-radius: 8px;
+
+    @include md-down {
+      // padding: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+    }
+  }
+
+  .company-report__submit {
+    width: 100%;
+    // height: 50px;
+    padding: 15px;
+    border-radius: 4px;
+
+    @include md-down {
+      // height: 44px;
+    }
+  }
+}

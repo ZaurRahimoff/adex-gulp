@@ -39,7 +39,7 @@ function parseDataTableConfig($table) {
         next: 'Before',
       },
     },
-    dom: 'rt<"datatable__pagination-wrapper"p>',
+    dom: 'rt<"datatable__pagination"p>',
   };
 
   // Начинаем с дефолтной конфигурации
@@ -120,10 +120,10 @@ function initDataTable(tableElement) {
   // Обновляем dom в зависимости от типа рендеринга
   if (config.renderType === 'table') {
     // Для table режима показываем thead (t включает thead)
-    config.dom = `t<"${config.blockClass}__pagination-wrapper"p>`;
+    config.dom = `t<"${config.blockClass}__pagination"p>`;
   } else {
     // Для grid режима скрываем таблицу
-    config.dom = `<"${config.blockClass}__content-wrapper"rt><"${config.blockClass}__pagination-wrapper"p>`;
+    config.dom = `<"${config.blockClass}__content-wrapper"rt><"${config.blockClass}__pagination"p>`;
   }
 
   // Применяем responsive настройку
@@ -240,7 +240,7 @@ function initDataTable(tableElement) {
 
   // Настройка пагинации
   const $dataTablesWrapper = $table.closest('.dataTables_wrapper');
-  const $paginationContainer = $dataTablesWrapper.find(`.${customSettings.blockClass}__pagination-wrapper`);
+  const $paginationContainer = $dataTablesWrapper.find(`.${customSettings.blockClass}__pagination`);
 
   // Пагинация остается внутри wrapper для корректного отображения
   // (больше не перемещаем её наружу)

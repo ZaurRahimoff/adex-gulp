@@ -172,109 +172,109 @@
     margin-bottom: 30px;
   }
 
-  // Pagination wrapper (стили для DataTables пагинации)
-  &__pagination-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  // // Pagination wrapper (стили для DataTables пагинации)
+  // &__pagination-wrapper {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
 
-    @include md-down {
-      flex-direction: column;
-      gap: 20px;
-    }
+  //   @include md-down {
+  //     flex-direction: column;
+  //     gap: 20px;
+  //   }
 
-    // Интеграция с DataTables пагинацией
-    .dataTables_paginate {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
+  //   // Интеграция с DataTables пагинацией
+  //   .dataTables_paginate {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: space-between;
+  //     width: 100%;
 
-      .pagination {
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
+  //     .pagination {
+  //       display: flex;
+  //       align-items: center;
+  //       gap: 2px;
+  //       margin: 0;
+  //       padding: 0;
+  //       list-style: none;
+  //     }
 
-      .paginate_button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 14px;
-        background-color: var(--white);
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-family: var(--font-family);
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 1;
-        color: var(--primary);
-        text-decoration: none;
-        transition: var(--transition-base);
-        height: 40px;
-        min-width: 40px;
+  //     .paginate_button {
+  //       display: flex;
+  //       align-items: center;
+  //       justify-content: center;
+  //       padding: 8px 14px;
+  //       background-color: var(--white);
+  //       border: none;
+  //       border-radius: 8px;
+  //       cursor: pointer;
+  //       font-family: var(--font-family);
+  //       font-weight: 400;
+  //       font-size: 14px;
+  //       line-height: 1;
+  //       color: var(--primary);
+  //       text-decoration: none;
+  //       transition: var(--transition-base);
+  //       height: 40px;
+  //       min-width: 40px;
 
-        &:hover:not(.disabled) {
-          background-color: var(--card-1);
-        }
+  //       &:hover:not(.disabled) {
+  //         background-color: var(--card-1);
+  //       }
 
-        &.current {
-          background-color: var(--primary);
-          color: var(--white);
-          pointer-events: none;
-          font-weight: 500;
-        }
+  //       &.current {
+  //         background-color: var(--primary);
+  //         color: var(--white);
+  //         pointer-events: none;
+  //         font-weight: 500;
+  //       }
 
-        &.disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-          pointer-events: none;
-        }
+  //       &.disabled {
+  //         opacity: 0.5;
+  //         cursor: not-allowed;
+  //         pointer-events: none;
+  //       }
 
-        // Кнопка Previous (After)
-        &.previous {
-          gap: 8px;
+  //       // Кнопка Previous (After)
+  //       &.previous {
+  //         gap: 8px;
 
-          i {
-            font-size: 14px;
-          }
-        }
+  //         i {
+  //           font-size: 14px;
+  //         }
+  //       }
 
-        // Кнопка Next (Before)
-        &.next {
-          gap: 8px;
+  //       // Кнопка Next (Before)
+  //       &.next {
+  //         gap: 8px;
 
-          i {
-            font-size: 14px;
-          }
-        }
+  //         i {
+  //           font-size: 14px;
+  //         }
+  //       }
 
-        // Номера страниц
-        &:not(.previous):not(.next) {
-          width: 40px;
-          padding: 12px;
-          font-weight: 500;
-          line-height: 1.4;
-        }
-      }
+  //       // Номера страниц
+  //       &:not(.previous):not(.next) {
+  //         width: 40px;
+  //         padding: 12px;
+  //         font-weight: 500;
+  //         line-height: 1.4;
+  //       }
+  //     }
 
-      // Dots (многоточие)
-      .ellipsis {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        font-family: var(--font-family);
-        font-weight: 500;
-        font-size: 14px;
-        color: var(--primary);
-        pointer-events: none;
-      }
-    }
-  }
+  //     // Dots (многоточие)
+  //     .ellipsis {
+  //       display: flex;
+  //       align-items: center;
+  //       justify-content: center;
+  //       width: 40px;
+  //       height: 40px;
+  //       font-family: var(--font-family);
+  //       font-weight: 500;
+  //       font-size: 14px;
+  //       color: var(--primary);
+  //       pointer-events: none;
+  //     }
+  //   }
+  // }
 }

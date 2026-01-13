@@ -1,0 +1,73 @@
+//- Company Modal Mixin - модальное окно для компании
+//- Usage:
+//-   +company-modal('1', 'ASELSAN', 'assets/img/companies/aselsan.webp', 'Description...', 'https://aselsan.com', 'info@aselsan.com', '+90 123 456', 'Ankara, Turkey')
+//-
+//- Parameters:
+//-   id - уникальный идентификатор модального окна (обязательно)
+//-   name - название компании (обязательно)
+//-   logo - URL логотипа компании (обязательно)
+//-   description - описание компании (опционально)
+//-   website - веб-сайт компании (опционально)
+//-   email - email компании (опционально)
+//-   phone - телефон компании (опционально)
+//-   address - адрес компании (опционально)
+//-   stand - номер стенда (опционально)
+
+mixin company-modal(id, name, logo, description = '', website = '', email = '', phone = '', address = '', stand = '')
+	.modal.fade.company-modal(id=`companyModal-${id}` tabindex="-1" aria-labelledby=`companyModalLabel-${id}` aria-hidden="true")
+		.modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable
+			.modal-content
+				.modal-header
+					h3.company-name(id=`companyModalLabel-${id}`)= name
+					button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+						i.fas.fa-xmark
+				.modal-body
+					.row.align-items-center.g-4
+						.col-6.col-md-6
+							.company-logo
+								img(src=logo alt=name loading="lazy")
+						.col-6.col-md-6
+							// Report Button
+							button.btn.btn--primary.company-report__btn(
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target=`#companyReport-${id}`
+								aria-expanded="false"
+								aria-controls=`companyReport-${id}`
+							) 
+								i.fal.fa-arrow-down
+								span Report
+						.col-12.col-md-12
+							// Report Form Collapse
+							.collapse.company-report__collapse(id=`companyReport-${id}`)
+								.company-report__form
+									form(action="#" method="POST")
+										include _form-textarea
+										+form-textarea('report_message', null, 'Write your report here...', true, 6, '', 'form-textarea-transparent')
+										
+										include _button
+										button.btn.btn--primary-solid.company-report__submit(type="submit") Submit
+						.col-12.col-md-12
+							if description
+								.company-description
+									p= description
+						.col-12.col-md-12
+							.company-contacts
+								if website
+									.company-contact__item
+										i.fas.fa-globe
+										a(href=website target="_blank" rel="noopener noreferrer")= website
+								if email
+									.company-contact__item
+										i.fas.fa-envelope
+										a(href=`mailto:${email}`)= email
+								if phone
+									.company-contact__item
+										i.fas.fa-phone
+										a(href=`tel:${phone}`)= phone
+								if address
+									.company-contact__item
+										i.fas.fa-location-dot
+										span= address
+							.company-warning.pt-4 Caspian Event Organisers LLC is not responsible for the information provided by the exhibitors!
+

@@ -84,6 +84,8 @@
     <link rel="stylesheet" href="assets/plugins/fancybox/fancybox.css">
     <!-- Select2 CSS-->
     <link rel="stylesheet" href="assets/plugins/select2/select2.min.css">
+    <!-- Nice Select CSS-->
+    <link rel="stylesheet" href="assets/plugins/nice-select/nice-select.css">
     <!-- Intl Tel Input CSS-->
     <link rel="stylesheet" href="assets/plugins/intl-tel-input/intl-tel-input.min.css">
     <!-- Custom Styles-->
@@ -254,31 +256,41 @@
                             <div class="form-group">
                               <label class="form-label" for="firstname">First name<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="text" id="firstname" name="firstname" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="text" id="firstname" name="firstname" placeholder="" required>
+                              </div>
                             </div>
               <!-- Surname-->
                             <div class="form-group">
                               <label class="form-label" for="surname">Surname<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="text" id="surname" name="surname" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="text" id="surname" name="surname" placeholder="" required>
+                              </div>
                             </div>
               <!-- Patronymic-->
                             <div class="form-group">
                               <label class="form-label" for="patronymic">Patronymic<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="text" id="patronymic" name="patronymic" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="text" id="patronymic" name="patronymic" placeholder="" required>
+                              </div>
                             </div>
               <!-- Passport / ID-->
                             <div class="form-group">
                               <label class="form-label" for="passport">Passport / ID<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="text" id="passport" name="passport" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="text" id="passport" name="passport" placeholder="" required>
+                              </div>
                             </div>
               <!-- Passport / ID Expiry Date-->
                             <div class="form-group">
                               <label class="form-label" for="passport_expiry">Passport / ID Expiry Date<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="date" id="passport_expiry" name="passport_expiry" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="date" id="passport_expiry" name="passport_expiry" placeholder="" required>
+                              </div>
                             </div>
               <!-- Scan of passport / ID-->
                             <div class="form-group">
@@ -304,13 +316,17 @@
                             <div class="form-group">
                               <label class="form-label" for="company">Company<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="text" id="company" name="company" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="text" id="company" name="company" placeholder="" required>
+                              </div>
                             </div>
               <!-- Position-->
                             <div class="form-group">
                               <label class="form-label" for="position">Position<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="text" id="position" name="position" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="text" id="position" name="position" placeholder="" required>
+                              </div>
                             </div>
               <!-- Country-->
                             <div class="form-group">
@@ -327,7 +343,9 @@
                             <div class="form-group">
                               <label class="form-label" for="city">City<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="text" id="city" name="city" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="text" id="city" name="city" placeholder="" required>
+                              </div>
                             </div>
               <!-- Phone number-->
                             <div class="form-group">
@@ -342,7 +360,9 @@
                             <div class="form-group">
                               <label class="form-label" for="email">E-mail<span class="text-danger">*</span>
                               </label>
-                              <input class="form-control form-input-transparent" type="email" id="email" name="email" placeholder="" required>
+                              <div class="form-input-wrapper">
+                                <input class="form-control form-input-transparent" type="email" id="email" name="email" placeholder="" required>
+                              </div>
                             </div>
               <!-- Visitors' Nature of Business-->
                             <div class="form-group">
@@ -506,6 +526,8 @@
     <script src="assets/plugins/jquery/jquery.min.js"></script>
     <!-- Select2 JS-->
     <script src="assets/plugins/select2/select2.min.js"></script>
+    <!-- Nice Select JS-->
+    <script src="assets/plugins/nice-select/jquery.nice-select.min.js"></script>
     <!-- DataTables JS-->
     <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap5.min.js"></script>
