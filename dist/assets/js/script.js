@@ -1270,45 +1270,26 @@ function initSwiperSliders() {
     const config = parseSwiperConfig(container);
     const swiper = new Swiper(container, config);
 
-    // Специальная обработка для photo-swiper
+    // Специальная обработка для photo-swiper (Material You design)
     if (container.classList.contains('photo-swiper')) {
-      // Для auto slidesPerView с разными размерами слайдов
+      // Для auto slidesPerView с разными размерами слайдов (legacy support)
       if (swiper.params.slidesPerView === 'auto' && swiper.params.loop) {
         swiper.params.loopAdditionalSlides = 3;
         swiper.params.loopedSlides = 6;
         swiper.params.watchSlidesProgress = true;
         swiper.params.watchSlidesVisibility = true;
+        swiper.params.effect = "coverflow";
+        swiper.params.coverflowEffect = {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true
+        };
       }
 
-      // Флаг для предотвращения множественных обновлений
-      let isUpdating = false;
-
-      // Функция безопасного обновления
-      const safeUpdate = () => {
-        if (isUpdating) return;
-        isUpdating = true;
-        requestAnimationFrame(() => {
-          swiper.update();
-          isUpdating = false;
-        });
-      };
-
-      // Обновляем размеры после инициализации (один раз)
-      setTimeout(() => {
-        swiper.update();
-      }, 150);
-
-      // Обновляем только после завершения перехода
-      swiper.on('slideChangeTransitionEnd', function () {
-        safeUpdate();
-      });
-
-      // Предотвращаем обновление во время перехода
-      swiper.on('slideChangeTransitionStart', function () {
-        // Не обновляем во время перехода
-      });
-
-      // Обновляем при изменении размера окна
+      // Material You: обеспечиваем плавные переходы для scale и elevation
+      // Обновляем при изменении размера окна для корректной работы centeredSlides
       let resizeTimer;
       const handleResize = () => {
         clearTimeout(resizeTimer);

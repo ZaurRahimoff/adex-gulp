@@ -157,6 +157,14 @@
             border-top-right-radius: 12px;
             border-bottom-right-radius: 12px;
           }
+
+          &.sorting:after {
+            line-height: normal;
+          }
+
+          &.sorting:before {
+            line-height: normal;
+          }
         }
       }
     }

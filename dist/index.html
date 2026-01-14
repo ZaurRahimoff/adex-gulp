@@ -97,8 +97,7 @@
       <div class="topbar">
         <div class="container">
           <div class="topbar__content d-flex align-items-center justify-content-between">
-            <button class="topbar__toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMobileMenu" aria-controls="navbarMobileMenu" aria-label="Toggle navigation"><i class="fa-solid fa-bars topbar__toggle-icon"></i></button>
-            <div class="topbar__logo"><img src="https://adex.az/projects/adex/assets/logolight.webp?v=96.2.10" alt="ADEX" width="98" height="72"></div>
+            <button class="topbar__toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMobileMenu" aria-controls="navbarMobileMenu" aria-label="Toggle navigation"><i class="fa-solid fa-bars topbar__toggle-icon"></i></button><a class="topbar__logo" href="/"><img src="https://adex.az/projects/adex/assets/logolight.webp?v=96.2.10" alt="ADEX" width="98" height="72"></a>
             <div class="topbar__center d-none d-lg-block">
               <p class="topbar__title">30th Anniversary Azerbaijan International Construction Exhibition</p>
             </div>
@@ -213,7 +212,7 @@
         <div class="hero__video-wrapper"><img class="hero__video-image" src="assets/img/webp/hero-bg.webp" alt="" aria-hidden="true">
           <iframe class="hero__video" width="1396" height="785" src="https://www.youtube.com/embed/wfsTGsXGKvE" title="ADEX 2024 Азербайджан ( военная выставка )" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <div class="hero__overlay"></div>
-        </div><a class="hero__play-btn" href="#"><i class="fas fa-play"></i></a>
+        </div><a class="hero__play-btn" href="#"><i class="fas fa-circle-play"></i></a>
         <div class="hero__content">
           <div class="container">
             <div class="row">
@@ -513,7 +512,56 @@
             <div class="col-12">
               <div class="video-section__wrapper"><img class="hero__video-image" src="assets/img/webp/video-bg.webp" alt="" aria-hidden="true">
                 <iframe class="hero__video" width="1396" height="785" src="https://www.youtube.com/embed/wfsTGsXGKvE" title="ADEX 2024 Азербайджан ( военная выставка )" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <div class="video-section__play-btn" aria-label="Play video"><i class="fas fa-play"></i></div>
+                <div class="video-section__play-btn" aria-label="Play video"><i class="fas fa-play-circle"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Venue & Working Hours Section-->
+      <section class="venue-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="venue-section__title mb-4">Venue & Working Hours</h2>
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="venue-section__map-wrapper">
+                    <iframe class="venue-section__map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="venue-section__working-hours">
+                    <h3 class="venue-section__working-hours-title">Working Hours</h3>
+                    <div class="venue-section__schedule-item"><i class="fas fa-clock"></i>
+                      <div class="venue-section__schedule-content">
+                        <p class="venue-section__schedule-time">14 October | 11:00 - 18:00</p>
+                        <p class="venue-section__schedule-day">Tuesday</p>
+                      </div>
+                    </div>
+                    <div class="venue-section__schedule-item"><i class="fas fa-clock"></i>
+                      <div class="venue-section__schedule-content">
+                        <p class="venue-section__schedule-time">15 October | 10:00 - 18:00</p>
+                        <p class="venue-section__schedule-day">Wednesday</p>
+                      </div>
+                    </div>
+                    <div class="venue-section__schedule-item"><i class="fas fa-clock"></i>
+                      <div class="venue-section__schedule-content">
+                        <p class="venue-section__schedule-time">16 October | 10:00 - 18:00</p>
+                        <p class="venue-section__schedule-day">Thursday</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="venue-section__venue-info">
+                    <h3 class="venue-section__venue-title">Venue</h3>
+                    <div class="venue-section__venue-content"><i class="fas fa-location-dot"></i>
+                      <div class="venue-section__venue-text">
+                        <p class="venue-section__venue-name">Baku Expo Center</p>
+                        <p class="venue-section__venue-address">Address: 515, H. Aliyev ave., AZ1050, Baku, Azerbaijan</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -531,7 +579,7 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center photo-section__nav-btn photo-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper photo-swiper overflow-hidden" data-swiper data-slides-per-view="auto" data-space-between="20" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next">
+              <div class="swiper photo-swiper overflow-hidden" data-swiper data-slides-per-view="6" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:1},&quot;768&quot;:{&quot;slidesPerView&quot;:2},&quot;992&quot;:{&quot;slidesPerView&quot;:3},&quot;1200&quot;:{&quot;slidesPerView&quot;:6}}">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;"></div>
@@ -622,55 +670,6 @@
                         <p class="testimonial-card__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                       </div>
                     </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Venue & Working Hours Section-->
-      <section class="venue-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <h2 class="venue-section__title mb-4">Venue & Working Hours</h2>
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="venue-section__map-wrapper">
-                    <iframe class="venue-section__map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="venue-section__working-hours">
-                    <h3 class="venue-section__working-hours-title">Working Hours</h3>
-                    <div class="venue-section__schedule-item"><i class="fas fa-clock"></i>
-                      <div class="venue-section__schedule-content">
-                        <p class="venue-section__schedule-time">14 October | 11:00 - 18:00</p>
-                        <p class="venue-section__schedule-day">Tuesday</p>
-                      </div>
-                    </div>
-                    <div class="venue-section__schedule-item"><i class="fas fa-clock"></i>
-                      <div class="venue-section__schedule-content">
-                        <p class="venue-section__schedule-time">15 October | 10:00 - 18:00</p>
-                        <p class="venue-section__schedule-day">Wednesday</p>
-                      </div>
-                    </div>
-                    <div class="venue-section__schedule-item"><i class="fas fa-clock"></i>
-                      <div class="venue-section__schedule-content">
-                        <p class="venue-section__schedule-time">16 October | 10:00 - 18:00</p>
-                        <p class="venue-section__schedule-day">Thursday</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="venue-section__venue-info">
-                    <h3 class="venue-section__venue-title">Venue</h3>
-                    <div class="venue-section__venue-content"><i class="fas fa-location-dot"></i>
-                      <div class="venue-section__venue-text">
-                        <p class="venue-section__venue-name">Baku Expo Center</p>
-                        <p class="venue-section__venue-address">Address: 515, H. Aliyev ave., AZ1050, Baku, Azerbaijan</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -771,8 +770,7 @@
     <footer class="footer">
       <div class="container">
         <!-- Top section: Logo, Social Media, Scroll to Top-->
-        <div class="footer__top d-flex justify-content-between align-items-center">
-          <div class="footer__logo-wrapper"><img class="footer__logo" src="assets/img/logo-footer.svg" alt="ADEX Logo" loading="lazy"></div>
+        <div class="footer__top d-flex justify-content-between align-items-center"><a class="footer__logo-wrapper" href="/"><img class="footer__logo" src="https://adex.az/projects/adex/assets/logolight.webp?v=96.2.12" alt="ADEX Logo" loading="lazy"></a>
           <div class="footer__social-wrapper d-flex align-items-center gap-4">
             <div class="footer__social"><a class="footer__social-link" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a class="footer__social-link" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="footer__social-link" href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a class="footer__social-link" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a class="footer__social-link" href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a><a class="footer__social-link" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a class="footer__social-link" href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a></div>
             <button class="footer__scroll-top" type="button" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
@@ -796,8 +794,8 @@
             <div class="footer__section mx-auto">
               <h3 class="footer__section-title">Organisers:</h3>
               <div class="footer__organisers">
-                <div class="footer__organiser"><img class="footer__organiser-logo" src="https://iteca.az/projects/iteca/assets/logolight.webp?v=96.2.10" alt="Organiser 1" loading="lazy"></div>
-                <div class="footer__organiser"><img class="footer__organiser-logo" src="https://ceo.az/projects/ceo/assets/logolight.webp?v=96.2.10" alt="Organiser 2" loading="lazy"></div>
+                <div class="footer__organiser"><img class="footer__organiser-logo" src="assets/img/ceo-logo.svg" alt="Organiser 1" loading="lazy"></div>
+                <div class="footer__organiser"><img class="footer__organiser-logo" src="assets/img/iteca-logo.svg" alt="Organiser 2" loading="lazy"></div>
               </div>
             </div>
           </div>
@@ -818,7 +816,7 @@
         <div class="footer__bottom d-flex justify-content-between align-items-center flex-wrap">
           <p class="footer__copyright">Copyright © 2025 Iteca Caspian LLC | All Rights Reserved | Terms & Conditions</p>
           <div class="footer__developed"><span class="footer__developed-text">Developed by:</span>
-            <div class="footer__developed-logo"><img src="assets/img/developed-logo.svg" alt="Developed by" loading="lazy"></div>
+            <div class="footer__developed-logo"><img src="assets/img/era-logo.svg" alt="Developed by" loading="lazy"></div>
           </div>
         </div>
       </div>

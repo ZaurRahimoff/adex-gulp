@@ -146,14 +146,17 @@
 
 // Модификатор для селекта года (компактный, согласно Figma)
 .nice-select--year {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  line-height: normal;
+  padding: 15px;
   padding-right: 40px;
   font-size: 16px;
   font-weight: var(--font-weight-regular);
-  background-color: var(--white);
+  background-color: var(--primary);
   border: 1px solid var(--line);
+  color: var(--white);
   border-radius: 4px;
 
   &:hover {
@@ -169,20 +172,33 @@
   }
 
   &:after {
+    content: '\f078';
+    font-family: 'Font Awesome 7 Pro';
+    position: absolute;
+    font-size: 14px;
+    color: var(--white);
+    top: 50%;
     right: 16px;
-    height: 6px;
-    width: 6px;
-    border-bottom: 2px solid var(--gray-2);
-    border-right: 2px solid var(--gray-2);
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    border-right: none;
+    transform-origin: center;
+    transform: translateY(-50%) rotate(0deg);
+    margin: 0;
+    transition: all 0.3s;
   }
 
   &.open:after {
-    transform: rotate(225deg);
-    margin-top: -2px;
+    transform: translateY(-50%) rotate(180deg);
+    margin: 0;
+    transition: all 0.3s;
   }
 
   .current {
-    color: var(--gray-2);
+    color: var(--white);
   }
 }
 

@@ -72,6 +72,7 @@
             line-height: 1;
             color: var(--white);
             border: none;
+            text-align: center;
 
             @include md-down {
               padding: 20px 30px;
@@ -117,12 +118,20 @@
             &:last-child {
               border-top-right-radius: 12px;
               border-bottom-right-radius: 12px;
-              text-align: right;
+              text-align: center;
               width: 150px;
 
               @include md-down {
                 width: auto;
               }
+            }
+
+            &.sorting:after {
+              line-height: normal;
+            }
+
+            &.sorting:before {
+              line-height: normal;
             }
           }
         }

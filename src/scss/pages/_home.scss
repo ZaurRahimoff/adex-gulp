@@ -66,6 +66,10 @@
       height: 56px;
       font-size: 24px;
     }
+
+    i {
+      font-size: 80px;
+    }
   }
 
   &__content {
@@ -728,7 +732,7 @@
     }
   }
 
-  // Стили для слайдера фото (по макету Figma)
+  // Material You стили для слайдера фото
   .photo-swiper {
     overflow: visible;
     width: 100%;
@@ -736,60 +740,48 @@
     .swiper-wrapper {
       align-items: center;
       display: flex;
+      transition-property: transform;
+      transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
     }
 
     .swiper-slide {
-      width: 197px !important;
-      height: 500px;
-      transition: width 0.3s ease-out;
+      // height: 400px;
+      min-width: 197px;
+      transition: all 0.3s;
       flex-shrink: 0;
-      box-sizing: border-box;
-      will-change: width;
+      transition-property: transform;
+      will-change: transform;
+      opacity: 0.85;
 
       @include lg-down {
-        width: 130px !important;
-        height: 280px;
+        // height: 300px;
       }
 
-      // Активный слайд - 630px (по макету)
+      // Material You elevation для неактивных слайдов (2dp)
+      .photo-section__image-wrapper {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+
+      // Активный слайд - Material You elevation (8dp) и scale
       &.swiper-slide-active {
-        width: 630px !important;
+        min-width: 630px;
+        opacity: 1;
+        // transform: scale(1.05);
+        z-index: 2;
+        transition: all 0.3s;
 
-        @include lg-down {
-          width: 100% !important;
-          max-width: 100%;
-        }
-
-        // Убираем overlay с активного слайда
         .photo-section__image-wrapper {
-          &::after {
-            display: none;
-          }
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
       }
 
-      // Предыдущий и следующий слайды (для плавности)
+      // Предыдущий и следующий слайды
       &.swiper-slide-prev,
       &.swiper-slide-next {
-        transition: width 0.3s ease-out;
-      }
-
-      // Overlay на неактивных слайдах (rgba(0,0,0,0.4) по макету)
-      &:not(.swiper-slide-active) {
-        .photo-section__image-wrapper {
-          &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            z-index: 1;
-            pointer-events: none;
-          }
-        }
+        min-width: 197px;
+        opacity: 0.9;
+        transition: all 0.3s;
       }
     }
   }
@@ -798,7 +790,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
     display: block;
   }
@@ -1011,11 +1003,13 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 6;
+    line-clamp: 6;
     -webkit-box-orient: vertical;
 
     @include lg-down {
       font-size: $font-size-body2;
       -webkit-line-clamp: 4;
+      line-clamp: 4;
     }
   }
 
@@ -1443,9 +1437,28 @@
 .sponsors-swiper,
 .support-swiper,
 .product-categories-swiper,
-.photo-swiper,
 .testimonials-swiper {
+  .swiper-wrapper {
+    padding: 16px 0;
+  }
+
   .swiper-slide {
     height: auto;
+  }
+}
+
+// Material You photo-swiper specific styles
+.photo-swiper {
+  .swiper-wrapper {
+    padding: 24px 0;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    height: 400px;
+
+    @include lg-down {
+      height: 300px;
+    }
   }
 }

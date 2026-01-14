@@ -1203,12 +1203,6 @@ main.main {
   padding: 24px 0;
   position: relative;
 }
-@media (min-width: 992px) {
-  .footer {
-    padding: 24px 80px 0;
-    min-height: 480px;
-  }
-}
 .footer__top {
   padding-bottom: 24px;
 }
@@ -1219,9 +1213,10 @@ main.main {
   }
 }
 .footer__logo-wrapper {
-  width: 122.398px;
-  height: 90.001px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 991px) {
   .footer__logo-wrapper {
@@ -1230,9 +1225,13 @@ main.main {
 }
 .footer__logo {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
   -o-object-fit: contain;
      object-fit: contain;
+  -o-object-position: left center;
+     object-position: left center;
+  max-height: 150px;
 }
 .footer__social-wrapper {
   gap: 60px;
@@ -1390,7 +1389,7 @@ main.main {
 .footer__organisers {
   display: flex;
   gap: 30px;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
 }
 @media (max-width: 991px) {
@@ -1400,20 +1399,19 @@ main.main {
 }
 .footer__organiser {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .footer__organiser-logo {
   height: auto;
   max-width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-}
-.footer__organiser-logo:first-child {
-  width: 49.221px;
-  height: 49.203px;
-}
-.footer__organiser-logo:last-child {
-  width: 84.124px;
-  height: 45.536px;
+  -o-object-position: center;
+     object-position: center;
+  aspect-ratio: auto;
+  max-height: 100px;
 }
 .footer__links {
   display: flex;
@@ -3175,14 +3173,17 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
 }
 
 .nice-select--year {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  line-height: normal;
+  padding: 15px;
   padding-right: 40px;
   font-size: 16px;
   font-weight: var(--font-weight-regular);
-  background-color: var(--white);
+  background-color: var(--primary);
   border: 1px solid var(--line);
+  color: var(--white);
   border-radius: 4px;
 }
 .nice-select--year:hover {
@@ -3194,18 +3195,31 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
   box-shadow: none;
 }
 .nice-select--year:after {
+  content: "\f078";
+  font-family: "Font Awesome 7 Pro";
+  position: absolute;
+  font-size: 14px;
+  color: var(--white);
+  top: 50%;
   right: 16px;
-  height: 6px;
-  width: 6px;
-  border-bottom: 2px solid var(--gray-2);
-  border-right: 2px solid var(--gray-2);
+  height: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+  border-right: none;
+  transform-origin: center;
+  transform: translateY(-50%) rotate(0deg);
+  margin: 0;
+  transition: all 0.3s;
 }
 .nice-select--year.open:after {
-  transform: rotate(225deg);
-  margin-top: -2px;
+  transform: translateY(-50%) rotate(180deg);
+  margin: 0;
+  transition: all 0.3s;
 }
 .nice-select--year .current {
-  color: var(--gray-2);
+  color: var(--white);
 }
 
 .nice-select--card {
@@ -3512,6 +3526,12 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
 .datatable__table thead tr th:last-child {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+}
+.datatable__table thead tr th.sorting:after {
+  line-height: normal;
+}
+.datatable__table thead tr th.sorting:before {
+  line-height: normal;
 }
 .datatable__table tbody tr {
   background-color: var(--white);
@@ -4499,6 +4519,9 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
     font-size: 24px;
   }
 }
+.hero__play-btn i {
+  font-size: 80px;
+}
 .hero__content {
   position: relative;
   z-index: 1;
@@ -5112,53 +5135,40 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
 .photo-section .photo-swiper .swiper-wrapper {
   align-items: center;
   display: flex;
+  transition-property: transform;
+  transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
 }
 .photo-section .photo-swiper .swiper-slide {
-  width: 197px !important;
-  height: 500px;
-  transition: width 0.3s ease-out;
+  min-width: 197px;
+  transition: all 0.3s;
   flex-shrink: 0;
-  box-sizing: border-box;
-  will-change: width;
+  transition-property: transform;
+  will-change: transform;
+  opacity: 0.85;
 }
-@media (max-width: 991px) {
-  .photo-section .photo-swiper .swiper-slide {
-    width: 130px !important;
-    height: 280px;
-  }
+.photo-section .photo-swiper .swiper-slide .photo-section__image-wrapper, .photo-section .photo-swiper .swiper-slide .photo-section__main-image-wrapper {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 .photo-section .photo-swiper .swiper-slide.swiper-slide-active {
-  width: 630px !important;
+  min-width: 630px;
+  opacity: 1;
+  z-index: 2;
+  transition: all 0.3s;
 }
-@media (max-width: 991px) {
-  .photo-section .photo-swiper .swiper-slide.swiper-slide-active {
-    width: 100% !important;
-    max-width: 100%;
-  }
-}
-.photo-section .photo-swiper .swiper-slide.swiper-slide-active .photo-section__image-wrapper::after, .photo-section .photo-swiper .swiper-slide.swiper-slide-active .photo-section__main-image-wrapper::after {
-  display: none;
+.photo-section .photo-swiper .swiper-slide.swiper-slide-active .photo-section__image-wrapper, .photo-section .photo-swiper .swiper-slide.swiper-slide-active .photo-section__main-image-wrapper {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 .photo-section .photo-swiper .swiper-slide.swiper-slide-prev, .photo-section .photo-swiper .swiper-slide.swiper-slide-next {
-  transition: width 0.3s ease-out;
-}
-.photo-section .photo-swiper .swiper-slide:not(.swiper-slide-active) .photo-section__image-wrapper::after, .photo-section .photo-swiper .swiper-slide:not(.swiper-slide-active) .photo-section__main-image-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 20px;
-  z-index: 1;
-  pointer-events: none;
+  min-width: 197px;
+  opacity: 0.9;
+  transition: all 0.3s;
 }
 .photo-section__image-wrapper, .photo-section__main-image-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   display: block;
 }
@@ -5342,12 +5352,14 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 6;
+  line-clamp: 6;
   -webkit-box-orient: vertical;
 }
 @media (max-width: 991px) {
   .testimonial-card__text {
     font-size: 0.875rem;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
   }
 }
 .testimonial-card__divider {
@@ -5734,12 +5746,30 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
   color: rgba(43, 59, 115, 0.9);
 }
 
+.sponsors-swiper .swiper-wrapper,
+.support-swiper .swiper-wrapper,
+.product-categories-swiper .swiper-wrapper,
+.testimonials-swiper .swiper-wrapper {
+  padding: 16px 0;
+}
 .sponsors-swiper .swiper-slide,
 .support-swiper .swiper-slide,
 .product-categories-swiper .swiper-slide,
-.photo-swiper .swiper-slide,
 .testimonials-swiper .swiper-slide {
   height: auto;
+}
+
+.photo-swiper .swiper-wrapper {
+  padding: 24px 0;
+  align-items: center;
+}
+.photo-swiper .swiper-slide {
+  height: 400px;
+}
+@media (max-width: 991px) {
+  .photo-swiper .swiper-slide {
+    height: 300px;
+  }
 }
 
 .about-page__about-block {
@@ -7122,6 +7152,7 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
   line-height: 1;
   color: var(--white);
   border: none;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .exhibitors-page .exhibitors__table thead tr th {
@@ -7167,13 +7198,19 @@ textarea.form-control.is-completed, textarea.form-control[readonly] {
 .exhibitors-page .exhibitors__table thead tr th:last-child {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
-  text-align: right;
+  text-align: center;
   width: 150px;
 }
 @media (max-width: 767px) {
   .exhibitors-page .exhibitors__table thead tr th:last-child {
     width: auto;
   }
+}
+.exhibitors-page .exhibitors__table thead tr th.sorting:after {
+  line-height: normal;
+}
+.exhibitors-page .exhibitors__table thead tr th.sorting:before {
+  line-height: normal;
 }
 @media (max-width: 575px) {
   .exhibitors-page .exhibitors__table tbody {

@@ -16,7 +16,7 @@ block content
       iframe.hero__video(width="1396" height="785" src="https://www.youtube.com/embed/wfsTGsXGKvE" title="ADEX 2024 Азербайджан ( военная выставка )" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen)
       .hero__overlay
     a.hero__play-btn(href="#")
-      i.fas.fa-play
+      i.fas.fa-circle-play
     .hero__content
       .container
         .row
@@ -174,8 +174,44 @@ block content
             img.hero__video-image(src="assets/img/webp/video-bg.webp" alt="" aria-hidden="true")
             iframe.hero__video(width="1396" height="785" src="https://www.youtube.com/embed/wfsTGsXGKvE" title="ADEX 2024 Азербайджан ( военная выставка )" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen)
             .video-section__play-btn(aria-label="Play video")
-              i.fas.fa-play
+              i.fas.fa-play-circle
 
+  // Venue & Working Hours Section
+  section.venue-section
+    .container
+      .row
+        .col-12
+          h2.venue-section__title.mb-4 Venue & Working Hours
+          .row
+            .col-lg-8
+              .venue-section__map-wrapper
+                iframe.venue-section__map(src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+            .col-lg-4
+              .venue-section__working-hours
+                h3.venue-section__working-hours-title Working Hours
+                .venue-section__schedule-item
+                  i.fas.fa-clock
+                  .venue-section__schedule-content
+                    p.venue-section__schedule-time 14 October | 11:00 - 18:00
+                    p.venue-section__schedule-day Tuesday
+                .venue-section__schedule-item
+                  i.fas.fa-clock
+                  .venue-section__schedule-content
+                    p.venue-section__schedule-time 15 October | 10:00 - 18:00
+                    p.venue-section__schedule-day Wednesday
+                .venue-section__schedule-item
+                  i.fas.fa-clock
+                  .venue-section__schedule-content
+                    p.venue-section__schedule-time 16 October | 10:00 - 18:00
+                    p.venue-section__schedule-day Thursday
+              .venue-section__venue-info
+                h3.venue-section__venue-title Venue
+                .venue-section__venue-content
+                  i.fas.fa-location-dot
+                  .venue-section__venue-text
+                    p.venue-section__venue-name Baku Expo Center
+                    p.venue-section__venue-address Address: 515, H. Aliyev ave., AZ1050, Baku, Azerbaijan
+                    
   // Photo Section
   section.photo-section
     .container
@@ -188,7 +224,7 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.photo-section__nav-btn.photo-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.photo-swiper.overflow-hidden(data-swiper data-slides-per-view="auto" data-space-between="20" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next")
+          .swiper.photo-swiper.overflow-hidden(data-swiper data-slides-per-view="6" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3},"1200":{"slidesPerView":6}}')
             .swiper-wrapper
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
@@ -237,42 +273,6 @@ block content
           +testimonial-card('Cameron Williamson', 'Big Kahuna Burger Ltd.', 'https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.')
           +testimonial-card('Guy Hawkins', 'Abstergo Ltd.', 'https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&w=740&q=80', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.')
           +testimonial-card('Robert Fox', 'Binford Ltd.', 'https://plus.unsplash.com/premium_photo-1661726660137-61b182d93809?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.')
-
-  // Venue & Working Hours Section
-  section.venue-section
-    .container
-      .row
-        .col-12
-          h2.venue-section__title.mb-4 Venue & Working Hours
-          .row
-            .col-lg-8
-              .venue-section__map-wrapper
-                iframe.venue-section__map(src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
-            .col-lg-4
-              .venue-section__working-hours
-                h3.venue-section__working-hours-title Working Hours
-                .venue-section__schedule-item
-                  i.fas.fa-clock
-                  .venue-section__schedule-content
-                    p.venue-section__schedule-time 14 October | 11:00 - 18:00
-                    p.venue-section__schedule-day Tuesday
-                .venue-section__schedule-item
-                  i.fas.fa-clock
-                  .venue-section__schedule-content
-                    p.venue-section__schedule-time 15 October | 10:00 - 18:00
-                    p.venue-section__schedule-day Wednesday
-                .venue-section__schedule-item
-                  i.fas.fa-clock
-                  .venue-section__schedule-content
-                    p.venue-section__schedule-time 16 October | 10:00 - 18:00
-                    p.venue-section__schedule-day Thursday
-              .venue-section__venue-info
-                h3.venue-section__venue-title Venue
-                .venue-section__venue-content
-                  i.fas.fa-location-dot
-                  .venue-section__venue-text
-                    p.venue-section__venue-name Baku Expo Center
-                    p.venue-section__venue-address Address: 515, H. Aliyev ave., AZ1050, Baku, Azerbaijan
 
   // News Section
   section.news-section
