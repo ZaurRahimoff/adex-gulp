@@ -12,9 +12,8 @@
       
       .topbar__right.d-flex.align-items-center
         .topbar__info.d-none.d-lg-flex.align-items-center
-          .topbar__info-item.d-flex.align-items-center
-            i.fa-regular.fa-calendar-plus
-            span 3-5 June, 2025
+          include ../mixins/_add-to-calendar
+          +add-to-calendar('30th Anniversary Azerbaijan International Construction Exhibition', 'ADEX - Azerbaijan International Construction Exhibition', 'Baku Expo Center, Azerbaijan', '2025-06-03T09:00:00', '2025-06-05T18:00:00', 'Asia/Baku', '3-5 June, 2025')
           
           .topbar__divider
           

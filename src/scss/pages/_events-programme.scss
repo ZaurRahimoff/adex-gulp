@@ -1,7 +1,7 @@
-@import '../variables/colors';
-@import '../variables/typography';
-@import '../variables/variables';
-@import '../mixins/media';
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
 
 // ============================================
 // Events Programme Page
@@ -67,56 +67,23 @@
     box-sizing: border-box;
     text-decoration: none !important;
     position: relative;
-    
-    // Press Conference tab - fixed width 247px, white background when inactive
-    &[data-type="press-conference"] {
-      width: 247px !important;
+
+    &:hover:not(.active) {
       background-color: var(--white) !important;
-      font-weight: 500 !important; // Medium
-
-      &:hover:not(.active) {
-        background-color: var(--white) !important;
-        border-color: var(--primary) !important;
-        color: var(--primary) !important;
-      }
-
-      &.active {
-        background-color: var(--primary) !important;
-        color: var(--white) !important;
-        border-color: var(--primary) !important;
-        font-weight: 700 !important; // Bold
-
-        &:hover {
-          background-color: var(--primary) !important;
-          color: var(--white) !important;
-          border-color: var(--primary) !important;
-        }
-      }
+      border-color: var(--primary) !important;
+      color: var(--primary) !important;
     }
-    
-    // Day tabs - fixed width 120px, transparent background
-    &[data-type="day"] {
-      width: 120px !important;
-      background-color: transparent !important;
-      font-weight: 500 !important; // Medium
 
-      &:hover:not(.active) {
-        background-color: rgba(43, 59, 115, 0.05) !important;
-        border-color: var(--primary) !important;
-        color: var(--primary) !important;
-      }
+    &.active {
+      background-color: var(--primary) !important;
+      color: var(--white) !important;
+      border-color: var(--primary) !important;
+      font-weight: 700 !important; // Bold
 
-      &.active {
+      &:hover {
         background-color: var(--primary) !important;
         color: var(--white) !important;
         border-color: var(--primary) !important;
-        font-weight: 700 !important; // Bold
-
-        &:hover {
-          background-color: var(--primary) !important;
-          color: var(--white) !important;
-          border-color: var(--primary) !important;
-        }
       }
     }
 
@@ -125,12 +92,12 @@
       font-size: 14px !important;
       height: 36px !important;
       min-height: 36px;
-      
+
       &[data-type="press-conference"] {
         width: auto !important;
         min-width: 120px;
       }
-      
+
       &[data-type="day"] {
         width: auto !important;
         min-width: 80px;
@@ -613,8 +580,8 @@
     gap: 10px;
 
     &::after {
-      content: '\f0d8'; // Font Awesome chevron-up icon (стрелка вверх)
-      font-family: 'Font Awesome 7 Pro';
+      content: "\f0d8"; // Font Awesome chevron-up icon (стрелка вверх)
+      font-family: "Font Awesome 7 Pro";
       font-weight: 900;
       font-size: 13px;
     }
@@ -640,4 +607,3 @@
     }
   }
 }
-

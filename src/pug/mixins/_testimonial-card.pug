@@ -2,7 +2,7 @@
 //- Использование: +testimonial-card('John Doe', 'Company', 'avatar.jpg', 'Text...')
 mixin testimonial-card(name, company, avatar, text)
   .swiper-slide
-    .testimonial-card
+    .card.testimonial-card
       .testimonial-card__header
         .testimonial-card__avatar-wrapper
           img.testimonial-card__avatar(src=avatar alt=name loading="lazy")
@@ -12,4 +12,3 @@ mixin testimonial-card(name, company, avatar, text)
         i.fas.fa-quote-right.testimonial-card__quote
       .testimonial-card__divider
       p.testimonial-card__text= text
-

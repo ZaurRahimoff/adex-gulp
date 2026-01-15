@@ -12,6 +12,7 @@ var _datatables = require("./modules/datatables");
 var _fancybox = require("./modules/fancybox");
 var _phoneInput = require("./modules/phone-input");
 var _fileUpload = require("./modules/file-upload");
+var _addToCalendar = require("./modules/add-to-calendar");
 // Main JavaScript file
 // Импорт модулей
 
@@ -49,9 +50,129 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Инициализация File Upload
   (0, _fileUpload.initFileUpload)();
+
+  // Инициализация Add to Calendar
+  (0, _addToCalendar.initAddToCalendar)();
 });
 
-},{"./modules/datatables":2,"./modules/event-program-tabs":3,"./modules/fancybox":4,"./modules/file-upload":5,"./modules/mobile-menu":6,"./modules/nice-select":7,"./modules/phone-input":8,"./modules/scroll-to-top":9,"./modules/select2":10,"./modules/swiper":11,"./modules/video-play":12}],2:[function(require,module,exports){
+},{"./modules/add-to-calendar":2,"./modules/datatables":3,"./modules/event-program-tabs":4,"./modules/fancybox":5,"./modules/file-upload":6,"./modules/mobile-menu":7,"./modules/nice-select":8,"./modules/phone-input":9,"./modules/scroll-to-top":10,"./modules/select2":11,"./modules/swiper":12,"./modules/video-play":13}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initAddToCalendar = initAddToCalendar;
+/**
+ * Add to Calendar functionality
+ * Generates calendar links for various calendar services
+ * 
+ * Usage in HTML:
+ * <div class="topbar__calendar" 
+ *      data-event-title="Event Title"
+ *      data-event-description="Event Description"
+ *      data-event-location="Event Location"
+ *      data-event-start="2025-06-03T09:00:00"
+ *      data-event-end="2025-06-05T18:00:00"
+ *      data-event-timezone="Asia/Baku">
+ *   <button>...</button>
+ *   <ul>
+ *     <li><a data-calendar="google">Google Calendar</a></li>
+ *     ...
+ *   </ul>
+ * </div>
+ */
+
+function initAddToCalendar() {
+  // Get all calendar containers
+  const calendarContainers = document.querySelectorAll('.topbar__calendar');
+  calendarContainers.forEach(container => {
+    // Get event details from data attributes
+    const eventDetails = {
+      title: container.dataset.eventTitle || 'Event',
+      description: container.dataset.eventDescription || '',
+      location: container.dataset.eventLocation || '',
+      startDate: container.dataset.eventStart || '',
+      endDate: container.dataset.eventEnd || '',
+      timezone: container.dataset.eventTimezone || 'UTC'
+    };
+
+    // Get calendar buttons within this container
+    const calendarButtons = container.querySelectorAll('[data-calendar]');
+    calendarButtons.forEach(button => {
+      button.addEventListener('click', e => {
+        e.preventDefault();
+        const calendarType = button.getAttribute('data-calendar');
+        const calendarUrl = generateCalendarUrl(calendarType, eventDetails);
+        if (calendarUrl) {
+          window.open(calendarUrl, '_blank');
+        }
+      });
+    });
+  });
+}
+
+/**
+ * Generate calendar URL based on calendar type
+ */
+function generateCalendarUrl(type, event) {
+  const startDate = formatDate(event.startDate, type);
+  const endDate = formatDate(event.endDate, type);
+  switch (type) {
+    case 'google':
+      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&ctz=${event.timezone}`;
+    case 'outlook':
+      return `https://outlook.office.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(event.title)}&body=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&startdt=${event.startDate}&enddt=${event.endDate}`;
+    case 'outlookcom':
+      return `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(event.title)}&body=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&startdt=${event.startDate}&enddt=${event.endDate}&path=/calendar/action/compose`;
+    case 'yahoo':
+      return `https://calendar.yahoo.com/?v=60&view=d&type=20&title=${encodeURIComponent(event.title)}&st=${startDate}&et=${endDate}&desc=${encodeURIComponent(event.description)}&in_loc=${encodeURIComponent(event.location)}`;
+    case 'ical':
+      return generateICalFile(event);
+    default:
+      return null;
+  }
+}
+
+/**
+ * Format date for different calendar services
+ */
+function formatDate(dateString, calendarType) {
+  const date = new Date(dateString);
+  if (calendarType === 'google' || calendarType === 'yahoo') {
+    // Format: YYYYMMDDTHHmmssZ
+    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  }
+
+  // Default ISO format
+  return date.toISOString();
+}
+
+/**
+ * Generate iCal file for Apple Calendar and other iCal-compatible apps
+ */
+function generateICalFile(event) {
+  const startDate = new Date(event.startDate);
+  const endDate = new Date(event.endDate);
+  const formatICalDate = date => {
+    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  };
+  const icalContent = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ADEX//Event//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', `DTSTART:${formatICalDate(startDate)}`, `DTEND:${formatICalDate(endDate)}`, `DTSTAMP:${formatICalDate(new Date())}`, `SUMMARY:${event.title}`, `DESCRIPTION:${event.description}`, `LOCATION:${event.location}`, `UID:adex-2025-${Date.now()}@adex.az`, 'STATUS:CONFIRMED', 'SEQUENCE:0', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+
+  // Create blob and download
+  const blob = new Blob([icalContent], {
+    type: 'text/calendar;charset=utf-8'
+  });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'adex-2025.ics';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(link.href);
+  return null; // Return null as we're triggering download instead
+}
+
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -445,7 +566,7 @@ function initDataTablesModule() {
   }
 }
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -473,7 +594,7 @@ function initEventProgramTabs() {
   }
 }
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -521,7 +642,7 @@ function initFancybox() {
   }
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -565,7 +686,7 @@ function initFileUpload() {
   });
 }
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -606,7 +727,7 @@ function initMobileMenu() {
   });
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -737,7 +858,7 @@ function initNiceSelectModule() {
   }
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -943,7 +1064,7 @@ function initPhoneInput() {
   });
 }
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -966,7 +1087,7 @@ function initScrollToTop() {
   });
 }
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1236,7 +1357,7 @@ if (typeof window !== 'undefined') {
   window.Select2Init = Select2Init;
 }
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1327,6 +1448,7 @@ function parseSwiperConfig(element) {
     loop: element.dataset.loop === 'true' || element.dataset.loop === '',
     centeredSlides: element.dataset.centeredSlides === 'true' || element.dataset.centeredSlides === '',
     speed: parseInt(element.dataset.speed) || 300,
+    direction: element.dataset.direction || 'horizontal',
     autoplay: element.dataset.autoplay ? {
       delay: parseInt(element.dataset.autoplayDelay) || 3000,
       disableOnInteraction: element.dataset.autoplayDisableOnInteraction !== 'false'
@@ -1453,7 +1575,7 @@ function parseValue(value) {
   return value;
 }
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -508,6 +508,14 @@
     padding: 40px 0;
   }
 
+  @include md-down {
+    padding: 32px 0;
+  }
+
+  @include sm-down {
+    padding: 24px 0;
+  }
+
   &__title {
     font-size: $font-size-h1;
     font-weight: var(--font-weight-bold);
@@ -517,57 +525,166 @@
     @include lg-down {
       font-size: var(--font-size-h3);
     }
+
+    @include md-down {
+      font-size: 28px;
+    }
+
+    @include sm-down {
+      font-size: 24px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
   }
 
+  // Bootstrap Nav Tabs Override
   &__tabs {
     display: flex;
-    gap: 20px;
-    width: 100%;
-    overflow-x: auto;
-    touch-action: pan-x;
-    position: relative;
+    gap: 12px;
+    flex-wrap: nowrap;
+
+    @include lg-down {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    @include md-down {
+      width: 100%;
+      gap: 10px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @include sm-down {
+      width: 100%;
+      gap: 8px;
+    }
+
+    .nav-item {
+      margin: 0;
+      flex-shrink: 0;
+
+      @include md-down {
+        flex-shrink: 0;
+      }
+    }
   }
 
   &__tab {
-    padding: 8px 33px;
-    height: 40px;
-    border-radius: 12px;
-    font-size: $font-size-h6;
-    font-weight: $font-weight-medium;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    background: transparent;
+    padding: 8px 33px !important;
+    height: 40px !important;
+    min-height: 40px;
+    border-radius: 12px !important;
+    border: 1px solid var(--primary) !important;
+    background-color: transparent !important;
+    color: var(--primary) !important;
+    font-family: var(--font-family) !important;
+    font-size: 20px !important;
+    font-weight: 500 !important; // Medium
     transition: var(--transition-base);
+    white-space: nowrap;
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    cursor: pointer;
+    line-height: normal !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    position: relative;
 
     @include lg-down {
       padding: 8px 33px;
-      height: 40px;
-      font-size: $font-size-body;
+      // height: 42px;
+      font-size: $font-size-body2;
     }
 
-    &--active {
-      background: var(--primary);
-      color: var(--white);
-      border-color: var(--primary);
-      font-weight: var(--font-weight-bold);
+    @include sm-down {
+      padding: 8px 33px;
+      // height: 40px;
+      font-size: 14px;
+      min-width: auto;
     }
 
-    &:hover {
-      background: var(--primary);
-      color: var(--white);
+    &:hover:not(.active) {
+      background-color: var(--white) !important;
+      border-color: var(--primary) !important;
+      color: var(--primary) !important;
+    }
+
+    &.active {
+      background-color: var(--primary) !important;
+      color: var(--white) !important;
+      border-color: var(--primary) !important;
+      font-weight: 700 !important; // Bold
+
+      &:hover {
+        background-color: var(--primary) !important;
+        color: var(--white) !important;
+        border-color: var(--primary) !important;
+      }
+    }
+  }
+
+  // Tab Content Styling
+  .tab-content {
+    margin-top: 32px;
+
+    @include lg-down {
+      margin-top: 24px;
+    }
+
+    @include sm-down {
+      margin-top: 20px;
+    }
+  }
+
+  .tab-pane {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
+
+    @include lg-down {
+      gap: 12px;
+    }
   }
 
   &__image-wrapper {
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    height: 436px;
+    height: 100%;
+    min-height: 436px;
+
+    @include xl-down {
+      min-height: 380px;
+    }
+
+    @include lg-down {
+      min-height: 320px;
+    }
   }
 
   &__image {
@@ -576,29 +693,84 @@
     object-fit: cover;
   }
 
-  &__download-btn {
-    padding: 12px 24px;
-    height: 40px;
-    border-radius: 4px;
-    background: var(--primary);
-    color: var(--white);
-    border: none;
-    font-size: $font-size-body2;
+  // View All Button (Mobile only)
+  &__view-btn {
+    padding: 16px 24px;
+    height: auto;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    font-size: $font-size-body;
     font-weight: var(--font-weight-bold);
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 8px;
     transition: var(--transition-base);
+    width: 100%;
+    text-decoration: none;
 
-    @include lg-down {
-      padding: 12px 24px;
-      height: 48px;
-      font-size: $font-size-body2;
-      width: 100%;
+    i {
+      font-size: 14px;
+      transition: transform 0.2s ease;
     }
 
     &:hover {
-      background: rgba(43, 59, 115, 0.95);
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+
+      i {
+        transform: translateX(4px);
+      }
+    }
+
+    @include sm-down {
+      padding: 14px 20px;
+      font-size: $font-size-body2;
+    }
+  }
+
+  // Download Button
+  &__download-btn {
+    padding: 16px 24px;
+    height: auto;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    font-size: $font-size-body;
+    font-weight: var(--font-weight-bold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: var(--transition-base);
+    text-decoration: none;
+    white-space: nowrap;
+
+    @include lg-down {
+      width: 100%;
+    }
+
+    i {
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      background: rgba(43, 59, 115, 0.9);
+      color: var(--white);
+
+      i {
+        transform: translateX(4px);
+      }
+    }
+
+    @include sm-down {
+      padding: 14px 20px;
+      font-size: $font-size-body2;
     }
   }
 }
@@ -606,36 +778,82 @@
 // Event Program Item Component
 .event-program-item {
   background: var(--card-1);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 24px;
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
+  transition: var(--transition-base);
+
+  @include lg-down {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  @include sm-down {
+    padding: 16px;
+    border-radius: 12px;
+    gap: 12px;
+  }
+
+  &:hover {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
 
   &__icon {
-    font-size: 18px;
+    font-size: 24px;
     color: var(--gray-2);
     flex-shrink: 0;
+    margin-top: 2px;
+
+    @include lg-down {
+      font-size: 20px;
+    }
+
+    @include sm-down {
+      font-size: 18px;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
+    flex: 1;
+
+    @include sm-down {
+      gap: 6px;
+    }
   }
 
   &__time {
-    font-size: $font-size-body;
+    font-size: 18px;
     font-weight: var(--font-weight-bold);
-    color: var(--gray-2);
+    color: var(--gray-1);
     margin: 0;
+    line-height: 1.3;
+
+    @include lg-down {
+      font-size: $font-size-body;
+    }
+
+    @include sm-down {
+      font-size: $font-size-body2;
+    }
   }
 
   &__description {
-    font-size: var(--font-size-body1);
+    font-size: $font-size-body2;
     font-weight: $font-weight-regular;
-    color: var(--gray-3);
+    color: var(--gray-2);
     margin: 0;
+    line-height: 1.6;
+
+    @include sm-down {
+      font-size: 14px;
+      line-height: 1.5;
+    }
   }
 }
 
@@ -734,8 +952,14 @@
 
   // Material You стили для слайдера фото
   .photo-swiper {
-    overflow: visible;
-    width: 100%;
+    // overflow: visible;
+    // width: 100%;
+
+    // Для вертикального слайдера на мобильных устройствах
+    @include md-down {
+      max-height: 600px;
+      overflow: hidden;
+    }
 
     .swiper-wrapper {
       align-items: center;
@@ -754,13 +978,22 @@
       opacity: 0.85;
 
       @include lg-down {
-        // height: 300px;
+        min-width: 180px;
+        width: 100%;
+      }
+
+      @include md-down {
+        min-width: 180px;
+        width: 100%;
+        max-height: 130px;
       }
 
       // Material You elevation для неактивных слайдов (2dp)
       .photo-section__image-wrapper {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        transition:
+          box-shadow 0.3s ease,
+          transform 0.3s ease;
       }
 
       // Активный слайд - Material You elevation (8dp) и scale
@@ -770,6 +1003,22 @@
         // transform: scale(1.05);
         z-index: 2;
         transition: all 0.3s;
+
+        @include lg-down {
+          // min-width: 100%;
+          width: 100%;
+          max-width: 280px;
+          min-width: 280px;
+          transition: all 0.3s;
+        }
+
+        @include md-down {
+          min-width: 100%;
+          width: 100%;
+          max-height: 280px;
+          min-height: 280px;
+          transition: all 0.3s;
+        }
 
         .photo-section__image-wrapper {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -782,6 +1031,11 @@
         min-width: 197px;
         opacity: 0.9;
         transition: all 0.3s;
+
+        @include md-down {
+          min-width: auto;
+          width: 100%;
+        }
       }
     }
   }
@@ -816,6 +1070,8 @@
 // Testimonials Section
 // ============================================
 .testimonials-section {
+  overflow: hidden;
+
   &__content {
     position: relative;
     padding: 80px 0;
@@ -884,10 +1140,35 @@
     }
   }
 
+  // Контейнер для слайдера - выравнивание слева как у .container
+  &__slider-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-left: calc((100% - 1140px) / 2);
+
+    @media (max-width: 1199px) {
+      padding-left: calc((100% - 960px) / 2);
+    }
+
+    @media (max-width: 991px) {
+      padding-left: calc((100% - 720px) / 2);
+    }
+
+    @media (max-width: 767px) {
+      padding-left: calc((100% - 540px) / 2);
+      padding-right: calc((100% - 540px) / 2);
+    }
+
+    @media (max-width: 575px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
   // Стили для swiper слайдера testimonials
   .testimonials-swiper {
     position: relative;
-    z-index: 2;
     width: 100%;
     overflow: visible;
 
@@ -922,7 +1203,7 @@
     width: 100%;
     max-width: 100%;
     height: auto;
-    min-height: 308px;
+    // min-height: 308px;
   }
 
   &__header {
@@ -998,18 +1279,9 @@
     font-weight: $font-weight-regular;
     color: var(--gray-2);
     margin: 0;
-    line-height: 1.5;
-    flex: 1;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    line-clamp: 6;
-    -webkit-box-orient: vertical;
 
     @include lg-down {
       font-size: $font-size-body2;
-      -webkit-line-clamp: 4;
-      line-clamp: 4;
     }
   }
 
@@ -1203,11 +1475,35 @@
 // News Section
 // ============================================
 .news-section {
-  padding: 80px 0;
-  background: var(--card-1);
+  padding: 80px 0 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 40px 0 0;
+  }
+
+  @include md-down {
+    padding: 32px 0 0;
+  }
+
+  @include sm-down {
+    padding: 24px 0 0;
+  }
+
+  .bg-section {
+    background: var(--card-1);
+    padding: 60px 0;
+
+    @include lg-down {
+      padding: 40px 0;
+    }
+
+    @include md-down {
+      padding: 32px 0;
+    }
+
+    @include sm-down {
+      padding: 24px 0;
+    }
   }
 
   &__title {
@@ -1219,33 +1515,56 @@
     @include lg-down {
       font-size: var(--font-size-h3);
     }
+
+    @include md-down {
+      font-size: 28px;
+    }
+
+    @include sm-down {
+      font-size: 24px;
+    }
   }
 
   &__view-all {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
     color: var(--primary);
     font-size: $font-size-body2;
     font-weight: var(--font-weight-bold);
     text-decoration: none;
     transition: var(--transition-base);
 
+    i {
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
     &:hover {
       color: rgba(43, 59, 115, 0.9);
+
+      i {
+        transform: translateX(4px);
+      }
     }
   }
 
   &__featured {
     display: flex;
     flex-direction: column;
-    gap: 21px;
+    gap: 24px;
+    height: 100%;
   }
 
   &__featured-image-wrapper {
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     height: 340px;
+    flex-shrink: 0;
+
+    @include xl-down {
+      height: 300px;
+    }
   }
 
   &__featured-image {
@@ -1257,7 +1576,8 @@
   &__featured-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+    flex: 1;
   }
 
   &__meta {
@@ -1266,6 +1586,10 @@
     gap: 8px;
     color: var(--gray-2);
     font-size: $font-size-body2;
+
+    i {
+      font-size: 14px;
+    }
   }
 
   &__date {
@@ -1275,10 +1599,19 @@
   }
 
   &__featured-title {
-    font-size: $font-size-body;
+    font-size: 24px;
     font-weight: var(--font-weight-bold);
     color: var(--gray-1);
     margin: 0;
+    line-height: 1.3;
+
+    @include xl-down {
+      font-size: 20px;
+    }
+
+    @include lg-down {
+      font-size: $font-size-body;
+    }
   }
 
   &__featured-excerpt {
@@ -1286,7 +1619,7 @@
     font-weight: $font-weight-regular;
     color: var(--gray-1);
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   &__read-more {
@@ -1303,32 +1636,56 @@
       font-size: $font-size-body2;
     }
 
+    i {
+      font-size: 14px;
+      transition: transform 0.2s ease;
+    }
+
     &:hover {
       color: rgba(43, 59, 115, 0.9);
+
+      i {
+        transform: translateX(4px);
+      }
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0;
+    height: 100%;
+    justify-content: space-between;
   }
 
   &__item {
     display: flex;
-    gap: 30px;
-    align-items: center;
+    align-items: flex-start;
+    padding: 24px 0;
 
-    @include lg-down {
-      gap: 30px;
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    @include xl-down {
+      padding: 20px 0;
     }
   }
 
   &__item-image-wrapper {
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
     height: 120px;
+    width: 100%;
     flex-shrink: 0;
+
+    @include xl-down {
+      height: 100px;
+    }
   }
 
   &__item-image {
@@ -1340,7 +1697,7 @@
   &__item-content {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     flex: 1;
   }
 
@@ -1349,12 +1706,147 @@
     font-weight: var(--font-weight-bold);
     color: var(--gray-1);
     margin: 0;
+    line-height: 1.4;
+
+    @include xl-down {
+      font-size: 16px;
+    }
   }
 
   &__divider {
     height: 1px;
     width: 100%;
     background: var(--line);
+    margin: 0;
+  }
+
+  // Mobile News Slider
+  .news-swiper {
+    width: 100%;
+    overflow: visible;
+    padding-bottom: 10px;
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+  }
+
+  // Mobile News Card
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+
+    @include sm-down {
+      border-radius: 12px;
+    }
+  }
+
+  &__card-image-wrapper {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+
+    @include md-down {
+      height: 280px;
+    }
+
+    @include sm-down {
+      height: 240px;
+    }
+  }
+
+  &__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    flex: 1;
+
+    @include sm-down {
+      padding: 20px;
+      gap: 12px;
+    }
+  }
+
+  &__card-title {
+    font-size: 22px;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-1);
+    margin: 0;
+    line-height: 1.3;
+
+    @include md-down {
+      font-size: 20px;
+    }
+
+    @include sm-down {
+      font-size: $font-size-body;
+    }
+  }
+
+  &__card-excerpt {
+    font-size: $font-size-body2;
+    font-weight: $font-weight-regular;
+    color: var(--gray-1);
+    margin: 0;
+    line-height: 1.6;
+
+    @include sm-down {
+      font-size: 14px;
+    }
+  }
+
+  // Mobile View All Button
+  &__view-all-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: $font-size-body;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition-base);
+
+    i {
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      background: rgba(43, 59, 115, 0.9);
+      color: var(--white);
+
+      i {
+        transform: translateX(4px);
+      }
+    }
+
+    @include sm-down {
+      padding: 16px 20px;
+      font-size: $font-size-body2;
+    }
   }
 }
 

@@ -83,7 +83,7 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-section__nav-btn.sponsors-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.sponsors-swiper(data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-section__nav-btn--prev" data-nav-next=".sponsors-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
+          .swiper.sponsors-swiper(data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-section__nav-btn--prev" data-nav-next=".sponsors-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
             .swiper-wrapper
               +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
               +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organisers Association (ASTA)', 'assets/img/webp/sponsor2.webp')
@@ -104,7 +104,7 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.support-section__nav-btn.support-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.support-swiper(data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".support-section__nav-btn--prev" data-nav-next=".support-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
+          .swiper.support-swiper(data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".support-section__nav-btn--prev" data-nav-next=".support-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
             .swiper-wrapper
               +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
               +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organisers Association (ASTA)', 'assets/img/webp/sponsor2.webp')
@@ -119,27 +119,65 @@ block content
     .container
       .row
         .col-12
-          .d-flex.justify-content-between.align-items-center.flex-wrap.flex-md-nowrap.gap-3.w-100.mb-4
+          // Header with tabs (Desktop: inline, Mobile: stacked)
+          .d-flex.justify-content-between.align-items-center.flex-wrap.gap-3.mb-4
             h2.event-program-section__title Event program
-            .d-flex.gap-3.event-program-section__tabs
-              button.btn.event-program-section__tab.event-program-section__tab--active(type="button" data-day="1") 1 Day
-              button.btn.event-program-section__tab(type="button" data-day="2") 2 Day
-              button.btn.event-program-section__tab(type="button" data-day="3") 3 Day
-          .row
-            .col-12.col-lg-7
-              .event-program-section__list.h-100
-                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
-                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
-                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
-                +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
-            .col-12.col-lg-5.d-none.d-md-block
-              .event-program-section__image-wrapper.h-100
-                img.event-program-section__image(src="assets/img/webp/event-programme.webp" alt="Event program" loading="lazy")
-          .d-flex.flex-wrap.flex-md-nowrap.gap-3.mt-4
-            a.btn.btn-primary.event-program-section__view-btn.d-block.d-md-none(href="#")
+            // Bootstrap Nav Tabs
+            ul.nav.nav-tabs.event-program-section__tabs.border-0#eventProgramTabs(role="tablist")
+              li.nav-item(role="presentation")
+                button.nav-link.event-program-section__tab.active#day1-tab(data-bs-toggle="tab" data-bs-target="#day1" type="button" role="tab" aria-controls="day1" aria-selected="true") 1 Day
+              li.nav-item(role="presentation")
+                button.nav-link.event-program-section__tab#day2-tab(data-bs-toggle="tab" data-bs-target="#day2" type="button" role="tab" aria-controls="day2" aria-selected="false") 2 Day
+              li.nav-item(role="presentation")
+                button.nav-link.event-program-section__tab#day3-tab(data-bs-toggle="tab" data-bs-target="#day3" type="button" role="tab" aria-controls="day3" aria-selected="false") 3 Day
+          
+          // Tab Content
+          .tab-content#eventProgramTabContent
+            // Day 1 Content
+            .tab-pane.fade.show.active#day1(role="tabpanel" aria-labelledby="day1-tab")
+              .row
+                .col-12.col-lg-7
+                  .event-program-section__list.h-100
+                    +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+                    +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+                    +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+                    +event-program-item('11:00 - 12:00', 'Exhibition tour with the participation of official guests')
+                .col-12.col-lg-5.d-none.d-lg-block
+                  .event-program-section__image-wrapper.h-100
+                    img.event-program-section__image(src="assets/img/webp/event-programme.webp" alt="Event program Day 1" loading="lazy")
+            
+            // Day 2 Content
+            .tab-pane.fade#day2(role="tabpanel" aria-labelledby="day2-tab")
+              .row
+                .col-12.col-lg-7
+                  .event-program-section__list.h-100
+                    +event-program-item('09:00 - 10:00', 'Opening ceremony and welcome speeches')
+                    +event-program-item('10:00 - 11:30', 'Panel discussion: Future of Energy')
+                    +event-program-item('12:00 - 13:00', 'Networking lunch')
+                    +event-program-item('14:00 - 16:00', 'Technical workshops and demonstrations')
+                .col-12.col-lg-5.d-none.d-lg-block
+                  .event-program-section__image-wrapper.h-100
+                    img.event-program-section__image(src="assets/img/webp/event-programme.webp" alt="Event program Day 2" loading="lazy")
+            
+            // Day 3 Content
+            .tab-pane.fade#day3(role="tabpanel" aria-labelledby="day3-tab")
+              .row
+                .col-12.col-lg-7
+                  .event-program-section__list.h-100
+                    +event-program-item('10:00 - 11:00', 'International cooperation forum')
+                    +event-program-item('11:00 - 13:00', 'Business matchmaking sessions')
+                    +event-program-item('14:00 - 15:00', 'Technology showcase')
+                    +event-program-item('15:30 - 17:00', 'Closing ceremony and awards')
+                .col-12.col-lg-5.d-none.d-lg-block
+                  .event-program-section__image-wrapper.h-100
+                    img.event-program-section__image(src="assets/img/webp/event-programme.webp" alt="Event program Day 3" loading="lazy")
+          
+          // Action Buttons
+          .d-flex.flex-column.flex-md-row.gap-3.mt-4
+            a.btn.event-program-section__view-btn.d-lg-none(href="#")
               | View all
               i.fas.fa-arrow-right.ms-2
-            a.btn.btn-primary.event-program-section__download-btn(href="#")
+            a.btn.event-program-section__download-btn(href="#")
               | Download event programme
               i.fas.fa-arrow-right.ms-2
 
@@ -156,7 +194,7 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.product-categories-section__nav-btn.product-categories-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.product-categories-swiper(data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".product-categories-section__nav-btn--prev" data-nav-next=".product-categories-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
+          .swiper.product-categories-swiper(data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".product-categories-section__nav-btn--prev" data-nav-next=".product-categories-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
             .swiper-wrapper
               +product-category-card('Building materials and products', 'assets/img/webp/categorie1.webp')
               +product-category-card('Ceramic and stone', 'assets/img/webp/categorie2.webp')
@@ -224,32 +262,32 @@ block content
                 i.fas.fa-arrow-left
               button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.photo-section__nav-btn.photo-section__nav-btn--next(type="button" aria-label="Next")
                 i.fas.fa-arrow-right
-          .swiper.photo-swiper.overflow-hidden(data-swiper data-slides-per-view="6" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next" data-breakpoints='{"576":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3},"1200":{"slidesPerView":6}}')
+          .swiper.photo-swiper.overflow-hidden(data-swiper data-slides-per-view="4" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next" data-breakpoints='{"0":{"slidesPerView":4,"direction":"vertical","spaceBetween":16},"768":{"slidesPerView":4,"direction":"horizontal","spaceBetween":24},"992":{"slidesPerView":4,"direction":"horizontal"},"1200":{"slidesPerView":6,"direction":"horizontal"}}')
             .swiper-wrapper
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy")
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy")
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy")
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy")
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy")
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy")
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy")
               .swiper-slide
                 .photo-section__image-wrapper.position-relative.overflow-hidden.rounded-4
-                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;")
+                  img.photo-section__image.w-100.h-100(src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy")
 
   // Testimonials Section
   include ../mixins/_testimonial-card
@@ -268,11 +306,18 @@ block content
       .testimonials-section__background
         img.testimonials-section__bg-image(src="assets/img/webp/testimonials-bg.webp" alt="" aria-hidden="true")
       .testimonials-section__overlay
-      .swiper.testimonials-swiper(data-swiper data-slides-per-view="3" data-space-between="20" data-loop="true" data-nav-prev=".testimonials-section__nav-btn--prev" data-nav-next=".testimonials-section__nav-btn--next" data-breakpoints='{"768":{"slidesPerView":2},"992":{"slidesPerView":3}}')
-        .swiper-wrapper
-          +testimonial-card('Cameron Williamson', 'Big Kahuna Burger Ltd.', 'https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.')
-          +testimonial-card('Guy Hawkins', 'Abstergo Ltd.', 'https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&w=740&q=80', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.')
-          +testimonial-card('Robert Fox', 'Binford Ltd.', 'https://plus.unsplash.com/premium_photo-1661726660137-61b182d93809?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.')
+      .testimonials-section__slider-container
+        .swiper.testimonials-swiper.overflow-hidden(data-swiper data-slides-per-view="1" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".testimonials-section__nav-btn--prev" data-nav-next=".testimonials-section__nav-btn--next" data-breakpoints='{"0":{"slidesPerView":1,"spaceBetween":16},"768":{"slidesPerView":2,"spaceBetween":24},"992":{"slidesPerView":2},"1200":{"slidesPerView":2.5},"1400":{"slidesPerView":3}}')
+          .swiper-wrapper
+            +testimonial-card('Cameron Williamson', 'Big Kahuna Burger Ltd.', 'https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.')
+            +testimonial-card('Guy Hawkins', 'Abstergo Ltd.', 'https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&w=740&q=80', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.')
+            +testimonial-card('Robert Fox', 'Binford Ltd.', 'https://plus.unsplash.com/premium_photo-1661726660137-61b182d93809?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.')
+    .col-12
+      .d-flex.d-md-none.gap-3.testimonials-section__nav.justify-content-center.justify-content-md-end.my-4
+        button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.testimonials-section__nav-btn.testimonials-section__nav-btn--prev(type="button" aria-label="Previous")
+          i.fas.fa-arrow-left
+        button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.testimonials-section__nav-btn.testimonials-section__nav-btn--next(type="button" aria-label="Next")
+          i.fas.fa-arrow-right
 
   // News Section
   section.news-section
@@ -281,69 +326,136 @@ block content
         .col-12
           .d-flex.justify-content-between.align-items-center.mb-4
             h2.news-section__title News
-            a.news-section__view-all(href="#")
+            a.news-section__view-all.d-none.d-md-flex(href="#")
               | View all
               i.fas.fa-arrow-right.ms-2
-          .row
-            .col-lg-6
-              article.news-section__featured
-                .news-section__featured-image-wrapper
-                  img.news-section__featured-image(src="assets/img/webp/news1.webp" alt="News featured" loading="lazy")
-                .news-section__featured-content
-                  .news-section__meta
-                    i.fas.fa-calendar
-                    time.news-section__date(datetime="2025-01-24") 24.01.2025
-                  h3.news-section__featured-title Preparation for the 30th Anniversary Baku Energy Week is in full swing
-                  p.news-section__featured-excerpt Preparations for the 30th Anniversary Baku Energy Week are actively underway. Baku Energy Week, a significant event in the region's energy sector, encompasses three prestigious events...
-                  a.news-section__read-more(href="#")
-                    | Read more
-                    i.fas.fa-arrow-right.ms-2
-            .col-lg-6
-              .news-section__list
-                article.news-section__item
-                  .row
-                    .col-4
-                      .news-section__item-image-wrapper
-                        img.news-section__item-image(src="assets/img/webp/news2.webp" alt="News 1" loading="lazy")
-                    .col-8
-                      .news-section__item-content
-                        .news-section__meta
-                          i.fas.fa-calendar
-                          time.news-section__date(datetime="2025-01-24") 24.01.2025
-                        h3.news-section__item-title AI is being imposed into the big picture of the energy industry
-                        a.news-section__read-more(href="#")
-                          | Read more
-                          i.fas.fa-arrow-right.ms-2
-                .news-section__divider
-                article.news-section__item
-                  .row
-                    .col-4
-                      .news-section__item-image-wrapper
-                        img.news-section__item-image(src="assets/img/webp/news3.webp" alt="News 2" loading="lazy")
-                    .col-8
-                      .news-section__item-content
-                        .news-section__meta
-                          i.fas.fa-calendar
-                          time.news-section__date(datetime="2025-01-24") 24.01.2025
-                        h3.news-section__item-title Networking meetings within the exhibition are productive
-                        a.news-section__read-more(href="#")
-                          | Read more
-                          i.fas.fa-arrow-right.ms-2
-                .news-section__divider
-                article.news-section__item
-                  .row
-                    .col-4
-                      .news-section__item-image-wrapper
-                        img.news-section__item-image(src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="News 3" loading="lazy")
-                    .col-8
-                      .news-section__item-content
-                        .news-section__meta
-                          i.fas.fa-calendar
-                          time.news-section__date(datetime="2025-01-24") 24.01.2025
-                        h3.news-section__item-title Networking meetings within the exhibition are productive
-                        a.news-section__read-more(href="#")
-                          | Read more
-                          i.fas.fa-arrow-right.ms-2
+    .bg-section
+      .container
+        .row.d-none.d-lg-flex
+          .col-lg-6
+            article.news-section__featured
+              .news-section__featured-image-wrapper
+                img.news-section__featured-image(src="assets/img/webp/news1.webp" alt="News featured" loading="lazy")
+              .news-section__featured-content
+                .news-section__meta
+                  i.fas.fa-calendar
+                  time.news-section__date(datetime="2025-01-24") 24.01.2025
+                h3.news-section__featured-title Preparation for the 30th Anniversary Baku Energy Week is in full swing
+                p.news-section__featured-excerpt Preparations for the 30th Anniversary Baku Energy Week are actively underway. Baku Energy Week, a significant event in the region's energy sector, encompasses three prestigious events...
+                a.news-section__read-more(href="#")
+                  | Read more
+                  i.fas.fa-arrow-right.ms-2
+          .col-lg-6
+            .news-section__list
+              article.news-section__item
+                .row.g-3
+                  .col-4
+                    .news-section__item-image-wrapper
+                      img.news-section__item-image(src="assets/img/webp/news2.webp" alt="News 1" loading="lazy")
+                  .col-8
+                    .news-section__item-content
+                      .news-section__meta
+                        i.fas.fa-calendar
+                        time.news-section__date(datetime="2025-01-24") 24.01.2025
+                      h3.news-section__item-title AI is being imposed into the big picture of the energy industry
+                      a.news-section__read-more(href="#")
+                        | Read more
+                        i.fas.fa-arrow-right.ms-2
+              .news-section__divider
+              article.news-section__item
+                .row.g-3
+                  .col-4
+                    .news-section__item-image-wrapper
+                      img.news-section__item-image(src="assets/img/webp/news3.webp" alt="News 2" loading="lazy")
+                  .col-8
+                    .news-section__item-content
+                      .news-section__meta
+                        i.fas.fa-calendar
+                        time.news-section__date(datetime="2025-01-24") 24.01.2025
+                      h3.news-section__item-title Networking meetings within the exhibition are productive
+                      a.news-section__read-more(href="#")
+                        | Read more
+                        i.fas.fa-arrow-right.ms-2
+              .news-section__divider
+              article.news-section__item
+                .row.g-3
+                  .col-4
+                    .news-section__item-image-wrapper
+                      img.news-section__item-image(src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="News 3" loading="lazy")
+                  .col-8
+                    .news-section__item-content
+                      .news-section__meta
+                        i.fas.fa-calendar
+                        time.news-section__date(datetime="2025-01-24") 24.01.2025
+                      h3.news-section__item-title Networking meetings within the exhibition are productive
+                      a.news-section__read-more(href="#")
+                        | Read more
+                        i.fas.fa-arrow-right.ms-2
+        
+        // Mobile News Slider
+        .row.d-lg-none
+          .col-12
+            .swiper.news-swiper.overflow-hidden(data-swiper data-slides-per-view="1" data-space-between="16" data-loop="false")
+              .swiper-wrapper
+                .swiper-slide
+                  article.news-section__card
+                    .news-section__card-image-wrapper
+                      img.news-section__card-image(src="assets/img/webp/news1.webp" alt="News 1" loading="lazy")
+                    .news-section__card-content
+                      .news-section__meta
+                        i.fas.fa-calendar
+                        time.news-section__date(datetime="2025-01-24") 24.01.2025
+                      h3.news-section__card-title Preparation for the 30th Anniversary Baku Energy Week is in full swing
+                      p.news-section__card-excerpt Preparations for the 30th Anniversary Baku Energy Week are actively underway. Baku Energy Week, a significant event in the region's energy sector, encompasses three prestigious events...
+                      a.news-section__read-more(href="#")
+                        | Read more
+                        i.fas.fa-arrow-right.ms-2
+                .swiper-slide
+                  article.news-section__card
+                    .news-section__card-image-wrapper
+                      img.news-section__card-image(src="assets/img/webp/news2.webp" alt="News 2" loading="lazy")
+                    .news-section__card-content
+                      .news-section__meta
+                        i.fas.fa-calendar
+                        time.news-section__date(datetime="2025-01-24") 24.01.2025
+                      h3.news-section__card-title AI is being imposed into the big picture of the energy industry
+                      p.news-section__card-excerpt Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                      a.news-section__read-more(href="#")
+                        | Read more
+                        i.fas.fa-arrow-right.ms-2
+                .swiper-slide
+                  article.news-section__card
+                    .news-section__card-image-wrapper
+                      img.news-section__card-image(src="assets/img/webp/news3.webp" alt="News 3" loading="lazy")
+                    .news-section__card-content
+                      .news-section__meta
+                        i.fas.fa-calendar
+                        time.news-section__date(datetime="2025-01-24") 24.01.2025
+                      h3.news-section__card-title Networking meetings within the exhibition are productive
+                      p.news-section__card-excerpt There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+                      a.news-section__read-more(href="#")
+                        | Read more
+                        i.fas.fa-arrow-right.ms-2
+                .swiper-slide
+                  article.news-section__card
+                    .news-section__card-image-wrapper
+                      img.news-section__card-image(src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="News 4" loading="lazy")
+                    .news-section__card-content
+                      .news-section__meta
+                        i.fas.fa-calendar
+                        time.news-section__date(datetime="2025-01-24") 24.01.2025
+                      h3.news-section__card-title Networking meetings within the exhibition are productive
+                      p.news-section__card-excerpt There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+                      a.news-section__read-more(href="#")
+                        | Read more
+                        i.fas.fa-arrow-right.ms-2
+        
+        // Mobile View All Button
+        .row.d-lg-none.mt-4
+          .col-12
+            a.news-section__view-all-btn(href="#")
+              | View all
+              i.fas.fa-arrow-right.ms-2
 
   // Official Hotel Section
   section.official-hotel-section

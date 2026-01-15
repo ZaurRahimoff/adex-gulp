@@ -1,0 +1,36 @@
+//- Миксин для кнопки "Add to Calendar"
+//- Использование: 
+//- +add-to-calendar('Event Title', 'Event Description', 'Location', '2025-06-03T09:00:00', '2025-06-05T18:00:00', 'Asia/Baku', '3-5 June, 2025')
+mixin add-to-calendar(title, description, location, startDate, endDate, timezone, displayText)
+  .topbar__info-item.topbar__calendar.dropdown(
+    data-event-title=title
+    data-event-description=description
+    data-event-location=location
+    data-event-start=startDate
+    data-event-end=endDate
+    data-event-timezone=timezone
+  )
+    button.topbar__calendar-btn.d-flex.align-items-center.border-0.bg-transparent.p-0(type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Add to calendar")
+      i.fa-regular.fa-calendar-plus
+      span= displayText
+    ul.topbar__calendar-dropdown.dropdown-menu.dropdown-menu-start
+      li
+        a.dropdown-item(href="#" data-calendar="google")
+          i.fa-brands.fa-google.me-2
+          | Google Calendar
+      li
+        a.dropdown-item(href="#" data-calendar="ical")
+          i.fa-regular.fa-calendar.me-2
+          | Apple Calendar
+      li
+        a.dropdown-item(href="#" data-calendar="outlook")
+          i.fa-brands.fa-microsoft.me-2
+          | Outlook Calendar
+      li
+        a.dropdown-item(href="#" data-calendar="outlookcom")
+          i.fa-regular.fa-envelope.me-2
+          | Outlook.com
+      li
+        a.dropdown-item(href="#" data-calendar="yahoo")
+          i.fa-brands.fa-yahoo.me-2
+          | Yahoo Calendar

@@ -47,23 +47,23 @@ block content
         .col-12
           ul.nav.nav-tabs.ep__tabs.justify-content-start.justify-content-md-center.mb-4(role="tablist")
             li.nav-item(role="presentation")
-              button.nav-link.ep__tab#press-conference-tab(
+              button.nav-link.ep__tab.active#press-conference-tab(
                 data-bs-toggle="tab"
                 data-bs-target="#press-conference"
                 type="button"
                 role="tab"
                 aria-controls="press-conference"
-                aria-selected="false"
+                aria-selected="true"
                 data-type="press-conference"
               ) Press Conference
             li.nav-item(role="presentation")
-              button.nav-link.ep__tab.active#day-1-tab(
+              button.nav-link.ep__tab#day-1-tab(
                 data-bs-toggle="tab"
                 data-bs-target="#day-1"
                 type="button"
                 role="tab"
                 aria-controls="day-1"
-                aria-selected="true"
+                aria-selected="false"
                 data-type="day"
                 data-day="1"
               ) 1 Day
@@ -99,7 +99,7 @@ block content
           // Tab Content
           .tab-content#events-programme
             // Press Conference Tab
-            .tab-pane.fade#press-conference(role="tabpanel" aria-labelledby="press-conference-tab")
+            .tab-pane.fade.show.active#press-conference(role="tabpanel" aria-labelledby="press-conference-tab")
               // Press Conference content will be here
               .row.mb-4
                 .col-12
@@ -112,7 +112,7 @@ block content
                         p.ep__event-title Press Conference content will be added here
 
             // Day 1 Tab
-            .tab-pane.fade.show.active#day-1(role="tabpanel" aria-labelledby="day-1-tab")
+            .tab-pane.fade#day-1(role="tabpanel" aria-labelledby="day-1-tab")
               // Day Header Block
               .row.mb-4
                 .col-12

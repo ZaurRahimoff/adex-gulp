@@ -86,6 +86,7 @@ function parseSwiperConfig(element) {
     loop: element.dataset.loop === 'true' || element.dataset.loop === '',
     centeredSlides: element.dataset.centeredSlides === 'true' || element.dataset.centeredSlides === '',
     speed: parseInt(element.dataset.speed) || 300,
+    direction: element.dataset.direction || 'horizontal',
     autoplay: element.dataset.autoplay ? {
       delay: parseInt(element.dataset.autoplayDelay) || 3000,
       disableOnInteraction: element.dataset.autoplayDisableOnInteraction !== 'false'

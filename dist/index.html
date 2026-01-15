@@ -103,7 +103,16 @@
             </div>
             <div class="topbar__right d-flex align-items-center">
               <div class="topbar__info d-none d-lg-flex align-items-center">
-                <div class="topbar__info-item d-flex align-items-center"><i class="fa-regular fa-calendar-plus"></i><span>3-5 June, 2025</span></div>
+                                <div class="topbar__info-item topbar__calendar dropdown" data-event-title="30th Anniversary Azerbaijan International Construction Exhibition" data-event-description="ADEX - Azerbaijan International Construction Exhibition" data-event-location="Baku Expo Center, Azerbaijan" data-event-start="2025-06-03T09:00:00" data-event-end="2025-06-05T18:00:00" data-event-timezone="Asia/Baku">
+                                  <button class="topbar__calendar-btn d-flex align-items-center border-0 bg-transparent p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Add to calendar"><i class="fa-regular fa-calendar-plus"></i><span>3-5 June, 2025</span></button>
+                                  <ul class="topbar__calendar-dropdown dropdown-menu dropdown-menu-start">
+                                    <li><a class="dropdown-item" href="#" data-calendar="google"><i class="fa-brands fa-google me-2"></i>Google Calendar</a></li>
+                                    <li><a class="dropdown-item" href="#" data-calendar="ical"><i class="fa-regular fa-calendar me-2"></i>Apple Calendar</a></li>
+                                    <li><a class="dropdown-item" href="#" data-calendar="outlook"><i class="fa-brands fa-microsoft me-2"></i>Outlook Calendar</a></li>
+                                    <li><a class="dropdown-item" href="#" data-calendar="outlookcom"><i class="fa-regular fa-envelope me-2"></i>Outlook.com</a></li>
+                                    <li><a class="dropdown-item" href="#" data-calendar="yahoo"><i class="fa-brands fa-yahoo me-2"></i>Yahoo Calendar</a></li>
+                                  </ul>
+                                </div>
                 <div class="topbar__divider"></div>
                 <div class="topbar__info-item d-flex align-items-center"><i class="fa-regular fa-location-dot"></i><span>Baku Expo Center</span></div>
               </div>
@@ -286,7 +295,7 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center sponsors-section__nav-btn sponsors-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper sponsors-swiper" data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-section__nav-btn--prev" data-nav-next=".sponsors-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
+              <div class="swiper sponsors-swiper" data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-section__nav-btn--prev" data-nav-next=".sponsors-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide">
                           <div class="sponsor-card">
@@ -348,7 +357,7 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center support-section__nav-btn support-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper support-swiper" data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".support-section__nav-btn--prev" data-nav-next=".support-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
+              <div class="swiper support-swiper" data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".support-section__nav-btn--prev" data-nav-next=".support-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide">
                           <div class="sponsor-card">
@@ -403,48 +412,135 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <div class="d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap gap-3 w-100 mb-4">
+              <!-- Header with tabs (Desktop: inline, Mobile: stacked)-->
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
                 <h2 class="event-program-section__title">Event program</h2>
-                <div class="d-flex gap-3 event-program-section__tabs">
-                  <button class="btn event-program-section__tab event-program-section__tab--active" type="button" data-day="1">1 Day</button>
-                  <button class="btn event-program-section__tab" type="button" data-day="2">2 Day</button>
-                  <button class="btn event-program-section__tab" type="button" data-day="3">3 Day</button>
-                </div>
+                <!-- Bootstrap Nav Tabs-->
+                <ul class="nav nav-tabs event-program-section__tabs border-0" id="eventProgramTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link event-program-section__tab active" id="day1-tab" data-bs-toggle="tab" data-bs-target="#day1" type="button" role="tab" aria-controls="day1" aria-selected="true">1 Day</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link event-program-section__tab" id="day2-tab" data-bs-toggle="tab" data-bs-target="#day2" type="button" role="tab" aria-controls="day2" aria-selected="false">2 Day</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link event-program-section__tab" id="day3-tab" data-bs-toggle="tab" data-bs-target="#day3" type="button" role="tab" aria-controls="day3" aria-selected="false">3 Day</button>
+                  </li>
+                </ul>
               </div>
-              <div class="row">
-                <div class="col-12 col-lg-7">
-                  <div class="event-program-section__list h-100">
-                          <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
-                            <div class="event-program-item__content">
-                              <h3 class="event-program-item__time">11:00 - 12:00</h3>
-                              <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
-                            </div>
-                          </div>
-                          <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
-                            <div class="event-program-item__content">
-                              <h3 class="event-program-item__time">11:00 - 12:00</h3>
-                              <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
-                            </div>
-                          </div>
-                          <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
-                            <div class="event-program-item__content">
-                              <h3 class="event-program-item__time">11:00 - 12:00</h3>
-                              <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
-                            </div>
-                          </div>
-                          <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
-                            <div class="event-program-item__content">
-                              <h3 class="event-program-item__time">11:00 - 12:00</h3>
-                              <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
-                            </div>
-                          </div>
+              <!-- Tab Content-->
+              <div class="tab-content" id="eventProgramTabContent">
+                <!-- Day 1 Content-->
+                <div class="tab-pane fade show active" id="day1" role="tabpanel" aria-labelledby="day1-tab">
+                  <div class="row">
+                    <div class="col-12 col-lg-7">
+                      <div class="event-program-section__list h-100">
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">11:00 - 12:00</h3>
+                                  <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">11:00 - 12:00</h3>
+                                  <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">11:00 - 12:00</h3>
+                                  <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">11:00 - 12:00</h3>
+                                  <p class="event-program-item__description">Exhibition tour with the participation of official guests</p>
+                                </div>
+                              </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-5 d-none d-lg-block">
+                      <div class="event-program-section__image-wrapper h-100"><img class="event-program-section__image" src="assets/img/webp/event-programme.webp" alt="Event program Day 1" loading="lazy"></div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-12 col-lg-5 d-none d-md-block">
-                  <div class="event-program-section__image-wrapper h-100"><img class="event-program-section__image" src="assets/img/webp/event-programme.webp" alt="Event program" loading="lazy"></div>
+                <!-- Day 2 Content-->
+                <div class="tab-pane fade" id="day2" role="tabpanel" aria-labelledby="day2-tab">
+                  <div class="row">
+                    <div class="col-12 col-lg-7">
+                      <div class="event-program-section__list h-100">
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">09:00 - 10:00</h3>
+                                  <p class="event-program-item__description">Opening ceremony and welcome speeches</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">10:00 - 11:30</h3>
+                                  <p class="event-program-item__description">Panel discussion: Future of Energy</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">12:00 - 13:00</h3>
+                                  <p class="event-program-item__description">Networking lunch</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">14:00 - 16:00</h3>
+                                  <p class="event-program-item__description">Technical workshops and demonstrations</p>
+                                </div>
+                              </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-5 d-none d-lg-block">
+                      <div class="event-program-section__image-wrapper h-100"><img class="event-program-section__image" src="assets/img/webp/event-programme.webp" alt="Event program Day 2" loading="lazy"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Day 3 Content-->
+                <div class="tab-pane fade" id="day3" role="tabpanel" aria-labelledby="day3-tab">
+                  <div class="row">
+                    <div class="col-12 col-lg-7">
+                      <div class="event-program-section__list h-100">
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">10:00 - 11:00</h3>
+                                  <p class="event-program-item__description">International cooperation forum</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">11:00 - 13:00</h3>
+                                  <p class="event-program-item__description">Business matchmaking sessions</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">14:00 - 15:00</h3>
+                                  <p class="event-program-item__description">Technology showcase</p>
+                                </div>
+                              </div>
+                              <div class="event-program-item"><i class="fas fa-clock event-program-item__icon"></i>
+                                <div class="event-program-item__content">
+                                  <h3 class="event-program-item__time">15:30 - 17:00</h3>
+                                  <p class="event-program-item__description">Closing ceremony and awards</p>
+                                </div>
+                              </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-5 d-none d-lg-block">
+                      <div class="event-program-section__image-wrapper h-100"><img class="event-program-section__image" src="assets/img/webp/event-programme.webp" alt="Event program Day 3" loading="lazy"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="d-flex flex-wrap flex-md-nowrap gap-3 mt-4"><a class="btn btn-primary event-program-section__view-btn d-block d-md-none" href="#">View all<i class="fas fa-arrow-right ms-2"></i></a><a class="btn btn-primary event-program-section__download-btn" href="#">Download event programme<i class="fas fa-arrow-right ms-2"></i></a></div>
+              <!-- Action Buttons-->
+              <div class="d-flex flex-column flex-md-row gap-3 mt-4"><a class="btn event-program-section__view-btn d-lg-none" href="#">View all<i class="fas fa-arrow-right ms-2"></i></a><a class="btn event-program-section__download-btn" href="#">Download event programme<i class="fas fa-arrow-right ms-2"></i></a></div>
             </div>
           </div>
         </div>
@@ -461,7 +557,7 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center product-categories-section__nav-btn product-categories-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper product-categories-swiper" data-swiper data-slides-per-view="1" data-space-between="20" data-loop="true" data-nav-prev=".product-categories-section__nav-btn--prev" data-nav-next=".product-categories-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
+              <div class="swiper product-categories-swiper" data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".product-categories-section__nav-btn--prev" data-nav-next=".product-categories-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:2},&quot;768&quot;:{&quot;slidesPerView&quot;:3},&quot;992&quot;:{&quot;slidesPerView&quot;:4},&quot;1200&quot;:{&quot;slidesPerView&quot;:5},&quot;1440&quot;:{&quot;slidesPerView&quot;:6}}">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide">
                           <div class="product-category-card">
@@ -579,31 +675,31 @@
                   <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center photo-section__nav-btn photo-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
                 </div>
               </div>
-              <div class="swiper photo-swiper overflow-hidden" data-swiper data-slides-per-view="6" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next" data-breakpoints="{&quot;576&quot;:{&quot;slidesPerView&quot;:1},&quot;768&quot;:{&quot;slidesPerView&quot;:2},&quot;992&quot;:{&quot;slidesPerView&quot;:3},&quot;1200&quot;:{&quot;slidesPerView&quot;:6}}">
+              <div class="swiper photo-swiper overflow-hidden" data-swiper data-slides-per-view="4" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".photo-section__nav-btn--prev" data-nav-next=".photo-section__nav-btn--next" data-breakpoints="{&quot;0&quot;:{&quot;slidesPerView&quot;:4,&quot;direction&quot;:&quot;vertical&quot;,&quot;spaceBetween&quot;:16},&quot;768&quot;:{&quot;slidesPerView&quot;:4,&quot;direction&quot;:&quot;horizontal&quot;,&quot;spaceBetween&quot;:24},&quot;992&quot;:{&quot;slidesPerView&quot;:4,&quot;direction&quot;:&quot;horizontal&quot;},&quot;1200&quot;:{&quot;slidesPerView&quot;:6,&quot;direction&quot;:&quot;horizontal&quot;}}">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide1.webp" alt="Photo gallery" loading="lazy"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide2.webp" alt="Photo 1" loading="lazy"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide3.webp" alt="Photo 2" loading="lazy"></div>
                   </div>
                   <div class="swiper-slide">
-                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy" style="object-fit: cover;"></div>
+                    <div class="photo-section__image-wrapper position-relative overflow-hidden rounded-4"><img class="photo-section__image w-100 h-100" src="assets/img/webp/photo-slide4.webp" alt="Photo 3" loading="lazy"></div>
                   </div>
                 </div>
               </div>
@@ -629,48 +725,56 @@
         <div class="testimonials-section__content">
           <div class="testimonials-section__background"><img class="testimonials-section__bg-image" src="assets/img/webp/testimonials-bg.webp" alt="" aria-hidden="true"></div>
           <div class="testimonials-section__overlay"></div>
-          <div class="swiper testimonials-swiper" data-swiper data-slides-per-view="3" data-space-between="20" data-loop="true" data-nav-prev=".testimonials-section__nav-btn--prev" data-nav-next=".testimonials-section__nav-btn--next" data-breakpoints="{&quot;768&quot;:{&quot;slidesPerView&quot;:2},&quot;992&quot;:{&quot;slidesPerView&quot;:3}}">
-            <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <div class="testimonial-card">
-                        <div class="testimonial-card__header">
-                          <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww" alt="Cameron Williamson" loading="lazy"></div>
-                          <div class="testimonial-card__info">
-                            <h3 class="testimonial-card__name">Cameron Williamson</h3>
-                            <p class="testimonial-card__company">Big Kahuna Burger Ltd.</p>
-                          </div><i class="fas fa-quote-right testimonial-card__quote"></i>
+          <div class="testimonials-section__slider-container">
+            <div class="swiper testimonials-swiper overflow-hidden" data-swiper data-slides-per-view="1" data-space-between="24" data-loop="true" data-centered-slides="false" data-nav-prev=".testimonials-section__nav-btn--prev" data-nav-next=".testimonials-section__nav-btn--next" data-breakpoints="{&quot;0&quot;:{&quot;slidesPerView&quot;:1,&quot;spaceBetween&quot;:16},&quot;768&quot;:{&quot;slidesPerView&quot;:2,&quot;spaceBetween&quot;:24},&quot;992&quot;:{&quot;slidesPerView&quot;:2},&quot;1200&quot;:{&quot;slidesPerView&quot;:2.5},&quot;1400&quot;:{&quot;slidesPerView&quot;:3}}">
+              <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="card testimonial-card">
+                          <div class="testimonial-card__header">
+                            <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://plus.unsplash.com/premium_photo-1661688797823-36e97735223e?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFsZSUyMGVtcGxveWVlfGVufDB8fDB8fHww" alt="Cameron Williamson" loading="lazy"></div>
+                            <div class="testimonial-card__info">
+                              <h3 class="testimonial-card__name">Cameron Williamson</h3>
+                              <p class="testimonial-card__company">Big Kahuna Burger Ltd.</p>
+                            </div><i class="fas fa-quote-right testimonial-card__quote"></i>
+                          </div>
+                          <div class="testimonial-card__divider"></div>
+                          <p class="testimonial-card__text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
                         </div>
-                        <div class="testimonial-card__divider"></div>
-                        <p class="testimonial-card__text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
                       </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="testimonial-card">
-                        <div class="testimonial-card__header">
-                          <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&amp;w=740&amp;q=80" alt="Guy Hawkins" loading="lazy"></div>
-                          <div class="testimonial-card__info">
-                            <h3 class="testimonial-card__name">Guy Hawkins</h3>
-                            <p class="testimonial-card__company">Abstergo Ltd.</p>
-                          </div><i class="fas fa-quote-right testimonial-card__quote"></i>
+                      <div class="swiper-slide">
+                        <div class="card testimonial-card">
+                          <div class="testimonial-card__header">
+                            <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://img.freepik.com/free-photo/close-up-portrait-young-bearded-man-white-shirt-jacket-posing-camera-with-broad-smile-isolated-gray_171337-629.jpg?semt=ais_hybrid&amp;w=740&amp;q=80" alt="Guy Hawkins" loading="lazy"></div>
+                            <div class="testimonial-card__info">
+                              <h3 class="testimonial-card__name">Guy Hawkins</h3>
+                              <p class="testimonial-card__company">Abstergo Ltd.</p>
+                            </div><i class="fas fa-quote-right testimonial-card__quote"></i>
+                          </div>
+                          <div class="testimonial-card__divider"></div>
+                          <p class="testimonial-card__text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
                         </div>
-                        <div class="testimonial-card__divider"></div>
-                        <p class="testimonial-card__text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
                       </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="testimonial-card">
-                        <div class="testimonial-card__header">
-                          <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://plus.unsplash.com/premium_photo-1661726660137-61b182d93809?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Robert Fox" loading="lazy"></div>
-                          <div class="testimonial-card__info">
-                            <h3 class="testimonial-card__name">Robert Fox</h3>
-                            <p class="testimonial-card__company">Binford Ltd.</p>
-                          </div><i class="fas fa-quote-right testimonial-card__quote"></i>
+                      <div class="swiper-slide">
+                        <div class="card testimonial-card">
+                          <div class="testimonial-card__header">
+                            <div class="testimonial-card__avatar-wrapper"><img class="testimonial-card__avatar" src="https://plus.unsplash.com/premium_photo-1661726660137-61b182d93809?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Robert Fox" loading="lazy"></div>
+                            <div class="testimonial-card__info">
+                              <h3 class="testimonial-card__name">Robert Fox</h3>
+                              <p class="testimonial-card__company">Binford Ltd.</p>
+                            </div><i class="fas fa-quote-right testimonial-card__quote"></i>
+                          </div>
+                          <div class="testimonial-card__divider"></div>
+                          <p class="testimonial-card__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                         </div>
-                        <div class="testimonial-card__divider"></div>
-                        <p class="testimonial-card__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                       </div>
-                    </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex d-md-none gap-3 testimonials-section__nav justify-content-center justify-content-md-end my-4">
+            <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center testimonials-section__nav-btn testimonials-section__nav-btn--prev" type="button" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+            <button class="btn btn-link p-0 border-0 rounded-circle d-flex align-items-center justify-content-center testimonials-section__nav-btn testimonials-section__nav-btn--next" type="button" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
       </section>
@@ -680,73 +784,138 @@
           <div class="row">
             <div class="col-12">
               <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="news-section__title">News</h2><a class="news-section__view-all" href="#">View all<i class="fas fa-arrow-right ms-2"></i></a>
+                <h2 class="news-section__title">News</h2><a class="news-section__view-all d-none d-md-flex" href="#">View all<i class="fas fa-arrow-right ms-2"></i></a>
               </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <article class="news-section__featured">
-                    <div class="news-section__featured-image-wrapper"><img class="news-section__featured-image" src="assets/img/webp/news1.webp" alt="News featured" loading="lazy"></div>
-                    <div class="news-section__featured-content">
-                      <div class="news-section__meta"><i class="fas fa-calendar"></i>
-                        <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
+            </div>
+          </div>
+        </div>
+        <div class="bg-section">
+          <div class="container">
+            <div class="row d-none d-lg-flex">
+              <div class="col-lg-6">
+                <article class="news-section__featured">
+                  <div class="news-section__featured-image-wrapper"><img class="news-section__featured-image" src="assets/img/webp/news1.webp" alt="News featured" loading="lazy"></div>
+                  <div class="news-section__featured-content">
+                    <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                      <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
+                    </div>
+                    <h3 class="news-section__featured-title">Preparation for the 30th Anniversary Baku Energy Week is in full swing</h3>
+                    <p class="news-section__featured-excerpt">Preparations for the 30th Anniversary Baku Energy Week are actively underway. Baku Energy Week, a significant event in the region's energy sector, encompasses three prestigious events...</p><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                  </div>
+                </article>
+              </div>
+              <div class="col-lg-6">
+                <div class="news-section__list">
+                  <article class="news-section__item">
+                    <div class="row g-3">
+                      <div class="col-4">
+                        <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/webp/news2.webp" alt="News 1" loading="lazy"></div>
                       </div>
-                      <h3 class="news-section__featured-title">Preparation for the 30th Anniversary Baku Energy Week is in full swing</h3>
-                      <p class="news-section__featured-excerpt">Preparations for the 30th Anniversary Baku Energy Week are actively underway. Baku Energy Week, a significant event in the region's energy sector, encompasses three prestigious events...</p><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                      <div class="col-8">
+                        <div class="news-section__item-content">
+                          <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                            <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
+                          </div>
+                          <h3 class="news-section__item-title">AI is being imposed into the big picture of the energy industry</h3><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <div class="news-section__divider"></div>
+                  <article class="news-section__item">
+                    <div class="row g-3">
+                      <div class="col-4">
+                        <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/webp/news3.webp" alt="News 2" loading="lazy"></div>
+                      </div>
+                      <div class="col-8">
+                        <div class="news-section__item-content">
+                          <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                            <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
+                          </div>
+                          <h3 class="news-section__item-title">Networking meetings within the exhibition are productive</h3><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <div class="news-section__divider"></div>
+                  <article class="news-section__item">
+                    <div class="row g-3">
+                      <div class="col-4">
+                        <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="News 3" loading="lazy"></div>
+                      </div>
+                      <div class="col-8">
+                        <div class="news-section__item-content">
+                          <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                            <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
+                          </div>
+                          <h3 class="news-section__item-title">Networking meetings within the exhibition are productive</h3><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                      </div>
                     </div>
                   </article>
                 </div>
-                <div class="col-lg-6">
-                  <div class="news-section__list">
-                    <article class="news-section__item">
-                      <div class="row">
-                        <div class="col-4">
-                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/webp/news2.webp" alt="News 1" loading="lazy"></div>
-                        </div>
-                        <div class="col-8">
-                          <div class="news-section__item-content">
-                            <div class="news-section__meta"><i class="fas fa-calendar"></i>
-                              <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
-                            </div>
-                            <h3 class="news-section__item-title">AI is being imposed into the big picture of the energy industry</h3><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+              </div>
+            </div>
+            <!-- Mobile News Slider-->
+            <div class="row d-lg-none">
+              <div class="col-12">
+                <div class="swiper news-swiper overflow-hidden" data-swiper data-slides-per-view="1" data-space-between="16" data-loop="false">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <article class="news-section__card">
+                        <div class="news-section__card-image-wrapper"><img class="news-section__card-image" src="assets/img/webp/news1.webp" alt="News 1" loading="lazy"></div>
+                        <div class="news-section__card-content">
+                          <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                            <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
                           </div>
+                          <h3 class="news-section__card-title">Preparation for the 30th Anniversary Baku Energy Week is in full swing</h3>
+                          <p class="news-section__card-excerpt">Preparations for the 30th Anniversary Baku Energy Week are actively underway. Baku Energy Week, a significant event in the region's energy sector, encompasses three prestigious events...</p><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
                         </div>
-                      </div>
-                    </article>
-                    <div class="news-section__divider"></div>
-                    <article class="news-section__item">
-                      <div class="row">
-                        <div class="col-4">
-                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="assets/img/webp/news3.webp" alt="News 2" loading="lazy"></div>
-                        </div>
-                        <div class="col-8">
-                          <div class="news-section__item-content">
-                            <div class="news-section__meta"><i class="fas fa-calendar"></i>
-                              <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
-                            </div>
-                            <h3 class="news-section__item-title">Networking meetings within the exhibition are productive</h3><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                      </article>
+                    </div>
+                    <div class="swiper-slide">
+                      <article class="news-section__card">
+                        <div class="news-section__card-image-wrapper"><img class="news-section__card-image" src="assets/img/webp/news2.webp" alt="News 2" loading="lazy"></div>
+                        <div class="news-section__card-content">
+                          <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                            <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
                           </div>
+                          <h3 class="news-section__card-title">AI is being imposed into the big picture of the energy industry</h3>
+                          <p class="news-section__card-excerpt">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
                         </div>
-                      </div>
-                    </article>
-                    <div class="news-section__divider"></div>
-                    <article class="news-section__item">
-                      <div class="row">
-                        <div class="col-4">
-                          <div class="news-section__item-image-wrapper"><img class="news-section__item-image" src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="News 3" loading="lazy"></div>
-                        </div>
-                        <div class="col-8">
-                          <div class="news-section__item-content">
-                            <div class="news-section__meta"><i class="fas fa-calendar"></i>
-                              <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
-                            </div>
-                            <h3 class="news-section__item-title">Networking meetings within the exhibition are productive</h3><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                      </article>
+                    </div>
+                    <div class="swiper-slide">
+                      <article class="news-section__card">
+                        <div class="news-section__card-image-wrapper"><img class="news-section__card-image" src="assets/img/webp/news3.webp" alt="News 3" loading="lazy"></div>
+                        <div class="news-section__card-content">
+                          <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                            <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
                           </div>
+                          <h3 class="news-section__card-title">Networking meetings within the exhibition are productive</h3>
+                          <p class="news-section__card-excerpt">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
                         </div>
-                      </div>
-                    </article>
+                      </article>
+                    </div>
+                    <div class="swiper-slide">
+                      <article class="news-section__card">
+                        <div class="news-section__card-image-wrapper"><img class="news-section__card-image" src="https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500" alt="News 4" loading="lazy"></div>
+                        <div class="news-section__card-content">
+                          <div class="news-section__meta"><i class="fas fa-calendar"></i>
+                            <time class="news-section__date" datetime="2025-01-24">24.01.2025</time>
+                          </div>
+                          <h3 class="news-section__card-title">Networking meetings within the exhibition are productive</h3>
+                          <p class="news-section__card-excerpt">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p><a class="news-section__read-more" href="#">Read more<i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                      </article>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <!-- Mobile View All Button-->
+            <div class="row d-lg-none mt-4">
+              <div class="col-12"><a class="news-section__view-all-btn" href="#">View all<i class="fas fa-arrow-right ms-2"></i></a></div>
             </div>
           </div>
         </div>
@@ -770,7 +939,7 @@
     <footer class="footer">
       <div class="container">
         <!-- Top section: Logo, Social Media, Scroll to Top-->
-        <div class="footer__top d-flex justify-content-between align-items-center"><a class="footer__logo-wrapper" href="/"><img class="footer__logo" src="https://adex.az/projects/adex/assets/logolight.webp?v=96.2.12" alt="ADEX Logo" loading="lazy"></a>
+        <div class="footer__top d-flex justify-content-between align-items-center"><a class="footer__logo-wrapper me-auto me-md-0" href="/"><img class="footer__logo" src="https://adex.az/projects/adex/assets/logolight.webp?v=96.2.12" alt="ADEX Logo" loading="lazy"></a>
           <div class="footer__social-wrapper d-flex align-items-center gap-4">
             <div class="footer__social"><a class="footer__social-link" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a class="footer__social-link" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a class="footer__social-link" href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a><a class="footer__social-link" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a class="footer__social-link" href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a><a class="footer__social-link" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a class="footer__social-link" href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a></div>
             <button class="footer__scroll-top" type="button" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>

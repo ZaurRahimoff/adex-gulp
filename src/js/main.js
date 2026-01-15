@@ -11,6 +11,7 @@ import { initDataTablesModule } from './modules/datatables';
 import { initFancybox } from './modules/fancybox';
 import { initPhoneInput } from './modules/phone-input';
 import { initFileUpload } from './modules/file-upload';
+import { initAddToCalendar } from './modules/add-to-calendar';
 
 // Инициализация всех модулей после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
@@ -46,5 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация File Upload
   initFileUpload();
+
+  // Инициализация Add to Calendar
+  initAddToCalendar();
 });
 

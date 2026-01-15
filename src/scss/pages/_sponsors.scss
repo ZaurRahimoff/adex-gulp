@@ -1,0 +1,151 @@
+// ============================================
+// Sponsors Page
+// ============================================
+
+.sponsors-page {
+  padding: 0;
+
+  // Section spacing
+  &__section {
+    margin-bottom: 80px;
+
+    @include lg-down {
+      margin-bottom: 60px;
+    }
+
+    @include md-down {
+      margin-bottom: 48px;
+    }
+
+    @include sm-down {
+      margin-bottom: 40px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Section Title
+  &__section-title {
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    color: var(--primary);
+    margin: 0;
+
+    @include lg-down {
+      font-size: 28px;
+    }
+
+    @include md-down {
+      font-size: 24px;
+    }
+
+    @include sm-down {
+      font-size: 20px;
+    }
+  }
+
+  // Navigation Buttons
+  &__nav {
+    display: flex;
+    gap: 16px;
+
+    @include sm-down {
+      gap: 12px;
+    }
+  }
+
+  &__nav-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--card-2);
+    color: var(--primary);
+    font-size: 20px;
+    border-radius: 50%;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @include sm-down {
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+    }
+
+    i {
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      background: var(--primary);
+      color: var(--white);
+
+      i {
+        transform: scale(1.1);
+      }
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Swiper Container
+  &__swiper {
+    overflow: visible;
+    width: 100%;
+
+    @include md-down {
+      overflow: hidden;
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+  }
+}
+
+// Page Title (from global styles, override if needed)
+.page-title {
+  font-size: 40px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  margin: 0;
+
+  @include lg-down {
+    font-size: 32px;
+  }
+
+  @include md-down {
+    font-size: 28px;
+  }
+
+  @include sm-down {
+    font-size: 24px;
+  }
+}
+
+// Page Spacing (from global styles, override if needed)
+.page__spacing {
+  padding: 40px 0 80px;
+
+  @include lg-down {
+    padding: 32px 0 60px;
+  }
+
+  @include md-down {
+    padding: 24px 0 48px;
+  }
+
+  @include sm-down {
+    padding: 20px 0 40px;
+  }
+}
