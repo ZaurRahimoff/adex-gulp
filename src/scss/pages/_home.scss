@@ -21,56 +21,40 @@
   &__video-wrapper {
     position: absolute;
     inset: 0;
-    z-index: 1;
-  }
+    z-index: -1;
 
-  &__video-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(175.36deg, rgba(255, 255, 255, 0) 8.94%, rgba(255, 255, 255, 1) 86.56%);
-    z-index: 2;
-  }
-
-  &__play-btn {
-    text-decoration: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 86px;
-    height: 86px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-size: 36px;
-
-    @include lg-down {
-      width: 56px;
-      height: 56px;
-      font-size: 24px;
+    // lite-youtube на всю высоту
+    .yt-video--lite {
+      height: 100%;
+      width: 100%;
+      
+      lite-youtube {
+        height: 100%;
+        width: 100%;
+        
+        iframe {
+          object-fit: cover;
+        }
+      }
     }
 
-    i {
-      font-size: 80px;
+    &:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(175.36deg, rgba(255, 255, 255, 0) 8.94%, rgba(255, 255, 255, 1) 86.56%);
+      z-index: 2;
+      pointer-events: none;
     }
   }
+
+  // &__overlay {
+  //   position: absolute;
+  //   inset: 0;
+  //   background: linear-gradient(175.36deg, rgba(255, 255, 255, 0) 8.94%, rgba(255, 255, 255, 1) 86.56%);
+  //   z-index: 2;
+  //   pointer-events: none;
+  // }
 
   &__content {
     position: relative;
@@ -287,10 +271,10 @@
 // Sponsors Section
 // ============================================
 .sponsors-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   &__title {
@@ -387,10 +371,10 @@
 // Support Section
 // ============================================
 .support-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   &__title {
@@ -429,10 +413,10 @@
 // Product Categories Section
 // ============================================
 .product-categories-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   &__title {
@@ -502,10 +486,10 @@
 // Event Program Section
 // ============================================
 .event-program-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   @include md-down {
@@ -861,10 +845,10 @@
 // Video Section
 // ============================================
 .video-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   &__wrapper {
@@ -876,35 +860,22 @@
     @include lg-down {
       height: 224px;
     }
-  }
 
-  &__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__play-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 86px;
-    height: 86px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-size: 36px;
-
-    @include lg-down {
-      width: 56px;
-      height: 56px;
-      font-size: 24px;
+    // lite-youtube на всю высоту
+    .yt-video--lite {
+      height: 100%;
+      width: 100%;
+      
+      lite-youtube {
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        
+        iframe {
+          object-fit: cover;
+          border-radius: 20px;
+        }
+      }
     }
   }
 }
@@ -913,10 +884,10 @@
 // Photo Section
 // ============================================
 .photo-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   &__title {
@@ -1074,14 +1045,14 @@
 
   &__content {
     position: relative;
-    padding: 80px 0;
+    padding: 40px 0;
     min-height: 591px;
     display: flex;
     align-items: center;
     overflow: visible;
 
     @include lg-down {
-      padding: 40px 0;
+      padding: 20px 0;
       min-height: 372px;
     }
   }
@@ -1145,7 +1116,7 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    padding-left: calc((100% - 1140px) / 2);
+    padding-left: calc((100% - 1340px) / 2);
 
     @media (max-width: 1199px) {
       padding-left: calc((100% - 960px) / 2);
@@ -1295,10 +1266,10 @@
 // Venue Section
 // ============================================
 .venue-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   &__title {
@@ -1494,7 +1465,7 @@
     padding: 60px 0;
 
     @include lg-down {
-      padding: 40px 0;
+      padding: 20px 0;
     }
 
     @include md-down {
@@ -1654,7 +1625,7 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    height: 100%;
+    // height: 100%;
     justify-content: space-between;
   }
 
@@ -1741,11 +1712,11 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    background: var(--white);
+    // background: var(--white);
     border-radius: 16px;
     overflow: hidden;
     height: 100%;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+    // box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
 
     @include sm-down {
       border-radius: 12px;
@@ -1780,7 +1751,7 @@
     flex: 1;
 
     @include sm-down {
-      padding: 20px;
+      padding: 20px 0;
       gap: 12px;
     }
   }
@@ -1854,10 +1825,10 @@
 // Official Hotel Section
 // ============================================
 .official-hotel-section {
-  padding: 80px 0;
+  padding: 40px 0;
 
   @include lg-down {
-    padding: 40px 0;
+    padding: 20px 0;
   }
 
   &__title {

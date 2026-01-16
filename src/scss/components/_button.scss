@@ -169,13 +169,13 @@
 
     @include lg-down {
       padding: 20px 48px;
-      font-size: var(--font-size-body2);
+      font-size: var(--font-size-body1);
       width: 100%;
     }
 
     @include md-down {
       padding: 18px 30px;
-      font-size: var(--font-size-body1);
+      font-size: var(--font-size-body3);
       border-radius: 40px;
     }
   }

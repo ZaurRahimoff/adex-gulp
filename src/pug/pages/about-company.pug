@@ -17,6 +17,7 @@ block content
 	])
 
 	// About Company Section
+	include ../mixins/_yt-video
 	section.about-company-section
 		.container
 			// Page Title
@@ -24,7 +25,7 @@ block content
 
 			// Video Block
 			.about-company-section__video
-				lite-youtube(videoid="wfsTGsXGKvE" params="controls=1&modestbranding=1&rel=0")
+				+yt-video('wfsTGsXGKvE', null, { buttonStyle: 'primary' })
 
 			// Content Block (Logo + Text)
 			.about-company-section__content
