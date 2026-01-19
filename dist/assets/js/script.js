@@ -13,6 +13,9 @@ var _fancybox = require("./modules/fancybox");
 var _phoneInput = require("./modules/phone-input");
 var _fileUpload = require("./modules/file-upload");
 var _addToCalendar = require("./modules/add-to-calendar");
+var _loadMoreEventsProgramme = require("./modules/load-more-events-programme");
+var _loadMoreSpeakers = require("./modules/load-more-speakers");
+var _loadMoreCategories = require("./modules/load-more-categories");
 // Main JavaScript file
 // Импорт модулей
 
@@ -53,9 +56,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Инициализация Add to Calendar
   (0, _addToCalendar.initAddToCalendar)();
+
+  // Инициализация Load More функциональности
+  (0, _loadMoreEventsProgramme.initLoadMoreEventsProgramme)();
+  (0, _loadMoreSpeakers.initLoadMoreSpeakers)();
+  (0, _loadMoreCategories.initLoadMoreCategories)();
 });
 
-},{"./modules/add-to-calendar":2,"./modules/datatables":3,"./modules/event-program-tabs":4,"./modules/fancybox":5,"./modules/file-upload":6,"./modules/mobile-menu":7,"./modules/nice-select":8,"./modules/phone-input":9,"./modules/scroll-to-top":10,"./modules/select2":11,"./modules/swiper":12,"./modules/video-play":13}],2:[function(require,module,exports){
+},{"./modules/add-to-calendar":2,"./modules/datatables":3,"./modules/event-program-tabs":4,"./modules/fancybox":5,"./modules/file-upload":6,"./modules/load-more-categories":7,"./modules/load-more-events-programme":8,"./modules/load-more-speakers":9,"./modules/mobile-menu":10,"./modules/nice-select":11,"./modules/phone-input":12,"./modules/scroll-to-top":13,"./modules/select2":14,"./modules/swiper":15,"./modules/video-play":16}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -692,6 +700,309 @@ function initFileUpload() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.initLoadMoreCategories = initLoadMoreCategories;
+/**
+ * Load More Categories Module
+ * Управляет функциональностью "Show all" / "Show less" для страницы categories
+ * Работает с элементами аккордеона категорий
+ */
+
+function initLoadMoreCategories() {
+  // Проверяем, что мы на странице categories (по наличию специфичного аккордеона)
+  const categoriesPage = document.querySelector('.categories-page');
+  if (!categoriesPage) {
+    return;
+  }
+
+  // Находим кнопку
+  const showAllBtn = categoriesPage.querySelector('.ep__show-all-btn');
+  if (!showAllBtn) {
+    return;
+  }
+
+  // Находим контейнер с аккордеоном
+  const accordion = document.querySelector('#categoriesAccordion');
+  if (!accordion) {
+    return;
+  }
+
+  // Находим все элементы аккордеона
+  const accordionItems = Array.from(accordion.querySelectorAll('.accordion-item'));
+  if (accordionItems.length === 0) {
+    return;
+  }
+
+  // Если элементов меньше или равно 10, скрываем кнопку
+  if (accordionItems.length <= 10) {
+    showAllBtn.style.display = 'none';
+    return;
+  }
+
+  // Добавляем иконку к кнопке
+  const icon = document.createElement('i');
+  icon.className = 'fas fa-chevron-down ms-2';
+  showAllBtn.appendChild(icon);
+
+  // Функция для скрытия элементов после индекса
+  function hideItemsAfterIndex(items, startIndex) {
+    items.forEach((item, index) => {
+      if (index >= startIndex) {
+        item.style.display = 'none';
+        item.setAttribute('data-hidden', 'true');
+      }
+    });
+  }
+
+  // Функция для показа всех элементов
+  function showAllItems(items) {
+    items.forEach(item => {
+      item.style.display = '';
+      item.removeAttribute('data-hidden');
+    });
+  }
+
+  // Инициализация: скрываем элементы после 10-го
+  hideItemsAfterIndex(accordionItems, 10);
+
+  // Обработчик клика
+  let isExpanded = false;
+  showAllBtn.addEventListener('click', function () {
+    if (!isExpanded) {
+      // Показываем все элементы
+      showAllItems(accordionItems);
+      showAllBtn.childNodes[0].nodeValue = 'Show less';
+      icon.className = 'fas fa-chevron-up ms-2';
+      isExpanded = true;
+    } else {
+      // Скрываем элементы после 10-го
+      hideItemsAfterIndex(accordionItems, 10);
+      showAllBtn.childNodes[0].nodeValue = 'Show all';
+      icon.className = 'fas fa-chevron-down ms-2';
+      isExpanded = false;
+
+      // Прокручиваем к началу списка
+      const firstVisibleItem = accordionItems[0];
+      if (firstVisibleItem) {
+        firstVisibleItem.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  });
+}
+
+},{}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initLoadMoreEventsProgramme = initLoadMoreEventsProgramme;
+/**
+ * Load More Events Programme Module
+ * Управляет функциональностью "Show all" / "Show less" для страницы events-programme
+ * Работает с элементами внутри каждого таба отдельно
+ */
+
+function initLoadMoreEventsProgramme() {
+  // Находим все табы с контентом
+  const tabPanes = document.querySelectorAll('.tab-pane');
+  if (tabPanes.length === 0) {
+    console.log('[Load More Events] Нет табов .tab-pane');
+    return;
+  }
+  console.log(`[Load More Events] Найдено табов: ${tabPanes.length}`);
+
+  // Обрабатываем каждый таб отдельно
+  tabPanes.forEach((tabPane, tabIndex) => {
+    // Находим кнопку внутри этого таба
+    const showAllBtn = tabPane.querySelector('.ep__show-all-btn');
+    if (!showAllBtn) {
+      console.log(`[Load More Events] Таб ${tabIndex}: кнопка не найдена`);
+      return;
+    }
+
+    // Находим все элементы для управления: события, спикеры, секции
+    const allItems = [];
+
+    // Собираем все .ep__event-item
+    const eventItems = Array.from(tabPane.querySelectorAll('.ep__event-item'));
+    allItems.push(...eventItems);
+
+    // Собираем все .ep__participant-card
+    const participantCards = Array.from(tabPane.querySelectorAll('.ep__participant-card'));
+    allItems.push(...participantCards);
+
+    // Собираем все .row с .ep__section-label
+    const sectionRows = Array.from(tabPane.querySelectorAll('.row')).filter(row => row.querySelector('.ep__section-label'));
+    allItems.push(...sectionRows);
+    console.log(`[Load More Events] Таб ${tabIndex}: найдено ${allItems.length} элементов (события: ${eventItems.length}, спикеры: ${participantCards.length}, секции: ${sectionRows.length})`);
+
+    // Если элементов меньше или равно 10, скрываем кнопку
+    if (allItems.length <= 10) {
+      console.log(`[Load More Events] Таб ${tabIndex}: элементов ${allItems.length} <= 10, кнопка скрыта`);
+      showAllBtn.style.display = 'none';
+      return;
+    }
+
+    // Добавляем иконку к кнопке
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-chevron-down ms-2';
+    showAllBtn.appendChild(icon);
+
+    // Функция для скрытия элементов после индекса
+    function hideItemsAfterIndex(items, startIndex) {
+      items.forEach((item, index) => {
+        if (index >= startIndex) {
+          item.style.display = 'none';
+          item.setAttribute('data-hidden', 'true');
+        }
+      });
+    }
+
+    // Функция для показа всех элементов
+    function showAllItems(items) {
+      items.forEach(item => {
+        item.style.display = '';
+        item.removeAttribute('data-hidden');
+      });
+    }
+
+    // Инициализация: скрываем элементы после 10-го
+    hideItemsAfterIndex(allItems, 10);
+    console.log(`[Load More Events] Таб ${tabIndex}: скрыто ${Math.max(0, allItems.length - 10)} элементов`);
+
+    // Обработчик клика
+    let isExpanded = false;
+    showAllBtn.addEventListener('click', function () {
+      console.log(`[Load More Events] Клик на кнопку, isExpanded: ${isExpanded}`);
+      if (!isExpanded) {
+        // Показываем все элементы
+        showAllItems(allItems);
+        showAllBtn.childNodes[0].nodeValue = 'Show less';
+        icon.className = 'fas fa-chevron-up ms-2';
+        isExpanded = true;
+        console.log('[Load More Events] Показаны все элементы');
+      } else {
+        // Скрываем элементы после 10-го
+        hideItemsAfterIndex(allItems, 10);
+        showAllBtn.childNodes[0].nodeValue = 'Show all';
+        icon.className = 'fas fa-chevron-down ms-2';
+        isExpanded = false;
+        console.log('[Load More Events] Элементы скрыты');
+
+        // Прокручиваем к началу списка
+        const firstVisibleItem = allItems[0];
+        if (firstVisibleItem) {
+          firstVisibleItem.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+}
+
+},{}],9:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initLoadMoreSpeakers = initLoadMoreSpeakers;
+/**
+ * Load More Speakers Module
+ * Управляет функциональностью "Show all" / "Show less" для страницы speakers
+ * Работает с элементами аккордеона спикеров
+ */
+
+function initLoadMoreSpeakers() {
+  // Находим кнопку
+  const showAllBtn = document.querySelector('.speakers-page__show-all');
+  if (!showAllBtn) {
+    return;
+  }
+
+  // Находим контейнер с аккордеоном
+  const accordion = document.querySelector('#speakersAccordion');
+  if (!accordion) {
+    return;
+  }
+
+  // Находим все элементы аккордеона
+  const accordionItems = Array.from(accordion.querySelectorAll('.accordion-item'));
+  if (accordionItems.length === 0) {
+    return;
+  }
+
+  // Если элементов меньше или равно 10, скрываем кнопку
+  if (accordionItems.length <= 10) {
+    showAllBtn.style.display = 'none';
+    return;
+  }
+
+  // Добавляем иконку к кнопке
+  const icon = document.createElement('i');
+  icon.className = 'fas fa-chevron-down ms-2';
+  showAllBtn.appendChild(icon);
+
+  // Функция для скрытия элементов после индекса
+  function hideItemsAfterIndex(items, startIndex) {
+    items.forEach((item, index) => {
+      if (index >= startIndex) {
+        item.style.display = 'none';
+        item.setAttribute('data-hidden', 'true');
+      }
+    });
+  }
+
+  // Функция для показа всех элементов
+  function showAllItems(items) {
+    items.forEach(item => {
+      item.style.display = '';
+      item.removeAttribute('data-hidden');
+    });
+  }
+
+  // Инициализация: скрываем элементы после 10-го
+  hideItemsAfterIndex(accordionItems, 10);
+
+  // Обработчик клика
+  let isExpanded = false;
+  showAllBtn.addEventListener('click', function () {
+    if (!isExpanded) {
+      // Показываем все элементы
+      showAllItems(accordionItems);
+      showAllBtn.childNodes[0].nodeValue = 'Show less';
+      icon.className = 'fas fa-chevron-up ms-2';
+      isExpanded = true;
+    } else {
+      // Скрываем элементы после 10-го
+      hideItemsAfterIndex(accordionItems, 10);
+      showAllBtn.childNodes[0].nodeValue = 'Show all';
+      icon.className = 'fas fa-chevron-down ms-2';
+      isExpanded = false;
+
+      // Прокручиваем к началу списка
+      const firstVisibleItem = accordionItems[0];
+      if (firstVisibleItem) {
+        firstVisibleItem.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  });
+}
+
+},{}],10:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.initMobileMenu = initMobileMenu;
 /**
  * Модуль для управления мобильным меню
@@ -727,7 +1038,7 @@ function initMobileMenu() {
   });
 }
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -858,7 +1169,7 @@ function initNiceSelectModule() {
   }
 }
 
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1064,7 +1375,7 @@ function initPhoneInput() {
   });
 }
 
-},{}],10:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1087,7 +1398,7 @@ function initScrollToTop() {
   });
 }
 
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1357,7 +1668,7 @@ if (typeof window !== 'undefined') {
   window.Select2Init = Select2Init;
 }
 
-},{}],12:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1575,7 +1886,7 @@ function parseValue(value) {
   return value;
 }
 
-},{}],13:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

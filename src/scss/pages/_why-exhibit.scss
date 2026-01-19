@@ -1,0 +1,127 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+
+// ============================================
+// Why Exhibit Page - страница преимуществ участия
+// ============================================
+.why-exhibit {
+  &__title {
+    font-family: var(--font-family);
+    font-size: $font-size-h1; // 48px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--primary); // #2B3B73
+    margin-bottom: 40px;
+    line-height: 1;
+
+    @include lg-down {
+      font-size: $font-size-h2; // 42px
+    }
+
+    @include md-down {
+      font-size: $font-size-h3; // 36px
+      margin-bottom: 30px;
+    }
+
+    @include sm-down {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 40px;
+
+    &--last {
+      margin-bottom: 0;
+    }
+
+    @include lg-down {
+      margin-bottom: 50px;
+    }
+
+    @include md-down {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+
+    @include md-down {
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__subtitle {
+    font-family: var(--font-family);
+    font-size: $font-size-h5; // 22px
+    font-weight: var(--font-weight-bold); // 700
+    color: var(--gray-1); // #212529
+    margin: 0;
+    line-height: 1;
+
+    @include md-down {
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    @include sm-down {
+      font-size: 18px;
+    }
+  }
+
+  &__text {
+    font-family: var(--font-family);
+    font-size: $font-size-body; // 18px
+    font-weight: var(--font-weight-regular); // 400
+    color: var(--gray-2); // #495057
+    margin: 0;
+    line-height: 1;
+
+    @include md-down {
+      font-size: $font-size-body1; // 16px
+      line-height: 1.4;
+    }
+
+    @include sm-down {
+      font-size: 15px;
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    @include lg-down {
+      max-width: 100%;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0;
+
+    @include lg-down {
+      height: 350px;
+    }
+
+    @include md-down {
+      height: 300px;
+    }
+
+    @include sm-down {
+      height: 250px;
+    }
+  }
+}

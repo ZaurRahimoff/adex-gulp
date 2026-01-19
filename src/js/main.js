@@ -12,6 +12,9 @@ import { initFancybox } from './modules/fancybox';
 import { initPhoneInput } from './modules/phone-input';
 import { initFileUpload } from './modules/file-upload';
 import { initAddToCalendar } from './modules/add-to-calendar';
+import { initLoadMoreEventsProgramme } from './modules/load-more-events-programme';
+import { initLoadMoreSpeakers } from './modules/load-more-speakers';
+import { initLoadMoreCategories } from './modules/load-more-categories';
 
 // Инициализация всех модулей после загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
@@ -50,5 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация Add to Calendar
   initAddToCalendar();
+
+  // Инициализация Load More функциональности
+  initLoadMoreEventsProgramme();
+  initLoadMoreSpeakers();
+  initLoadMoreCategories();
 });
 

@@ -1,0 +1,145 @@
+@import "../variables/colors";
+@import "../variables/typography";
+@import "../variables/variables";
+@import "../mixins/media";
+
+// ============================================
+// WhatsApp Modal - модальное окно WhatsApp
+// ============================================
+.whatsapp-modal {
+  &__content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+
+    @include md-down {
+      padding: 16px;
+    }
+  }
+
+  &__header {
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  &__close {
+    margin: 0;
+    opacity: 1;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+    font-size: 30px;
+    color: var(--primary);
+    border: none;
+    transition: var(--transition-base);
+
+    &:hover {
+      color: var(--primary);
+      opacity: 0.7;
+      transition: var(--transition-base);
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    i {
+      font-size: 30px;
+      line-height: 1;
+    }
+  }
+
+  &__body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    @include md-down {
+      gap: 16px;
+    }
+  }
+
+  &__icon-wrapper {
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    font-size: 36px;
+    font-weight: var(--font-weight-bold);
+    color: var(--gray-1);
+    line-height: 1;
+
+    @include md-down {
+      font-size: 28px;
+    }
+  }
+
+  &__text {
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: var(--font-weight-medium);
+    color: var(--gray-1);
+    margin: 0;
+    line-height: 1;
+    max-width: 560px;
+
+    @include md-down {
+      font-size: 18px;
+      line-height: 1.3;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    max-width: 560px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: var(--font-weight-bold);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+
+    @include md-down {
+      height: 50px;
+      font-size: 18px;
+    }
+  }
+}
+
+// Настройка ширины модального окна
+.whatsapp-modal .modal-dialog {
+  max-width: 600px;
+
+  @include md-down {
+    max-width: 90%;
+    margin: 1.75rem auto;
+  }
+}

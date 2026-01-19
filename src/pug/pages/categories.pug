@@ -97,3 +97,9 @@ block content
 						.accordion-body.categories__body
 							ul.categories__list
 								li Category items will be available soon.
+         
+			// Show All Button
+			.row.gy-4.mt-4
+				.col-12.text-center.mx-auto
+					include ../mixins/_button
+					+button("Show all", "primary-solid", "button", "", "default", null, "ep__show-all-btn")

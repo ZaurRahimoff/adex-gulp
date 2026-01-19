@@ -486,9 +486,37 @@ block content
                             span 25 September, Friday
                       .col-12.col-md-auto.ms-md-auto
                         include ../mixins/_button
-                        a.btn.btn--secondary.ep__download-btn(href="#")
-                          i.fas.fa-download.me-2
+                        a.btn.btn--secondary.ep__download-btn.d-none.d-md-block(href="#")
+                          i.fal.fa-download.me-2
                           | Download the programme
+              // Last Event
+              .row.mb-4
+                .col-12
+                  .ep__events-list
+                    // Event Item 11
+                    .ep__event-item
+                      .ep__event-time
+                        i.fas.fa-clock
+                        span 19:20 - 21:30
+                      .ep__event-content
+                        .ep__event-time-mobile
+                          span 19:20 - 21:30
+                        p.ep__event-title
+                          | Evening reception (Gulustan Palace)
+                          br
+                          | *buses will depart from Baku Expo Center to Gulustan Palace at 18:15 and from Gulustan Palace to Four Seasons Hotel Baku - Hilton Baku - Azadliq Square - The Ritz-Carlton, Baku at 21:45
+                          br
+                          | *only for exhibitors, invited guests and organisers
+
+              // Show All Button
+              .row.gy-4
+                .col-12.d-block.d-md-none
+                  a.btn.btn--primary-solid.ep__download-btn.py-3.px-4(href="#")
+                    i.fal.fa-download.me-2
+                    | Download the programme
+                .col-12.text-center.mx-auto
+                  include ../mixins/_button
+                  +button("Show all", "primary-solid", "button", "", "default", null, "ep__show-all-btn")
 
               // Day 2 Events List
               .row.mb-4
@@ -516,8 +544,8 @@ block content
                             span 26 September, Saturday
                       .col-12.col-md-auto.ms-md-auto
                         include ../mixins/_button
-                        a.btn.btn--secondary.ep__download-btn(href="#")
-                          i.fas.fa-download.me-2
+                        a.btn.btn--secondary.ep__download-btn.d-none.d-md-block(href="#")
+                          i.fal.fa-download.me-2
                           | Download the programme
 
               // Day 3 Events List
@@ -530,4 +558,14 @@ block content
                         span TBA
                       .ep__event-content
                         p.ep__event-title Day 3 content will be added here
+
+              // Show All Button
+              .row.gy-4
+                .col-12.d-block.d-md-none
+                  a.btn.btn--primary-solid.ep__download-btn.py-3.px-4(href="#")
+                    i.fal.fa-download.me-2
+                    | Download the programme
+                .col-12.text-center.mx-auto
+                  include ../mixins/_button
+                  +button("Show all", "primary-solid", "button", "", "default", null, "ep__show-all-btn") 
 

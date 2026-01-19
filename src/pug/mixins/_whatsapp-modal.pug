@@ -1,0 +1,23 @@
+//- WhatsApp Modal Mixin - модальное окно для WhatsApp
+//- Usage:
+//-   +whatsapp-modal('1', 'Reference site about Lorem Ipsum, giving information on its origins!', 'https://wa.me/994501234567')
+//-
+//- Parameters:
+//-   id - уникальный идентификатор модального окна (обязательно)
+//-   text - текст описания (обязательно)
+//-   link - ссылка на WhatsApp (обязательно)
+
+mixin whatsapp-modal(id, text, link)
+	.modal.fade.whatsapp-modal(id=`whatsappModal-${id}` tabindex="-1" aria-labelledby=`whatsappModalLabel-${id}` aria-hidden="true")
+		.modal-dialog.modal-dialog-centered
+			.modal-content.whatsapp-modal__content
+				.modal-header.whatsapp-modal__header.border-0.pb-0
+					button.btn-close.whatsapp-modal__close(type="button" data-bs-dismiss="modal" aria-label="Close")
+						i.fas.fa-xmark
+				.modal-body.whatsapp-modal__body.text-center
+					.whatsapp-modal__icon-wrapper.d-flex.align-items-center.justify-content-center.gap-2.mb-3
+						.whatsapp-modal__icon
+							img(src="assets/img/icons/whatsapp-icon.png" alt="WhatsApp" loading="lazy")
+						h3.whatsapp-modal__title.mb-0(id=`whatsappModalLabel-${id}`) WhatsApp
+					p.whatsapp-modal__text= text
+					a.btn.btn--primary-solid.whatsapp-modal__btn(href=link target="_blank" rel="noopener noreferrer") Follow

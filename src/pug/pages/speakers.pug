@@ -122,10 +122,10 @@ block content
                     p Biography of Rovshan Najaf will be available soon.
 
           // Show All Button
-          .text-center.mt-4
-            include ../mixins/_button
-            +button("Show all", "primary-solid", "button", "", "default", null, "speakers-page__show-all")
-              i.fas.fa-caret-down.ms-2
+          .row.gy-4.mt-4
+            .col-12.text-center.mx-auto
+              include ../mixins/_button
+              +button("Show all", "primary-solid", "button", "", "default", null, "speakers-page__show-all")
 
         // Sidebar with Action Buttons
         .col-12.col-lg-4.order-1.order-lg-3
