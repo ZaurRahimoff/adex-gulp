@@ -2,9 +2,8 @@
 //- Использование: +sponsor-card('Gold sponsor', 'Company Name', 'image.jpg')
 mixin sponsor-card(type, name, image)
   .swiper-slide
-    .sponsor-card
+    a.sponsor-card.text-decoration-none(href="#")
       .sponsor-card__image-wrapper
         img.sponsor-card__image(src=image alt=name loading="lazy")
       h3.sponsor-card__type= type
       p.sponsor-card__name= name
-
