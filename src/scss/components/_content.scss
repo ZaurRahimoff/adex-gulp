@@ -33,6 +33,46 @@
   border-top: 1px solid var(--line); // #EEE
 }
 
+.text__primary {
+  color: var(--primary);
+}
+
+.text__secondary {
+  color: var(--secondary);
+}
+
+.text__success {
+  color: var(--success);
+}
+
+.text__warning {
+  color: var(--warning);
+}
+
+.text__error {
+  color: var(--error);
+}
+
+.text__gray-1 {
+  color: var(--gray-1);
+}
+
+.text__gray-2 {
+  color: var(--gray-2);
+}
+
+.text__gray-3 {
+  color: var(--gray-3);
+}
+
+.text__white {
+  color: var(--white);
+}
+
+.text__black {
+  color: var(--black);
+}
+
 .actions__block {
   position: relative;
   overflow-x: unset;

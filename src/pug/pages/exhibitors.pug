@@ -20,16 +20,18 @@ block content
   section.exhibitors-page.page__spacing
     .container
       // Title Section
-      .row.align-items-center.mb-5.g-4
+      .row.mb-5.g-4
         .col-12.col-md-6
-          h1.page-title.lh-base Exhibitors List
+          h1.page-title.lh-base.mb-2.mb-md-4 Exhibitors List
         .col-12.col-md-6.text-start.text-lg-end
-          .mb-4.mb-lg-0.d-inline-block(style="min-width: 120px;")
+          .mb-4.mb-lg-0.d-inline-block
             include ../mixins/_nice-select
-            +nice-select('year', '2025', [
-              {value: '2025', text: '2025'},
-              {value: '2024', text: '2024'}
-            ], '', false, '', 'nice-select--year')
+            +nice-select('year', '2024', [
+            {value: '2024', text: '2024'},
+            {value: '2025', text: '2025'},
+            {value: '2026', text: '2026'},
+            {value: '2027', text: '2027'}
+            ], '', false, 'form-group--custom', 'nice-select--year', 'year-select')
       
       // Filters Section
       form.row.mb-4.g-4
@@ -37,102 +39,103 @@ block content
           include ../mixins/_form-input
           +form-input('company', 'text', 'Company', 'Search company', false, '', 'form-control--card', '', '', true)
         .col-12.col-lg-4
-          include ../mixins/_form-select
-          +form-select('country', 'Country', [
+          include ../mixins/_nice-select
+          +nice-select('country', 'Azerbaijan', [
             {value: 'Azerbaijan', text: 'Azerbaijan'},
             {value: 'Turkey', text: 'Turkey'},
             {value: 'USA', text: 'USA'}
-          ], false, '', 'form-control--card', 'Azerbaijan')
+          ], 'Country', false, '', 'nice-select--card')
         .col-12
-          include ../mixins/_form-select
-          +form-select('categories', 'Product Categories', [
+          include ../mixins/_nice-select
+          +nice-select('categories', '', [
             {value: '', text: 'None'},
             {value: 'category1', text: 'Category 1'},
             {value: 'category2', text: 'Category 2'}
-          ], false, '', 'form-control--card', '')
+          ], 'Product Categories', false, '', 'nice-select--card')
       
-      // Exhibitors DataTable Component
-      include ../mixins/_datatable
-      -
-        // Данные участников выставки
-        const exhibitorData = [
-          {company: 'ASELSAN', country: 'Azerbaijan', stand: '6A523'},
-          {company: '"ATESHGAH" INSURANCE COMPANY', country: 'Azerbaijan', stand: '-'},
-          {company: '"AZERSILAH" DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '6A500'},
-          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '3A130'},
-          {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '1A120'},
-          {company: '"Q-STP" LLC', country: 'Azerbaijan', stand: '2A230'},
-          {company: '3E AZERBAIJAN LLC', country: 'Azerbaijan', stand: '3A011'},
-          {company: 'ADT GROUP', country: 'Azerbaijan', stand: '4A012'},
-          {company: 'APA GROUP', country: 'Azerbaijan', stand: '-'},
-          {company: 'AZ TV', country: 'Azerbaijan', stand: '5M014'},
-          {company: 'ASELSAN 2', country: 'Turkey', stand: '6A524'},
-          {company: 'Boeing', country: 'USA', stand: '1A001'},
-          {company: 'Lockheed Martin', country: 'USA', stand: '1A002'},
-          {company: 'Airbus Defence', country: 'France', stand: '2A001'},
-          {company: 'Thales Group', country: 'France', stand: '2A002'},
-          {company: 'BAE Systems', country: 'UK', stand: '3A001'},
-          {company: 'Rheinmetall', country: 'Germany', stand: '4A001'},
-          {company: 'Leonardo S.p.A.', country: 'Italy', stand: '5A001'},
-          {company: 'Saab AB', country: 'Sweden', stand: '6A001'},
-          {company: 'Rafael Advanced Defense Systems', country: 'Israel', stand: '7A001'},
-          {company: 'Korea Aerospace Industries', country: 'South Korea', stand: '8A001'},
-          {company: 'Turkish Aerospace Industries', country: 'Turkey', stand: '9A001'},
-          {company: 'Rostec', country: 'Russia', stand: '10A001'},
-          {company: 'Hanwha Defense', country: 'South Korea', stand: '11A001'},
-          {company: 'General Dynamics', country: 'USA', stand: '12A001'},
-          {company: 'Northrop Grumman', country: 'USA', stand: '13A001'},
-          {company: 'Raytheon Technologies', country: 'USA', stand: '14A001'},
-          {company: 'L3Harris Technologies', country: 'USA', stand: '15A001'},
-          {company: 'Elbit Systems', country: 'Israel', stand: '16A001'},
-          {company: 'MBDA', country: 'Europe', stand: '17A001'}
-        ];
+      .col-12
+        // Exhibitors DataTable Component
+        include ../mixins/_datatable
+        -
+          // Данные участников выставки
+          const exhibitorData = [
+            {company: 'ASELSAN', country: 'Azerbaijan', stand: '6A523'},
+            {company: '"ATESHGAH" INSURANCE COMPANY', country: 'Azerbaijan', stand: '-'},
+            {company: '"AZERSILAH" DEFENSE INDUSTRY HOLDING - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '6A500'},
+            {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '3A130'},
+            {company: '"AZERSILAH" DEFENSE İNDUSTRY HOLDING" - CLOSED JOINT STOCK COMPANY', country: 'Azerbaijan', stand: '1A120'},
+            {company: '"Q-STP" LLC', country: 'Azerbaijan', stand: '2A230'},
+            {company: '3E AZERBAIJAN LLC', country: 'Azerbaijan', stand: '3A011'},
+            {company: 'ADT GROUP', country: 'Azerbaijan', stand: '4A012'},
+            {company: 'APA GROUP', country: 'Azerbaijan', stand: '-'},
+            {company: 'AZ TV', country: 'Azerbaijan', stand: '5M014'},
+            {company: 'ASELSAN 2', country: 'Turkey', stand: '6A524'},
+            {company: 'Boeing', country: 'USA', stand: '1A001'},
+            {company: 'Lockheed Martin', country: 'USA', stand: '1A002'},
+            {company: 'Airbus Defence', country: 'France', stand: '2A001'},
+            {company: 'Thales Group', country: 'France', stand: '2A002'},
+            {company: 'BAE Systems', country: 'UK', stand: '3A001'},
+            {company: 'Rheinmetall', country: 'Germany', stand: '4A001'},
+            {company: 'Leonardo S.p.A.', country: 'Italy', stand: '5A001'},
+            {company: 'Saab AB', country: 'Sweden', stand: '6A001'},
+            {company: 'Rafael Advanced Defense Systems', country: 'Israel', stand: '7A001'},
+            {company: 'Korea Aerospace Industries', country: 'South Korea', stand: '8A001'},
+            {company: 'Turkish Aerospace Industries', country: 'Turkey', stand: '9A001'},
+            {company: 'Rostec', country: 'Russia', stand: '10A001'},
+            {company: 'Hanwha Defense', country: 'South Korea', stand: '11A001'},
+            {company: 'General Dynamics', country: 'USA', stand: '12A001'},
+            {company: 'Northrop Grumman', country: 'USA', stand: '13A001'},
+            {company: 'Raytheon Technologies', country: 'USA', stand: '14A001'},
+            {company: 'L3Harris Technologies', country: 'USA', stand: '15A001'},
+            {company: 'Elbit Systems', country: 'Israel', stand: '16A001'},
+            {company: 'MBDA', country: 'Europe', stand: '17A001'}
+          ];
+          
+          // Колонки таблицы
+          const exhibitorColumns = [
+            {name: 'Company', key: 'company'},
+            {name: 'Country', key: 'country'},
+            {name: 'Stand', key: 'stand'}
+          ];
+          
+          // Опции DataTable
+          const exhibitorOptions = {
+            blockClass: 'exhibitors',
+            renderType: 'table',
+            pageLength: 10,
+            searching: false,
+            info: false,
+            lengthChange: false,
+            paging: true,
+            showHeader: true,
+            responsive: true, 
+            //- order: false,
+            autoWidth: false,
+            columnDefs: [
+              {
+                targets: [0],
+                width: '30%'
+              },
+              {
+                targets: [1],
+                width: '30%'
+              }
+            ]
+          };
         
-        // Колонки таблицы
-        const exhibitorColumns = [
-          {name: 'Company', key: 'company'},
-          {name: 'Country', key: 'country'},
-          {name: 'Stand', key: 'stand'}
-        ];
-        
-        // Опции DataTable
-        const exhibitorOptions = {
-          blockClass: 'exhibitors',
-          renderType: 'table',
-          pageLength: 10,
-          searching: false,
-          info: false,
-          lengthChange: false,
-          paging: true,
-          showHeader: true,
-          responsive: true, 
-          //- order: false,
-          autoWidth: false,
-          columnDefs: [
-            {
-              targets: [0],
-              width: '30%'
-            },
-            {
-              targets: [1],
-              width: '30%'
-            }
-          ]
-        };
-      
-      +datatable('exhibitorsTable', exhibitorColumns, exhibitorData, exhibitorOptions)
+        +datatable('exhibitorsTable', exhibitorColumns, exhibitorData, exhibitorOptions)
 
-      // Company Modals
-      include ../mixins/_company-modal
-      each company, index in exhibitorData
-        +company-modal(
-          index,
-          company.company,
-          'https://adex.az/company_img/1659955968_profile_ceo_az_BSVT_engl_NEW.jpg',
-          'State-owned Foreign Trade Unitary Enterprise “Belspetsvneshtechnika” is the leading enterprise of the Republic of Belarus which specializes in export of high-tech products and knowledge intensive technologies designed for military application. “Belspetsvneshtechnika” serves as a system integrator and uses inventions of the enterprises of State Authority for Military Industry. Successful application of advanced solutions and introduction of innovative technologies while creating military products allows the company to dominate on specialized military equipment and armament market..',
-          'https://example.com',
-          'info@example.com',
-          '+1 234 567 890',
-          company.country,
-          company.stand
-        )
+        // Company Modals
+        include ../mixins/_company-modal
+        each company, index in exhibitorData
+          +company-modal(
+            index,
+            company.company,
+            'https://adex.az/company_img/1659955968_profile_ceo_az_BSVT_engl_NEW.jpg',
+            'State-owned Foreign Trade Unitary Enterprise “Belspetsvneshtechnika” is the leading enterprise of the Republic of Belarus which specializes in export of high-tech products and knowledge intensive technologies designed for military application. “Belspetsvneshtechnika” serves as a system integrator and uses inventions of the enterprises of State Authority for Military Industry. Successful application of advanced solutions and introduction of innovative technologies while creating military products allows the company to dominate on specialized military equipment and armament market..',
+            'https://example.com',
+            'info@example.com',
+            '+1 234 567 890',
+            company.country,
+            company.stand
+          )

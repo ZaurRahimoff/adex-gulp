@@ -125,7 +125,7 @@
                     <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="ru"><span class="fi fi-ru topbar__flag"></span><span>RU</span></a></li>
                   </ul>
                 </div>
-                <div class="topbar__user d-none d-lg-flex align-items-center"><i class="fa-solid fa-user"></i><span>Personal Area</span></div>
+                <div class="topbar__user d-none d-lg-flex align-items-center"><a class="topbar__user-link" href="/login"><i class="fa-solid fa-user"></i><span>Personal Area</span></a></div>
               </div>
             </div>
           </div>
@@ -234,15 +234,28 @@
       <!-- Newspaper Section-->
       <section class="newspaper-page page__spacing">
         <div class="container">
-          <!-- Header with Title and Year Selector-->
-          <div class="newspaper__header mb-4">
-            <h1 class="page-title lh-base mb-0 d-inline-block">Daily Newspaper</h1>
-            <div class="newspaper__year-selector"><span class="newspaper__year-text">2024</span><i class="fas fa-caret-down"></i></div>
+          <!-- Title Section with Year Selector-->
+          <div class="row mb-5 g-4">
+            <div class="col-12 col-md-6">
+              <h1 class="page-title lh-base mb-2 mb-md-4">Daily Newspaper</h1>
+            </div>
+            <div class="col-12 col-md-6 text-start text-lg-end">
+              <div class="mb-4 mb-lg-0 d-inline-block">
+                                <div class="form-group form-group--custom">
+                                  <select class="nice-select-init nice-select--year" id="year-select" name="year" data-nice-select-init="true">
+                                    <option value="2024" selected>2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                  </select>
+                                </div>
+              </div>
+            </div>
           </div>
           <!-- Newspaper Card Wrapper-->
           <div class="newspaper__wrapper">
             <div class="container">
-              <div class="row row-cols-1 row-cols-md-4 g-4">
+              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
                 <div class="col">
                   <div class="card newspaper__card h-100">
                     <div class="newspaper__image-wrapper"><img class="newspaper__image card-img-top" src="assets/img/webp/news1.webp" alt="Adex 2024 Newspaper" loading="lazy"></div>

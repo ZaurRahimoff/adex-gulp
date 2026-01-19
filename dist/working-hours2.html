@@ -125,7 +125,7 @@
                     <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="ru"><span class="fi fi-ru topbar__flag"></span><span>RU</span></a></li>
                   </ul>
                 </div>
-                <div class="topbar__user d-none d-lg-flex align-items-center"><i class="fa-solid fa-user"></i><span>Personal Area</span></div>
+                <div class="topbar__user d-none d-lg-flex align-items-center"><a class="topbar__user-link" href="/login"><i class="fa-solid fa-user"></i><span>Personal Area</span></a></div>
               </div>
             </div>
           </div>
@@ -234,8 +234,12 @@
       <!-- Working Hours Section-->
       <section class="working-hours-section">
         <div class="container">
-          <!-- Working Hours Title-->
-          <h1 class="working-hours-section__title">Working Hours</h1>
+          <!-- Title Section-->
+          <div class="row mb-5 g-4">
+            <div class="col-12 col-md-6">
+              <h1 class="page-title lh-base mb-2 mb-md-4">Working Hours</h1>
+            </div>
+          </div>
           <!-- Working Hours Cards-->
           <div class="row g-3 g-lg-5 working-hours-section__cards">
             <!-- Desktop version - 3 separate cards-->
@@ -303,30 +307,36 @@
       <!-- Venue Section-->
       <section class="venue-page">
         <div class="container">
-          <!-- Venue Title-->
-          <h1 class="venue-page__title">Venue</h1>
-          <!-- Venue Image-->
-          <div class="venue-page__image-wrapper">
-            <iframe class="venue-page__image" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <!-- Venue Info Cards-->
-          <div class="row g-3 g-lg-5 venue-page__info-cards">
-            <div class="col-12 col-lg-6">
-              <div class="venue-page__card">
-                <div class="venue-page__card-content"><i class="fal fa-location-dot venue-page__card-icon"></i>
-                  <div class="venue-page__card-text">
-                    <p class="venue-page__card-title">Baku Expo Center</p>
-                    <p class="venue-page__card-subtitle">Address: 515, H. Aliyev ave., AZ1050, Baku, Azerbaijan</p>
+          <!-- Title Section-->
+          <div class="row mb-5 g-4">
+            <div class="col-12 col-md-6">
+              <h1 class="page-title lh-base mb-2 mb-md-4">Venue</h1>
+            </div>
+            <div class="col-12">
+              <!-- Venue Image-->
+              <div class="venue-page__image-wrapper">
+                <iframe class="venue-page__image" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6073.152286132823!2d50.0331593!3d40.4403835!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403061043b005cbd%3A0x67b03e3eba5d9c28!2z0JHQsNC60YMg0K3QutGB0L_QviDQptC10L3RgtGA!5e0!3m2!1sru!2saz!4v1766744543152!5m2!1sru!2saz" width="100%" height="460" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              <!-- Venue Info Cards-->
+              <div class="row g-3 g-lg-5 venue-page__info-cards">
+                <div class="col-12 col-lg-6">
+                  <div class="venue-page__card">
+                    <div class="venue-page__card-content"><i class="fal fa-location-dot venue-page__card-icon"></i>
+                      <div class="venue-page__card-text">
+                        <p class="venue-page__card-title">Baku Expo Center</p>
+                        <p class="venue-page__card-subtitle">Address: 515, H. Aliyev ave., AZ1050, Baku, Azerbaijan</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6">
-              <div class="venue-page__card">
-                <div class="venue-page__card-content"><i class="fal fa-bus venue-page__card-icon"></i>
-                  <div class="venue-page__card-text">
-                    <p class="venue-page__card-title">How to get to the exhibition centre:</p>
-                    <p class="venue-page__card-subtitle">From "Koroglu" metro station - N 160, 171</p>
+                <div class="col-12 col-lg-6">
+                  <div class="venue-page__card">
+                    <div class="venue-page__card-content"><i class="fal fa-bus venue-page__card-icon"></i>
+                      <div class="venue-page__card-text">
+                        <p class="venue-page__card-title">How to get to the exhibition centre:</p>
+                        <p class="venue-page__card-subtitle">From "Koroglu" metro station - N 160, 171</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -337,33 +347,39 @@
       <!-- Services Section-->
       <section class="services-page">
         <div class="container">
-          <!-- Services Title-->
-          <h1 class="services-page__title">Services provided at the exhibition complex</h1>
-          <!-- Services List-->
-          <div class="services-page__list">
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Medical point</p>
+          <!-- Title Section-->
+          <div class="row mb-5 g-4">
+            <div class="col-12 col-md-6">
+              <h1 class="page-title lh-base mb-2 mb-md-4">Services provided at the exhibition complex</h1>
             </div>
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Restaurant</p>
-            </div>
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Coffee shop</p>
-            </div>
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Cash point</p>
-            </div>
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Wardrobe</p>
-            </div>
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Event organisers' office</p>
-            </div>
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Charging station</p>
-            </div>
-            <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
-              <p class="services-page__text">Business trip paperwork</p>
+            <div class="col-12">
+              <!-- Services List-->
+              <div class="services-page__list">
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Medical point</p>
+                </div>
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Restaurant</p>
+                </div>
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Coffee shop</p>
+                </div>
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Cash point</p>
+                </div>
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Wardrobe</p>
+                </div>
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Event organisers' office</p>
+                </div>
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Charging station</p>
+                </div>
+                <div class="services-page__item"><i class="fa-solid fa-circle-check services-page__icon"></i>
+                  <p class="services-page__text">Business trip paperwork</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

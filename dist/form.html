@@ -125,7 +125,7 @@
                     <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="ru"><span class="fi fi-ru topbar__flag"></span><span>RU</span></a></li>
                   </ul>
                 </div>
-                <div class="topbar__user d-none d-lg-flex align-items-center"><i class="fa-solid fa-user"></i><span>Personal Area</span></div>
+                <div class="topbar__user d-none d-lg-flex align-items-center"><a class="topbar__user-link" href="/login"><i class="fa-solid fa-user"></i><span>Personal Area</span></a></div>
               </div>
             </div>
           </div>
@@ -234,235 +234,281 @@
       <!-- Form Section-->
       <section class="form-section">
         <div class="container">
-          <!-- Page Title-->
-          <h1 class="form-section__title">Register as Professional Visitor</h1>
-          <!-- Registration Form-->
-          <div class="form-registration form-container">
-            <!-- Information Block-->
-            <div class="form-registration__info">
-              <p class="form-registration__info-title">Dear visitor,</p>
-              <p class="form-registration__info-text">We kindly request that you carefully fill out the registration form for each participant. Please note that the information you provide in the form (full name, job title, company name, etc.) will be displayed on your badge. After successful registration, a personalized electronic ticket will be sent to the email address you have provided. Upon arrival at the exhibition, please present the ticket on your mobile device or in printed form at the registration desk in order to receive your personalized badge.</p>
-              <p class="form-registration__info-note"><span>Fields marked with </span><span class="form-registration__info-asterisk">*</span><span> are required</span></p>
+          <!-- Title Section-->
+          <div class="row mb-5 g-4">
+            <div class="col-12 col-md-6">
+              <h1 class="page-title lh-base mb-2 mb-md-4">Register as Professional Visitor</h1>
             </div>
-            <!-- Divider-->
-            <div class="form-divider"></div>
-            <!-- Form-->
-            <form class="form-layout" action="#" method="POST" enctype="multipart/form-data">
-              <!-- Title-->
-                            <div class="form-group">
-                              <label class="form-label" for="title">Title<span class="text-danger">*</span>
-                              </label>
-                              <select class="form-select form-input-transparent" id="title" name="title" required>
-                                <option value="">Select title</option>
-                                <option value="mr">Mr.</option>
-                                <option value="mrs">Mrs.</option>
-                                <option value="ms">Ms.</option>
-                                <option value="dr">Dr.</option>
-                              </select>
-                            </div>
-              <!-- First name-->
-                            <div class="form-group">
-                              <label class="form-label" for="firstname">First name<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="text" id="firstname" name="firstname" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Surname-->
-                            <div class="form-group">
-                              <label class="form-label" for="surname">Surname<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="text" id="surname" name="surname" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Patronymic-->
-                            <div class="form-group">
-                              <label class="form-label" for="patronymic">Patronymic<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="text" id="patronymic" name="patronymic" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Passport / ID-->
-                            <div class="form-group">
-                              <label class="form-label" for="passport">Passport / ID<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="text" id="passport" name="passport" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Passport / ID Expiry Date-->
-                            <div class="form-group">
-                              <label class="form-label" for="passport_expiry">Passport / ID Expiry Date<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="date" id="passport_expiry" name="passport_expiry" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Scan of passport / ID-->
-                            <div class="form-group">
-                              <label class="form-label" for="passport_scan">Scan of passport / ID<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-file-wrapper">
-                                <input class="form-control form-file__input" type="file" id="passport_scan" name="passport_scan" accept="*/*" required style="display: none;">
-                                <input class="form-file__display" type="text" readonly placeholder="Select file" id="passport_scan_display">
-                                <button class="form-file__button" type="button" data-file-input="passport_scan"><i class="far fa-upload"></i></button>
-                              </div>
-                            </div>
-              <!-- Military Rank / Grade-->
-                            <div class="form-group">
-                              <label class="form-label" for="military_rank">Military Rank / Grade<span class="text-danger">*</span>
-                              </label>
-                              <select class="form-select form-input-transparent" id="military_rank" name="military_rank" required>
-                                <option value="">Select military rank / grade</option>
-                                <option value="rank1">Rank 1</option>
-                                <option value="rank2">Rank 2</option>
-                              </select>
-                            </div>
-              <!-- Company-->
-                            <div class="form-group">
-                              <label class="form-label" for="company">Company<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="text" id="company" name="company" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Position-->
-                            <div class="form-group">
-                              <label class="form-label" for="position">Position<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="text" id="position" name="position" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Country-->
-                            <div class="form-group">
-                              <label class="form-label" for="country">Country<span class="text-danger">*</span>
-                              </label>
-                              <select class="form-select form-input-transparent" id="country" name="country" required>
-                                <option value="">Select country</option>
-                                <option value="az">Azerbaijan</option>
-                                <option value="ru">Russia</option>
-                                <option value="tr">Turkey</option>
-                              </select>
-                            </div>
-              <!-- City-->
-                            <div class="form-group">
-                              <label class="form-label" for="city">City<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="text" id="city" name="city" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Phone number-->
-                            <div class="form-group">
-                              <label class="form-label" for="phone">Phone number<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-phone-wrapper form-phone-group">
-                                <!-- Phone Number Input with intl-tel-input-->
-                                <input class="form-control form-phone__input" type="tel" id="phone" name="phone" placeholder="" required data-phone-input="true" data-default-country="az" data-preferred-countries="az,ru,tr,us,gb" data-exclude-countries="am" data-show-selected-dial-code data-format-on-display data-auto-placeholder="off">
-                              </div>
-                            </div>
-              <!-- E-mail-->
-                            <div class="form-group">
-                              <label class="form-label" for="email">E-mail<span class="text-danger">*</span>
-                              </label>
-                              <div class="form-input-wrapper">
-                                <input class="form-control form-input-transparent" type="email" id="email" name="email" placeholder="" required>
-                              </div>
-                            </div>
-              <!-- Visitors' Nature of Business-->
-                            <div class="form-group">
-                              <div class="form-checkbox-group__header">
-                                <label class="form-label form-label--group" for="nature_of_business_group">Visitors' Nature of Business<span class="text-danger">*</span>
-                                </label>
-                                <div class="form-checkbox-group__caret"><i class="far fa-caret-down"></i></div>
-                              </div>
-                              <div class="form-checkbox-group__divider"></div>
-                              <div class="form-checkbox-group">
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_0" name="nature_of_business[]" value="military" required>
-                                  <label class="form-check-label" for="nature_of_business_0">Military Servant</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_1" name="nature_of_business[]" value="rescue" required>
-                                  <label class="form-check-label" for="nature_of_business_1">Emergency Rescue Services</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_2" name="nature_of_business[]" value="law" required>
-                                  <label class="form-check-label" for="nature_of_business_2">Law Enforcement Agencies</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_3" name="nature_of_business[]" value="weaponry" required>
-                                  <label class="form-check-label" for="nature_of_business_3">Weaponry Manufacturing Industry</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_4" name="nature_of_business[]" value="business" required>
-                                  <label class="form-check-label" for="nature_of_business_4">Entrepreneurial (Business) activities</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_5" name="nature_of_business[]" value="media" required>
-                                  <label class="form-check-label" for="nature_of_business_5">Media</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_6" name="nature_of_business[]" value="student" required>
-                                  <label class="form-check-label" for="nature_of_business_6">Student / Teacher / Scientific Officer</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_7" name="nature_of_business[]" value="government" required>
-                                  <label class="form-check-label" for="nature_of_business_7">Other government agencies</label>
-                                </div>
-                                <div class="form-check-item">
-                                  <input class="form-check-input" type="checkbox" id="nature_of_business_8" name="nature_of_business[]" value="other" required>
-                                  <label class="form-check-label" for="nature_of_business_8">Other</label>
-                                </div>
-                              </div>
-                            </div>
-              <!-- Which exhibition sector are you mainly interested in?-->
-                            <div class="form-group">
-                              <label class="form-label" for="exhibition_sector">Which exhibition sector are you mainly interested in?<span class="text-danger">*</span>
-                              </label>
-                              <select class="form-select form-input-transparent" id="exhibition_sector" name="exhibition_sector" required>
-                                <option value="">Select sector</option>
-                                <option value="sector1">Sector 1</option>
-                                <option value="sector2">Sector 2</option>
-                              </select>
-                            </div>
-              <!-- How did you know about ADEX?-->
-                            <div class="form-group">
-                              <label class="form-label" for="how_know">How did you know about ADEX?<span class="text-danger">*</span>
-                              </label>
-                              <select class="form-select form-input-transparent" id="how_know" name="how_know" required>
-                                <option value="">Select option</option>
-                                <option value="website">Website</option>
-                                <option value="social">Social media</option>
-                                <option value="friend">Friend/Colleague</option>
-                              </select>
-                            </div>
-              <!-- What is your purpose of visiting the exhibition?-->
-                            <div class="form-group">
-                              <label class="form-label" for="purpose">What is your purpose of visiting the exhibition?<span class="text-danger">*</span>
-                              </label>
-                              <select class="form-select form-input-transparent" id="purpose" name="purpose" required>
-                                <option value="">Select purpose</option>
-                                <option value="purpose1">Purpose 1</option>
-                                <option value="purpose2">Purpose 2</option>
-                              </select>
-                            </div>
-              <!-- Which of the following best describes your role...-->
-                            <div class="form-group">
-                              <label class="form-label" for="role">Which of the following best describes your role in making purchasing decisions about products / services?<span class="text-danger">*</span>
-                              </label>
-                              <select class="form-select form-input-transparent" id="role" name="role" required>
-                                <option value="">Select role</option>
-                                <option value="role1">Role 1</option>
-                                <option value="role2">Role 2</option>
-                              </select>
-                            </div>
-              <!-- Submit Button-->
-              <button class="btn form-submit" type="submit">Submit</button>
-            </form>
+            <div class="col-12">
+              <!-- Registration Form-->
+              <div class="form-registration form-container">
+                <!-- Information Block-->
+                <div class="form-registration__info">
+                  <p class="form-registration__info-title">Dear visitor,</p>
+                  <p class="form-registration__info-text">We kindly request that you carefully fill out the registration form for each participant. Please note that the information you provide in the form (full name, job title, company name, etc.) will be displayed on your badge. After successful registration, a personalized electronic ticket will be sent to the email address you have provided. Upon arrival at the exhibition, please present the ticket on your mobile device or in printed form at the registration desk in order to receive your personalized badge.</p>
+                  <p class="form-registration__info-note"><span>Fields marked with </span><span class="form-registration__info-asterisk">*</span><span> are required</span></p>
+                </div>
+                <!-- Divider-->
+                <div class="form-divider"></div>
+                <!-- Form-->
+                <form class="row row-cols-1 row-cols-md-1 g-4" action="#" method="POST" enctype="multipart/form-data">
+                  <div class="col">
+                    <!-- Title-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="title">Title<span class="text-danger">*</span>
+                                          </label>
+                                          <select class="form-select form-input-transparent" id="title" name="title" required>
+                                            <option value="">Select title</option>
+                                            <option value="mr">Mr.</option>
+                                            <option value="mrs">Mrs.</option>
+                                            <option value="ms">Ms.</option>
+                                            <option value="dr">Dr.</option>
+                                          </select>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- First name-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="firstname">First name<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="text" id="firstname" name="firstname" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Surname-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="surname">Surname<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="text" id="surname" name="surname" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Patronymic-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="patronymic">Patronymic<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="text" id="patronymic" name="patronymic" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Passport / ID-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="passport">Passport / ID<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="text" id="passport" name="passport" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Passport / ID Expiry Date-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="passport_expiry">Passport / ID Expiry Date<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="date" id="passport_expiry" name="passport_expiry" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Scan of passport / ID-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="passport_scan">Scan of passport / ID<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-file-wrapper">
+                                            <input class="form-control form-file__input" type="file" id="passport_scan" name="passport_scan" accept="*/*" required style="display: none;">
+                                            <input class="form-file__display" type="text" readonly placeholder="Select file" id="passport_scan_display">
+                                            <button class="form-file__button" type="button" data-file-input="passport_scan"><i class="far fa-upload"></i></button>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Military Rank / Grade-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="military_rank">Military Rank / Grade<span class="text-danger">*</span>
+                                          </label>
+                                          <select class="form-select form-input-transparent" id="military_rank" name="military_rank" required>
+                                            <option value="">Select military rank / grade</option>
+                                            <option value="rank1">Rank 1</option>
+                                            <option value="rank2">Rank 2</option>
+                                          </select>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Company-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="company">Company<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="text" id="company" name="company" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Position-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="position">Position<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="text" id="position" name="position" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Country-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="country">Country<span class="text-danger">*</span>
+                                          </label>
+                                          <select class="form-select form-input-transparent" id="country" name="country" required>
+                                            <option value="">Select country</option>
+                                            <option value="az">Azerbaijan</option>
+                                            <option value="ru">Russia</option>
+                                            <option value="tr">Turkey</option>
+                                          </select>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- City-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="city">City<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="text" id="city" name="city" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Phone number-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="phone">Phone number<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-phone-wrapper form-phone-group">
+                                            <!-- Phone Number Input with intl-tel-input-->
+                                            <input class="form-control form-phone__input" type="tel" id="phone" name="phone" placeholder="" required data-phone-input="true" data-default-country="az" data-preferred-countries="az,ru,tr,us,gb" data-exclude-countries="am" data-show-selected-dial-code data-format-on-display data-auto-placeholder="off">
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- E-mail-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="email">E-mail<span class="text-danger">*</span>
+                                          </label>
+                                          <div class="form-input-wrapper">
+                                            <input class="form-control form-input-transparent" type="email" id="email" name="email" placeholder="" required>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Visitors' Nature of Business-->
+                                        <div class="form-group">
+                                          <div class="form-checkbox-group__header">
+                                            <label class="form-label form-label--group" for="nature_of_business_group">Visitors' Nature of Business<span class="text-danger">*</span>
+                                            </label>
+                                            <div class="form-checkbox-group__caret"><i class="far fa-caret-down"></i></div>
+                                          </div>
+                                          <div class="form-checkbox-group__divider"></div>
+                                          <div class="form-checkbox-group">
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_0" name="nature_of_business[]" value="military" required>
+                                              <label class="form-check-label" for="nature_of_business_0">Military Servant</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_1" name="nature_of_business[]" value="rescue" required>
+                                              <label class="form-check-label" for="nature_of_business_1">Emergency Rescue Services</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_2" name="nature_of_business[]" value="law" required>
+                                              <label class="form-check-label" for="nature_of_business_2">Law Enforcement Agencies</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_3" name="nature_of_business[]" value="weaponry" required>
+                                              <label class="form-check-label" for="nature_of_business_3">Weaponry Manufacturing Industry</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_4" name="nature_of_business[]" value="business" required>
+                                              <label class="form-check-label" for="nature_of_business_4">Entrepreneurial (Business) activities</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_5" name="nature_of_business[]" value="media" required>
+                                              <label class="form-check-label" for="nature_of_business_5">Media</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_6" name="nature_of_business[]" value="student" required>
+                                              <label class="form-check-label" for="nature_of_business_6">Student / Teacher / Scientific Officer</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_7" name="nature_of_business[]" value="government" required>
+                                              <label class="form-check-label" for="nature_of_business_7">Other government agencies</label>
+                                            </div>
+                                            <div class="form-check-item">
+                                              <input class="form-check-input" type="checkbox" id="nature_of_business_8" name="nature_of_business[]" value="other" required>
+                                              <label class="form-check-label" for="nature_of_business_8">Other</label>
+                                            </div>
+                                          </div>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Which exhibition sector are you mainly interested in?-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="exhibition_sector">Which exhibition sector are you mainly interested in?<span class="text-danger">*</span>
+                                          </label>
+                                          <select class="form-select form-input-transparent" id="exhibition_sector" name="exhibition_sector" required>
+                                            <option value="">Select sector</option>
+                                            <option value="sector1">Sector 1</option>
+                                            <option value="sector2">Sector 2</option>
+                                          </select>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- How did you know about ADEX?-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="how_know">How did you know about ADEX?<span class="text-danger">*</span>
+                                          </label>
+                                          <select class="form-select form-input-transparent" id="how_know" name="how_know" required>
+                                            <option value="">Select option</option>
+                                            <option value="website">Website</option>
+                                            <option value="social">Social media</option>
+                                            <option value="friend">Friend/Colleague</option>
+                                          </select>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- What is your purpose of visiting the exhibition?-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="purpose">What is your purpose of visiting the exhibition?<span class="text-danger">*</span>
+                                          </label>
+                                          <select class="form-select form-input-transparent" id="purpose" name="purpose" required>
+                                            <option value="">Select purpose</option>
+                                            <option value="purpose1">Purpose 1</option>
+                                            <option value="purpose2">Purpose 2</option>
+                                          </select>
+                                        </div>
+                  </div>
+                  <div class="col">
+                    <!-- Which of the following best describes your role...-->
+                                        <div class="form-group">
+                                          <label class="form-label" for="role">Which of the following best describes your role in making purchasing decisions about products / services?<span class="text-danger">*</span>
+                                          </label>
+                                          <select class="form-select form-input-transparent" id="role" name="role" required>
+                                            <option value="">Select role</option>
+                                            <option value="role1">Role 1</option>
+                                            <option value="role2">Role 2</option>
+                                          </select>
+                                        </div>
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <!-- Submit Button-->
+                    <button class="btn form-submit" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>

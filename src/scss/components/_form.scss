@@ -23,8 +23,8 @@
   font-size: $font-size-body1; // 16px
   font-weight: var(--font-weight-bold); // 700
   line-height: var(--line-height-normal);
-  color: var(--gray-1); // #212529
-  margin-bottom: 20px;
+  color: var(--primary); // #212529
+  margin-bottom: 10px;
 
   .text-danger {
     color: var(--error-red); // Красный цвет для required asterisk
@@ -153,6 +153,7 @@ textarea.form-control {
   height: 20px;
   margin: 0;
   margin-right: 10px;
+  margin-left: 0 !important;
   cursor: pointer;
   flex-shrink: 0;
   border: 2px solid var(--line);

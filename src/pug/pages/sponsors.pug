@@ -20,61 +20,64 @@ block content
   section.sponsors-page.page__spacing
     .container
       // Title Section with Year Selector
-      .row.align-items-center.mb-5.g-4
+      .row.mb-5.g-4
         .col-12.col-md-6
-          h1.page-title.lh-base Sponsors
+          h1.page-title.lh-base.mb-2.mb-md-4 Sponsors
         .col-12.col-md-6.text-start.text-lg-end
-          .mb-4.mb-lg-0.d-inline-block(style="min-width: 120px;")
+          .mb-4.mb-lg-0.d-inline-block
             include ../mixins/_nice-select
             +nice-select('year', '2026', [
               {value: '2026', text: '2026'},
               {value: '2025', text: '2025'},
               {value: '2024', text: '2024'}
             ], '', false, '', 'nice-select--year')
-      
-      // Official Hotel Section
-      .sponsors-page__section.mb-5
-        .row.align-items-center.mb-4
-          .col-12.col-md-6
-            h2.sponsors-page__section-title Offical hotel
-          .col-12.col-md-6.text-start.text-md-end
-            .d-flex.gap-3.sponsors-page__nav.justify-content-start.justify-content-md-end
-              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--prev-hotel(type="button" aria-label="Previous")
-                i.fas.fa-arrow-left
-              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--next-hotel(type="button" aria-label="Next")
-                i.fas.fa-arrow-right
         
-        include ../mixins/_sponsor-card
-        .swiper.sponsors-page__swiper(data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-page__nav-btn--prev-hotel" data-nav-next=".sponsors-page__nav-btn--next-hotel" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
-          .swiper-wrapper
-            +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
-            +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')
-            +sponsor-card('Silver sponsor', 'Export and Investment Promotion Agency of Azerbaijan - AZPROMO', 'assets/img/webp/sponsor3.webp')
-            +sponsor-card('Silver sponsor', 'National Confederation of Entrepreneurs Organizations of the Republic of Azerbaijan (ASK)', 'assets/img/webp/sponsor4.webp')
-            +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
-            +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor6.webp')
-            +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
-            +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')
+        .col-12
+          // Official Hotel Section
+          .sponsors-page__section.mb-5
+            .row.align-items-center.mb-4
+              .col-12.col-md-6
+                h2.sponsors-page__section-title Offical hotel
+              .col-12.col-md-6.text-start.text-md-end
+                .d-flex.gap-3.sponsors-page__nav.justify-content-start.justify-content-md-end
+                  button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--prev-hotel(type="button" aria-label="Previous")
+                    i.far.fa-arrow-left
+                  button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--next-hotel(type="button" aria-label="Next")
+                    i.far.fa-arrow-right
+            
+            include ../mixins/_sponsor-card
+            .swiper.sponsors-page__swiper.overflow-hidden(data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-page__nav-btn--prev-hotel" data-nav-next=".sponsors-page__nav-btn--next-hotel" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
+              .swiper-wrapper
+                +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
+                +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')
+                +sponsor-card('Silver sponsor', 'Export and Investment Promotion Agency of Azerbaijan - AZPROMO', 'assets/img/webp/sponsor3.webp')
+                +sponsor-card('Silver sponsor', 'National Confederation of Entrepreneurs Organizations of the Republic of Azerbaijan (ASK)', 'assets/img/webp/sponsor4.webp')
+                +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
+                +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor6.webp')
+                +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
+                +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')
 
-      // Advertising visibility partners Section
-      .sponsors-page__section
-        .row.align-items-center.mb-4
-          .col-12.col-md-6
-            h2.sponsors-page__section-title Advertising visibility partners
-          .col-12.col-md-6.text-start.text-md-end
-            .d-flex.gap-3.sponsors-page__nav.justify-content-start.justify-content-md-end
-              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--prev-advertising(type="button" aria-label="Previous")
-                i.fas.fa-arrow-left
-              button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--next-advertising(type="button" aria-label="Next")
-                i.fas.fa-arrow-right
-        
-        .swiper.sponsors-page__swiper(data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-page__nav-btn--prev-advertising" data-nav-next=".sponsors-page__nav-btn--next-advertising" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
-          .swiper-wrapper
-            +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
-            +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')
-            +sponsor-card('Silver sponsor', 'Export and Investment Promotion Agency of Azerbaijan - AZPROMO', 'assets/img/webp/sponsor3.webp')
-            +sponsor-card('Silver sponsor', 'National Confederation of Entrepreneurs Organizations of the Republic of Azerbaijan (ASK)', 'assets/img/webp/sponsor4.webp')
-            +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
-            +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor6.webp')
-            +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
-            +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')
+
+        .col-12
+          // Advertising visibility partners Section
+          .sponsors-page__section
+            .row.align-items-center.mb-4
+              .col-12.col-md-6
+                h2.sponsors-page__section-title Advertising visibility partners
+              .col-12.col-md-6.text-start.text-md-end
+                .d-flex.gap-3.sponsors-page__nav.justify-content-start.justify-content-md-end
+                  button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--prev-advertising(type="button" aria-label="Previous")
+                    i.far.fa-arrow-left
+                  button.btn.btn-link.p-0.border-0.rounded-circle.d-flex.align-items-center.justify-content-center.sponsors-page__nav-btn.sponsors-page__nav-btn--next-advertising(type="button" aria-label="Next")
+                    i.far.fa-arrow-right
+            
+            .swiper.sponsors-page__swiper.overflow-hidden(data-swiper data-slides-per-view="2" data-space-between="20" data-loop="true" data-nav-prev=".sponsors-page__nav-btn--prev-advertising" data-nav-next=".sponsors-page__nav-btn--next-advertising" data-breakpoints='{"576":{"slidesPerView":2},"768":{"slidesPerView":3},"992":{"slidesPerView":4},"1200":{"slidesPerView":5},"1440":{"slidesPerView":6}}')
+              .swiper-wrapper
+                +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
+                +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')
+                +sponsor-card('Silver sponsor', 'Export and Investment Promotion Agency of Azerbaijan - AZPROMO', 'assets/img/webp/sponsor3.webp')
+                +sponsor-card('Silver sponsor', 'National Confederation of Entrepreneurs Organizations of the Republic of Azerbaijan (ASK)', 'assets/img/webp/sponsor4.webp')
+                +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor5.webp')
+                +sponsor-card('Silver sponsor', 'Permanent Secretariat of The Intergovernmental Commission TRACECA', 'assets/img/webp/sponsor6.webp')
+                +sponsor-card('Gold sponsor', 'The Small and Medium Business (SMB) Development Agency of Republic of Azerbaijan', 'assets/img/webp/sponsor1.webp')
+                +sponsor-card('Gold sponsor', 'Azerbaijan Exhibition Organizers Association (AQTA)', 'assets/img/webp/sponsor2.webp')

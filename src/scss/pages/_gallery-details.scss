@@ -35,6 +35,8 @@
   &__img-wrapper {
     width: 100%;
     max-height: 260px;
+    min-height: 260px;
+    height: 100%;
     overflow: hidden;
     background: var(--card-1);
     border-radius: 0;

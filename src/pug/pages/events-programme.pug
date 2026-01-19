@@ -20,30 +20,20 @@ block content
   section.ep.page__spacing
     .container
       // Page Title and Year Selector
-      .row.align-items-center.mb-4
-        .col-12.col-md-auto
-          h1.page-title.lh-base Events Programme
-        .col-auto.col-md-auto.ms-md-auto
-          .select2-wrapper.mt-4.mt-md-0(style="min-width: 120px;")
-            include ../mixins/_select2
-            +select2(
-              'year',
-              '2024',
-              [
-                {value: '2024', text: '2024'},
-                {value: '2025', text: '2025'},
-                {value: '2026', text: '2026'},
-                {value: '2027', text: '2027'}
-              ],
-              {placeholder: 'Выберите год', allowClear: false, minimumResultsForSearch: Infinity},
-              'primary',
-              'year-select',
-              '',
-              ''
-            )
+      .row.mb-5.g-4
+        .col-12.col-md-6
+          h1.page-title.lh-base.mb-2.mb-md-4 Events Programme
+        .col-12.col-md-6.text-start.text-lg-end
+          .mb-4.mb-lg-0.d-inline-block
+            include ../mixins/_nice-select
+            +nice-select('year', '2024', [
+            {value: '2024', text: '2024'},
+            {value: '2025', text: '2025'},
+            {value: '2026', text: '2026'},
+            {value: '2027', text: '2027'}
+            ], '', false, 'form-group--custom', 'nice-select--year', 'year-select')
 
-      // Tabs
-      .row.mb-4
+        // Tabs
         .col-12
           ul.nav.nav-tabs.ep__tabs.justify-content-start.justify-content-md-center.mb-4(role="tablist")
             li.nav-item(role="presentation")

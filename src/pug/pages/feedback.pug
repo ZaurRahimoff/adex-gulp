@@ -19,43 +19,53 @@ block content
 	// Feedback Section
 	section.feedback-section
 		.container
-			// Page Title
-			h1.feedback-section__title Feedback
+			// Title Section
+			.row.mb-5.g-4
+				.col-12.col-md-6
+					h1.page-title.lh-base.mb-2.mb-md-4 Feedback
 
-			// Feedback Form
-			.feedback-form.form-container
-				// Required Fields Note
-				p.form-note
-					| Fields marked with 
-					span.form-note__asterisk *
-					|  are required
+				.col-12
+					// Feedback Form
+					.feedback-form.form-container
+						// Required Fields Note
+						p.form-note
+							| Fields marked with 
+							span.form-note__asterisk *
+							|  are required
 
-				// Divider
-				.form-divider
+						// Divider
+						.form-divider
 
-				// Form
-				form.form-layout(action="#" method="POST")
-					// Name, surname
-					include ../mixins/_form-input
-					+form-input('name', 'text', 'Name, surname', '', true, '', 'form-input-transparent')
+						// Form
+						form.row.row-cols-1.row-cols-md-1.g-4(action="#" method="POST")
+							.col
+								// Name, surname
+								include ../mixins/_form-input
+								+form-input('name', 'text', 'Name, surname', '', true, '', 'form-input-transparent')
 
-					// E-mail
-					+form-input('email', 'email', 'E-mail', '', true, '', 'form-input-transparent')
+							.col
+								// E-mail
+								+form-input('email', 'email', 'E-mail', '', true, '', 'form-input-transparent')
 
-					// Mobile
-					include ../mixins/_form-phone
-					+form-phone('mobile', 'Mobile', true, '', 'form-phone-group', 'az')
+							.col
+								// Mobile
+								include ../mixins/_form-phone
+								+form-phone('mobile', 'Mobile', true, '', 'form-phone-group', 'az')
 
-					// Your comments/questions
-					include ../mixins/_form-textarea
-					+form-textarea('comments', 'Your comments/questions', '', true, 6, '', 'form-textarea-transparent')
+							.col
+								// Your comments/questions
+								include ../mixins/_form-textarea
+								+form-textarea('comments', 'Your comments/questions', '', true, 6, '', 'form-textarea-transparent')
 
-					// Consent Checkbox
-					include ../mixins/_form-checkbox
-					+form-checkbox('consent', 'I give my consent to processing of my personal data', false, false)
+							.col
+								// Consent Checkbox
+								p.fs-6.fw-bold.mb-3 I give my consent
+								include ../mixins/_form-checkbox
+								+form-checkbox('consent', 'to processing of my personal data', false, false)
 
-					// Submit Button
-					button.btn.form-submit(type="submit") Submit
+							.col-12.col-md-12
+								// Submit Button
+								button.btn.form-submit(type="submit") Submit
 
 		// Map
 		.feedback-map.grayscale

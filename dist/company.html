@@ -125,7 +125,7 @@
                     <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="ru"><span class="fi fi-ru topbar__flag"></span><span>RU</span></a></li>
                   </ul>
                 </div>
-                <div class="topbar__user d-none d-lg-flex align-items-center"><i class="fa-solid fa-user"></i><span>Personal Area</span></div>
+                <div class="topbar__user d-none d-lg-flex align-items-center"><a class="topbar__user-link" href="/login"><i class="fa-solid fa-user"></i><span>Personal Area</span></a></div>
               </div>
             </div>
           </div>
@@ -232,234 +232,250 @@
             </section>
       <section class="company">
         <div class="container">
-          <div class="company__head">
-            <h1 class="company__title">Company</h1>
-            <div class="company__year-select"><span class="company__year">2025</span><i class="fa-solid fa-caret-down company__year-icon"></i></div>
+          <!-- Title Section with Year Selector-->
+          <div class="row mb-5 g-4">
+            <div class="col-12 col-md-6">
+              <h1 class="page-title lh-base mb-2 mb-md-4">Company</h1>
+            </div>
+            <div class="col-12 col-md-6 text-start text-lg-end">
+              <div class="mb-4 mb-lg-0 d-inline-block">
+                                <div class="form-group form-group--custom">
+                                  <select class="nice-select-init nice-select--year" id="year-select" name="year" data-nice-select-init="true">
+                                    <option value="2024" selected>2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                  </select>
+                                </div>
+              </div>
+            </div>
+            <div class="col-12">
+                            <div class="company__wrapper">
+                              <div class="company__content">
+                                <div class="company__header">
+                                  <h2 class="company__title">Company</h2>
+                                </div>
+                                <div class="company__grid row row-cols-1 row-cols-md-2 g-3" data-grid-container></div>
+                                <table class="d-none" id="companyTable" data-datatables-init="true" data-datatables-config="{&quot;title&quot;:&quot;Company&quot;,&quot;blockClass&quot;:&quot;company&quot;,&quot;renderType&quot;:&quot;grid&quot;,&quot;pageLength&quot;:18,&quot;gridColumns&quot;:2,&quot;cardClass&quot;:&quot;company__card&quot;,&quot;cardAltClass&quot;:&quot;company__card--alt&quot;,&quot;showHeader&quot;:true,&quot;searching&quot;:false,&quot;info&quot;:false,&quot;lengthChange&quot;:false,&quot;responsive&quot;:false,&quot;paging&quot;:true,&quot;gridContainer&quot;:&quot;[data-grid-container]&quot;,&quot;gridCardClass&quot;:&quot;company__card&quot;,&quot;columns&quot;:null}">
+                                  <thead>
+                                    <tr>
+                                      <th>Data</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>ACWA Power</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Adnan Bu Fateem</td>
+                                    </tr>
+                                    <tr>
+                                      <td>ABB</td>
+                                    </tr>
+                                    <tr>
+                                      <td>&quot;Azneft&quot; Production Union of SOCAR</td>
+                                    </tr>
+                                    <tr>
+                                      <td>American Chamber of Commerce in Azerbaijan</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Ansaldo Energia</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Asan Radio</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Asian Development Bank</td>
+                                    </tr>
+                                    <tr>
+                                      <td>AsstrA-Associated Traffic AG</td>
+                                    </tr>
+                                    <tr>
+                                      <td>AZEL Systems LLC</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Azerbaijan Energy Regulatory Agency (AERA)</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Azerbaijan Green Energy Company</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Azerbaijan Today</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Baker Hughes</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Baku Steel Company</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Boston Consulting Group</td>
+                                    </tr>
+                                    <tr>
+                                      <td>BP</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Branch of &quot;Van Oord Dredging and Marine Contractors B.V.&quot; in the Republic of Azerbaijan</td>
+                                    </tr>
+                                    <tr>
+                                      <td>British Council</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Bureau Veritas</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Caspian Energy Company</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Caspian European Club</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Caspian Sunrise</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Chevron</td>
+                                    </tr>
+                                    <tr>
+                                      <td>China National Petroleum Corporation</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Coca-Cola</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Deloitte Azerbaijan</td>
+                                    </tr>
+                                    <tr>
+                                      <td>DHL Express</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Equinor</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Ernst &amp; Young</td>
+                                    </tr>
+                                    <tr>
+                                      <td>European Bank for Reconstruction and Development</td>
+                                    </tr>
+                                    <tr>
+                                      <td>ExxonMobil</td>
+                                    </tr>
+                                    <tr>
+                                      <td>FedEx</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Gazprom</td>
+                                    </tr>
+                                    <tr>
+                                      <td>General Electric</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Heydar Aliyev Foundation</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Honeywell</td>
+                                    </tr>
+                                    <tr>
+                                      <td>IKEA</td>
+                                    </tr>
+                                    <tr>
+                                      <td>International Bank of Azerbaijan</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Japan Tobacco International</td>
+                                    </tr>
+                                    <tr>
+                                      <td>KPMG Azerbaijan</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Lukoil</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Mars Inc</td>
+                                    </tr>
+                                    <tr>
+                                      <td>McDonald's</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Microsoft</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Nestle</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Nobel Oil Services</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Oracle</td>
+                                    </tr>
+                                    <tr>
+                                      <td>PepsiCo</td>
+                                    </tr>
+                                    <tr>
+                                      <td>PricewaterhouseCoopers</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Rosneft</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Samsung</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Schneider Electric</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Shell</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Siemens</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Statoil</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Tata Consultancy Services</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Technip</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Total</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Toyota</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Turkmenistan Airlines</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Turkish Airlines</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Unilever</td>
+                                    </tr>
+                                    <tr>
+                                      <td>United Nations</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Visa</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Volkswagen</td>
+                                    </tr>
+                                    <tr>
+                                      <td>World Bank</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Yara International</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Zara</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+            </div>
           </div>
-                    <div class="company__wrapper">
-                      <div class="company__content">
-                        <div class="company__header">
-                          <h2 class="company__title">Company</h2>
-                        </div>
-                        <div class="company__grid row row-cols-1 row-cols-md-2 g-3" data-grid-container></div>
-                        <table class="d-none" id="companyTable" data-datatables-init="true" data-datatables-config="{&quot;title&quot;:&quot;Company&quot;,&quot;blockClass&quot;:&quot;company&quot;,&quot;renderType&quot;:&quot;grid&quot;,&quot;pageLength&quot;:18,&quot;gridColumns&quot;:2,&quot;cardClass&quot;:&quot;company__card&quot;,&quot;cardAltClass&quot;:&quot;company__card--alt&quot;,&quot;showHeader&quot;:true,&quot;searching&quot;:false,&quot;info&quot;:false,&quot;lengthChange&quot;:false,&quot;responsive&quot;:false,&quot;paging&quot;:true,&quot;gridContainer&quot;:&quot;[data-grid-container]&quot;,&quot;gridCardClass&quot;:&quot;company__card&quot;,&quot;columns&quot;:null}">
-                          <thead>
-                            <tr>
-                              <th>Data</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>ACWA Power</td>
-                            </tr>
-                            <tr>
-                              <td>Adnan Bu Fateem</td>
-                            </tr>
-                            <tr>
-                              <td>ABB</td>
-                            </tr>
-                            <tr>
-                              <td>&quot;Azneft&quot; Production Union of SOCAR</td>
-                            </tr>
-                            <tr>
-                              <td>American Chamber of Commerce in Azerbaijan</td>
-                            </tr>
-                            <tr>
-                              <td>Ansaldo Energia</td>
-                            </tr>
-                            <tr>
-                              <td>Asan Radio</td>
-                            </tr>
-                            <tr>
-                              <td>Asian Development Bank</td>
-                            </tr>
-                            <tr>
-                              <td>AsstrA-Associated Traffic AG</td>
-                            </tr>
-                            <tr>
-                              <td>AZEL Systems LLC</td>
-                            </tr>
-                            <tr>
-                              <td>Azerbaijan Energy Regulatory Agency (AERA)</td>
-                            </tr>
-                            <tr>
-                              <td>Azerbaijan Green Energy Company</td>
-                            </tr>
-                            <tr>
-                              <td>Azerbaijan Today</td>
-                            </tr>
-                            <tr>
-                              <td>Baker Hughes</td>
-                            </tr>
-                            <tr>
-                              <td>Baku Steel Company</td>
-                            </tr>
-                            <tr>
-                              <td>Boston Consulting Group</td>
-                            </tr>
-                            <tr>
-                              <td>BP</td>
-                            </tr>
-                            <tr>
-                              <td>Branch of &quot;Van Oord Dredging and Marine Contractors B.V.&quot; in the Republic of Azerbaijan</td>
-                            </tr>
-                            <tr>
-                              <td>British Council</td>
-                            </tr>
-                            <tr>
-                              <td>Bureau Veritas</td>
-                            </tr>
-                            <tr>
-                              <td>Caspian Energy Company</td>
-                            </tr>
-                            <tr>
-                              <td>Caspian European Club</td>
-                            </tr>
-                            <tr>
-                              <td>Caspian Sunrise</td>
-                            </tr>
-                            <tr>
-                              <td>Chevron</td>
-                            </tr>
-                            <tr>
-                              <td>China National Petroleum Corporation</td>
-                            </tr>
-                            <tr>
-                              <td>Coca-Cola</td>
-                            </tr>
-                            <tr>
-                              <td>Deloitte Azerbaijan</td>
-                            </tr>
-                            <tr>
-                              <td>DHL Express</td>
-                            </tr>
-                            <tr>
-                              <td>Equinor</td>
-                            </tr>
-                            <tr>
-                              <td>Ernst &amp; Young</td>
-                            </tr>
-                            <tr>
-                              <td>European Bank for Reconstruction and Development</td>
-                            </tr>
-                            <tr>
-                              <td>ExxonMobil</td>
-                            </tr>
-                            <tr>
-                              <td>FedEx</td>
-                            </tr>
-                            <tr>
-                              <td>Gazprom</td>
-                            </tr>
-                            <tr>
-                              <td>General Electric</td>
-                            </tr>
-                            <tr>
-                              <td>Heydar Aliyev Foundation</td>
-                            </tr>
-                            <tr>
-                              <td>Honeywell</td>
-                            </tr>
-                            <tr>
-                              <td>IKEA</td>
-                            </tr>
-                            <tr>
-                              <td>International Bank of Azerbaijan</td>
-                            </tr>
-                            <tr>
-                              <td>Japan Tobacco International</td>
-                            </tr>
-                            <tr>
-                              <td>KPMG Azerbaijan</td>
-                            </tr>
-                            <tr>
-                              <td>Lukoil</td>
-                            </tr>
-                            <tr>
-                              <td>Mars Inc</td>
-                            </tr>
-                            <tr>
-                              <td>McDonald's</td>
-                            </tr>
-                            <tr>
-                              <td>Microsoft</td>
-                            </tr>
-                            <tr>
-                              <td>Nestle</td>
-                            </tr>
-                            <tr>
-                              <td>Nobel Oil Services</td>
-                            </tr>
-                            <tr>
-                              <td>Oracle</td>
-                            </tr>
-                            <tr>
-                              <td>PepsiCo</td>
-                            </tr>
-                            <tr>
-                              <td>PricewaterhouseCoopers</td>
-                            </tr>
-                            <tr>
-                              <td>Rosneft</td>
-                            </tr>
-                            <tr>
-                              <td>Samsung</td>
-                            </tr>
-                            <tr>
-                              <td>Schneider Electric</td>
-                            </tr>
-                            <tr>
-                              <td>Shell</td>
-                            </tr>
-                            <tr>
-                              <td>Siemens</td>
-                            </tr>
-                            <tr>
-                              <td>Statoil</td>
-                            </tr>
-                            <tr>
-                              <td>Tata Consultancy Services</td>
-                            </tr>
-                            <tr>
-                              <td>Technip</td>
-                            </tr>
-                            <tr>
-                              <td>Total</td>
-                            </tr>
-                            <tr>
-                              <td>Toyota</td>
-                            </tr>
-                            <tr>
-                              <td>Turkmenistan Airlines</td>
-                            </tr>
-                            <tr>
-                              <td>Turkish Airlines</td>
-                            </tr>
-                            <tr>
-                              <td>Unilever</td>
-                            </tr>
-                            <tr>
-                              <td>United Nations</td>
-                            </tr>
-                            <tr>
-                              <td>Visa</td>
-                            </tr>
-                            <tr>
-                              <td>Volkswagen</td>
-                            </tr>
-                            <tr>
-                              <td>World Bank</td>
-                            </tr>
-                            <tr>
-                              <td>Yara International</td>
-                            </tr>
-                            <tr>
-                              <td>Zara</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
         </div>
       </section>
     </main>

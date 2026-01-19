@@ -19,27 +19,29 @@ block content
 	// Visit Exhibition Section
 	section.visit-exhibition-section
 		.container
-			// Page Title
-			h1.visit-exhibition-section__title Visit the exhibition
+			// Title Section
+			.row.mb-5.g-4
+				.col-12.col-md-6
+					h1.page-title.lh-base.mb-2.mb-md-4 Visit the exhibition
+				.col-12
+					// Visitor Card
+					.visit-exhibition-section__card
+						// Card Header
+						.visit-exhibition-section__card-header
+							h2.visit-exhibition-section__card-title We will be happy to welcome you at the Exhibition.
+							p.visit-exhibition-section__card-subtitle Please select the right category.
 
-			// Visitor Card
-			.visit-exhibition-section__card
-				// Card Header
-				.visit-exhibition-section__card-header
-					h2.visit-exhibition-section__card-title We will be happy to welcome you at the Exhibition.
-					p.visit-exhibition-section__card-subtitle Please select the right category.
+						// Registration Buttons
+						.visit-exhibition-section__buttons
+							// Professional Visitor Button
+							a.visit-exhibition-section__button.visit-exhibition-section__button--professional(href="#")
+								.visit-exhibition-section__button-icon
+									i.fal.fa-user
+								.visit-exhibition-section__button-text
+									| Register as Professional Visitor
 
-				// Registration Buttons
-				.visit-exhibition-section__buttons
-					// Professional Visitor Button
-					a.visit-exhibition-section__button.visit-exhibition-section__button--professional(href="#")
-						.visit-exhibition-section__button-icon
-							i.fal.fa-user
-						.visit-exhibition-section__button-text
-							| Register as Professional Visitor
-
-					// Student Button
-					a.visit-exhibition-section__button.visit-exhibition-section__button--student(href="#")
-						.visit-exhibition-section__button-icon
-							i.fal.fa-graduation-cap
-						.visit-exhibition-section__button-text Register as Student
+							// Student Button
+							a.visit-exhibition-section__button.visit-exhibition-section__button--student(href="#")
+								.visit-exhibition-section__button-icon
+									i.fal.fa-graduation-cap
+								.visit-exhibition-section__button-text Register as Student

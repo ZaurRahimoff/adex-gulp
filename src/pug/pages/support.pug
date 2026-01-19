@@ -19,19 +19,22 @@ block content
 	// Support Section
 	section.support-page.page__spacing
 		.container
-			// Support Title
-			h1.page-title.lh-base.mb-4 Official Support
+			// Title Section
+			.row.mb-5.g-4
+				.col-12.col-md-6
+					h1.page-title.lh-base.mb-2.mb-md-4 Official Support
 
-			// Support Cards Wrapper
-			.support__wrapper
-				.row.g-4
-					.col-12
-						.card.support__card
-							.support__logo
-								img(src="assets/img/support/ministry-defence-industry.png" alt="Ministry of Defence Industry" loading="lazy")
-							.support__name Ministry of Defence Industry of the Republic of Azerbaijan
-					.col-12
-						.card.support__card
-							.support__logo
-								img(src="assets/img/support/ministry-defense.png" alt="Ministry of Defense" loading="lazy")
-							.support__name Ministry of Defense of the Republic of Azerbaijan
+				.col-12
+					// Support Cards Wrapper
+					.support__wrapper
+						.row.g-4
+							.col-12
+								.card.support__card
+									.support__logo
+										img(src="assets/img/support/ministry-defence-industry.png" alt="Ministry of Defence Industry" loading="lazy")
+									.support__name Ministry of Defence Industry of the Republic of Azerbaijan
+							.col-12
+								.card.support__card
+									.support__logo
+										img(src="assets/img/support/ministry-defense.png" alt="Ministry of Defense" loading="lazy")
+									.support__name Ministry of Defense of the Republic of Azerbaijan

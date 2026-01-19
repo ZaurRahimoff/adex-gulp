@@ -125,7 +125,7 @@
                     <li><a class="topbar__language-item dropdown-item d-flex align-items-center" href="#" data-lang="ru"><span class="fi fi-ru topbar__flag"></span><span>RU</span></a></li>
                   </ul>
                 </div>
-                <div class="topbar__user d-none d-lg-flex align-items-center"><i class="fa-solid fa-user"></i><span>Personal Area</span></div>
+                <div class="topbar__user d-none d-lg-flex align-items-center"><a class="topbar__user-link" href="/login"><i class="fa-solid fa-user"></i><span>Personal Area</span></a></div>
               </div>
             </div>
           </div>
@@ -234,47 +234,53 @@
       <!-- About Company Section-->
       <section class="about-company-section">
         <div class="container">
-          <!-- Page Title-->
-          <h1 class="about-company-section__title">About Company</h1>
-          <!-- Video Block-->
-          <div class="about-company-section__video">
-                  <div class="yt-video--lite yt-video--primary-btn">
-                    <lite-youtube videoid="wfsTGsXGKvE" params="controls=1&amp;modestbranding=1&amp;rel=0"></lite-youtube>
-                  </div>
-          </div>
-          <!-- Content Block (Logo + Text)-->
-          <div class="about-company-section__content">
-            <!-- Logo-->
-            <div class="about-company-section__logo"><img src="assets/img/ceo-logo.svg" alt="Caspian Event Organisers Logo" loading="lazy"></div>
-            <!-- Text-->
-            <div class="about-company-section__text">
-              <p>Caspian Event Organisers (CEO) holds a leading position in organising exhibitions and conferences in Azerbaijan. Since its establishment in 2014, it has become a key player in the congress and exhibition industry, actively developing both national and international brands such as ADEX, Caspian Agro, Rebuild Karabakh, TransLogistica Caspian, Medinex, and others. Today, the company's portfolio includes more than 10 specialised annual events. The President of the Republic of Azerbaijan, Mr. Ilham Aliyev, has consistently shown support for these exhibitions over the years, visiting the events and meeting with participants. The exhibitions are supported by relevant government agencies. The company upholds high standards of organisation and professionalism, as evidenced by the support of international organisations such as UFI (The Global Association of the Exhibition Industry) and ICCA (International Congress and Convention Association). Caspian Event Organisers is also a member of the Azerbaijan Exhibition Organisers Association (ASTA), further solidifying its status as a reliable partner in the field of exhibitions and conferences. Exhibitions organised by Caspian Event Organisers help strengthen business connections, facilitate technology exchange, and promote economic growth in the region. They provide platforms for interaction between representatives of various industries and contribute to enhancing international cooperation.</p>
+          <!-- Title Section-->
+          <div class="row mb-5 g-4">
+            <div class="col-12 col-md-6">
+              <h1 class="page-title lh-base mb-2 mb-md-4">Company</h1>
             </div>
-          </div>
-          <!-- Contact Card-->
-          <div class="about-company-section__contact">
-            <h2 class="about-company-section__contact-title">Contact</h2>
-            <div class="about-company-section__contact-info">
-              <div class="row g-3">
-                <!-- Phones Column-->
-                <div class="col-12 col-lg-auto">
-                  <div class="about-company-section__contact-group">
-                    <div class="about-company-section__contact-item"><i class="about-company-section__contact-icon far fa-phone"></i><a href="tel:+994124041000">+994 12 404 10 00</a></div>
-                    <div class="about-company-section__contact-item"><i class="about-company-section__contact-icon far fa-phone"></i><a href="tel:+994552241000">+994 55 224 1000</a></div>
-                  </div>
+            <div class="col-12">
+              <!-- Video Block-->
+              <div class="about-company-section__video">
+                      <div class="yt-video--lite yt-video--primary-btn">
+                        <lite-youtube videoid="wfsTGsXGKvE" params="controls=1&amp;modestbranding=1&amp;rel=0"></lite-youtube>
+                      </div>
+              </div>
+              <!-- Content Block (Logo + Text)-->
+              <div class="about-company-section__content">
+                <!-- Logo-->
+                <div class="about-company-section__logo"><img src="assets/img/ceo-logo.svg" alt="Caspian Event Organisers Logo" loading="lazy"></div>
+                <!-- Text-->
+                <div class="about-company-section__text">
+                  <p>Caspian Event Organisers (CEO) holds a leading position in organising exhibitions and conferences in Azerbaijan. Since its establishment in 2014, it has become a key player in the congress and exhibition industry, actively developing both national and international brands such as ADEX, Caspian Agro, Rebuild Karabakh, TransLogistica Caspian, Medinex, and others. Today, the company's portfolio includes more than 10 specialised annual events. The President of the Republic of Azerbaijan, Mr. Ilham Aliyev, has consistently shown support for these exhibitions over the years, visiting the events and meeting with participants. The exhibitions are supported by relevant government agencies. The company upholds high standards of organisation and professionalism, as evidenced by the support of international organisations such as UFI (The Global Association of the Exhibition Industry) and ICCA (International Congress and Convention Association). Caspian Event Organisers is also a member of the Azerbaijan Exhibition Organisers Association (ASTA), further solidifying its status as a reliable partner in the field of exhibitions and conferences. Exhibitions organised by Caspian Event Organisers help strengthen business connections, facilitate technology exchange, and promote economic growth in the region. They provide platforms for interaction between representatives of various industries and contribute to enhancing international cooperation.</p>
                 </div>
-                <!-- Address and Email Column-->
-                <div class="col-12 col-lg">
-                  <div class="about-company-section__contact-group">
-                    <div class="about-company-section__contact-item about-company-section__contact-item--address"><i class="about-company-section__contact-icon far fa-location-dot"></i><a href="https://maps.app.goo.gl/E9zUY1jZgXaVt2JZ7" target="_blank">Azerbaijan, Baku Narimanov dist., Zaur Nudiraliyev st., 61, AZ1075</a></div>
-                    <div class="about-company-section__contact-item"><i class="about-company-section__contact-icon far fa-envelope"></i><a href="mailto:office@ceo.az">office@ceo.az</a></div>
+              </div>
+              <!-- Contact Card-->
+              <div class="about-company-section__contact">
+                <h2 class="about-company-section__contact-title">Contact</h2>
+                <div class="about-company-section__contact-info">
+                  <div class="row g-3">
+                    <!-- Phones Column-->
+                    <div class="col-12 col-lg-auto">
+                      <div class="about-company-section__contact-group">
+                        <div class="about-company-section__contact-item"><i class="about-company-section__contact-icon far fa-phone"></i><a href="tel:+994124041000">+994 12 404 10 00</a></div>
+                        <div class="about-company-section__contact-item"><i class="about-company-section__contact-icon far fa-phone"></i><a href="tel:+994552241000">+994 55 224 1000</a></div>
+                      </div>
+                    </div>
+                    <!-- Address and Email Column-->
+                    <div class="col-12 col-lg">
+                      <div class="about-company-section__contact-group">
+                        <div class="about-company-section__contact-item about-company-section__contact-item--address"><i class="about-company-section__contact-icon far fa-location-dot"></i><a href="https://maps.app.goo.gl/E9zUY1jZgXaVt2JZ7" target="_blank">Azerbaijan, Baku Narimanov dist., Zaur Nudiraliyev st., 61, AZ1075</a></div>
+                        <div class="about-company-section__contact-item"><i class="about-company-section__contact-icon far fa-envelope"></i><a href="mailto:office@ceo.az">office@ceo.az</a></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <!-- Divider-->
+              <div class="about-company-section__divider"></div>
             </div>
           </div>
-          <!-- Divider-->
-          <div class="about-company-section__divider"></div>
         </div>
       </section>
     </main>
